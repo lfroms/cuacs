@@ -7,6 +7,8 @@ assignees: ''
 
 ---
 
+**Use Case Name:** `UseCase`
+
 ### Actors
 _List the actors involved in this use case._
 
@@ -20,8 +22,8 @@ _List the actors involved in this use case._
 **Exit Condition:** _condition_
 
 ### Quality Requirements
-[] _It must do this._
-[] _It must also do this._
+- [ ] _It must do this._
+- [ ] _It must also do this._
 
 ### Traceability
 - `FR-00`
