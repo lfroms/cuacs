@@ -3,6 +3,7 @@
 
 #include <QString>
 #include <QSqlDatabase>
+#include <QSqlQuery>
 #include <QDebug>
 
 class DatabaseAdapter {
@@ -13,7 +14,6 @@ class DatabaseAdapter {
         DatabaseAdapter();
         ~DatabaseAdapter();
         static QSqlDatabase db;
-        static DatabaseAdapter* instance;
 
         static bool init();
 };
