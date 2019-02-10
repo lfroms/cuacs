@@ -1,4 +1,5 @@
 #include "DatabaseAdapter.h"
+#include "Models/animal.h"
 
 static const QString DATABASE_PATH = "cuacs.db";
 
@@ -108,6 +109,28 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
 
     return addAnimal.exec(addAnimalQuery);
 }
+
+//bool DatabaseAdapter::getAnimals(Animal** animal){
+//    QSqlQuery query;
+//    QString countQuery = QString("SELECT COUNT(*) FROM %1");
+
+//    query.exec(countQuery.arg("rabbits"));
+//    int rabbitCount = query.value(1).toInt();
+//    query.exec(countQuery.arg("dogs"));
+//    int dogCount = query.value(1).toInt();
+//    query.exec(countQuery.arg("cats"));
+//    int catCount = query.value(1).toInt();
+
+//    cout << rabbitCount << "\n" << dogCount << "\n" << catCount << endl;
+//   // Animal** loadedAnimals = new Animal*[totalCount];
+
+//    //query.exec()
+//    // Loading all rabbits
+//   // while(query.next()){
+//    //    Rabbit r = new Rabbit(query.value(1).toString(),
+//    //                          query.value());
+//    //}
+//}
 
 bool DatabaseAdapter::seed() {
     for (int i = 0; i < 5; i++) {

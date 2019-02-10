@@ -1,27 +1,45 @@
 #include "animal.h"
 using namespace std;
 
-Animal::Animal(string g, 
-               string mC,
-               string n,
-               string b,
-               bool nOS,
-               bool h,
-               int a,
-               int bT,
-               int sT,
-               int fA,
-               int fC,
-               int nL,
-               int aC,
-               int lBS,
-               int s,
-               int eL,
-               int cV,
-               int cH,
-               int eT)
+Animal::Animal(string nGender,
+               string nMainColor,
+               string nName,
+               string nBreed,
+               bool nNeuteredOrSpayed,
+               bool nHypothetical,
+               int nAge,
+               int nBiteTendency,
+               int nScratchTendency,
+               int nFriendlinessAdults,
+               int nFriendlinessChildren,
+               int nNoiseLevel,
+               int nAloneComfort,
+               int nLikesBedSleep,
+               int nSnores,
+               int nEnergyLevel,
+               int nComfortableVet,
+               int nComfortableHandled,
+               int nEscapeTendency)
 {
-    update(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
+    update(nGender,
+           nMainColor,
+           nName,
+           nBreed,
+           nNeuteredOrSpayed,
+           nHypothetical,
+           nAge,
+           nBiteTendency,
+           nScratchTendency,
+           nFriendlinessAdults,
+           nFriendlinessChildren,
+           nNoiseLevel,
+           nAloneComfort,
+           nLikesBedSleep,
+           nSnores,
+           nEnergyLevel,
+           nComfortableVet,
+           nComfortableHandled,
+           nEscapeTendency);
 }
 
 Animal::Animal() {}
@@ -61,45 +79,45 @@ void Animal::toCommaSeperated(string& outStr){
     outStr = a.str();
 }
 
-void Animal::update(string g, 
-                    string mC,
-                    string n,
-                    string b,
-                    bool nOS,
-                    bool h,
-                    int a,
-                    int bT,
-                    int sT,
-                    int fA,
-                    int fC,
-                    int nL,
-                    int aC,
-                    int lBS,
-                    int s,
-                    int eL,
-                    int cV,
-                    int cH,
-                    int eT)
+void Animal::update(string nGender,
+                    string nMainColor,
+                    string nName,
+                    string nBreed,
+                    bool nNeuteredOrSpayed,
+                    bool nHypothetical,
+                    int nAge,
+                    int nBiteTendency,
+                    int nScratchTendency,
+                    int nFriendlinessAdults,
+                    int nFriendlinessChildren,
+                    int nNoiseLevel,
+                    int nAloneComfort,
+                    int nLikesBedSleep,
+                    int nSnores,
+                    int nEnergyLevel,
+                    int nComfortableVet,
+                    int nComfortableHandled,
+                    int nEscapeTendency)
 {
-    gender = g;
-    mainColor = mC;
-    name = n;
-    breed = b;
+    gender = nGender;
+    mainColor = nMainColor;
+    name = nName;
+    breed = nBreed;
 
-    neuteredOrSpayed = nOS;
-    hypothetical = h;
+    neuteredOrSpayed = nNeuteredOrSpayed;
+    hypothetical = nHypothetical;
 
-    age = a;
-    biteTendency = bT;
-    scratchTendency = sT;
-    friendlinessAdults = fA;
-    friendlinessChildren = fC;
-    noiseLevel = nL;
-    aloneComfort = aC;
-    likesBedSleep = lBS;
-    snores = s;
-    energyLevel = eL;
-    comfortableVet = cV;
-    comfortableHandled = cH;
-    escapeTendency = eT;
+    age = nAge;
+    biteTendency = nBiteTendency;
+    scratchTendency = nScratchTendency;
+    friendlinessAdults = nFriendlinessAdults;
+    friendlinessChildren = nFriendlinessChildren;
+    noiseLevel = nNoiseLevel;
+    aloneComfort = nAloneComfort;
+    likesBedSleep = nLikesBedSleep;
+    snores = nSnores;
+    energyLevel = nEnergyLevel;
+    comfortableVet = nComfortableVet;
+    comfortableHandled = nComfortableHandled;
+    escapeTendency = nEscapeTendency;
 }

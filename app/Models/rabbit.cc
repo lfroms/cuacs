@@ -1,29 +1,46 @@
 #include "rabbit.h"
 
-Rabbit::Rabbit(int nAL, 
- 	       string g, 
-	       string mC, 
-	       string n, 
-	       string b, 
-	       bool nOS,
-	       bool h, 
-	       int a, 
-	       int bT, 
-	       int sT, 
-	       int fA, 
-	       int fC, 
-	       int nL, 
-	       int aC, 
-	       int lBS,
-           int s,
-	       int eL, 
-	       int cV, 
-	       int cH, 
-	       int eT)
-    : Animal(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT)
-
+Rabbit::Rabbit(int nNightActivityLevel,
+               string nGender,
+               string nMainColor,
+               string nName,
+               string nBreed,
+               bool nNeuteredOrSpayed,
+               bool nHypothetical,
+               int nAge,
+               int nBiteTendency,
+               int nScratchTendency,
+               int nFriendlinessAdults,
+               int nFriendlinessChildren,
+               int nNoiseLevel,
+               int nAloneComfort,
+               int nLikesBedSleep,
+               int nSnores,
+               int nEnergyLevel,
+               int nComfortableVet,
+               int nComfortableHandled,
+               int nEscapeTendency)
+    : Animal(nGender,
+             nMainColor,
+             nName,
+             nBreed,
+             nNeuteredOrSpayed,
+             nHypothetical,
+             nAge,
+             nBiteTendency,
+             nScratchTendency,
+             nFriendlinessAdults,
+             nFriendlinessChildren,
+             nNoiseLevel,
+             nAloneComfort,
+             nLikesBedSleep,
+             nSnores,
+             nEnergyLevel,
+             nComfortableVet,
+             nComfortableHandled,
+             nEscapeTendency)
 {
-    nightActivityLevel = nAL;
+    nightActivityLevel = nNightActivityLevel;
 }
 
 Rabbit::~Rabbit(){}
@@ -46,27 +63,46 @@ string Rabbit::getTableName() {
     return "rabbits";
 }
 
-void Rabbit::update(int nAL, 
-		    string g, 
-		    string mC, 
-		    string n, 
-		    string b, 
-		    bool nOS,
-		    bool h, 
-		    int a, 
-		    int bT, 
-		    int sT, 
-		    int fA, 
-		    int fC, 
-		    int nL, 
-		    int aC, 
-		    int lBS,
-		    int s, 
-		    int eL, 
-		    int cV, 
-		    int cH, 
-		    int eT)
+void Rabbit::update(int nNightActivityLevel,
+                    string nGender,
+                    string nMainColor,
+                    string nName,
+                    string nBreed,
+                    bool nNeuteredOrSpayed,
+                    bool nHypothetical,
+                    int nAge,
+                    int nBiteTendency,
+                    int nScratchTendency,
+                    int nFriendlinessAdults,
+                    int nFriendlinessChildren,
+                    int nNoiseLevel,
+                    int nAloneComfort,
+                    int nLikesBedSleep,
+                    int nSnores,
+                    int nEnergyLevel,
+                    int nComfortableVet,
+                    int nComfortableHandled,
+                    int nEscapeTendency)
 {
-    Animal::update(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
-    nightActivityLevel = nAL;
+    Animal::update(nGender,
+                   nMainColor,
+                   nName,
+                   nBreed,
+                   nNeuteredOrSpayed,
+                   nHypothetical,
+                   nAge,
+                   nBiteTendency,
+                   nScratchTendency,
+                   nFriendlinessAdults,
+                   nFriendlinessChildren,
+                   nNoiseLevel,
+                   nAloneComfort,
+                   nLikesBedSleep,
+                   nSnores,
+                   nEnergyLevel,
+                   nComfortableVet,
+                   nComfortableHandled,
+                   nEscapeTendency);
+
+    nightActivityLevel = nNightActivityLevel;
 }

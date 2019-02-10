@@ -12,12 +12,15 @@
 
 #include <DatabaseAdapter/AnimalData.h>
 
+#include <vector>
+
 class DatabaseAdapter {
     public:
         static DatabaseAdapter* getInstance();
         static bool insertDog(Dog*);
         static bool insertCat(Cat*);
         static bool insertAnimal(Animal*);
+        static bool getAnimals(Animal** animal);
 
     private:
         DatabaseAdapter();

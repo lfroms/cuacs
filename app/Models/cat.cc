@@ -1,33 +1,50 @@
 #include "cat.h"
 
-Cat::Cat(bool iO, 
-         int lT,
-         int fLC,
-         string g,
-         string mC,
-         string n,
-         string b,
-         bool nOS,
-         bool h,
-         int a,
-         int bT,
-         int sT,
-         int fA,
-         int fC,
-         int nL,
-         int aC,
-         int lBS,
-         int s,
-         int eL,
-         int cV,
-         int cH,
-         int eT)
-    : Animal(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT)
-
+Cat::Cat(bool nIndoorOutdoor,
+         int nLitterTrained,
+         int nFriendlinessCats,
+         string nGender,
+         string nMainColor,
+         string nName,
+         string nBreed,
+         bool nNeuteredOrSpayed,
+         bool nHypothetical,
+         int nAge,
+         int nBiteTendency,
+         int nScratchTendency,
+         int nFriendlinessAdults,
+         int nFriendlinessChildren,
+         int nNoiseLevel,
+         int nAloneComfort,
+         int nLikesBedSleep,
+         int nSnores,
+         int nEnergyLevel,
+         int nComfortableVet,
+         int nComfortableHandled,
+         int nEscapeTendency)
+    : Animal(nGender,
+             nMainColor,
+             nName,
+             nBreed,
+             nNeuteredOrSpayed,
+             nHypothetical,
+             nAge,
+             nBiteTendency,
+             nScratchTendency,
+             nFriendlinessAdults,
+             nFriendlinessChildren,
+             nNoiseLevel,
+             nAloneComfort,
+             nLikesBedSleep,
+             nSnores,
+             nEnergyLevel,
+             nComfortableVet,
+             nComfortableHandled,
+             nEscapeTendency)
 {
-    indoorOutdoor = iO;
-    litterTrained = lT;
-    friendlinessCats = fLC;
+    indoorOutdoor = nIndoorOutdoor;
+    litterTrained = nLitterTrained;
+    friendlinessCats = nFriendlinessCats;
 }
 
 Cat::~Cat(){}
@@ -52,31 +69,50 @@ string Cat::getTableName() {
     return "cats";
 }
 
-void Cat::update(bool iO, 
-                 int lT,
-                 int fLC,
-                 string g,
-                 string mC,
-                 string n,
-                 string b,
-                 bool nOS,
-                 bool h,
-                 int a,
-                 int bT,
-                 int sT,
-                 int fA,
-                 int fC,
-                 int nL,
-                 int aC,
-                 int lBS,
-                 int s,
-                 int eL,
-                 int cV,
-                 int cH,
-                 int eT)
+void Cat::update(bool nIndoorOutdoor,
+                 int nLitterTrained,
+                 int nFriendlinessCats,
+                 string nGender,
+                 string nMainColor,
+                 string nName,
+                 string nBreed,
+                 bool nNeuteredOrSpayed,
+                 bool nHypothetical,
+                 int nAge,
+                 int nBiteTendency,
+                 int nScratchTendency,
+                 int nFriendlinessAdults,
+                 int nFriendlinessChildren,
+                 int nNoiseLevel,
+                 int nAloneComfort,
+                 int nLikesBedSleep,
+                 int nSnores,
+                 int nEnergyLevel,
+                 int nComfortableVet,
+                 int nComfortableHandled,
+                 int nEscapeTendency)
 {
-    Animal::update(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
-    indoorOutdoor = iO;
-    litterTrained = lT;
-    friendlinessCats = fLC;
+    Animal::update(nGender,
+                   nMainColor,
+                   nName,
+                   nBreed,
+                   nNeuteredOrSpayed,
+                   nHypothetical,
+                   nAge,
+                   nBiteTendency,
+                   nScratchTendency,
+                   nFriendlinessAdults,
+                   nFriendlinessChildren,
+                   nNoiseLevel,
+                   nAloneComfort,
+                   nLikesBedSleep,
+                   nSnores,
+                   nEnergyLevel,
+                   nComfortableVet,
+                   nComfortableHandled,
+                   nEscapeTendency);
+
+    indoorOutdoor = nIndoorOutdoor;
+    litterTrained = nLitterTrained;
+    friendlinessCats = nFriendlinessCats;
 }
