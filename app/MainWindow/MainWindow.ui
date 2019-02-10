@@ -47,12 +47,22 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="animalsTab">
      <attribute name="title">
       <string>Animals</string>
      </attribute>
+     <widget class="QListWidget" name="animalsListWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>711</width>
+        <height>381</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="clientsTab">
      <attribute name="title">
       <string>Clients</string>
      </attribute>
