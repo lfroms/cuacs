@@ -3,6 +3,7 @@
 static const QString DATABASE_PATH = "cuacs.db";
 
 static const QString commonAttributes =
+        "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
         "gender TEXT NOT NULL,"
         "main_color TEXT NOT NULL,"
         "breed TEXT NOT NULL,"
@@ -72,21 +73,21 @@ DatabaseAdapter* DatabaseAdapter::getInstance() {
 bool DatabaseAdapter::init() {
     QSqlQuery createDogs;
     QString dogQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(id INTEGER PRIMARY KEY AUTOINCREMENT, %2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
             .arg("dogs")
             .arg(commonAttributes)
             .arg(dogAttributes);
 
     QSqlQuery createCats;
     QString catQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(id INTEGER PRIMARY KEY AUTOINCREMENT, %2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
             .arg("cats")
             .arg(commonAttributes)
             .arg(catAttributes);
 
     QSqlQuery createRabbits;
     QString rabbitQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(id INTEGER PRIMARY KEY AUTOINCREMENT, %2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
             .arg("rabbits")
             .arg(commonAttributes)
             .arg(rabbitAttributes);
