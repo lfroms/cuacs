@@ -1,4 +1,4 @@
-# cuACS
+# cuACS  🐶🐱🐰👩‍💻
 _cuACS_ is a software system that matches animals to people.
 
 ## Development
