@@ -44,13 +44,13 @@ DatabaseAdapter::DatabaseAdapter() {
     db = QSqlDatabase::addDatabase("QSQLITE");
     db.setDatabaseName(DATABASE_PATH);
 
-    if (!db.open()) {
+    // Connect and init the database.
+    if (!db.open() || !init()) {
         qDebug() << "Failed to connect to database.";
-    } else {
-        qDebug() << "Database connection succeeded.";
-
-        init();
+        return;
     }
+
+    qDebug() << "Database connection succeeded.";
 }
 
 DatabaseAdapter::~DatabaseAdapter() {
