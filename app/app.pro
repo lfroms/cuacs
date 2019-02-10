@@ -27,11 +27,19 @@ CONFIG += c++11
 SOURCES += \
         MainWindow/MainWindow.cc \
     DatabaseAdapter/DatabaseAdapter.cc \
-    main.cc
+    main.cc \
+    Models/animal.cc \
+    Models/cat.cc \
+    Models/dog.cc \
+    Models/rabbit.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
-    DatabaseAdapter/DatabaseAdapter.h
+    DatabaseAdapter/DatabaseAdapter.h \
+    Models/animal.h \
+    Models/cat.h \
+    Models/dog.h \
+    Models/rabbit.h
 
 FORMS += \
         MainWindow/MainWindow.ui
