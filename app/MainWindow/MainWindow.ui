@@ -33,9 +33,9 @@
     <property name="geometry">
      <rect>
       <x>10</x>
-      <y>40</y>
-      <width>741</width>
-      <height>411</height>
+      <y>20</y>
+      <width>731</width>
+      <height>431</height>
      </rect>
     </property>
     <property name="sizePolicy">
