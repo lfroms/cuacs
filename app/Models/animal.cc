@@ -1,22 +1,36 @@
 #include "animal.h"
+using namespace std;
 
-Animal::Animal(string g, string mC, string n, bool nOS, bool h, int a,
+Animal::Animal(int i, string g, string mC, string n, string b, bool nOS, bool h, int a,
                int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
                int s, int eL, int cV, int cH, int eT)
 {
-    update(g, mC, n, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
+    update(i, g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
 }
 
-Animal::~Animal()
-{}
+Animal::~Animal(){}
 
-void Animal::update(string g, string mC, string n, bool nOS, bool h, int a,
+string Animal::toCommaSeperated()
+{
+    stringstream a;
+    a << gender << "," << mainColor << ","  << breed << "," << name << "," << neuteredOrSprayed << "," << hypothetical
+      << "," << age << "," << biteTendency << "," << scratchTendency << "," << friendlinessAdults << "," << friendlinessChildren
+      << "," << friendlinessAdults << "," << friendlinessChildren << "," << noiseLevel << "," << aloneComfort << ","
+      << "," << likesBedSleep << "," << snores << "," << energyLevel << "," << comfortableVet << "," << comfortableHandled
+      << "," << escapeTendency;
+
+    return a.str();
+}
+
+void Animal::update(int i, string g, string mC, string n, string b, bool nOS, bool h, int a,
            int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
            int s, int eL, int cV, int cH, int eT)
 {
+    id = i;
     gender = g;
     mainColor = mC;
     name = n;
+    breed = b;
 
     neuteredOrSprayed = nOS;
     hypothetical = h;
