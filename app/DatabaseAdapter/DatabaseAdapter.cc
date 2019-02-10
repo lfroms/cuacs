@@ -77,7 +77,6 @@ bool DatabaseAdapter::init() {
             .arg(commonAttributes)
             .arg(dogAttributes);
 
-
     QSqlQuery createCats;
     QString catQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(id INTEGER PRIMARY KEY AUTOINCREMENT, %2, %3);")
@@ -85,14 +84,12 @@ bool DatabaseAdapter::init() {
             .arg(commonAttributes)
             .arg(catAttributes);
 
-
     QSqlQuery createRabbits;
     QString rabbitQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(id INTEGER PRIMARY KEY AUTOINCREMENT, %2, %3);")
             .arg("rabbits")
             .arg(commonAttributes)
             .arg(rabbitAttributes);
-
 
     return createDogs.exec(dogQuery) &&
            createCats.exec(catQuery) &&
