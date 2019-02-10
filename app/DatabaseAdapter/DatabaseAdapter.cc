@@ -17,7 +17,6 @@ DatabaseAdapter::DatabaseAdapter() {
 
 DatabaseAdapter::~DatabaseAdapter() {
     db.close();
-    qDebug() << "CLOSING";
 
     if (instance != nullptr) {
         delete instance;
@@ -30,4 +29,10 @@ DatabaseAdapter* DatabaseAdapter::getInstance() {
     static DatabaseAdapter instance;
 
     return &instance;
+}
+
+bool DatabaseAdapter::init() {
+    // Set up the database.
+
+    return true;
 }
