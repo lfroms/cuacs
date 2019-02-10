@@ -14,7 +14,6 @@ class DatabaseAdapter {
         DatabaseAdapter();
         ~DatabaseAdapter();
         static QSqlDatabase db;
-        static DatabaseAdapter* instance;
 
         static bool init();
 };

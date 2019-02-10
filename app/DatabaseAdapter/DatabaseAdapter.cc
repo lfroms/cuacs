@@ -55,17 +55,10 @@ DatabaseAdapter::DatabaseAdapter() {
 
 DatabaseAdapter::~DatabaseAdapter() {
     db.close();
-
-    if (instance != nullptr) {
-        delete instance;
-    }
 }
-
-DatabaseAdapter* DatabaseAdapter::instance = nullptr;
 
 DatabaseAdapter* DatabaseAdapter::getInstance() {
     static DatabaseAdapter instance;
-
     return &instance;
 }
 
