@@ -14,7 +14,7 @@ static const QString commonAttributes =
         "hypothetical INTEGER NOT NULL,"
         "bite_tendency INTEGER NOT NULL,"
         "scratch_tendency INTEGER NOT NULL,"
-        "friendliness_humans INTEGER NOT NULL,"
+        "friendliness_adults INTEGER NOT NULL,"
         "friendliness_children INTEGER NOT NULL,"
         "noise_level INTEGER NOT NULL,"
         "alone_comfort INTEGER NOT NULL,"
