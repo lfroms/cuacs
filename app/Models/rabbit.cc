@@ -1,9 +1,26 @@
 #include "rabbit.h"
 
-Rabbit::Rabbit(int nAL, int i, string g, string mC, string n, string b, bool nOS,
-         bool h, int a, int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
-         int s, int eL, int cV, int cH, int eT)
-    : Animal(i, g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT)
+Rabbit::Rabbit(int nAL, 
+ 	       string g, 
+	       string mC, 
+	       string n, 
+	       string b, 
+	       bool nOS,
+	       bool h, 
+	       int a, 
+	       int bT, 
+	       int sT, 
+	       int fA, 
+	       int fC, 
+	       int nL, 
+	       int aC, 
+	       int lBS,
+           int s,
+	       int eL, 
+	       int cV, 
+	       int cH, 
+	       int eT)
+    : Animal(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT)
 
 {
     nightActivityLevel = nAL;
@@ -11,18 +28,37 @@ Rabbit::Rabbit(int nAL, int i, string g, string mC, string n, string b, bool nOS
 
 Rabbit::~Rabbit(){}
 
-string Rabbit::toCommaSeperated()
-{
+void Rabbit::toCommaSeperated(string& outStr){
     stringstream s;
-    s << Animal::toCommaSeperated() << "," << nightActivityLevel;
+    string animal;
+    Animal::toCommaSeperated(animal);
+    s << animal << ","
+      << nightActivityLevel;
 
-    return s.str();
+    outStr = s.str();
 }
 
-void Rabbit::update(int nAL, int i, string g, string mC, string n, string b, bool nOS,
-                 bool h, int a, int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
-                 int s, int eL, int cV, int cH, int eT)
+void Rabbit::update(int nAL, 
+		    string g, 
+		    string mC, 
+		    string n, 
+		    string b, 
+		    bool nOS,
+		    bool h, 
+		    int a, 
+		    int bT, 
+		    int sT, 
+		    int fA, 
+		    int fC, 
+		    int nL, 
+		    int aC, 
+		    int lBS,
+		    int s, 
+		    int eL, 
+		    int cV, 
+		    int cH, 
+		    int eT)
 {
-    Animal::update(i, g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
+    Animal::update(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
     nightActivityLevel = nAL;
 }

@@ -8,29 +8,68 @@ using namespace std;
 class Cat : public Animal
 {
 public:
-    Cat(bool iO, int lT, int fLC, int i, string g, string mC, string n, string b, bool nOS,
-        bool h, int a, int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
-        int s, int eL, int cV, int cH, int eT);
+    Cat(bool iO,
+        int lT,
+        int fLC,
+        string g,
+        string mC,
+        string n,
+        string b,
+        bool nOS,
+        bool h,
+        int a,
+        int bT,
+        int sT,
+        int fA,
+        int fC,
+        int nL,
+        int aC,
+        int lBS,
+        int s,
+        int eL,
+        int cV,
+        int cH,
+        int eT);
 
     ~Cat();
 
-    string toCommaSeperated();
+    void toCommaSeperated(string& outStr);
 
-    void update(bool iO, int lT, int fLC, int i, string g, string mC, string n, string b, bool nOS,
-                 bool h, int a, int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
-                 int s, int eL, int cV, int cH, int eT);
+    void update(bool iO, 
+                int lT,
+                int fLC,
+                string g,
+                string mC,
+                string n,
+                string b,
+                bool nOS,
+                bool h,
+                int a,
+                int bT,
+                int sT,
+                int fA,
+                int fC,
+                int nL,
+                int aC,
+                int lBS,
+                int s,
+                int eL,
+                int cV,
+                int cH,
+                int eT);
 
-    bool getIndoorOutdoor(){
-        return indoorOutdoor;
+    void getIndoorOutdoor(bool& outBool){
+        outBool = indoorOutdoor;
     }
 
-    int getLitterTrained(){
-        return litterTrained;
+    void getLitterTrained(int& outInt){
+        outInt = litterTrained;
     }
 
-    int getFriendlinessCats(){
-        return friendlinessCats;
+    void getFriendlinessCats(int& outInt){
+        outInt = friendlinessCats;
     }
+
 private:
     bool indoorOutdoor;
     int litterTrained;

@@ -5,28 +5,66 @@
 class Dog : public Animal
 {
 public:
-    Dog(int fD, int hT, int bTY, int i, string g, string mC, string n, string b, bool nOS,
-        bool h, int a, int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
-        int s, int eL, int cV, int cH, int eT);
+    Dog(int fD, 
+    int hT,
+	int bTY, 
+	string g, 
+	string mC, 
+	string n, 
+	string b, 
+	bool nOS,
+    bool h,
+	int a, 
+	int bT, 
+	int sT, 
+	int fA, 
+	int fC, 
+	int nL, 
+	int aC, 
+	int lBS,
+	int s, 
+	int eL, 
+	int cV, 
+	int cH, 
+	int eT);
 
     ~Dog();
 
-    string toCommaSeperated();
+    void toCommaSeperated(string& outStr);
 
-    void update(int fD, int hT, int bTY, int i, string g, string mC, string n, string b, bool nOS,
-                bool h, int a, int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
-                int s, int eL, int cV, int cH, int eT);
+    void update(int fD, 
+                int hT,
+                int bTY,
+                string g,
+                string mC,
+                string n,
+                string b,
+                bool nOS,
+                bool h,
+                int a,
+                int bT,
+                int sT,
+                int fA,
+                int fC,
+                int nL,
+                int aC,
+                int lBS,
+                int s,
+                int eL,
+                int cV,
+                int cH,
+                int eT);
 
-    int getFriendlinessDogs(){
-        return friendlinessDogs;
+    void getFriendlinessDogs(int& outInt){
+        outInt = friendlinessDogs;
     }
 
-    int getHouseTrained(){
-        return houseTrained;
+    void getHouseTrained(int& outInt){
+        outInt = houseTrained;
     }
 
-    int getBarkTendency(){
-        return barkTendency;
+    void getBarkTendency(int& outInt){
+        outInt = barkTendency;
     }
 
 private:

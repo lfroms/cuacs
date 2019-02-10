@@ -9,107 +9,141 @@ using namespace std;
 class Animal
 {
 public:
-    Animal(int i, string g, string mC, string n, string b, bool nOS, bool h, int a,
-           int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
-           int s, int eL, int cV, int cH, int eT);
+    Animal(string g,
+           string mC,
+           string n,
+           string b,
+           bool nOS,
+           bool h,
+           int a,
+           int bT,
+           int sT,
+           int fA,
+           int fC,
+           int nL,
+           int aC,
+           int lBS,
+           int s,
+           int eL,
+           int cV,
+           int cH,
+           int eT);
 
     ~Animal();
 
-    string toCommaSeperated();
+    void toCommaSeperated(string& outStr);
 
-    void update(int i, string g, string mC, string n, string b, bool nOS, bool h, int a,
-                int bT, int sT, int fA, int fC, int nL, int aC, int lBS,
-                int s, int eL, int cV, int cH, int eT);
+    void update(string g,
+                string mC,
+                string n,
+                string b,
+                bool nOS,
+                bool h,
+                int a,
+                int bT,
+                int sT,
+                int fA,
+                int fC,
+                int nL,
+                int aC,
+                int lBS,
+                int s,
+                int eL,
+                int cV,
+                int cH,
+                int eT);
 
-    string getGender(){
-        return gender;
+    void getGender(string& outStr){
+        outStr = gender;
     }
 
-    string getMainColor(){
-        return mainColor;
+    void getMainColor(string& outStr){
+        outStr = mainColor;
     }
 
-    string getName(){
-        return name;
+    void getName(string& outStr){
+        outStr = name;
     }
 
-    string getBreed(){
-        return breed;
+    void getBreed(string& outStr){
+        outStr = breed;
     }
 
-    bool getNeutredOrSprayed(){
-        return neuteredOrSprayed;
+    void getNeutredOrSprayed(bool& outBool){
+        outBool = neuteredOrSpayed;
     }
 
-    bool getHypothetical(){
-        return hypothetical;
+    void getHypothetical(bool& outBool){
+        outBool = hypothetical;
     }
 
-    int getId(){
-        return id;
+    void getId(int& outInt){
+        outInt = id;
     }
 
-    int getAge(){
-        return age;
+    void getAge(int& outInt){
+        outInt = age;
     }
 
-    int getBiteTendency(){
-        return biteTendency;
+    void getBiteTendency(int& outInt){
+        outInt = biteTendency;
     }
 
-    int getScratchTendency(){
-        return scratchTendency;
+    void getScratchTendency(int& outInt){
+        outInt = scratchTendency;
     }
 
-    int getFriendlinessAdults(){
-        return friendlinessAdults;
+    void getFriendlinessAdults(int& outInt){
+        outInt = friendlinessAdults;
     }
 
-    int getFriendlinessChildren(){
-        return friendlinessChildren;
+    void getFriendlinessChildren(int& outInt){
+        outInt = friendlinessChildren;
     }
 
-    int getNoiseLevel(){
-        return noiseLevel;
+    void getNoiseLevel(int& outInt){
+        outInt = noiseLevel;
     }
 
-    int getAloneComfort(){
-        return aloneComfort;
+    void getAloneComfort(int& outInt){
+        outInt = aloneComfort;
     }
 
-    int getLikesBedSleep(){
-        return likesBedSleep;
+    void getLikesBedSleep(int& outInt){
+        outInt = likesBedSleep;
     }
 
-    int getSnores(){
-        return snores;
+    void getSnores(int& outInt){
+        outInt = snores;
     }
 
-    int getEnergylevel(){
-        return energyLevel;
+    void getEnergylevel(int& outInt){
+        outInt = energyLevel;
     }
 
-    int getComfortableVet(){
-        return comfortableVet;
+    void getComfortableVet(int& outInt){
+        outInt = comfortableVet;
     }
 
-    int getComfortableHandled(){
-        return comfortableHandled;
+    void getComfortableHandled(int& outInt){
+        outInt = comfortableHandled;
     }
 
-    int getEscapeTendency(){
-        return escapeTendency;
+    void getEscapeTendency(int& outInt){
+        outInt = escapeTendency;
     }
+
+    int id;
+
 private:
     string gender;
     string mainColor;
     string name;
     string breed;
 
-    bool neuteredOrSprayed;
+    bool neuteredOrSpayed;
     bool hypothetical;
 
-    int id;
     int age;
     int biteTendency;
     int scratchTendency;
