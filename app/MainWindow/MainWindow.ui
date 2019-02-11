@@ -45,11 +45,11 @@
      </sizepolicy>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
-    <widget class="QWidget" name="animalsTab">
+    <widget class="QWidget" name="viewAnimalsTab">
      <attribute name="title">
-      <string>Animals</string>
+      <string>View Animals</string>
      </attribute>
      <widget class="QListWidget" name="animalsListWidget">
       <property name="geometry">
@@ -62,9 +62,9 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="clientsTab">
+    <widget class="QWidget" name="addAnimalTab">
      <attribute name="title">
-      <string>Clients</string>
+      <string>Add Animal</string>
      </attribute>
     </widget>
    </widget>
