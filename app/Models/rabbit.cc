@@ -39,7 +39,11 @@ void Rabbit::toCommaSeperated(string& outStr){
 }
 
 string Rabbit::getSpecies() {
-    return "Rabbit"
+    return "Rabbit";
+}
+
+string Rabbit::getTableName() {
+    return "rabbits";
 }
 
 void Rabbit::update(int nAL, 

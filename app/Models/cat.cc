@@ -45,7 +45,11 @@ void Cat::toCommaSeperated(string& outStr){
 }
 
 string Cat::getSpecies() {
-    return "Cat"
+    return "Cat";
+}
+
+string Cat::getTableName() {
+    return "cats";
 }
 
 void Cat::update(bool iO, 

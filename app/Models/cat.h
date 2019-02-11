@@ -61,9 +61,7 @@ public:
                 int eT);
 
 
-    string getTableName() {
-        return "cats";
-    }
+    string getTableName();
 
 private:
     bool indoorOutdoor;

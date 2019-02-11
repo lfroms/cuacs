@@ -56,6 +56,7 @@ public:
                 int eT);
 
     string getSpecies();
+    string getTableName();
 
 private:
     int friendlinessDogs;

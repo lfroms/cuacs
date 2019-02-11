@@ -59,6 +59,8 @@ public:
 
     virtual string getSpecies() = 0;
 
+    string getTableName();
+
 private:
     string gender;
     string mainColor;
