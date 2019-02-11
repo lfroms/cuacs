@@ -10,15 +10,15 @@
 
 int main(int argc, char *argv[])
 {
-//    DatabaseAdapter* db = DatabaseAdapter::getInstance();
-//    Animal ** animals;
+    DatabaseAdapter* db = DatabaseAdapter::getInstance();
+    Animal ** animals;
+    int num;
+    db->getAnimals(animals, num);
 
-//    db->getAnimals(animals);
+    QString test;
+    animals[1]->getName(test);
 
-//    QString test;
-//    animals[0]->toCommaSeperated(test);
-
-//    qInfo() << test;
+    qInfo() << test;
     qDebug() << "Testing";
 
     QApplication a(argc, argv);

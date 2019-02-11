@@ -102,8 +102,7 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
     QString animalCommaSeparated;
     animal->toCommaSeperated(animalCommaSeparated);
 
-    qDebug() << "Hello";
-    qDebug() << animalCommaSeparated;
+    qDebug() << "Adding";
     QString addAnimalQuery =
             QString("INSERT INTO %1 VALUES(null, %2)")
             .arg(animal->getTableName())
@@ -112,48 +111,116 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
     return addAnimal.exec(addAnimalQuery);
 }
 
-bool DatabaseAdapter::getAnimals(Animal** animals){
+bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
+
+    QSqlQuery rabbitCountQ("SELECT COUNT(*) FROM rabbits;");
+    rabbitCountQ.first();
+    int rabbitCount = rabbitCountQ.value(0).toInt();
+
+    QSqlQuery catCountQ("SELECT COUNT(*) FROM cats;");
+    catCountQ.first();
+    int catCount = catCountQ.value(0).toInt();
+
+    QSqlQuery dogCountQ("SELECT COUNT(*) FROM dogs;");
+    dogCountQ.first();
+    int dogCount = dogCountQ.value(0).toInt();
+
+    numAnimals = rabbitCount + dogCount + catCount;
+
+    animals = new Animal*[numAnimals];
+
     QSqlQuery query;
-    QString countQuery = QString("SELECT COUNT(*) FROM %1");
+    query.exec("SELECT * FROM rabbits");
+    int i = 0;
+    // Loading all rabbits
+    query.next();
+    while(query.next()){
+        Rabbit* r = new Rabbit(query.value(20).toInt(),
+                              query.value(1).toString(),
+                              query.value(2).toString(),
+                              query.value(6).toString(),
+                              query.value(3).toString(),
+                              query.value(5).toBool(),
+                              query.value(7).toBool(),
+                              query.value(4).toInt(),
+                              query.value(8).toInt(),
+                              query.value(9).toInt(),
+                              query.value(10).toInt(),
+                              query.value(11).toInt(),
+                              query.value(12).toInt(),
+                              query.value(13).toInt(),
+                              query.value(14).toInt(),
+                              query.value(15).toInt(),
+                              query.value(16).toInt(),
+                              query.value(17).toInt(),
+                              query.value(18).toInt(),
+                              query.value(19).toInt()
+                              );
+        animals[i] = r;
+        i++;
+    }
+    query.exec("SELECT * FROM dogs");
 
-    query.exec(countQuery.arg("rabbits"));
-    int rabbitCount = query.value(0).toInt();
-    query.exec(countQuery.arg("dogs"));
-    int dogCount = query.value(0).toInt();
-    query.exec(countQuery.arg("cats"));
-    int catCount = query.value(0).toInt();
+    // Loading all dogs
+    while(query.next()){
+        Dog* d = new Dog(query.value(20).toInt(),
+                         query.value(21).toInt(),
+                         query.value(22).toInt(),
+                         query.value(1).toString(),
+                         query.value(2).toString(),
+                         query.value(6).toString(),
+                         query.value(3).toString(),
+                         query.value(5).toBool(),
+                         query.value(7).toBool(),
+                         query.value(4).toInt(),
+                         query.value(8).toInt(),
+                         query.value(9).toInt(),
+                         query.value(10).toInt(),
+                         query.value(11).toInt(),
+                         query.value(12).toInt(),
+                         query.value(13).toInt(),
+                         query.value(14).toInt(),
+                         query.value(15).toInt(),
+                         query.value(16).toInt(),
+                         query.value(17).toInt(),
+                         query.value(18).toInt(),
+                         query.value(19).toInt()
+                         );
+        animals[i] = d;
+        i++;
+    }
 
-//    animals = new Animal*[rabbitCount + dogCount + catCount];
+    query.exec("SELECT * FROM cats");
 
-//    QString selectQuery = QString("SELECT * FROM %1");
-//    query.exec(selectQuery.arg("rabbits"));
-
-//    // Loading all rabbits
-//    while(query.next()){
-//        Rabbit r = new Rabbit(query.value(20).toInt(),
-//                              query.value(1).toString(),
-//                              query.value(2).toString(),
-//                              query.value(6).toString(),
-//                              query.value(3).toString(),
-//                              query.value(5).toBool(),
-//                              query.value(7).toBool(),
-//                              query.value(4).toInt(),
-//                              query.value(8).toInt(),
-//                              query.value(9).toInt(),
-//                              query.value(10).toInt(),
-//                              query.value(11).toInt(),
-//                              query.value(12).toInt(),
-//                              query.value(13).toInt(),
-//                              query.value(14).toInt(),
-//                              query.value(15).toInt(),
-//                              query.value(16).toInt(),
-//                              query.value(17).toInt(),
-//                              query.value(18).toInt(),
-//                              query.value(19).toInt(),
-//                              query.value(20).toInt()
-//                              );
-//        animals[i] = r;
-//    }
+    // Loading all cats
+    while(query.next()){
+        Cat* c = new Cat(query.value(20).toBool(),
+                         query.value(21).toInt(),
+                         query.value(22).toInt(),
+                         query.value(1).toString(),
+                         query.value(2).toString(),
+                         query.value(6).toString(),
+                         query.value(3).toString(),
+                         query.value(5).toBool(),
+                         query.value(7).toBool(),
+                         query.value(4).toInt(),
+                         query.value(8).toInt(),
+                         query.value(9).toInt(),
+                         query.value(10).toInt(),
+                         query.value(11).toInt(),
+                         query.value(12).toInt(),
+                         query.value(13).toInt(),
+                         query.value(14).toInt(),
+                         query.value(15).toInt(),
+                         query.value(16).toInt(),
+                         query.value(17).toInt(),
+                         query.value(18).toInt(),
+                         query.value(19).toInt()
+                         );
+        animals[i] = c;
+        i++;
+    }
+    return true;
 }
 
 bool DatabaseAdapter::seed() {
@@ -165,5 +232,6 @@ bool DatabaseAdapter::seed() {
         }
     }
 
+    qDebug() << "Succeded seeding";
     return true;
 }

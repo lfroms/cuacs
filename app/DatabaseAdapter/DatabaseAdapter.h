@@ -20,7 +20,7 @@ class DatabaseAdapter {
         static bool insertDog(Dog*);
         static bool insertCat(Cat*);
         static bool insertAnimal(Animal*);
-        static bool getAnimals(Animal** animal);
+        static bool getAnimals(Animal** animal, int& numAnimals);
 
     private:
         DatabaseAdapter();
