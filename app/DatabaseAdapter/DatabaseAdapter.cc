@@ -84,11 +84,39 @@ bool DatabaseAdapter::init() {
             .arg(commonAttributes)
             .arg(rabbitAttributes);
 
-    return createDogs.exec(dogQuery) &&
-           createCats.exec(catQuery) &&
-           createRabbits.exec(rabbitQuery);
+    if (createDogs.exec(dogQuery) &&
+            createCats.exec(catQuery) &&
+            createRabbits.exec(rabbitQuery)) {
+        return seed();
+    } else {
+        return false;
+    }
 }
 
 /* === Public-Facing Database Operation Methods === */
 
-// bool DatabaseAdapter::getAllAnimals() {}
+bool DatabaseAdapter::insertAnimal(Animal * animal) {
+    QSqlQuery addAnimal;
+
+    string animalCommaSeparated;
+    animal->toCommaSeperated(animalCommaSeparated);
+
+    QString addAnimalQuery =
+            QString("INSERT INTO %1 VALUES(null, %2)")
+            .arg(QString::fromStdString(animal->getTableName()))
+            .arg(QString::fromStdString(animalCommaSeparated));
+
+    return addAnimal.exec(addAnimalQuery);
+}
+
+bool DatabaseAdapter::seed() {
+    for (int i = 0; i < 5; i++) {
+        Animal* a = AnimalData().getAnimals()[i];
+        if (!insertAnimal(a)) {
+            qDebug() << "Failed to insert";
+           return false;
+        }
+    }
+
+    return true;
+}

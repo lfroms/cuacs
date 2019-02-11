@@ -37,9 +37,9 @@ void Cat::toCommaSeperated(string& outStr){
     string animal;
     Animal::toCommaSeperated(animal);
     s << animal << ","
-      << indoorOutdoor << "," 
-      << litterTrained << "," 
-      << friendlinessCats;
+      << "'" << indoorOutdoor << "', "
+      << "'" << litterTrained << "', "
+      << "'" << friendlinessCats << "'";
 
     outStr = s.str();
 }

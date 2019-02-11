@@ -32,8 +32,8 @@ void Rabbit::toCommaSeperated(string& outStr){
     stringstream s;
     string animal;
     Animal::toCommaSeperated(animal);
-    s << animal << ","
-      << nightActivityLevel;
+    s << animal << ", "
+      << "'" << nightActivityLevel << "'";
 
     outStr = s.str();
 }
