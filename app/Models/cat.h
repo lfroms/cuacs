@@ -70,6 +70,10 @@ public:
         outInt = friendlinessCats;
     }
 
+    string getTableName() {
+        return "cat";
+    }
+
 private:
     bool indoorOutdoor;
     int litterTrained;

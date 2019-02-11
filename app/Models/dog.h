@@ -67,6 +67,10 @@ public:
         outInt = barkTendency;
     }
 
+    string getTableName() {
+        return "dog";
+    }
+
 private:
     int friendlinessDogs;
     int houseTrained;

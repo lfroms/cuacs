@@ -24,6 +24,8 @@ Animal::Animal(string g,
     update(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
 }
 
+Animal::Animal() {}
+
 Animal::~Animal(){}
 
 void Animal::toCommaSeperated(string& outStr){

@@ -29,6 +29,8 @@ public:
            int cH,
            int eT);
 
+    Animal();
+
     ~Animal();
 
     void toCommaSeperated(string& outStr);
@@ -132,6 +134,8 @@ public:
     void getEscapeTendency(int& outInt){
         outInt = escapeTendency;
     }
+
+    virtual string getTableName() = 0;
 
     int id;
 

@@ -84,9 +84,14 @@ bool DatabaseAdapter::init() {
             .arg(commonAttributes)
             .arg(rabbitAttributes);
 
-    return createDogs.exec(dogQuery) &&
-           createCats.exec(catQuery) &&
-           createRabbits.exec(rabbitQuery);
+    if (createDogs.exec(dogQuery) &&
+            createCats.exec(catQuery) &&
+            createRabbits.exec(rabbitQuery)) {
+        return seed();
+    } else {
+        return seed();
+    }
+
 }
 
 /* === Public-Facing Database Operation Methods === */
@@ -119,16 +124,28 @@ bool DatabaseAdapter::insertCat(Cat * cat) {
     return addCat.exec(addCatQuery);
 }
 
-bool DatabaseAdapter::insertRabbit(Rabbit * rabbit) {
-    QSqlQuery addRabbit;
+bool DatabaseAdapter::insertAnimal(Animal * animal) {
+    QSqlQuery addAnimal;
 
-    string rabbitCommaSeparated;
-    rabbit->toCommaSeperated(rabbitCommaSeparated);
+    string animalCommaSeparated;
+    animal->toCommaSeperated(animalCommaSeparated);
 
-    QString addRabbitQuery =
-            QString("INSERT INTO %1 VALUES(null, %2)")
-            .arg("rabbits")
-            .arg(QString::fromStdString(rabbitCommaSeparated));
+    QString addAnimalQuery =
+            QString("INSERT INTO %1 VALUES(%2)")
+            .arg(QString::fromStdString(animal->getTableName()))
+            .arg(QString::fromStdString(animalCommaSeparated));
 
-    return addRabbit.exec(addRabbitQuery);
+    return addAnimal.exec(addAnimalQuery);
+}
+
+bool DatabaseAdapter::seed() {
+    for (int i = 0; i < 5; i++) {
+        Animal* a = AnimalData().getAnimals()[i];
+        if (!insertAnimal(a)) {
+            qDebug() << "Failed to insert";
+           return false;
+        }
+    }
+    return true;
+
 }

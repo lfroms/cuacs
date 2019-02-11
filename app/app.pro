@@ -31,7 +31,8 @@ SOURCES += \
     Models/animal.cc \
     Models/cat.cc \
     Models/dog.cc \
-    Models/rabbit.cc
+    Models/rabbit.cc \
+    DatabaseAdapter/AnimalData.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -39,7 +40,8 @@ HEADERS += \
     Models/animal.h \
     Models/cat.h \
     Models/dog.h \
-    Models/rabbit.h
+    Models/rabbit.h \
+    DatabaseAdapter/AnimalData.h
 
 FORMS += \
         MainWindow/MainWindow.ui
