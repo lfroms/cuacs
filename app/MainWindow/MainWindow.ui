@@ -399,7 +399,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QPushButton" name="pushButton">
+     <widget class="QPushButton" name="submitButton">
       <property name="geometry">
        <rect>
         <x>490</x>
@@ -411,6 +411,34 @@
       <property name="text">
        <string>Submit</string>
       </property>
+     </widget>
+     <widget class="QComboBox" name="animalTypeBox">
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>350</y>
+        <width>161</width>
+        <height>25</height>
+       </rect>
+      </property>
+      <property name="maxVisibleItems">
+       <number>3</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Dog</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cat</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Rabbit</string>
+       </property>
+      </item>
      </widget>
     </widget>
    </widget>
