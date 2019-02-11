@@ -1,18 +1,17 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
-#include <string.h>
+#include <QString>
+#include <QTextStream>
 #include <iostream>
-#include <istream>
-#include <sstream>
 using namespace std;
 
 class Animal
 {
 public:
-    Animal(string nGender,
-           string nMainColor,
-           string nName,
-           string nBreed,
+    Animal(QString nGender,
+           QString nMainColor,
+           QString nName,
+           QString nBreed,
            bool nNeuteredOrSpayed,
            bool nHypothetical,
            int nAge,
@@ -33,12 +32,12 @@ public:
 
     ~Animal();
 
-    virtual void toCommaSeperated(string& outStr) = 0;
+    virtual void toCommaSeperated(QString& outStr) = 0;
 
-    void update(string nGender,
-                string nMainColor,
-                string nName,
-                string nBreed,
+    void update(QString nGender,
+                QString nMainColor,
+                QString nName,
+                QString nBreed,
                 bool nNeuteredOrSpayed,
                 bool nHypothetical,
                 int nAge,
@@ -55,17 +54,17 @@ public:
                 int nComfortableHandled,
                 int nEscapeTendency);
 
-    void getName(string& outStr);
+    void getName(QString& outStr);
 
-    virtual string getSpecies() = 0;
+    virtual QString getSpecies() = 0;
 
-    string getTableName();
+    virtual QString getTableName() = 0;
 
 private:
-    string gender;
-    string mainColor;
-    string name;
-    string breed;
+    QString gender;
+    QString mainColor;
+    QString name;
+    QString breed;
 
     bool neuteredOrSpayed;
     bool hypothetical;

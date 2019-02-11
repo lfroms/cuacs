@@ -1,10 +1,10 @@
 #include "rabbit.h"
 
 Rabbit::Rabbit(int nNightActivityLevel,
-               string nGender,
-               string nMainColor,
-               string nName,
-               string nBreed,
+               QString nGender,
+               QString nMainColor,
+               QString nName,
+               QString nBreed,
                bool nNeuteredOrSpayed,
                bool nHypothetical,
                int nAge,
@@ -45,29 +45,28 @@ Rabbit::Rabbit(int nNightActivityLevel,
 
 Rabbit::~Rabbit(){}
 
-void Rabbit::toCommaSeperated(string& outStr){
-    stringstream s;
-    string animal;
+void Rabbit::toCommaSeperated(QString& outStr){
+    QString animal;
     Animal::toCommaSeperated(animal);
-    s << animal << ", "
-      << "'" << nightActivityLevel << "'";
+    QString s = animal + QString(", ")
+        + QString("'") + QString::number(nightActivityLevel) + QString("'");
 
-    outStr = s.str();
+    outStr = s;
 }
 
-string Rabbit::getSpecies() {
-    return "Rabbit";
+QString Rabbit::getSpecies() {
+    return QString("Rabbit");
 }
 
-string Rabbit::getTableName() {
-    return "rabbits";
+QString Rabbit::getTableName() {
+    return QString("rabbits");
 }
 
 void Rabbit::update(int nNightActivityLevel,
-                    string nGender,
-                    string nMainColor,
-                    string nName,
-                    string nBreed,
+                    QString nGender,
+                    QString nMainColor,
+                    QString nName,
+                    QString nBreed,
                     bool nNeuteredOrSpayed,
                     bool nHypothetical,
                     int nAge,

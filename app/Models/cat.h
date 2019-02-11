@@ -2,7 +2,7 @@
 #define CAT_H
 #include "Models/animal.h"
 #include <iostream>
-#include <string>
+#include <QString>
 using namespace std;
 
 class Cat : public Animal
@@ -11,10 +11,10 @@ public:
     Cat(bool nIndoorOutdoor,
         int nLitterTrained,
         int nFriendlinessCats,
-        string nGender,
-        string nMainColor,
-        string nName,
-        string nBreed,
+        QString nGender,
+        QString nMainColor,
+        QString nName,
+        QString nBreed,
         bool nNeuteredOrSpayed,
         bool nHypothetical,
         int nAge,
@@ -33,17 +33,17 @@ public:
 
     ~Cat();
 
-    void toCommaSeperated(string& outStr);
+    void toCommaSeperated(QString& outStr);
 
-    string getSpecies();
+    QString getSpecies();
 
     void update(bool nIndoorOutdoor,
                 int nLitterTrained,
                 int nFriendlinessCats,
-                string nGender,
-                string nMainColor,
-                string nName,
-                string nBreed,
+                QString nGender,
+                QString nMainColor,
+                QString nName,
+                QString nBreed,
                 bool nNeuteredOrSpayed,
                 bool nHypothetical,
                 int nAge,
@@ -61,7 +61,7 @@ public:
                 int nEscapeTendency);
 
 
-    string getTableName();
+    QString getTableName();
 
 private:
     bool indoorOutdoor;

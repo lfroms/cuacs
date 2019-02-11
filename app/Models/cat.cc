@@ -3,10 +3,10 @@
 Cat::Cat(bool nIndoorOutdoor,
          int nLitterTrained,
          int nFriendlinessCats,
-         string nGender,
-         string nMainColor,
-         string nName,
-         string nBreed,
+         QString nGender,
+         QString nMainColor,
+         QString nName,
+         QString nBreed,
          bool nNeuteredOrSpayed,
          bool nHypothetical,
          int nAge,
@@ -49,33 +49,32 @@ Cat::Cat(bool nIndoorOutdoor,
 
 Cat::~Cat(){}
 
-void Cat::toCommaSeperated(string& outStr){
-    stringstream s;
-    string animal;
+void Cat::toCommaSeperated(QString& outStr){
+    QString animal;
     Animal::toCommaSeperated(animal);
-    s << animal << ","
-      << "'" << indoorOutdoor << "', "
-      << "'" << litterTrained << "', "
-      << "'" << friendlinessCats << "'";
+    QString s  = animal + QString(",")
+	    + QString("'") + QString::number(indoorOutdoor) + QString("', ")
+	    + QString("'") + QString::number(litterTrained) + QString("', ")
+	    + QString("'") + QString::number(friendlinessCats) + QString("'");
 
-    outStr = s.str();
+    outStr = s;
 }
 
-string Cat::getSpecies() {
-    return "Cat";
+QString Cat::getSpecies() {
+    return QString("Cat");
 }
 
-string Cat::getTableName() {
-    return "cats";
+QString Cat::getTableName() {
+    return QString("cats");
 }
 
 void Cat::update(bool nIndoorOutdoor,
                  int nLitterTrained,
                  int nFriendlinessCats,
-                 string nGender,
-                 string nMainColor,
-                 string nName,
-                 string nBreed,
+                 QString nGender,
+                 QString nMainColor,
+                 QString nName,
+                 QString nBreed,
                  bool nNeuteredOrSpayed,
                  bool nHypothetical,
                  int nAge,

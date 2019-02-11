@@ -1,12 +1,11 @@
 #include "dog.h"
-#include <QDebug>
 Dog::Dog(int nFriendlinessDogs,
          int nHouseTrained,
          int nBarkTendency,
-         string nGender,
-         string nMainColor,
-         string nName,
-         string nBreed,
+         QString nGender,
+         QString nMainColor,
+         QString nName,
+         QString nBreed,
          bool nNeuteredorSpayed,
          bool nHypothetical,
          int nAge,
@@ -49,32 +48,31 @@ Dog::Dog(int nFriendlinessDogs,
 
 Dog::~Dog(){}
 
-void Dog::toCommaSeperated(string& outStr){
-    stringstream s;
-    string animal;
+void Dog::toCommaSeperated(QString& outStr){
+    QString animal;
     Animal::toCommaSeperated(animal);
-    s << animal << ", "
-      << "'" << friendlinessDogs << "', "
-      << "'" << houseTrained << "', "
-      << "'" << barkTendency << "'";
-    outStr = s.str();
+    QString s = animal + QString(", ")
+      + QString("'") + friendlinessDogs + QString("', ")
+      + QString("'") + houseTrained + QString("', ")
+      + QString("'") + barkTendency + QString("'");
+    outStr = s;
 }
 
-string Dog::getSpecies() {
-    return "Dog";
+QString Dog::getSpecies() {
+    return QString("Dog");
 }
 
-string Dog::getTableName() {
-    return "dogs";
+QString Dog::getTableName() {
+    return QString("dogs");
 }
 
 void Dog::update(int nFriendlinessDogs,
                  int nHouseTrained,
                  int nBarkTendency,
-                 string nGender,
-                 string nMainColor,
-                 string nName,
-                 string nBreed,
+                 QString nGender,
+                 QString nMainColor,
+                 QString nName,
+                 QString nBreed,
                  bool nNeuteredOrSpayed,
                  bool nHypothetical,
                  int nAge,

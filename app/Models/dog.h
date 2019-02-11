@@ -8,10 +8,10 @@ public:
     Dog(int nFriendlinessDogs,
         int nHouseTrained,
         int nBarkTendency,
-        string nGender,
-        string nMainColor,
-        string nName,
-        string nBreed,
+        QString nGender,
+        QString nMainColor,
+        QString nName,
+        QString nBreed,
         bool nNeuteredorSpayed,
         bool nHypothetical,
         int nAge,
@@ -30,15 +30,15 @@ public:
 
     ~Dog();
 
-    void toCommaSeperated(string& outStr);
+    void toCommaSeperated(QString& outStr);
 
     void update(int nFriendlinessDogs,
                 int nHouseTrained,
                 int nBarkTendency,
-                string nGender,
-                string nMainColor,
-                string nName,
-                string nBreed,
+                QString nGender,
+                QString nMainColor,
+                QString nName,
+                QString nBreed,
                 bool nNeuteredOrSpayed,
                 bool nHypothetical,
                 int nAge,
@@ -55,8 +55,8 @@ public:
                 int nComfortableHandled,
                 int nEscapeTendency);
 
-    string getSpecies();
-    string getTableName();
+    QString getSpecies();
+    QString getTableName();
 
 private:
     int friendlinessDogs;
