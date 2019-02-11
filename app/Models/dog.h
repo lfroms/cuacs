@@ -55,21 +55,8 @@ public:
                 int cH,
                 int eT);
 
-    void getFriendlinessDogs(int& outInt){
-        outInt = friendlinessDogs;
-    }
-
-    void getHouseTrained(int& outInt){
-        outInt = houseTrained;
-    }
-
-    void getBarkTendency(int& outInt){
-        outInt = barkTendency;
-    }
-
-    string getTableName() {
-        return "dogs";
-    }
+    string getSpecies();
+    string getTableName();
 
 private:
     int friendlinessDogs;

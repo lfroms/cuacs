@@ -51,13 +51,8 @@ public:
                 int cH,
                 int eT);
 
-    void getNightActivityLevel(int& outInt){
-        outInt = nightActivityLevel;
-    }
-
-    string getTableName() {
-        return "rabbits";
-    }
+    string getSpecies();
+    string getTableName();
 
 private:
     int nightActivityLevel;

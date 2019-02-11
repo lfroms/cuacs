@@ -44,6 +44,14 @@ void Cat::toCommaSeperated(string& outStr){
     outStr = s.str();
 }
 
+string Cat::getSpecies() {
+    return "Cat";
+}
+
+string Cat::getTableName() {
+    return "cats";
+}
+
 void Cat::update(bool iO, 
                  int lT,
                  int fLC,

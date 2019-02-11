@@ -55,89 +55,11 @@ public:
                 int cH,
                 int eT);
 
-    void getGender(string& outStr){
-        outStr = gender;
-    }
+    void getName(string& outStr);
 
-    void getMainColor(string& outStr){
-        outStr = mainColor;
-    }
+    virtual string getSpecies() = 0;
 
-    void getName(string& outStr){
-        outStr = name;
-    }
-
-    void getBreed(string& outStr){
-        outStr = breed;
-    }
-
-    void getNeutredOrSprayed(bool& outBool){
-        outBool = neuteredOrSpayed;
-    }
-
-    void getHypothetical(bool& outBool){
-        outBool = hypothetical;
-    }
-
-    void getId(int& outInt){
-        outInt = id;
-    }
-
-    void getAge(int& outInt){
-        outInt = age;
-    }
-
-    void getBiteTendency(int& outInt){
-        outInt = biteTendency;
-    }
-
-    void getScratchTendency(int& outInt){
-        outInt = scratchTendency;
-    }
-
-    void getFriendlinessAdults(int& outInt){
-        outInt = friendlinessAdults;
-    }
-
-    void getFriendlinessChildren(int& outInt){
-        outInt = friendlinessChildren;
-    }
-
-    void getNoiseLevel(int& outInt){
-        outInt = noiseLevel;
-    }
-
-    void getAloneComfort(int& outInt){
-        outInt = aloneComfort;
-    }
-
-    void getLikesBedSleep(int& outInt){
-        outInt = likesBedSleep;
-    }
-
-    void getSnores(int& outInt){
-        outInt = snores;
-    }
-
-    void getEnergylevel(int& outInt){
-        outInt = energyLevel;
-    }
-
-    void getComfortableVet(int& outInt){
-        outInt = comfortableVet;
-    }
-
-    void getComfortableHandled(int& outInt){
-        outInt = comfortableHandled;
-    }
-
-    void getEscapeTendency(int& outInt){
-        outInt = escapeTendency;
-    }
-
-    virtual string getTableName() = 0;
-
-    int id;
+    string getTableName();
 
 private:
     string gender;

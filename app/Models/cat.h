@@ -35,6 +35,8 @@ public:
 
     void toCommaSeperated(string& outStr);
 
+    string getSpecies();
+
     void update(bool iO, 
                 int lT,
                 int fLC,
@@ -58,21 +60,8 @@ public:
                 int cH,
                 int eT);
 
-    void getIndoorOutdoor(bool& outBool){
-        outBool = indoorOutdoor;
-    }
 
-    void getLitterTrained(int& outInt){
-        outInt = litterTrained;
-    }
-
-    void getFriendlinessCats(int& outInt){
-        outInt = friendlinessCats;
-    }
-
-    string getTableName() {
-        return "cats";
-    }
+    string getTableName();
 
 private:
     bool indoorOutdoor;

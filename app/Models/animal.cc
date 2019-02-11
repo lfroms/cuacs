@@ -28,6 +28,14 @@ Animal::Animal() {}
 
 Animal::~Animal(){}
 
+void Animal::getName(string& outStr) {
+    outStr = name;
+};
+
+string Animal::getTableName() {
+    return "animals";
+}
+
 void Animal::toCommaSeperated(string& outStr){
     stringstream a;
     a << "'" << gender << "', "

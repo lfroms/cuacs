@@ -44,6 +44,14 @@ void Dog::toCommaSeperated(string& outStr){
     outStr = s.str();
 }
 
+string Dog::getSpecies() {
+    return "Dog";
+}
+
+string Dog::getTableName() {
+    return "dogs";
+}
+
 void Dog::update(int fD, 
 		 int hT, 
 		 int bTY, 
