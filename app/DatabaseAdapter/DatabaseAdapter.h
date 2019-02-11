@@ -6,9 +6,16 @@
 #include <QSqlQuery>
 #include <QDebug>
 
+#include <Models/dog.h>
+#include <Models/cat.h>
+#include <Models/rabbit.h>
+
 class DatabaseAdapter {
     public:
         static DatabaseAdapter* getInstance();
+        static bool insertDog(Dog*);
+        static bool insertCat(Cat*);
+        static bool insertRabbit(Rabbit*);
 
     private:
         DatabaseAdapter();

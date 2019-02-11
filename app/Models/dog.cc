@@ -36,10 +36,10 @@ void Dog::toCommaSeperated(string& outStr){
     stringstream s;
     string animal;
     Animal::toCommaSeperated(animal);
-    s << animal << ","
-      << friendlinessDogs << "," 
-      << houseTrained << "," 
-      << barkTendency;
+    s << animal << ", "
+      << "'" << friendlinessDogs << "', "
+      << "'" << houseTrained << "', "
+      << "'" << barkTendency << "'";
     outStr = s.str();
 }
 

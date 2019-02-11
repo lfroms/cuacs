@@ -91,4 +91,44 @@ bool DatabaseAdapter::init() {
 
 /* === Public-Facing Database Operation Methods === */
 
-// bool DatabaseAdapter::getAllAnimals() {}
+bool DatabaseAdapter::insertDog(Dog * dog) {
+    QSqlQuery addDog;
+
+    string dogCommaSeparated;
+    dog->toCommaSeperated(dogCommaSeparated);
+
+    QString addDogQuery =
+            QString("INSERT INTO %1 VALUES(null, %2)")
+            .arg("dogs")
+            .arg(QString::fromStdString(dogCommaSeparated));
+
+    return addDog.exec(addDogQuery);
+}
+
+bool DatabaseAdapter::insertCat(Cat * cat) {
+    QSqlQuery addCat;
+
+    string catCommaSeparated;
+    cat->toCommaSeperated(catCommaSeparated);
+
+    QString addCatQuery =
+            QString("INSERT INTO %1 VALUES(null, %2)")
+            .arg("cats")
+            .arg(QString::fromStdString(catCommaSeparated));
+
+    return addCat.exec(addCatQuery);
+}
+
+bool DatabaseAdapter::insertRabbit(Rabbit * rabbit) {
+    QSqlQuery addRabbit;
+
+    string rabbitCommaSeparated;
+    rabbit->toCommaSeperated(rabbitCommaSeparated);
+
+    QString addRabbitQuery =
+            QString("INSERT INTO %1 VALUES(null, %2)")
+            .arg("rabbits")
+            .arg(QString::fromStdString(rabbitCommaSeparated));
+
+    return addRabbit.exec(addRabbitQuery);
+}

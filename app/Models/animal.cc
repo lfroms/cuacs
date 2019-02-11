@@ -28,27 +28,25 @@ Animal::~Animal(){}
 
 void Animal::toCommaSeperated(string& outStr){
     stringstream a;
-    a << gender << "," 
-      << mainColor << ","  
-      << breed << "," 
-      << name << "," 
-      << neuteredOrSpayed << "," 
-      << hypothetical << "," 
-      << age << "," 
-      << biteTendency << "," 
-      << scratchTendency << "," 
-      << friendlinessAdults << "," 
-      << friendlinessChildren << "," 
-      << friendlinessAdults << "," 
-      << friendlinessChildren << "," << 
-      noiseLevel << "," 
-      << aloneComfort << "," 
-      << likesBedSleep << "," 
-      << snores << "," 
-      << energyLevel << "," 
-      << comfortableVet << "," 
-      << comfortableHandled << "," 
-      << escapeTendency;
+    a << "'" << gender << "', "
+      << "'" << mainColor << "', "
+      << "'" << breed << "', "
+      << "'" << name << "', "
+      << "'" << neuteredOrSpayed << "', "
+      << "'" << hypothetical << "', "
+      << "'" << age << "', "
+      << "'" << biteTendency << "', "
+      << "'" << scratchTendency << "', "
+      << "'" << friendlinessAdults << "', "
+      << "'" << friendlinessChildren << "', "
+      << "'" << noiseLevel << "', "
+      << "'" << aloneComfort << "', "
+      << "'" << likesBedSleep << "', "
+      << "'" << snores << "', "
+      << "'" << energyLevel << "', "
+      << "'" << comfortableVet << "', "
+      << "'" << comfortableHandled << "', "
+      << "'" << escapeTendency << "'";
 
     outStr = a.str();
 }
