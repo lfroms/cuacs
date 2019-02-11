@@ -89,9 +89,8 @@ bool DatabaseAdapter::init() {
             createRabbits.exec(rabbitQuery)) {
         return seed();
     } else {
-        return seed();
+        return false;
     }
-
 }
 
 /* === Public-Facing Database Operation Methods === */
@@ -118,6 +117,6 @@ bool DatabaseAdapter::seed() {
            return false;
         }
     }
-    return true;
 
+    return true;
 }

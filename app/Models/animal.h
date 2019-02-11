@@ -33,7 +33,7 @@ public:
 
     ~Animal();
 
-    void toCommaSeperated(string& outStr);
+    virtual void toCommaSeperated(string& outStr) = 0;
 
     void update(string g,
                 string mC,

@@ -56,7 +56,7 @@ public:
     }
 
     string getTableName() {
-        return "rabbit";
+        return "rabbits";
     }
 
 private:

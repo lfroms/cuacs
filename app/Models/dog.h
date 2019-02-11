@@ -68,7 +68,7 @@ public:
     }
 
     string getTableName() {
-        return "dog";
+        return "dogs";
     }
 
 private:

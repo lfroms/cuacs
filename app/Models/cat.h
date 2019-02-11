@@ -71,7 +71,7 @@ public:
     }
 
     string getTableName() {
-        return "cat";
+        return "cats";
     }
 
 private:

@@ -8,8 +8,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     // Unused, this line is present to test the database initialization.
     DatabaseAdapter* db = DatabaseAdapter::getInstance();
-
-    int a = 6;
 }
 
 MainWindow::~MainWindow() {

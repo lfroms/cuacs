@@ -1,5 +1,5 @@
 #include "dog.h"
-
+#include <QDebug>
 Dog::Dog(int fD, 
          int hT,
          int bTY,
@@ -36,6 +36,7 @@ void Dog::toCommaSeperated(string& outStr){
     stringstream s;
     string animal;
     Animal::toCommaSeperated(animal);
+    qDebug() << "dog being added";
     s << animal << ", "
       << "'" << friendlinessDogs << "', "
       << "'" << houseTrained << "', "
