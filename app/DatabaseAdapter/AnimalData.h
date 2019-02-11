@@ -6,13 +6,12 @@
 #include <Models/animal.h>
 using namespace std;
 
-class AnimalData
-{
-private:
-    Animal* animals[5];
-public:
-    AnimalData();
-    Animal** getAnimals();
+class AnimalData {
+    private:
+        Animal* animals[5];
+    public:
+        AnimalData();
+        Animal** getAnimals();
 };
 
 #endif // ANIMALDATA_H
