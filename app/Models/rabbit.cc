@@ -38,6 +38,10 @@ void Rabbit::toCommaSeperated(string& outStr){
     outStr = s.str();
 }
 
+string Rabbit::getSpecies() {
+    return "Rabbit"
+}
+
 void Rabbit::update(int nAL, 
 		    string g, 
 		    string mC, 
