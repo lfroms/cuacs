@@ -5,7 +5,6 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
-    // Unused, this line is present to test the database initialization.
     db = DatabaseAdapter::getInstance();
 }
 
@@ -14,9 +13,6 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::handleAddAnimalSubmit() {
-    qDebug() << "Hey, the button was pushed";
-    qDebug() << ui->biteSlider->value() << " bite strength";
-
     QString animalType = ui->animalTypeBox->currentText();
     Animal* animal;
     if (animalType == "Dog") {
@@ -93,7 +89,7 @@ void MainWindow::handleAddAnimalSubmit() {
                       ui->escapeSlider->value()
                                   );
     }
-    qDebug() << "hey the animal was created";
+
     if (db->insertAnimal(animal)) {
         qDebug() << "success";
     } else {
