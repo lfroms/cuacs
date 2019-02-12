@@ -135,27 +135,27 @@ bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
     // Loading all rabbits
     query.next();
     while(query.next()){
-        Rabbit* r = new Rabbit(query.value(20).toInt(),
-                              query.value(1).toString(),
-                              query.value(2).toString(),
-                              query.value(6).toString(),
-                              query.value(3).toString(),
-                              query.value(5).toBool(),
-                              query.value(7).toBool(),
-                              query.value(4).toInt(),
-                              query.value(8).toInt(),
-                              query.value(9).toInt(),
-                              query.value(10).toInt(),
-                              query.value(11).toInt(),
-                              query.value(12).toInt(),
-                              query.value(13).toInt(),
-                              query.value(14).toInt(),
-                              query.value(15).toInt(),
-                              query.value(16).toInt(),
-                              query.value(17).toInt(),
-                              query.value(18).toInt(),
-                              query.value(19).toInt()
-                              );
+        Rabbit* r = new Rabbit(
+                    query.value(1).toString(),
+                    query.value(2).toString(),
+                    query.value(3).toString(),
+                    query.value(4).toInt(),
+                    query.value(5).toBool(),
+                    query.value(6).toString(),
+                    query.value(7).toBool(),
+                    query.value(8).toInt(),
+                    query.value(9).toInt(),
+                    query.value(10).toInt(),
+                    query.value(11).toInt(),
+                    query.value(12).toInt(),
+                    query.value(13).toInt(),
+                    query.value(14).toBool(),
+                    query.value(15).toBool(),
+                    query.value(16).toInt(),
+                    query.value(17).toInt(),
+                    query.value(18).toInt(),
+                    query.value(19).toInt()
+                    );
         animals[i] = r;
         i++;
     }
@@ -163,28 +163,26 @@ bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
 
     // Loading all dogs
     while(query.next()){
-        Dog* d = new Dog(query.value(20).toInt(),
-                         query.value(21).toInt(),
-                         query.value(22).toInt(),
-                         query.value(1).toString(),
-                         query.value(2).toString(),
-                         query.value(6).toString(),
-                         query.value(3).toString(),
-                         query.value(5).toBool(),
-                         query.value(7).toBool(),
-                         query.value(4).toInt(),
-                         query.value(8).toInt(),
-                         query.value(9).toInt(),
-                         query.value(10).toInt(),
-                         query.value(11).toInt(),
-                         query.value(12).toInt(),
-                         query.value(13).toInt(),
-                         query.value(14).toInt(),
-                         query.value(15).toInt(),
-                         query.value(16).toInt(),
-                         query.value(17).toInt(),
-                         query.value(18).toInt(),
-                         query.value(19).toInt()
+        Dog* d = new Dog(
+                    query.value(1).toString(),
+                    query.value(2).toString(),
+                    query.value(3).toString(),
+                    query.value(4).toInt(),
+                    query.value(5).toBool(),
+                    query.value(6).toString(),
+                    query.value(7).toBool(),
+                    query.value(8).toInt(),
+                    query.value(9).toInt(),
+                    query.value(10).toInt(),
+                    query.value(11).toInt(),
+                    query.value(12).toInt(),
+                    query.value(13).toInt(),
+                    query.value(14).toBool(),
+                    query.value(15).toBool(),
+                    query.value(16).toInt(),
+                    query.value(17).toInt(),
+                    query.value(18).toInt(),
+                    query.value(19).toInt()
                          );
         animals[i] = d;
         i++;
@@ -194,24 +192,21 @@ bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
 
     // Loading all cats
     while(query.next()){
-        Cat* c = new Cat(query.value(20).toBool(),
-                         query.value(21).toInt(),
-                         query.value(22).toInt(),
-                         query.value(1).toString(),
+        Cat* c = new Cat(query.value(1).toString(),
                          query.value(2).toString(),
-                         query.value(6).toString(),
                          query.value(3).toString(),
-                         query.value(5).toBool(),
-                         query.value(7).toBool(),
                          query.value(4).toInt(),
+                         query.value(5).toBool(),
+                         query.value(6).toString(),
+                         query.value(7).toBool(),
                          query.value(8).toInt(),
                          query.value(9).toInt(),
                          query.value(10).toInt(),
                          query.value(11).toInt(),
                          query.value(12).toInt(),
                          query.value(13).toInt(),
-                         query.value(14).toInt(),
-                         query.value(15).toInt(),
+                         query.value(14).toBool(),
+                         query.value(15).toBool(),
                          query.value(16).toInt(),
                          query.value(17).toInt(),
                          query.value(18).toInt(),

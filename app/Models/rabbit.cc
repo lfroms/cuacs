@@ -19,8 +19,7 @@ Rabbit::Rabbit(
         int energyLevel,
         int comfortableVet,
         int comfortableHandled,
-        int escapeTendency,
-        int nNightActivityLevel
+        int escapeTendency
         )
     : Animal(
           gender,
@@ -43,7 +42,6 @@ Rabbit::Rabbit(
           comfortableHandled,
           escapeTendency
           ) {
-    nightActivityLevel = nNightActivityLevel;
 }
 
 Rabbit::~Rabbit(){}

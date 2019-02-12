@@ -18,10 +18,7 @@ Dog::Dog(
         int energyLevel,
         int comfortableVet,
         int comfortableHandled,
-        int escapeTendency,
-        int nFriendlinessDogs,
-        bool nHouseTrained,
-        int nBarkTendency
+        int escapeTendency
         )
     : Animal(gender,
              mainColor,
@@ -43,9 +40,7 @@ Dog::Dog(
              comfortableHandled,
              escapeTendency)
 {
-    friendlinessDogs = nFriendlinessDogs;
-    houseTrained = nHouseTrained;
-    barkTendency = nBarkTendency;
+
 }
 
 Dog::~Dog(){}

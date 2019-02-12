@@ -23,10 +23,7 @@ public:
         int energyLevel,
         int comfortableVet,
         int comfortableHandled,
-        int escapeTendency,
-        int nFriendlinessDogs,
-        bool nHouseTrained,
-        int nBarkTendency);
+        int escapeTendency);
 
     ~Dog();
 

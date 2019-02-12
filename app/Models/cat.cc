@@ -18,10 +18,7 @@ Cat::Cat(QString gender,
          int energyLevel,
          int comfortableVet,
          int comfortableHandled,
-         int escapeTendency,
-         QString nIndoorOutdoor,
-         bool nLitterTrained,
-         int nFriendlinessCats)
+         int escapeTendency)
     : Animal(gender,
              mainColor,
              breed,
@@ -42,9 +39,7 @@ Cat::Cat(QString gender,
              comfortableHandled,
              escapeTendency)
 {
-    indoorOutdoor = nIndoorOutdoor;
-    litterTrained = nLitterTrained;
-    friendlinessCats = nFriendlinessCats;
+
 }
 
 Cat::~Cat(){}

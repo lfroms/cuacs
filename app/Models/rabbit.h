@@ -24,8 +24,7 @@ public:
             int energyLevel,
             int comfortableVet,
             int comfortableHandled,
-            int escapeTendency,
-            int nightActivityLevel
+            int escapeTendency
             );
 
     ~Rabbit();

@@ -26,10 +26,7 @@ public:
         int energyLevel,
         int comfortableVet,
         int comfortableHandled,
-        int escapeTendency,
-        QString nIndoorOutdoor,
-        bool nLitterTrained,
-        int nFriendlinessCats);
+        int escapeTendency);
 
     ~Cat();
 
