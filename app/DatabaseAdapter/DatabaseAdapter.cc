@@ -25,19 +25,6 @@ static const QString commonAttributes =
         "comfortable_handled INTEGER NOT NULL,"
         "escape_tendency INTEGER NOT NULL";
 
-static const QString dogAttributes =
-        "friendliness_dogs INTEGER,"
-        "house_trained INTEGER,"
-        "bark_tendency INTEGER";
-
-static const QString catAttributes =
-        "indoor_outdoor TEXT,"
-        "litter_trained INTEGER,"
-        "friendliness_cats INTEGER";
-
-static const QString rabbitAttributes =
-        "night_activity_level INTEGER";
-
 QSqlDatabase DatabaseAdapter::db;
 
 DatabaseAdapter::DatabaseAdapter() {
@@ -66,24 +53,20 @@ DatabaseAdapter* DatabaseAdapter::getInstance() {
 bool DatabaseAdapter::init() {
     QSqlQuery createDogs;
     QString dogQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("dogs")
-            .arg(commonAttributes)
-            .arg(dogAttributes);
+            .arg(commonAttributes);
 
     QSqlQuery createCats;
     QString catQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("cats")
-            .arg(commonAttributes)
-            .arg(catAttributes);
-
+            .arg(commonAttributes);
     QSqlQuery createRabbits;
     QString rabbitQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("rabbits")
-            .arg(commonAttributes)
-            .arg(rabbitAttributes);
+            .arg(commonAttributes);
 
     if (createDogs.exec(dogQuery) &&
             createCats.exec(catQuery) &&
@@ -95,6 +78,7 @@ bool DatabaseAdapter::init() {
 }
 
 /* === Public-Facing Database Operation Methods === */
+#include <QSqlError>
 
 bool DatabaseAdapter::insertAnimal(Animal * animal) {
     QSqlQuery addAnimal;
@@ -102,35 +86,17 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
     QString animalCommaSeparated;
     animal->toCommaSeperated(animalCommaSeparated);
 
-    qDebug() << "Adding";
     QString addAnimalQuery =
-            QString("INSERT INTO %1 VALUES(null, %2, null, null, null)")
+            QString("INSERT INTO %1 VALUES(null, %2);")
             .arg(animal->getTableName())
             .arg(animalCommaSeparated);
 
-    return addAnimal.exec(addAnimalQuery);
+    return  addAnimal.exec(addAnimalQuery);
 }
 
-bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
-
-    QSqlQuery rabbitCountQ("SELECT COUNT(*) FROM rabbits;");
-    rabbitCountQ.first();
-    int rabbitCount = rabbitCountQ.value(0).toInt();
-
-    QSqlQuery catCountQ("SELECT COUNT(*) FROM cats;");
-    catCountQ.first();
-    int catCount = catCountQ.value(0).toInt();
-
-    QSqlQuery dogCountQ("SELECT COUNT(*) FROM dogs;");
-    dogCountQ.first();
-    int dogCount = dogCountQ.value(0).toInt();
-
-    numAnimals = rabbitCount + dogCount + catCount;
-
-    animals = new Animal*[numAnimals];
-
+bool DatabaseAdapter::getAnimals(Animal** animals){
     QSqlQuery query;
-    query.exec("SELECT * FROM rabbits");
+    query.exec("SELECT * FROM rabbits;");
     int i = 0;
 
     // Loading all rabbits
@@ -224,6 +190,22 @@ bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
     return true;
 }
 
+int DatabaseAdapter::getTotalAnimals() {
+    QSqlQuery rabbitCountQ("SELECT COUNT(*) FROM rabbits;");
+    rabbitCountQ.first();
+    int rabbitCount = rabbitCountQ.value(0).toInt();
+
+    QSqlQuery catCountQ("SELECT COUNT(*) FROM cats;");
+    catCountQ.first();
+    int catCount = catCountQ.value(0).toInt();
+
+    QSqlQuery dogCountQ("SELECT COUNT(*) FROM dogs;");
+    dogCountQ.first();
+    int dogCount = dogCountQ.value(0).toInt();
+
+    return rabbitCount + dogCount + catCount;
+}
+
 bool DatabaseAdapter::seed() {
     for (int i = 0; i < 5; i++) {
         Animal* a = AnimalData().getAnimals()[i];
@@ -233,6 +215,6 @@ bool DatabaseAdapter::seed() {
         }
     }
 
-    qDebug() << "Succeded seeding";
+    qDebug() << "Seed succeeded.";
     return true;
 }

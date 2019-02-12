@@ -8,21 +8,10 @@
 
 #include <QApplication>
 
-int main(int argc, char *argv[])
-{
-    DatabaseAdapter* db = DatabaseAdapter::getInstance();
-    Animal ** animals;
-    int num;
-    db->getAnimals(animals, num);
-
-    QString test;
-    animals[1]->getName(test);
-
-    qInfo() << test;
-    qDebug() << "Testing";
-
+int main(int argc, char *argv[]) {
     QApplication a(argc, argv);
     MainWindow w;
+
     w.show();
     return a.exec();
 }
