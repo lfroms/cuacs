@@ -3,6 +3,7 @@
 #include <QDebug>
 
 #include <DatabaseAdapter/AnimalData.h>
+#include <QListWidgetItem>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -17,13 +18,18 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::renderListItems() {
+    ui->animalsListWidget->clear();
+
     for (int i = 0; i < 5; i++) {
         Animal* a = AnimalData().getAnimals()[i];
 
         string label;
         a->getName(label);
 
-        ui->animalsListWidget->addItem(QString::fromStdString(label));
+        QListWidgetItem *item = new QListWidgetItem();
+        item->setText(QString::fromStdString(label));
+
+        ui->animalsListWidget->addItem(item);
     }
 }
 
