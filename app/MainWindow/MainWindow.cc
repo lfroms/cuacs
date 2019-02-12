@@ -1,9 +1,5 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include <QDebug>
-
-#include <DatabaseAdapter/AnimalData.h>
-#include <QListWidgetItem>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
@@ -20,16 +16,15 @@ MainWindow::~MainWindow() {
 void MainWindow::renderListItems() {
     ui->animalsListWidget->clear();
 
-    for (int i = 0; i < 5; i++) {
-        Animal* a = AnimalData().getAnimals()[i];
+    int numAnimals = db->getTotalAnimals();
+    Animal * animals[numAnimals];
+    db->getAnimals(animals);
 
-        string label;
-        a->getName(label);
+    for (int i = 0; i < numAnimals; i++) {
+        QString label;
+        animals[i]->getName(label);
 
-        QListWidgetItem *item = new QListWidgetItem();
-        item->setText(QString::fromStdString(label));
-
-        ui->animalsListWidget->addItem(item);
+        ui->animalsListWidget->addItem(label);
     }
 }
 
@@ -106,10 +101,8 @@ void MainWindow::handleAddAnimalSubmit() {
                     );
     }
 
-    if (db->insertAnimal(animal)) {
-        qDebug() << "success";
-    } else {
-        qDebug() << "failure";
+    if (!db->insertAnimal(animal)) {
+        qDebug() << "Failed to add animal to database.";
     }
 
     renderListItems();

@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDebug>
 #include <DatabaseAdapter/DatabaseAdapter.h>
 
 namespace Ui {
