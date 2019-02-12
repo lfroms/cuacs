@@ -207,10 +207,10 @@ int DatabaseAdapter::getTotalAnimals() {
 }
 
 bool DatabaseAdapter::seed() {
-    for (int i = 0; i < 5; i++) {
+    for (int i = getTotalAnimals(); i < 5; i++) {
         Animal* a = AnimalData().getAnimals()[i];
         if (!insertAnimal(a)) {
-            qDebug() << "Failed to insert";
+            qDebug() << "Failed to seed database.";
             return false;
         }
     }
