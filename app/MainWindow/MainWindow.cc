@@ -2,14 +2,29 @@
 #include "ui_MainWindow.h"
 #include <QDebug>
 
+#include <DatabaseAdapter/AnimalData.h>
+
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
     db = DatabaseAdapter::getInstance();
+
+    renderListItems();
 }
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::renderListItems() {
+    for (int i = 0; i < 5; i++) {
+        Animal* a = AnimalData().getAnimals()[i];
+
+        string label;
+        a->getName(label);
+
+        ui->animalsListWidget->addItem(QString::fromStdString(label));
+    }
 }
 
 void MainWindow::handleAddAnimalSubmit() {
@@ -91,4 +106,5 @@ void MainWindow::handleAddAnimalSubmit() {
         qDebug() << "failure";
     }
 
+    renderListItems();
 }

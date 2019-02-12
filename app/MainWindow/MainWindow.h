@@ -22,6 +22,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     DatabaseAdapter* db;
+    void renderListItems();
 };
 
 #endif // MAINWINDOW_H
