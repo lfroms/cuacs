@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include <QDebug>
 #include <DatabaseAdapter/DatabaseAdapter.h>
 
 namespace Ui {
@@ -22,6 +23,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     DatabaseAdapter* db;
+    void renderListItems();
 };
 
 #endif // MAINWINDOW_H
