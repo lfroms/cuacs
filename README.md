@@ -1,6 +1,18 @@
 # cuACS  🐶🐱🐰👩‍💻
 _cuACS_ is a software system that matches animals to people.
 
+## Make and Launch instructions
+Ensure you are in the same directory as `cuacs.pro`
+
+To Make:
+```bash
+qmake -o Makefile cuacs.pro && make
+```
+To Launch:
+```bash
+cd app && ./app
+```
+
 ## Development
 * Ubuntu (64-bit)
 * Qt Creator 4.8.1
