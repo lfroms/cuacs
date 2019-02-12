@@ -104,7 +104,7 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
 
     qDebug() << "Adding";
     QString addAnimalQuery =
-            QString("INSERT INTO %1 VALUES(null, %2)")
+            QString("INSERT INTO %1 VALUES(null, %2, null, null, null)")
             .arg(animal->getTableName())
             .arg(animalCommaSeparated);
 
@@ -132,9 +132,9 @@ bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
     QSqlQuery query;
     query.exec("SELECT * FROM rabbits");
     int i = 0;
+
     // Loading all rabbits
-    query.next();
-    while(query.next()){
+    while (query.next()) {
         Rabbit* r = new Rabbit(
                     query.value(1).toString(),
                     query.value(2).toString(),
@@ -156,13 +156,15 @@ bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
                     query.value(18).toInt(),
                     query.value(19).toInt()
                     );
+
         animals[i] = r;
         i++;
     }
+
     query.exec("SELECT * FROM dogs");
 
     // Loading all dogs
-    while(query.next()){
+    while (query.next()) {
         Dog* d = new Dog(
                     query.value(1).toString(),
                     query.value(2).toString(),
@@ -183,7 +185,8 @@ bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
                     query.value(17).toInt(),
                     query.value(18).toInt(),
                     query.value(19).toInt()
-                         );
+                    );
+
         animals[i] = d;
         i++;
     }
@@ -191,30 +194,33 @@ bool DatabaseAdapter::getAnimals(Animal** animals, int& numAnimals){
     query.exec("SELECT * FROM cats");
 
     // Loading all cats
-    while(query.next()){
-        Cat* c = new Cat(query.value(1).toString(),
-                         query.value(2).toString(),
-                         query.value(3).toString(),
-                         query.value(4).toInt(),
-                         query.value(5).toBool(),
-                         query.value(6).toString(),
-                         query.value(7).toBool(),
-                         query.value(8).toInt(),
-                         query.value(9).toInt(),
-                         query.value(10).toInt(),
-                         query.value(11).toInt(),
-                         query.value(12).toInt(),
-                         query.value(13).toInt(),
-                         query.value(14).toBool(),
-                         query.value(15).toBool(),
-                         query.value(16).toInt(),
-                         query.value(17).toInt(),
-                         query.value(18).toInt(),
-                         query.value(19).toInt()
-                         );
+    while (query.next()) {
+        Cat* c = new Cat(
+                    query.value(1).toString(),
+                    query.value(2).toString(),
+                    query.value(3).toString(),
+                    query.value(4).toInt(),
+                    query.value(5).toBool(),
+                    query.value(6).toString(),
+                    query.value(7).toBool(),
+                    query.value(8).toInt(),
+                    query.value(9).toInt(),
+                    query.value(10).toInt(),
+                    query.value(11).toInt(),
+                    query.value(12).toInt(),
+                    query.value(13).toInt(),
+                    query.value(14).toBool(),
+                    query.value(15).toBool(),
+                    query.value(16).toInt(),
+                    query.value(17).toInt(),
+                    query.value(18).toInt(),
+                    query.value(19).toInt()
+                    );
+
         animals[i] = c;
         i++;
     }
+
     return true;
 }
 
@@ -223,7 +229,7 @@ bool DatabaseAdapter::seed() {
         Animal* a = AnimalData().getAnimals()[i];
         if (!insertAnimal(a)) {
             qDebug() << "Failed to insert";
-           return false;
+            return false;
         }
     }
 

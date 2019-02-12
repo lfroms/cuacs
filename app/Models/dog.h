@@ -2,8 +2,7 @@
 #define DOG_H
 #include "Models/animal.h"
 
-class Dog : public Animal
-{
+class Dog : public Animal {
 public:
     Dog(QString gender,
         QString mainColor,

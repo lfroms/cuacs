@@ -19,29 +19,27 @@ Dog::Dog(
         int comfortableVet,
         int comfortableHandled,
         int escapeTendency
-        )
-    : Animal(gender,
-             mainColor,
-             breed,
-             age,
-             neuteredOrSpayed,
-             name,
-             hypothetical,
-             biteTendency,
-             scratchTendency,
-             friendlinessAdults,
-             friendlinessChildren,
-             noiseLevel,
-             aloneComfort,
-             likesBedSleep,
-             snores,
-             energyLevel,
-             comfortableVet,
-             comfortableHandled,
-             escapeTendency)
-{
-
-}
+        ) : Animal(
+                gender,
+                mainColor,
+                breed,
+                age,
+                neuteredOrSpayed,
+                name,
+                hypothetical,
+                biteTendency,
+                scratchTendency,
+                friendlinessAdults,
+                friendlinessChildren,
+                noiseLevel,
+                aloneComfort,
+                likesBedSleep,
+                snores,
+                energyLevel,
+                comfortableVet,
+                comfortableHandled,
+                escapeTendency
+                ) {}
 
 Dog::~Dog(){}
 
@@ -80,8 +78,9 @@ void Dog::update(QString nGender,
                  int nEscapeTendency,
                  int nFriendlinessDogs,
                  bool nHouseTrained,
-                 int nBarkTendency)
-{
+                 int nBarkTendency
+                 ) {
+
     Animal::update(nGender,
                    nMainColor,
                    nBreed,

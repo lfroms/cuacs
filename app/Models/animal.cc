@@ -21,28 +21,27 @@ Animal::Animal(
         int comfortableVet,
         int comfortableHandled,
         int escapeTendency
-        )
-{
-    update(
-                gender,
-                mainColor,
-                breed,
-                age,
-                neuteredOrSpayed,
-                name,
-                hypothetical,
-                biteTendency,
-                scratchTendency,
-                friendlinessAdults,
-                friendlinessChildren,
-                noiseLevel,
-                aloneComfort,
-                likesBedSleep,
-                snores,
-                energyLevel,
-                comfortableVet,
-                comfortableHandled,
-                escapeTendency
+        ) {
+
+    update(gender,
+           mainColor,
+           breed,
+           age,
+           neuteredOrSpayed,
+           name,
+           hypothetical,
+           biteTendency,
+           scratchTendency,
+           friendlinessAdults,
+           friendlinessChildren,
+           noiseLevel,
+           aloneComfort,
+           likesBedSleep,
+           snores,
+           energyLevel,
+           comfortableVet,
+           comfortableHandled,
+           escapeTendency
            );
 }
 
@@ -57,27 +56,27 @@ void Animal::getName(QString& outStr) {
 void Animal::toCommaSeperated(QString& outStr){
     stringstream a;
 
-        a << "'" << gender.toStdString() << "', "
-          << "'" << mainColor.toStdString() << "', "
-          << "'" << breed.toStdString() << "', "
-          << "'" << age << "', "
-          << "'" << neuteredOrSpayed << "', "
-          << "'" << name.toStdString() << "', "
-          << "'" << hypothetical << "', "
-          << "'" << biteTendency << "', "
-          << "'" << scratchTendency << "', "
-          << "'" << friendlinessAdults << "', "
-          << "'" << friendlinessChildren << "', "
-          << "'" << noiseLevel << "', "
-          << "'" << aloneComfort << "', "
-          << "'" << likesBedSleep << "', "
-          << "'" << snores << "', "
-          << "'" << energyLevel << "', "
-          << "'" << comfortableVet << "', "
-          << "'" << comfortableHandled << "', "
-          << "'" << escapeTendency << "'";
+    a << "'" << gender.toStdString() << "', "
+      << "'" << mainColor.toStdString() << "', "
+      << "'" << breed.toStdString() << "', "
+      << "'" << age << "', "
+      << "'" << neuteredOrSpayed << "', "
+      << "'" << name.toStdString() << "', "
+      << "'" << hypothetical << "', "
+      << "'" << biteTendency << "', "
+      << "'" << scratchTendency << "', "
+      << "'" << friendlinessAdults << "', "
+      << "'" << friendlinessChildren << "', "
+      << "'" << noiseLevel << "', "
+      << "'" << aloneComfort << "', "
+      << "'" << likesBedSleep << "', "
+      << "'" << snores << "', "
+      << "'" << energyLevel << "', "
+      << "'" << comfortableVet << "', "
+      << "'" << comfortableHandled << "', "
+      << "'" << escapeTendency << "'";
 
-        outStr = QString::fromStdString(a.str());
+    outStr = QString::fromStdString(a.str());
 }
 
 void Animal::update(
@@ -101,6 +100,7 @@ void Animal::update(
         int nComfortableHandled,
         int nEscapeTendency
         ) {
+
     gender = nGender;
     mainColor = nMainColor;
     name = nName;

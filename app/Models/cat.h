@@ -5,8 +5,7 @@
 #include <QString>
 using namespace std;
 
-class Cat : public Animal
-{
+class Cat : public Animal {
 public:
     Cat(QString gender,
         QString mainColor,

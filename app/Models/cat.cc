@@ -18,29 +18,28 @@ Cat::Cat(QString gender,
          int energyLevel,
          int comfortableVet,
          int comfortableHandled,
-         int escapeTendency)
-    : Animal(gender,
-             mainColor,
-             breed,
-             age,
-             neuteredOrSpayed,
-             name,
-             hypothetical,
-             biteTendency,
-             scratchTendency,
-             friendlinessAdults,
-             friendlinessChildren,
-             noiseLevel,
-             aloneComfort,
-             likesBedSleep,
-             snores,
-             energyLevel,
-             comfortableVet,
-             comfortableHandled,
-             escapeTendency)
-{
-
-}
+         int escapeTendency
+         ) : Animal(
+                 gender,
+                 mainColor,
+                 breed,
+                 age,
+                 neuteredOrSpayed,
+                 name,
+                 hypothetical,
+                 biteTendency,
+                 scratchTendency,
+                 friendlinessAdults,
+                 friendlinessChildren,
+                 noiseLevel,
+                 aloneComfort,
+                 likesBedSleep,
+                 snores,
+                 energyLevel,
+                 comfortableVet,
+                 comfortableHandled,
+                 escapeTendency
+                 ) {}
 
 Cat::~Cat(){}
 
@@ -79,8 +78,9 @@ void Cat::update(bool nIndoorOutdoor,
                  int nEnergyLevel,
                  int nComfortableVet,
                  int nComfortableHandled,
-                 int nEscapeTendency)
-{
+                 int nEscapeTendency
+                 ) {
+
     Animal::update(nGender,
                    nMainColor,
                    nBreed,

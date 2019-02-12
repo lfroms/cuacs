@@ -6,8 +6,7 @@
 #include <sstream>
 using namespace std;
 
-class Animal
-{
+class Animal {
 public:
     Animal(
             QString gender,

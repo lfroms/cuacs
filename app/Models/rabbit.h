@@ -2,8 +2,7 @@
 #define RABBIT_H
 #include "Models/animal.h"
 
-class Rabbit : public Animal
-{
+class Rabbit : public Animal {
 public:
     Rabbit(
             QString gender,
