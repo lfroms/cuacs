@@ -3,6 +3,7 @@
 #include <QString>
 #include <QTextStream>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 class Animal

@@ -55,28 +55,29 @@ void Animal::getName(QString& outStr) {
 };
 
 void Animal::toCommaSeperated(QString& outStr){
-    QString s;
-    s = QString("'") + gender + QString("', ")
-      + QString("'") + mainColor + QString("', ")
-      + QString("'") + breed + QString("', ")
-      + QString("'") + name + QString("', ")
-      + QString("'") + QString::number(neuteredOrSpayed) + QString("', ")
-      + QString("'") + QString::number(hypothetical) + QString("', ")
-      + QString("'") + QString::number(age) + QString("', ")
-      + QString("'") + QString::number(biteTendency) + QString("', ")
-      + QString("'") + QString::number(scratchTendency) + QString("', ")
-      + QString("'") + QString::number(friendlinessAdults) + QString("', ")
-      + QString("'") + QString::number(friendlinessChildren) + QString("', ")
-      + QString("'") + QString::number(noiseLevel) + QString("', ")
-      + QString("'") + QString::number(aloneComfort) + QString("', ")
-      + QString("'") + QString::number(likesBedSleep) + QString("', ")
-      + QString("'") + QString::number(snores) + QString("', ")
-      + QString("'") + QString::number(energyLevel) + QString("', ")
-      + QString("'") + QString::number(comfortableVet) + QString("', ")
-      + QString("'") + QString::number(comfortableHandled) + QString("', ")
-      + QString("'") + QString::number(escapeTendency) + QString("'");
+    stringstream a;
 
-    outStr = s;
+        a << "'" << gender.toStdString() << "', "
+          << "'" << mainColor.toStdString() << "', "
+          << "'" << breed.toStdString() << "', "
+          << "'" << age << "', "
+          << "'" << neuteredOrSpayed << "', "
+          << "'" << name.toStdString() << "', "
+          << "'" << hypothetical << "', "
+          << "'" << biteTendency << "', "
+          << "'" << scratchTendency << "', "
+          << "'" << friendlinessAdults << "', "
+          << "'" << friendlinessChildren << "', "
+          << "'" << noiseLevel << "', "
+          << "'" << aloneComfort << "', "
+          << "'" << likesBedSleep << "', "
+          << "'" << snores << "', "
+          << "'" << energyLevel << "', "
+          << "'" << comfortableVet << "', "
+          << "'" << comfortableHandled << "', "
+          << "'" << escapeTendency << "'";
+
+        outStr = QString::fromStdString(a.str());
 }
 
 void Animal::update(

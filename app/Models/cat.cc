@@ -47,12 +47,7 @@ Cat::~Cat(){}
 void Cat::toCommaSeperated(QString& outStr){
     QString animal;
     Animal::toCommaSeperated(animal);
-    QString s  = animal + QString(",")
-	    + QString("'") + QString::number(indoorOutdoor) + QString("', ")
-	    + QString("'") + QString::number(litterTrained) + QString("', ")
-	    + QString("'") + QString::number(friendlinessCats) + QString("'");
-
-    outStr = s;
+    outStr = animal;
 }
 
 QString Cat::getSpecies() {

@@ -49,10 +49,7 @@ Rabbit::~Rabbit(){}
 void Rabbit::toCommaSeperated(QString& outStr){
     QString animal;
     Animal::toCommaSeperated(animal);
-    QString s = animal + QString(", ")
-        + QString("'") + QString::number(nightActivityLevel) + QString("'");
-
-    outStr = s;
+    outStr = animal;
 }
 
 QString Rabbit::getSpecies() {

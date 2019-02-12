@@ -48,11 +48,7 @@ Dog::~Dog(){}
 void Dog::toCommaSeperated(QString& outStr){
     QString animal;
     Animal::toCommaSeperated(animal);
-    QString s = animal + QString(", ")
-      + QString("'") + friendlinessDogs + QString("', ")
-      + QString("'") + houseTrained + QString("', ")
-      + QString("'") + barkTendency + QString("'");
-    outStr = s;
+    outStr = animal;
 }
 
 QString Dog::getSpecies() {
