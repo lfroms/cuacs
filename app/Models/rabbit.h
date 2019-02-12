@@ -2,57 +2,59 @@
 #define RABBIT_H
 #include "Models/animal.h"
 
-class Rabbit : public Animal
-{
+class Rabbit : public Animal {
 public:
-    Rabbit(int nAL, 
-           string g,
-           string mC,
-           string n,
-           string b,
-           bool nOS,
-           bool h,
-           int a,
-           int bT,
-           int sT,
-           int fA,
-           int fC,
-           int nL,
-           int aC,
-           int lBS,
-           int s,
-           int eL,
-           int cV,
-           int cH,
-           int eT);
+    Rabbit(
+            QString gender,
+            QString mainColor,
+            QString breed,
+            int age,
+            bool neuteredOrSpayed,
+            QString name,
+            bool hypothetical,
+            int biteTendency,
+            int scratchTendency,
+            int friendlinessAdults,
+            int friendlinessChildren,
+            int noiseLevel,
+            int aloneComfort,
+            bool likesBedSleep,
+            bool snores,
+            int energyLevel,
+            int comfortableVet,
+            int comfortableHandled,
+            int escapeTendency
+            );
 
     ~Rabbit();
 
-    void toCommaSeperated(string& outStr);
+    void toCommaSeperated(QString& outStr);
 
-    void update(int nAL, 
-                string g,
-                string mC,
-                string n,
-                string b,
-                bool nOS,
-                bool h,
-                int a,
-                int bT,
-                int sT,
-                int fA,
-                int fC,
-                int nL,
-                int aC,
-                int lBS,
-                int s,
-                int eL,
-                int cV,
-                int cH,
-                int eT);
+    void update(
+            QString gender,
+            QString mainColor,
+            QString breed,
+            int age,
+            bool neuteredOrSpayed,
+            QString name,
+            bool hypothetical,
+            int biteTendency,
+            int scratchTendency,
+            int friendlinessAdults,
+            int friendlinessChildren,
+            int noiseLevel,
+            int aloneComfort,
+            bool likesBedSleep,
+            bool snores,
+            int energyLevel,
+            int comfortableVet,
+            int comfortableHandled,
+            int escapeTendency,
+            int nNightActivityLevel
+            );
 
-    string getSpecies();
-    string getTableName();
+    QString getSpecies();
+    QString getTableName();
 
 private:
     int nightActivityLevel;

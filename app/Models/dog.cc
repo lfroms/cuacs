@@ -1,81 +1,107 @@
 #include "dog.h"
-
-Dog::Dog(int fD, 
-         int hT,
-         int bTY,
-         string g,
-         string mC,
-         string n,
-         string b,
-         bool nOS,
-         bool h, 
-         int a,
-         int bT,
-         int sT,
-         int fA,
-         int fC,
-         int nL,
-         int aC,
-         int lBS,
-         int s, 
-         int eL,
-         int cV,
-         int cH,
-         int eT)
-    : Animal(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT)
-
-{
-    friendlinessDogs = fD;
-    houseTrained = hT;
-    barkTendency = bTY;
-}
+Dog::Dog(
+        QString gender,
+        QString mainColor,
+        QString breed,
+        int age,
+        bool neuteredOrSpayed,
+        QString name,
+        bool hypothetical,
+        int biteTendency,
+        int scratchTendency,
+        int friendlinessAdults,
+        int friendlinessChildren,
+        int noiseLevel,
+        int aloneComfort,
+        bool likesBedSleep,
+        bool snores,
+        int energyLevel,
+        int comfortableVet,
+        int comfortableHandled,
+        int escapeTendency
+        ) : Animal(
+                gender,
+                mainColor,
+                breed,
+                age,
+                neuteredOrSpayed,
+                name,
+                hypothetical,
+                biteTendency,
+                scratchTendency,
+                friendlinessAdults,
+                friendlinessChildren,
+                noiseLevel,
+                aloneComfort,
+                likesBedSleep,
+                snores,
+                energyLevel,
+                comfortableVet,
+                comfortableHandled,
+                escapeTendency
+                ) {}
 
 Dog::~Dog(){}
 
-void Dog::toCommaSeperated(string& outStr){
-    stringstream s;
-    string animal;
+void Dog::toCommaSeperated(QString& outStr){
+    QString animal;
     Animal::toCommaSeperated(animal);
-    s << animal << ", "
-      << "'" << friendlinessDogs << "', "
-      << "'" << houseTrained << "', "
-      << "'" << barkTendency << "'";
-    outStr = s.str();
+    outStr = animal;
 }
 
-string Dog::getSpecies() {
-    return "Dog";
+QString Dog::getSpecies() {
+    return QString("Dog");
 }
 
-string Dog::getTableName() {
-    return "dogs";
+QString Dog::getTableName() {
+    return QString("dogs");
 }
 
-void Dog::update(int fD, 
-		 int hT, 
-		 int bTY, 
-		 string g, 
-		 string mC, 
-		 string n, 
-		 string b,
-		 bool nOS,
-         bool h,
-		 int a, 
-		 int bT, 
-		 int sT, 
-		 int fA, 
-		 int fC, 
-		 int nL, 
-		 int aC, 
-		 int lBS,
-		 int s, 
-		 int eL, 
-		 int cV, 
-		 int cH, 
-		 int eT)
-{
-    Animal::update(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
-    friendlinessDogs = fD;
-    houseTrained= hT;
-    barkTendency = bTY;
+void Dog::update(QString nGender,
+                 QString nMainColor,
+                 QString nBreed,
+                 int nAge,
+                 bool nNeuteredOrSpayed,
+                 QString nName,
+                 bool nHypothetical,
+                 int nBiteTendency,
+                 int nScratchTendency,
+                 int nFriendlinessAdults,
+                 int nFriendlinessChildren,
+                 int nNoiseLevel,
+                 int nAloneComfort,
+                 bool nLikesBedSleep,
+                 bool nSnores,
+                 int nEnergyLevel,
+                 int nComfortableVet,
+                 int nComfortableHandled,
+                 int nEscapeTendency,
+                 int nFriendlinessDogs,
+                 bool nHouseTrained,
+                 int nBarkTendency
+                 ) {
+
+    Animal::update(nGender,
+                   nMainColor,
+                   nBreed,
+                   nAge,
+                   nNeuteredOrSpayed,
+                   nName,
+                   nHypothetical,
+                   nBiteTendency,
+                   nScratchTendency,
+                   nFriendlinessAdults,
+                   nFriendlinessChildren,
+                   nNoiseLevel,
+                   nAloneComfort,
+                   nLikesBedSleep,
+                   nSnores,
+                   nEnergyLevel,
+                   nComfortableVet,
+                   nComfortableHandled,
+                   nEscapeTendency);
+
+    friendlinessDogs = nFriendlinessDogs;
+    houseTrained = nHouseTrained;
+    barkTendency = nBarkTendency;
 }

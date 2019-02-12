@@ -1,71 +1,74 @@
 #ifndef ANIMAL_H
 #define ANIMAL_H
-#include <string.h>
+#include <QString>
+#include <QTextStream>
 #include <iostream>
-#include <istream>
 #include <sstream>
 using namespace std;
 
-class Animal
-{
+class Animal {
 public:
-    Animal(string g,
-           string mC,
-           string n,
-           string b,
-           bool nOS,
-           bool h,
-           int a,
-           int bT,
-           int sT,
-           int fA,
-           int fC,
-           int nL,
-           int aC,
-           int lBS,
-           int s,
-           int eL,
-           int cV,
-           int cH,
-           int eT);
+    Animal(
+            QString gender,
+            QString mainColor,
+            QString breed,
+            int age,
+            bool neuteredOrSpayed,
+            QString name,
+            bool hypothetical,
+            int biteTendency,
+            int scratchTendency,
+            int friendlinessAdults,
+            int friendlinessChildren,
+            int noiseLevel,
+            int aloneComfort,
+            bool likesBedSleep,
+            bool snores,
+            int energyLevel,
+            int comfortableVet,
+            int comfortableHandled,
+            int escapeTendency
+            );
 
     Animal();
 
     ~Animal();
 
-    virtual void toCommaSeperated(string& outStr) = 0;
+    virtual void toCommaSeperated(QString& outStr) = 0;
 
-    void update(string g,
-                string mC,
-                string n,
-                string b,
-                bool nOS,
-                bool h,
-                int a,
-                int bT,
-                int sT,
-                int fA,
-                int fC,
-                int nL,
-                int aC,
-                int lBS,
-                int s,
-                int eL,
-                int cV,
-                int cH,
-                int eT);
+    void update(
+            QString gender,
+            QString mainColor,
+            QString breed,
+            int age,
+            bool neuteredOrSpayed,
+            QString name,
+            bool hypothetical,
+            int biteTendency,
+            int scratchTendency,
+            int friendlinessAdults,
+            int friendlinessChildren,
+            int noiseLevel,
+            int aloneComfort,
+            bool likesBedSleep,
+            bool snores,
+            int energyLevel,
+            int comfortableVet,
+            int comfortableHandled,
+            int escapeTendency
+            );
 
-    void getName(string& outStr);
+    void getName(QString& outStr);
 
-    virtual string getSpecies() = 0;
+    virtual QString getSpecies() = 0;
 
-    string getTableName();
+    virtual QString getTableName() = 0;
 
 private:
-    string gender;
-    string mainColor;
-    string name;
-    string breed;
+    QString gender;
+    QString mainColor;
+    QString name;
+    QString breed;
 
     bool neuteredOrSpayed;
     bool hypothetical;

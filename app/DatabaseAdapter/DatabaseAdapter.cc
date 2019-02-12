@@ -1,4 +1,5 @@
 #include "DatabaseAdapter.h"
+#include "Models/animal.h"
 
 static const QString DATABASE_PATH = "cuacs.db";
 
@@ -23,19 +24,6 @@ static const QString commonAttributes =
         "comfortable_vet INTEGER NOT NULL,"
         "comfortable_handled INTEGER NOT NULL,"
         "escape_tendency INTEGER NOT NULL";
-
-static const QString dogAttributes =
-        "friendliness_dogs INTEGER NOT NULL,"
-        "house_trained INTEGER NOT NULL,"
-        "bark_tendency INTEGER NOT NULL";
-
-static const QString catAttributes =
-        "indoor_outdoor TEXT NOT NULL,"
-        "litter_trained INTEGER NOT NULL,"
-        "friendliness_cats INTEGER NOT NULL";
-
-static const QString rabbitAttributes =
-        "night_activity_level INTEGER NOT NULL";
 
 QSqlDatabase DatabaseAdapter::db;
 
@@ -65,24 +53,20 @@ DatabaseAdapter* DatabaseAdapter::getInstance() {
 bool DatabaseAdapter::init() {
     QSqlQuery createDogs;
     QString dogQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("dogs")
-            .arg(commonAttributes)
-            .arg(dogAttributes);
+            .arg(commonAttributes);
 
     QSqlQuery createCats;
     QString catQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("cats")
-            .arg(commonAttributes)
-            .arg(catAttributes);
-
+            .arg(commonAttributes);
     QSqlQuery createRabbits;
     QString rabbitQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2, %3);")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("rabbits")
-            .arg(commonAttributes)
-            .arg(rabbitAttributes);
+            .arg(commonAttributes);
 
     if (createDogs.exec(dogQuery) &&
             createCats.exec(catQuery) &&
@@ -94,19 +78,132 @@ bool DatabaseAdapter::init() {
 }
 
 /* === Public-Facing Database Operation Methods === */
+#include <QSqlError>
 
 bool DatabaseAdapter::insertAnimal(Animal * animal) {
     QSqlQuery addAnimal;
 
-    string animalCommaSeparated;
+    QString animalCommaSeparated;
     animal->toCommaSeperated(animalCommaSeparated);
 
     QString addAnimalQuery =
-            QString("INSERT INTO %1 VALUES(null, %2)")
-            .arg(QString::fromStdString(animal->getTableName()))
-            .arg(QString::fromStdString(animalCommaSeparated));
+            QString("INSERT INTO %1 VALUES(null, %2);")
+            .arg(animal->getTableName())
+            .arg(animalCommaSeparated);
 
-    return addAnimal.exec(addAnimalQuery);
+    return  addAnimal.exec(addAnimalQuery);
+}
+
+bool DatabaseAdapter::getAnimals(Animal** animals){
+    QSqlQuery query;
+    query.exec("SELECT * FROM rabbits;");
+    int i = 0;
+
+    // Loading all rabbits
+    while (query.next()) {
+        Rabbit* r = new Rabbit(
+                    query.value(1).toString(),
+                    query.value(2).toString(),
+                    query.value(3).toString(),
+                    query.value(4).toInt(),
+                    query.value(5).toBool(),
+                    query.value(6).toString(),
+                    query.value(7).toBool(),
+                    query.value(8).toInt(),
+                    query.value(9).toInt(),
+                    query.value(10).toInt(),
+                    query.value(11).toInt(),
+                    query.value(12).toInt(),
+                    query.value(13).toInt(),
+                    query.value(14).toBool(),
+                    query.value(15).toBool(),
+                    query.value(16).toInt(),
+                    query.value(17).toInt(),
+                    query.value(18).toInt(),
+                    query.value(19).toInt()
+                    );
+
+        animals[i] = r;
+        i++;
+    }
+
+    query.exec("SELECT * FROM dogs");
+
+    // Loading all dogs
+    while (query.next()) {
+        Dog* d = new Dog(
+                    query.value(1).toString(),
+                    query.value(2).toString(),
+                    query.value(3).toString(),
+                    query.value(4).toInt(),
+                    query.value(5).toBool(),
+                    query.value(6).toString(),
+                    query.value(7).toBool(),
+                    query.value(8).toInt(),
+                    query.value(9).toInt(),
+                    query.value(10).toInt(),
+                    query.value(11).toInt(),
+                    query.value(12).toInt(),
+                    query.value(13).toInt(),
+                    query.value(14).toBool(),
+                    query.value(15).toBool(),
+                    query.value(16).toInt(),
+                    query.value(17).toInt(),
+                    query.value(18).toInt(),
+                    query.value(19).toInt()
+                    );
+
+        animals[i] = d;
+        i++;
+    }
+
+    query.exec("SELECT * FROM cats");
+
+    // Loading all cats
+    while (query.next()) {
+        Cat* c = new Cat(
+                    query.value(1).toString(),
+                    query.value(2).toString(),
+                    query.value(3).toString(),
+                    query.value(4).toInt(),
+                    query.value(5).toBool(),
+                    query.value(6).toString(),
+                    query.value(7).toBool(),
+                    query.value(8).toInt(),
+                    query.value(9).toInt(),
+                    query.value(10).toInt(),
+                    query.value(11).toInt(),
+                    query.value(12).toInt(),
+                    query.value(13).toInt(),
+                    query.value(14).toBool(),
+                    query.value(15).toBool(),
+                    query.value(16).toInt(),
+                    query.value(17).toInt(),
+                    query.value(18).toInt(),
+                    query.value(19).toInt()
+                    );
+
+        animals[i] = c;
+        i++;
+    }
+
+    return true;
+}
+
+int DatabaseAdapter::getTotalAnimals() {
+    QSqlQuery rabbitCountQ("SELECT COUNT(*) FROM rabbits;");
+    rabbitCountQ.first();
+    int rabbitCount = rabbitCountQ.value(0).toInt();
+
+    QSqlQuery catCountQ("SELECT COUNT(*) FROM cats;");
+    catCountQ.first();
+    int catCount = catCountQ.value(0).toInt();
+
+    QSqlQuery dogCountQ("SELECT COUNT(*) FROM dogs;");
+    dogCountQ.first();
+    int dogCount = dogCountQ.value(0).toInt();
+
+    return rabbitCount + dogCount + catCount;
 }
 
 bool DatabaseAdapter::seed() {
@@ -114,9 +211,10 @@ bool DatabaseAdapter::seed() {
         Animal* a = AnimalData().getAnimals()[i];
         if (!insertAnimal(a)) {
             qDebug() << "Failed to insert";
-           return false;
+            return false;
         }
     }
 
+    qDebug() << "Seed succeeded.";
     return true;
 }

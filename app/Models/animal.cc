@@ -1,50 +1,68 @@
 #include "animal.h"
 using namespace std;
 
-Animal::Animal(string g, 
-               string mC,
-               string n,
-               string b,
-               bool nOS,
-               bool h,
-               int a,
-               int bT,
-               int sT,
-               int fA,
-               int fC,
-               int nL,
-               int aC,
-               int lBS,
-               int s,
-               int eL,
-               int cV,
-               int cH,
-               int eT)
-{
-    update(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
+Animal::Animal(
+        QString gender,
+        QString mainColor,
+        QString breed,
+        int age,
+        bool neuteredOrSpayed,
+        QString name,
+        bool hypothetical,
+        int biteTendency,
+        int scratchTendency,
+        int friendlinessAdults,
+        int friendlinessChildren,
+        int noiseLevel,
+        int aloneComfort,
+        bool likesBedSleep,
+        bool snores,
+        int energyLevel,
+        int comfortableVet,
+        int comfortableHandled,
+        int escapeTendency
+        ) {
+
+    update(gender,
+           mainColor,
+           breed,
+           age,
+           neuteredOrSpayed,
+           name,
+           hypothetical,
+           biteTendency,
+           scratchTendency,
+           friendlinessAdults,
+           friendlinessChildren,
+           noiseLevel,
+           aloneComfort,
+           likesBedSleep,
+           snores,
+           energyLevel,
+           comfortableVet,
+           comfortableHandled,
+           escapeTendency
+           );
 }
 
 Animal::Animal() {}
 
 Animal::~Animal(){}
 
-void Animal::getName(string& outStr) {
+void Animal::getName(QString& outStr) {
     outStr = name;
 };
 
-string Animal::getTableName() {
-    return "animals";
-}
-
-void Animal::toCommaSeperated(string& outStr){
+void Animal::toCommaSeperated(QString& outStr){
     stringstream a;
-    a << "'" << gender << "', "
-      << "'" << mainColor << "', "
-      << "'" << breed << "', "
-      << "'" << name << "', "
-      << "'" << neuteredOrSpayed << "', "
-      << "'" << hypothetical << "', "
+
+    a << "'" << gender.toStdString() << "', "
+      << "'" << mainColor.toStdString() << "', "
+      << "'" << breed.toStdString() << "', "
       << "'" << age << "', "
+      << "'" << neuteredOrSpayed << "', "
+      << "'" << name.toStdString() << "', "
+      << "'" << hypothetical << "', "
       << "'" << biteTendency << "', "
       << "'" << scratchTendency << "', "
       << "'" << friendlinessAdults << "', "
@@ -58,48 +76,50 @@ void Animal::toCommaSeperated(string& outStr){
       << "'" << comfortableHandled << "', "
       << "'" << escapeTendency << "'";
 
-    outStr = a.str();
+    outStr = QString::fromStdString(a.str());
 }
 
-void Animal::update(string g, 
-                    string mC,
-                    string n,
-                    string b,
-                    bool nOS,
-                    bool h,
-                    int a,
-                    int bT,
-                    int sT,
-                    int fA,
-                    int fC,
-                    int nL,
-                    int aC,
-                    int lBS,
-                    int s,
-                    int eL,
-                    int cV,
-                    int cH,
-                    int eT)
-{
-    gender = g;
-    mainColor = mC;
-    name = n;
-    breed = b;
+void Animal::update(
+        QString nGender,
+        QString nMainColor,
+        QString nBreed,
+        int nAge,
+        bool nNeuteredOrSpayed,
+        QString nName,
+        bool nHypothetical,
+        int nBiteTendency,
+        int nScratchTendency,
+        int nFriendlinessAdults,
+        int nFriendlinessChildren,
+        int nNoiseLevel,
+        int nAloneComfort,
+        bool nLikesBedSleep,
+        bool nSnores,
+        int nEnergyLevel,
+        int nComfortableVet,
+        int nComfortableHandled,
+        int nEscapeTendency
+        ) {
 
-    neuteredOrSpayed = nOS;
-    hypothetical = h;
+    gender = nGender;
+    mainColor = nMainColor;
+    name = nName;
+    breed = nBreed;
 
-    age = a;
-    biteTendency = bT;
-    scratchTendency = sT;
-    friendlinessAdults = fA;
-    friendlinessChildren = fC;
-    noiseLevel = nL;
-    aloneComfort = aC;
-    likesBedSleep = lBS;
-    snores = s;
-    energyLevel = eL;
-    comfortableVet = cV;
-    comfortableHandled = cH;
-    escapeTendency = eT;
+    neuteredOrSpayed = nNeuteredOrSpayed;
+    hypothetical = nHypothetical;
+
+    age = nAge;
+    biteTendency = nBiteTendency;
+    scratchTendency = nScratchTendency;
+    friendlinessAdults = nFriendlinessAdults;
+    friendlinessChildren = nFriendlinessChildren;
+    noiseLevel = nNoiseLevel;
+    aloneComfort = nAloneComfort;
+    likesBedSleep = nLikesBedSleep;
+    snores = nSnores;
+    energyLevel = nEnergyLevel;
+    comfortableVet = nComfortableVet;
+    comfortableHandled = nComfortableHandled;
+    escapeTendency = nEscapeTendency;
 }

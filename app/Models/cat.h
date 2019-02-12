@@ -2,66 +2,62 @@
 #define CAT_H
 #include "Models/animal.h"
 #include <iostream>
-#include <string>
+#include <QString>
 using namespace std;
 
-class Cat : public Animal
-{
+class Cat : public Animal {
 public:
-    Cat(bool iO,
-        int lT,
-        int fLC,
-        string g,
-        string mC,
-        string n,
-        string b,
-        bool nOS,
-        bool h,
-        int a,
-        int bT,
-        int sT,
-        int fA,
-        int fC,
-        int nL,
-        int aC,
-        int lBS,
-        int s,
-        int eL,
-        int cV,
-        int cH,
-        int eT);
+    Cat(QString gender,
+        QString mainColor,
+        QString breed,
+        int age,
+        bool neuteredOrSpayed,
+        QString name,
+        bool hypothetical,
+        int biteTendency,
+        int scratchTendency,
+        int friendlinessAdults,
+        int friendlinessChildren,
+        int noiseLevel,
+        int aloneComfort,
+        bool likesBedSleep,
+        bool snores,
+        int energyLevel,
+        int comfortableVet,
+        int comfortableHandled,
+        int escapeTendency);
 
     ~Cat();
 
-    void toCommaSeperated(string& outStr);
+    void toCommaSeperated(QString& outStr);
 
-    string getSpecies();
+    QString getSpecies();
 
-    void update(bool iO, 
-                int lT,
-                int fLC,
-                string g,
-                string mC,
-                string n,
-                string b,
-                bool nOS,
-                bool h,
-                int a,
-                int bT,
-                int sT,
-                int fA,
-                int fC,
-                int nL,
-                int aC,
-                int lBS,
-                int s,
-                int eL,
-                int cV,
-                int cH,
-                int eT);
+    void update(bool nIndoorOutdoor,
+                int nLitterTrained,
+                int nFriendlinessCats,
+                QString nGender,
+                QString nMainColor,
+                QString nName,
+                QString nBreed,
+                bool nNeuteredOrSpayed,
+                bool nHypothetical,
+                int nAge,
+                int nBiteTendency,
+                int nScratchTendency,
+                int nFriendlinessAdults,
+                int nFriendlinessChildren,
+                int nNoiseLevel,
+                int nAloneComfort,
+                int nLikesBedSleep,
+                int nSnores,
+                int nEnergyLevel,
+                int nComfortableVet,
+                int nComfortableHandled,
+                int nEscapeTendency);
 
 
-    string getTableName();
+    QString getTableName();
 
 private:
     bool indoorOutdoor;

@@ -1,72 +1,105 @@
 #include "rabbit.h"
 
-Rabbit::Rabbit(int nAL, 
- 	       string g, 
-	       string mC, 
-	       string n, 
-	       string b, 
-	       bool nOS,
-	       bool h, 
-	       int a, 
-	       int bT, 
-	       int sT, 
-	       int fA, 
-	       int fC, 
-	       int nL, 
-	       int aC, 
-	       int lBS,
-           int s,
-	       int eL, 
-	       int cV, 
-	       int cH, 
-	       int eT)
-    : Animal(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT)
-
-{
-    nightActivityLevel = nAL;
-}
+Rabbit::Rabbit(QString gender,
+               QString mainColor,
+               QString breed,
+               int age,
+               bool neuteredOrSpayed,
+               QString name,
+               bool hypothetical,
+               int biteTendency,
+               int scratchTendency,
+               int friendlinessAdults,
+               int friendlinessChildren,
+               int noiseLevel,
+               int aloneComfort,
+               bool likesBedSleep,
+               bool snores,
+               int energyLevel,
+               int comfortableVet,
+               int comfortableHandled,
+               int escapeTendency
+               ) : Animal(
+                       gender,
+                       mainColor,
+                       breed,
+                       age,
+                       neuteredOrSpayed,
+                       name,
+                       hypothetical,
+                       biteTendency,
+                       scratchTendency,
+                       friendlinessAdults,
+                       friendlinessChildren,
+                       noiseLevel,
+                       aloneComfort,
+                       likesBedSleep,
+                       snores,
+                       energyLevel,
+                       comfortableVet,
+                       comfortableHandled,
+                       escapeTendency
+                       ) {}
 
 Rabbit::~Rabbit(){}
 
-void Rabbit::toCommaSeperated(string& outStr){
-    stringstream s;
-    string animal;
+void Rabbit::toCommaSeperated(QString& outStr){
+    QString animal;
     Animal::toCommaSeperated(animal);
-    s << animal << ", "
-      << "'" << nightActivityLevel << "'";
-
-    outStr = s.str();
+    outStr = animal;
 }
 
-string Rabbit::getSpecies() {
-    return "Rabbit";
+QString Rabbit::getSpecies() {
+    return QString("Rabbit");
 }
 
-string Rabbit::getTableName() {
-    return "rabbits";
+QString Rabbit::getTableName() {
+    return QString("rabbits");
 }
 
-void Rabbit::update(int nAL, 
-		    string g, 
-		    string mC, 
-		    string n, 
-		    string b, 
-		    bool nOS,
-		    bool h, 
-		    int a, 
-		    int bT, 
-		    int sT, 
-		    int fA, 
-		    int fC, 
-		    int nL, 
-		    int aC, 
-		    int lBS,
-		    int s, 
-		    int eL, 
-		    int cV, 
-		    int cH, 
-		    int eT)
-{
-    Animal::update(g, mC, n, b, nOS, h, a, bT, sT, fA, fC, nL, aC, lBS, s, eL, cV, cH, eT);
-    nightActivityLevel = nAL;
+void Rabbit::update(
+        QString gender,
+        QString mainColor,
+        QString breed,
+        int age,
+        bool neuteredOrSpayed,
+        QString name,
+        bool hypothetical,
+        int biteTendency,
+        int scratchTendency,
+        int friendlinessAdults,
+        int friendlinessChildren,
+        int noiseLevel,
+        int aloneComfort,
+        bool likesBedSleep,
+        bool snores,
+        int energyLevel,
+        int comfortableVet,
+        int comfortableHandled,
+        int escapeTendency,
+        int nNightActivityLevel
+        ) {
+
+    Animal::update(gender,
+                   mainColor,
+                   breed,
+                   age,
+                   neuteredOrSpayed,
+                   name,
+                   hypothetical,
+                   biteTendency,
+                   scratchTendency,
+                   friendlinessAdults,
+                   friendlinessChildren,
+                   noiseLevel,
+                   aloneComfort,
+                   likesBedSleep,
+                   snores,
+                   energyLevel,
+                   comfortableVet,
+                   comfortableHandled,
+                   escapeTendency
+                   );
+
+    nightActivityLevel = nNightActivityLevel;
 }

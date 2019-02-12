@@ -2,61 +2,57 @@
 #define DOG_H
 #include "Models/animal.h"
 
-class Dog : public Animal
-{
+class Dog : public Animal {
 public:
-    Dog(int fD, 
-    int hT,
-	int bTY, 
-	string g, 
-	string mC, 
-	string n, 
-	string b, 
-	bool nOS,
-    bool h,
-	int a, 
-	int bT, 
-	int sT, 
-	int fA, 
-	int fC, 
-	int nL, 
-	int aC, 
-	int lBS,
-	int s, 
-	int eL, 
-	int cV, 
-	int cH, 
-	int eT);
+    Dog(QString gender,
+        QString mainColor,
+        QString breed,
+        int age,
+        bool neuteredOrSpayed,
+        QString name,
+        bool hypothetical,
+        int biteTendency,
+        int scratchTendency,
+        int friendlinessAdults,
+        int friendlinessChildren,
+        int noiseLevel,
+        int aloneComfort,
+        bool likesBedSleep,
+        bool snores,
+        int energyLevel,
+        int comfortableVet,
+        int comfortableHandled,
+        int escapeTendency);
 
     ~Dog();
 
-    void toCommaSeperated(string& outStr);
+    void toCommaSeperated(QString& outStr);
 
-    void update(int fD, 
-                int hT,
-                int bTY,
-                string g,
-                string mC,
-                string n,
-                string b,
-                bool nOS,
-                bool h,
-                int a,
-                int bT,
-                int sT,
-                int fA,
-                int fC,
-                int nL,
-                int aC,
-                int lBS,
-                int s,
-                int eL,
-                int cV,
-                int cH,
-                int eT);
+    void update(QString nGender,
+                QString nMainColor,
+                QString nBreed,
+                int nAge,
+                bool nNeuteredOrSpayed,
+                QString nName,
+                bool nHypothetical,
+                int nBiteTendency,
+                int nScratchTendency,
+                int nFriendlinessAdults,
+                int nFriendlinessChildren,
+                int nNoiseLevel,
+                int nAloneComfort,
+                bool nLikesBedSleep,
+                bool nSnores,
+                int nEnergyLevel,
+                int nComfortableVet,
+                int nComfortableHandled,
+                int nEscapeTendency,
+                int nFriendlinessDogs,
+                bool nHouseTrained,
+                int nBarkTendency);
 
-    string getSpecies();
-    string getTableName();
+    QString getSpecies();
+    QString getTableName();
 
 private:
     int friendlinessDogs;
