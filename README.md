@@ -10,7 +10,7 @@ qmake -o Makefile cuacs.pro && make
 ```
 To Launch:
 ```bash
-cd app/&& ./app
+cd app && ./app
 ```
 
 ## Development
