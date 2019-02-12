@@ -6,6 +6,9 @@ _cuACS_ is a software system that matches animals to people.
 * Qt Creator 4.8.1
   * Based on Qt 5.12.0
   
+### Opening in Qt Creator
+* Open the `cuacs.pro` file in the root directory, _not_ `app.pro`.
+  
 ## Adding a Source File
 _File Naming Scheme: `PascalCase`_
 1. Create a folder in `/app`.
