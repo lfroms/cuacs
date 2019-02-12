@@ -1,45 +1,49 @@
 #include "animal.h"
 using namespace std;
 
-Animal::Animal(QString nGender,
-               QString nMainColor,
-               QString nName,
-               QString nBreed,
-               bool nNeuteredOrSpayed,
-               bool nHypothetical,
-               int nAge,
-               int nBiteTendency,
-               int nScratchTendency,
-               int nFriendlinessAdults,
-               int nFriendlinessChildren,
-               int nNoiseLevel,
-               int nAloneComfort,
-               int nLikesBedSleep,
-               int nSnores,
-               int nEnergyLevel,
-               int nComfortableVet,
-               int nComfortableHandled,
-               int nEscapeTendency)
+Animal::Animal(
+        QString gender,
+        QString mainColor,
+        QString breed,
+        int age,
+        bool neuteredOrSpayed,
+        QString name,
+        bool hypothetical,
+        int biteTendency,
+        int scratchTendency,
+        int friendlinessAdults,
+        int friendlinessChildren,
+        int noiseLevel,
+        int aloneComfort,
+        bool likesBedSleep,
+        bool snores,
+        int energyLevel,
+        int comfortableVet,
+        int comfortableHandled,
+        int escapeTendency
+        )
 {
-    update(nGender,
-           nMainColor,
-           nName,
-           nBreed,
-           nNeuteredOrSpayed,
-           nHypothetical,
-           nAge,
-           nBiteTendency,
-           nScratchTendency,
-           nFriendlinessAdults,
-           nFriendlinessChildren,
-           nNoiseLevel,
-           nAloneComfort,
-           nLikesBedSleep,
-           nSnores,
-           nEnergyLevel,
-           nComfortableVet,
-           nComfortableHandled,
-           nEscapeTendency);
+    update(
+                gender,
+                mainColor,
+                breed,
+                age,
+                neuteredOrSpayed,
+                name,
+                hypothetical,
+                biteTendency,
+                scratchTendency,
+                friendlinessAdults,
+                friendlinessChildren,
+                noiseLevel,
+                aloneComfort,
+                likesBedSleep,
+                snores,
+                energyLevel,
+                comfortableVet,
+                comfortableHandled,
+                escapeTendency
+           );
 }
 
 Animal::Animal() {}
@@ -75,26 +79,27 @@ void Animal::toCommaSeperated(QString& outStr){
     outStr = s;
 }
 
-void Animal::update(QString nGender,
-                    QString nMainColor,
-                    QString nName,
-                    QString nBreed,
-                    bool nNeuteredOrSpayed,
-                    bool nHypothetical,
-                    int nAge,
-                    int nBiteTendency,
-                    int nScratchTendency,
-                    int nFriendlinessAdults,
-                    int nFriendlinessChildren,
-                    int nNoiseLevel,
-                    int nAloneComfort,
-                    int nLikesBedSleep,
-                    int nSnores,
-                    int nEnergyLevel,
-                    int nComfortableVet,
-                    int nComfortableHandled,
-                    int nEscapeTendency)
-{
+void Animal::update(
+        QString nGender,
+        QString nMainColor,
+        QString nBreed,
+        int nAge,
+        bool nNeuteredOrSpayed,
+        QString nName,
+        bool nHypothetical,
+        int nBiteTendency,
+        int nScratchTendency,
+        int nFriendlinessAdults,
+        int nFriendlinessChildren,
+        int nNoiseLevel,
+        int nAloneComfort,
+        bool nLikesBedSleep,
+        bool nSnores,
+        int nEnergyLevel,
+        int nComfortableVet,
+        int nComfortableHandled,
+        int nEscapeTendency
+        ) {
     gender = nGender;
     mainColor = nMainColor;
     name = nName;
