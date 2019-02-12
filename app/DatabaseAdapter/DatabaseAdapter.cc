@@ -26,17 +26,17 @@ static const QString commonAttributes =
         "escape_tendency INTEGER NOT NULL";
 
 static const QString dogAttributes =
-        "friendliness_dogs INTEGER NOT NULL,"
-        "house_trained INTEGER NOT NULL,"
-        "bark_tendency INTEGER NOT NULL";
+        "friendliness_dogs INTEGER,"
+        "house_trained INTEGER,"
+        "bark_tendency INTEGER";
 
 static const QString catAttributes =
-        "indoor_outdoor TEXT NOT NULL,"
-        "litter_trained INTEGER NOT NULL,"
-        "friendliness_cats INTEGER NOT NULL";
+        "indoor_outdoor TEXT,"
+        "litter_trained INTEGER,"
+        "friendliness_cats INTEGER";
 
 static const QString rabbitAttributes =
-        "night_activity_level INTEGER NOT NULL";
+        "night_activity_level INTEGER";
 
 QSqlDatabase DatabaseAdapter::db;
 
