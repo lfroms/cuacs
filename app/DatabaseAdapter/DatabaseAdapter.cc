@@ -25,6 +25,13 @@ static const QString commonAttributes =
         "comfortable_handled INTEGER NOT NULL,"
         "escape_tendency INTEGER NOT NULL";
 
+static const QString clientSchema =
+        "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+        "name TEXT NOT NULL,"
+        "age INTEGER NOT NULL,"
+        "phone_number TEXT NOT NULL,"
+        "email TEXT NOT NULL";
+
 QSqlDatabase DatabaseAdapter::db;
 
 DatabaseAdapter::DatabaseAdapter() {
@@ -62,15 +69,23 @@ bool DatabaseAdapter::init() {
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("cats")
             .arg(commonAttributes);
+
     QSqlQuery createRabbits;
     QString rabbitQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("rabbits")
             .arg(commonAttributes);
 
+    QSqlQuery createClients;
+    QString clientQuery =
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
+            .arg("clients")
+            .arg(clientSchema);
+
     if (createDogs.exec(dogQuery) &&
             createCats.exec(catQuery) &&
-            createRabbits.exec(rabbitQuery)) {
+            createRabbits.exec(rabbitQuery) &&
+            createClients.exec(clientQuery)) {
         return seed();
     } else {
         return false;
@@ -78,7 +93,6 @@ bool DatabaseAdapter::init() {
 }
 
 /* === Public-Facing Database Operation Methods === */
-#include <QSqlError>
 
 bool DatabaseAdapter::insertAnimal(Animal * animal) {
     QSqlQuery addAnimal;
