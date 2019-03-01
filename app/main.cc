@@ -1,10 +1,4 @@
 #include "MainWindow/MainWindow.h"
-#include "Models/animal.h"
-#include "Models/rabbit.h"
-#include "DatabaseAdapter/DatabaseAdapter.h"
-#include "DatabaseAdapter/Seeds.h"
-#include <stdio.h>
-#include <iomanip>
 
 #include <QApplication>
 
