@@ -2,6 +2,10 @@
 #define CLIENT_H
 
 #include <QString>
+#include <iostream>
+#include <sstream>
+
+using namespace std;
 
 class Client {
 public:
@@ -18,6 +22,9 @@ public:
             QString email
             );
     void getName(QString& outStr);
+
+    QString getTableName();
+    void toCommaSeperated(QString& outStr);
 
 private:
     QString name;

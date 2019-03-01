@@ -23,4 +23,20 @@ void Client::update(
 
 void Client::getName(QString& outStr) {
     outStr = name;
-};
+}
+
+QString Client::getTableName() {
+    return QString("clients");
+}
+
+void Client::toCommaSeperated(QString &outStr) {
+    stringstream a;
+
+    a << "'" << name.toStdString() << "', "
+      << "'" << age << "', "
+      << "'" << phoneNumber.toStdString() << "', "
+      << "'" << age << "', "
+      << "'" << email.toStdString() << "'";
+
+    outStr = QString::fromStdString(a.str());
+}
