@@ -206,6 +206,42 @@ int DatabaseAdapter::getTotalAnimals() {
     return rabbitCount + dogCount + catCount;
 }
 
+bool DatabaseAdapter::saveClient(Client * client) {
+    QSqlQuery addClient;
+
+    QString clientCommaSeparated;
+    client->toCommaSeperated(clientCommaSeparated);
+
+    QString addClientQuery =
+            QString("INSERT INTO %1 VALUES(null, %2);")
+            .arg(client->getTableName())
+            .arg(clientCommaSeparated);
+
+    return addClient.exec(addClientQuery);
+}
+
+bool DatabaseAdapter::getClients(Client ** clients){
+    QSqlQuery query;
+
+    int i = 0;
+    query.exec("SELECT * FROM clients");
+
+    // Loading all cats
+    while (query.next()) {
+        Client* c = new Client(
+                    query.value(1).toString(),
+                    query.value(2).toInt(),
+                    query.value(3).toString(),
+                    query.value(4).toString()
+                    );
+
+        clients[i] = c;
+        i++;
+    }
+
+    return true;
+}
+
 bool DatabaseAdapter::seed() {
     for (int i = getTotalAnimals(); i < 5; i++) {
         Animal* a = AnimalData().getAnimals()[i];
