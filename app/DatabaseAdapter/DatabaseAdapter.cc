@@ -242,6 +242,17 @@ bool DatabaseAdapter::getClients(Client ** clients){
     return true;
 }
 
+bool DatabaseAdapter::deleteClient(int clientId) {
+    QSqlQuery deleteClient;
+
+    QString deleteClientQuery =
+            QString("DELETE FROM %1 WHERE id = %2;")
+            .arg("clients")
+            .arg(clientId);
+
+    return deleteClient.exec(deleteClientQuery);
+}
+
 bool DatabaseAdapter::seed() {
     for (int i = getTotalAnimals(); i < 5; i++) {
         Animal* a = AnimalData().getAnimals()[i];
