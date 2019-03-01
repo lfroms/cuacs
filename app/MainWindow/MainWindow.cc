@@ -21,10 +21,26 @@ void MainWindow::renderListItems() {
     db->getAnimals(animals);
 
     for (int i = 0; i < numAnimals; i++) {
-        QString label;
-        animals[i]->getName(label);
+        QString name, breed;
+        animals[i]->getName(name);
+        animals[i]->getBreed(breed);
 
-        ui->animalsListWidget->addItem(label);
+        //Creating a new list widget item whose parent is the listwidget itself
+        QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
+
+        //Creating an object of the designed widget which is to be added to the listwidget
+        AnimalWidgetItem *theWidgetItem = new AnimalWidgetItem;
+        theWidgetItem->setName(name);
+        theWidgetItem->setBreed(breed);
+        //Making sure that the listWidgetItem has the same size as the TheWidgetItem
+        QSize a = theWidgetItem->sizeHint();
+        listWidgetItem->setSizeHint (theWidgetItem->sizeHint ());
+
+        //Finally adding the itemWidget to the list
+        ui->animalsListWidget->setItemWidget (listWidgetItem, theWidgetItem);
+
+        //Adding the item to the listwidget
+        //ui->animalsListWidget->addItem (label);
     }
 }
 

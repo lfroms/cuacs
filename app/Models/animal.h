@@ -59,6 +59,7 @@ public:
             );
 
     void getName(QString& outStr);
+    void getBreed(QString& outStr);
 
     virtual QString getSpecies() = 0;
 

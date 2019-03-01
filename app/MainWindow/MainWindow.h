@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <DatabaseAdapter/DatabaseAdapter.h>
+#include <MainWindow/animalwidgetitem.h>
 
 namespace Ui {
 class MainWindow;

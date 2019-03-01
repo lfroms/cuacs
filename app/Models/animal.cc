@@ -51,7 +51,11 @@ Animal::~Animal(){}
 
 void Animal::getName(QString& outStr) {
     outStr = name;
-};
+}
+
+void Animal::getBreed(QString& outStr) {
+    outStr = breed;
+}
 
 void Animal::toCommaSeperated(QString& outStr){
     stringstream a;

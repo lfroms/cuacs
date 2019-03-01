@@ -33,7 +33,8 @@ SOURCES += \
     Models/dog.cc \
     Models/rabbit.cc \
     Models/Client.cc \
-    DatabaseAdapter/Seeds.cc
+    DatabaseAdapter/Seeds.cc \
+    MainWindow/animalwidgetitem.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -43,10 +44,12 @@ HEADERS += \
     Models/dog.h \
     Models/rabbit.h \
     Models/Client.h \
-    DatabaseAdapter/Seeds.h
+    DatabaseAdapter/Seeds.h \
+    MainWindow/animalwidgetitem.h
 
 FORMS += \
-        MainWindow/MainWindow.ui
+        MainWindow/MainWindow.ui \
+    MainWindow/animalwidgetitem.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
