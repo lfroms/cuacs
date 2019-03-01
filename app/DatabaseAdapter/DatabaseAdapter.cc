@@ -240,7 +240,6 @@ bool DatabaseAdapter::getClients(Client ** clients){
     int i = 0;
     query.exec("SELECT * FROM clients");
 
-    // Loading all cats
     while (query.next()) {
         Client* c = new Client(
                     query.value(1).toString(),
