@@ -266,6 +266,14 @@ bool DatabaseAdapter::deleteClient(int clientId) {
     return deleteClient.exec(deleteClientQuery);
 }
 
+int DatabaseAdapter::getClientCount() {
+    QSqlQuery clientCountQuery("SELECT COUNT(*) FROM clients;");
+    clientCountQuery.first();
+
+    int count = clientCountQuery.value(0).toInt();
+    return count;
+}
+
 bool DatabaseAdapter::seed() {
     for (int i = getTotalAnimals(); i < 5; i++) {
         Animal* a = Seeds().getAnimals()[i];
@@ -276,7 +284,7 @@ bool DatabaseAdapter::seed() {
         }
     }
 
-    for (int i = 0; i < 1; i++) {
+    for (int i = getClientCount(); i < 1; i++) {
         Client* c = Seeds().getClients()[i];
 
         if (!saveClient(c)) {

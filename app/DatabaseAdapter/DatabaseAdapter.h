@@ -28,6 +28,7 @@ class DatabaseAdapter {
         static bool saveClient(Client*);
         static bool deleteClient(int);
         static bool getClients(Client**);
+        static int getClientCount();
 
     private:
         DatabaseAdapter();
