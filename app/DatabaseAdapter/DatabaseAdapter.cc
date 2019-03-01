@@ -269,8 +269,18 @@ bool DatabaseAdapter::deleteClient(int clientId) {
 
 bool DatabaseAdapter::seed() {
     for (int i = getTotalAnimals(); i < 5; i++) {
-        Animal* a = AnimalData().getAnimals()[i];
+        Animal* a = Seeds().getAnimals()[i];
+
         if (!insertAnimal(a)) {
+            qDebug() << "Failed to seed database.";
+            return false;
+        }
+    }
+
+    for (int i = 0; i < 1; i++) {
+        Client* c = Seeds().getClients()[i];
+
+        if (!saveClient(c)) {
             qDebug() << "Failed to seed database.";
             return false;
         }

@@ -11,7 +11,7 @@
 #include <Models/rabbit.h>
 #include <Models/Client.h>
 
-#include <DatabaseAdapter/AnimalData.h>
+#include <DatabaseAdapter/Seeds.h>
 
 #include <vector>
 

@@ -35,7 +35,6 @@ void Client::toCommaSeperated(QString &outStr) {
     a << "'" << name.toStdString() << "', "
       << "'" << age << "', "
       << "'" << phoneNumber.toStdString() << "', "
-      << "'" << age << "', "
       << "'" << email.toStdString() << "'";
 
     outStr = QString::fromStdString(a.str());

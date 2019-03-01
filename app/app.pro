@@ -32,8 +32,8 @@ SOURCES += \
     Models/cat.cc \
     Models/dog.cc \
     Models/rabbit.cc \
-    DatabaseAdapter/AnimalData.cc \
-    Models/Client.cc
+    Models/Client.cc \
+    DatabaseAdapter/Seeds.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -42,8 +42,8 @@ HEADERS += \
     Models/cat.h \
     Models/dog.h \
     Models/rabbit.h \
-    DatabaseAdapter/AnimalData.h \
-    Models/Client.h
+    Models/Client.h \
+    DatabaseAdapter/Seeds.h
 
 FORMS += \
         MainWindow/MainWindow.ui
