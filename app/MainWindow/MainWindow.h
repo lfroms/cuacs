@@ -3,8 +3,10 @@
 
 #include <QMainWindow>
 #include <QDebug>
+#include <QListWidgetItem>
 #include <DatabaseAdapter/DatabaseAdapter.h>
 #include <MainWindow/animalwidgetitem.h>
+#include <MainWindow/animaldetailsmodal.h>
 
 namespace Ui {
 class MainWindow;
@@ -20,6 +22,7 @@ public:
 
 private slots:
     void handleAddAnimalSubmit();
+    void onAnimalClicked(QListWidgetItem*);
 
 private:
     Ui::MainWindow *ui;

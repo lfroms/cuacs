@@ -34,7 +34,8 @@ SOURCES += \
     Models/rabbit.cc \
     Models/Client.cc \
     DatabaseAdapter/Seeds.cc \
-    MainWindow/animalwidgetitem.cc
+    MainWindow/animalwidgetitem.cc \
+    MainWindow/animaldetailsmodal.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -45,11 +46,13 @@ HEADERS += \
     Models/rabbit.h \
     Models/Client.h \
     DatabaseAdapter/Seeds.h \
-    MainWindow/animalwidgetitem.h
+    MainWindow/animalwidgetitem.h \
+    MainWindow/animaldetailsmodal.h
 
 FORMS += \
         MainWindow/MainWindow.ui \
-    MainWindow/animalwidgetitem.ui
+    MainWindow/animalwidgetitem.ui \
+    MainWindow/animaldetailsmodal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

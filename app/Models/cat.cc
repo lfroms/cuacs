@@ -41,6 +41,10 @@ Cat::Cat(QString gender,
                  escapeTendency
                  ) {}
 
+Cat::Cat(const Cat & cat) : Animal(cat) {
+
+}
+
 Cat::~Cat(){}
 
 void Cat::toCommaSeperated(QString& outStr){

@@ -4,6 +4,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
+    connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+                this, SLOT(onAnimalClicked(QListWidgetItem*)));
     db = DatabaseAdapter::getInstance();
 
     renderListItems();
@@ -11,6 +13,18 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::onAnimalClicked(QListWidgetItem* animal) {
+    QVariant var = animal->data(Qt::UserRole);
+    Animal * a = var.value<Animal *>();
+    qDebug() << ui->animalsListWidget->currentRow();
+
+    AnimalDetailsModal modal;
+    modal.setAnimal(a);
+    modal.setModal(true);
+    modal.setupViews();
+    modal.exec();
 }
 
 void MainWindow::renderListItems() {
@@ -36,6 +50,8 @@ void MainWindow::renderListItems() {
         QSize a = theWidgetItem->sizeHint();
         listWidgetItem->setSizeHint (theWidgetItem->sizeHint ());
 
+        QVariant var = QVariant::fromValue(animals[i]);
+        listWidgetItem->setData(Qt::UserRole, var);
         //Finally adding the itemWidget to the list
         ui->animalsListWidget->setItemWidget (listWidgetItem, theWidgetItem);
 

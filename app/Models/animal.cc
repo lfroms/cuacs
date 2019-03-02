@@ -45,6 +45,29 @@ Animal::Animal(
            );
 }
 
+Animal::Animal(const Animal &animal) {
+    update(animal.gender,
+           animal.mainColor,
+           animal.breed,
+           animal.age,
+           animal.neuteredOrSpayed,
+           animal.name,
+           animal.hypothetical,
+           animal.biteTendency,
+           animal.scratchTendency,
+           animal.friendlinessAdults,
+           animal.friendlinessChildren,
+           animal.noiseLevel,
+           animal.aloneComfort,
+           animal.likesBedSleep,
+           animal.snores,
+           animal.energyLevel,
+           animal.comfortableVet,
+           animal.comfortableHandled,
+           animal.escapeTendency
+           );
+}
+
 Animal::Animal() {}
 
 Animal::~Animal(){}
@@ -56,6 +79,28 @@ void Animal::getName(QString& outStr) {
 void Animal::getBreed(QString& outStr) {
     outStr = breed;
 }
+
+void Animal::getGender(QString& outStr) {
+    outStr = gender;
+}
+void Animal::getMainColor(QString& outStr) {
+    outStr = mainColor;
+}
+
+int Animal::getAge() { return age; }
+bool Animal::getNeuteredOrSpayed() { return neuteredOrSpayed; }
+int Animal::getBiteTendency() { return biteTendency; }
+int Animal::getScratchTendency() { return scratchTendency; }
+int Animal::getFriendlinessAdults() { return friendlinessAdults; }
+int Animal::getFriendlinessChildren() { return friendlinessChildren; }
+int Animal::getNoiseLevel() { return noiseLevel; }
+int Animal::getAloneComfort() { return aloneComfort; }
+bool Animal::getLikesBedSleep() { return likesBedSleep; }
+bool Animal::getSnores() { return snores; }
+int Animal::getEnergyLevel() { return energyLevel; }
+int Animal::getComfortableVet() { return comfortableVet; }
+int Animal::getComfortableHandled() { return comfortableHandled; }
+int Animal::getEscapeTendency() { return escapeTendency; }
 
 void Animal::toCommaSeperated(QString& outStr){
     stringstream a;

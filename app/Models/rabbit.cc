@@ -41,6 +41,10 @@ Rabbit::Rabbit(QString gender,
                        escapeTendency
                        ) {}
 
+Rabbit::Rabbit(const Rabbit & rabbit) : Animal(rabbit) {
+
+}
+
 Rabbit::~Rabbit(){}
 
 void Rabbit::toCommaSeperated(QString& outStr){

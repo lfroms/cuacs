@@ -41,6 +41,10 @@ Dog::Dog(
                 escapeTendency
                 ) {}
 
+Dog::Dog(const Dog & dog) : Animal(dog) {
+
+}
+
 Dog::~Dog(){}
 
 void Dog::toCommaSeperated(QString& outStr){

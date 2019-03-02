@@ -4,6 +4,7 @@
 #include <QTextStream>
 #include <iostream>
 #include <sstream>
+#include <QObject>
 using namespace std;
 
 class Animal {
@@ -31,6 +32,7 @@ public:
             );
 
     Animal();
+    Animal(const Animal&);
 
     ~Animal();
 
@@ -58,8 +60,24 @@ public:
             int escapeTendency
             );
 
+    void getGender(QString& outStr);
+    void getMainColor(QString& outStr);
     void getName(QString& outStr);
     void getBreed(QString& outStr);
+    int  getAge();
+    bool getNeuteredOrSpayed();
+    int getBiteTendency();
+    int getScratchTendency();
+    int getFriendlinessAdults();
+    int getFriendlinessChildren();
+    int getNoiseLevel();
+    int getAloneComfort();
+    bool getLikesBedSleep();
+    bool getSnores();
+    int getEnergyLevel();
+    int getComfortableVet();
+    int getComfortableHandled();
+    int getEscapeTendency();
 
     virtual QString getSpecies() = 0;
 
@@ -89,4 +107,5 @@ private:
     int escapeTendency;
 };
 
+Q_DECLARE_METATYPE(Animal*)
 #endif // ANIMAL_H
