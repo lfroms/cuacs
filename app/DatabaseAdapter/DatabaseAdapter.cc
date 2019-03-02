@@ -25,6 +25,13 @@ static const QString commonAttributes =
         "comfortable_handled INTEGER NOT NULL,"
         "escape_tendency INTEGER NOT NULL";
 
+static const QString clientSchema =
+        "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+        "name TEXT NOT NULL,"
+        "age INTEGER NOT NULL,"
+        "phone_number TEXT NOT NULL,"
+        "email TEXT NOT NULL";
+
 QSqlDatabase DatabaseAdapter::db;
 
 DatabaseAdapter::DatabaseAdapter() {
@@ -62,15 +69,23 @@ bool DatabaseAdapter::init() {
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("cats")
             .arg(commonAttributes);
+
     QSqlQuery createRabbits;
     QString rabbitQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg("rabbits")
             .arg(commonAttributes);
 
+    QSqlQuery createClients;
+    QString clientQuery =
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
+            .arg("clients")
+            .arg(clientSchema);
+
     if (createDogs.exec(dogQuery) &&
             createCats.exec(catQuery) &&
-            createRabbits.exec(rabbitQuery)) {
+            createRabbits.exec(rabbitQuery) &&
+            createClients.exec(clientQuery)) {
         return seed();
     } else {
         return false;
@@ -78,7 +93,6 @@ bool DatabaseAdapter::init() {
 }
 
 /* === Public-Facing Database Operation Methods === */
-#include <QSqlError>
 
 bool DatabaseAdapter::insertAnimal(Animal * animal) {
     QSqlQuery addAnimal;
@@ -206,10 +220,74 @@ int DatabaseAdapter::getTotalAnimals() {
     return rabbitCount + dogCount + catCount;
 }
 
+bool DatabaseAdapter::saveClient(Client * client) {
+    QSqlQuery addClient;
+
+    QString clientCommaSeparated;
+    client->toCommaSeperated(clientCommaSeparated);
+
+    QString addClientQuery =
+            QString("INSERT INTO %1 VALUES(null, %2);")
+            .arg(client->getTableName())
+            .arg(clientCommaSeparated);
+
+    return addClient.exec(addClientQuery);
+}
+
+bool DatabaseAdapter::getClients(Client ** clients){
+    QSqlQuery query;
+
+    int i = 0;
+    query.exec("SELECT * FROM clients");
+
+    while (query.next()) {
+        Client* c = new Client(
+                    query.value(1).toString(),
+                    query.value(2).toInt(),
+                    query.value(3).toString(),
+                    query.value(4).toString()
+                    );
+
+        clients[i] = c;
+        i++;
+    }
+
+    return true;
+}
+
+bool DatabaseAdapter::deleteClient(int clientId) {
+    QSqlQuery deleteClient;
+
+    QString deleteClientQuery =
+            QString("DELETE FROM %1 WHERE id = %2;")
+            .arg("clients")
+            .arg(clientId);
+
+    return deleteClient.exec(deleteClientQuery);
+}
+
+int DatabaseAdapter::getClientCount() {
+    QSqlQuery clientCountQuery("SELECT COUNT(*) FROM clients;");
+    clientCountQuery.first();
+
+    int count = clientCountQuery.value(0).toInt();
+    return count;
+}
+
 bool DatabaseAdapter::seed() {
     for (int i = getTotalAnimals(); i < 5; i++) {
-        Animal* a = AnimalData().getAnimals()[i];
+        Animal* a = Seeds().getAnimals()[i];
+
         if (!insertAnimal(a)) {
+            qDebug() << "Failed to seed database.";
+            return false;
+        }
+    }
+
+    for (int i = getClientCount(); i < 1; i++) {
+        Client* c = Seeds().getClients()[i];
+
+        if (!saveClient(c)) {
             qDebug() << "Failed to seed database.";
             return false;
         }

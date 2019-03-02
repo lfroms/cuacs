@@ -9,19 +9,26 @@
 #include <Models/dog.h>
 #include <Models/cat.h>
 #include <Models/rabbit.h>
+#include <Models/Client.h>
 
-#include <DatabaseAdapter/AnimalData.h>
+#include <DatabaseAdapter/Seeds.h>
 
 #include <vector>
 
 class DatabaseAdapter {
     public:
         static DatabaseAdapter* getInstance();
+
         static bool insertDog(Dog*);
         static bool insertCat(Cat*);
         static bool insertAnimal(Animal*);
         static bool getAnimals(Animal** animal);
         static int getTotalAnimals();
+
+        static bool saveClient(Client*);
+        static bool deleteClient(int);
+        static bool getClients(Client**);
+        static int getClientCount();
 
     private:
         DatabaseAdapter();
