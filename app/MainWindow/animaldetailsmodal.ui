@@ -405,33 +405,18 @@
     </item>
    </layout>
   </widget>
-  <widget class="QComboBox" name="animalTypeBox">
+  <widget class="QLabel" name="animalTypeLabel">
    <property name="geometry">
     <rect>
-     <x>10</x>
+     <x>20</x>
      <y>340</y>
-     <width>161</width>
-     <height>25</height>
+     <width>67</width>
+     <height>17</height>
     </rect>
    </property>
-   <property name="maxVisibleItems">
-    <number>3</number>
+   <property name="text">
+    <string>Animal</string>
    </property>
-   <item>
-    <property name="text">
-     <string>Dog</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Cat</string>
-    </property>
-   </item>
-   <item>
-    <property name="text">
-     <string>Rabbit</string>
-    </property>
-   </item>
   </widget>
  </widget>
  <resources/>

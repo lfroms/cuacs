@@ -28,4 +28,18 @@ void AnimalDetailsModal::setupViews() {
     ui->genderEdit->setText(gender);
     ui->colorEdit->setText(mainColor);
     ui->ageEdit->setText(QString::number(animal->getAge()));
+    ui->biteSlider->setValue(animal->getBiteTendency());
+    ui->scratchSlider->setValue(animal->getScratchTendency());
+    ui->adultFriendlinessSlider->setValue(animal->getFriendlinessAdults());
+    ui->childFriendlinessSlider->setValue(animal->getFriendlinessChildren());
+    ui->noiseSlider->setValue(animal->getNoiseLevel());
+    ui->independenceSlider->setValue(animal->getAloneComfort());
+    ui->bedSleepSlider->setValue(animal->getLikesBedSleep());
+    ui->snoreSlider->setValue(animal->getSnores());
+    ui->energySlider->setValue(animal->getEnergyLevel());
+    ui->vetComfortSlider->setValue(animal->getComfortableVet());
+    ui->handledComfortSlider->setValue(animal->getComfortableHandled());
+    ui->escapeSlider->setValue(animal->getEscapeTendency());
+    ui->neuteredCheckBox->setChecked(animal->getNeuteredOrSpayed());
+    ui->animalTypeLabel->setText(animal->getTableName());
 }
