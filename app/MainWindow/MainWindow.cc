@@ -168,7 +168,7 @@ void MainWindow::handleAddAnimalSubmit() {
         return;
     }
 
-    renderListItems();
+    renderAnimalList();
 }
 
 void MainWindow::handleAddClientSubmit() {
@@ -189,5 +189,5 @@ void MainWindow::handleAddClientSubmit() {
     ui->clientPhoneNumberEdit->clear();
     ui->clientEmailEdit->clear();
 
-    renderListItems();
+    renderClientList();
 }
