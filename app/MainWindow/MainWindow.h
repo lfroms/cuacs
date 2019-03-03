@@ -28,6 +28,8 @@ private:
     Ui::MainWindow *ui;
     DatabaseAdapter* db;
     void renderListItems();
+    void renderAnimalList();
+    void renderClientList();
 };
 
 #endif // MAINWINDOW_H
