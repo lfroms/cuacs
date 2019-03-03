@@ -31,9 +31,6 @@ public:
     void toCommaSeperated(QString& outStr);
 
     void update(
-            bool nIndoorOutdoor,
-            int nLitterTrained,
-            int nFriendlinessCats,
             QString nGender,
             QString nMainColor,
             QString nBreed,
@@ -53,7 +50,8 @@ public:
             bool nAffection,
             int nEnergyLevel,
             int nAnxietyLevel,
-            int nCuriosityLevel
+            int nCuriosityLevel,
+            int nNightActivityLevel
             );
 
     QString getSpecies();

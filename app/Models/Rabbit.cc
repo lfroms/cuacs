@@ -83,7 +83,7 @@ void Rabbit::update(
         bool nAffection,
         int nEnergyLevel,
         int nAnxietyLevel,
-        int nCuriosityLevel
+        int nCuriosityLevel,
         int nNightActivityLevel
         ) {
 

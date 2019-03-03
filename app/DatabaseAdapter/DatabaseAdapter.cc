@@ -10,12 +10,12 @@ static const QString commonAttributes =
         "breed TEXT NOT NULL,"
         "age INTEGER NOT NULL,"
         "neutered_or_spayed INTEGER NOT NULL,"
-        "requires_medical INTEGER NOT NULL"
+        "requires_medical INTEGER NOT NULL,"
         "name TEXT NOT NULL,"
         "hypothetical INTEGER NOT NULL,"
         "bite_tendency INTEGER NOT NULL,"
         "scratch_tendency INTEGER NOT NULL,"
-        "dominance_tendency INTEGER NOT NULL"
+        "dominance_tendency INTEGER NOT NULL,"
         "friendliness_adults INTEGER NOT NULL,"
         "friendliness_children INTEGER NOT NULL,"
         "friendliness_animals INTEGER NOT NULL,"
@@ -24,7 +24,7 @@ static const QString commonAttributes =
         "affection INTEGER NOT NULL,"
         "energy_level INTEGER NOT NULL,"
         "anxiety_level INTEGER NOT NULL,"
-        "curiosity_level INTEGER NOT NULL,";
+        "curiosity_level INTEGER NOT NULL";
 
 static const QString clientSchema =
         "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
@@ -122,20 +122,21 @@ bool DatabaseAdapter::getAnimals(Animal** animals){
                     query.value(3).toString(),
                     query.value(4).toInt(),
                     query.value(5).toBool(),
-                    query.value(6).toString(),
-                    query.value(7).toBool(),
-                    query.value(8).toInt(),
+                    query.value(6).toBool(),
+                    query.value(7).toString(),
+                    query.value(8).toBool(),
                     query.value(9).toInt(),
                     query.value(10).toInt(),
                     query.value(11).toInt(),
                     query.value(12).toInt(),
                     query.value(13).toInt(),
-                    query.value(14).toBool(),
-                    query.value(15).toBool(),
+                    query.value(14).toInt(),
+                    query.value(15).toInt(),
                     query.value(16).toInt(),
                     query.value(17).toInt(),
                     query.value(18).toInt(),
-                    query.value(19).toInt()
+                    query.value(19).toInt(),
+                    query.value(20).toInt()
                     );
 
         animals[i] = r;
@@ -152,20 +153,21 @@ bool DatabaseAdapter::getAnimals(Animal** animals){
                     query.value(3).toString(),
                     query.value(4).toInt(),
                     query.value(5).toBool(),
-                    query.value(6).toString(),
-                    query.value(7).toBool(),
-                    query.value(8).toInt(),
+                    query.value(6).toBool(),
+                    query.value(7).toString(),
+                    query.value(8).toBool(),
                     query.value(9).toInt(),
                     query.value(10).toInt(),
                     query.value(11).toInt(),
                     query.value(12).toInt(),
                     query.value(13).toInt(),
-                    query.value(14).toBool(),
-                    query.value(15).toBool(),
+                    query.value(14).toInt(),
+                    query.value(15).toInt(),
                     query.value(16).toInt(),
                     query.value(17).toInt(),
                     query.value(18).toInt(),
-                    query.value(19).toInt()
+                    query.value(19).toInt(),
+                    query.value(20).toInt()
                     );
 
         animals[i] = d;
@@ -182,20 +184,21 @@ bool DatabaseAdapter::getAnimals(Animal** animals){
                     query.value(3).toString(),
                     query.value(4).toInt(),
                     query.value(5).toBool(),
-                    query.value(6).toString(),
-                    query.value(7).toBool(),
-                    query.value(8).toInt(),
+                    query.value(6).toBool(),
+                    query.value(7).toString(),
+                    query.value(8).toBool(),
                     query.value(9).toInt(),
                     query.value(10).toInt(),
                     query.value(11).toInt(),
                     query.value(12).toInt(),
                     query.value(13).toInt(),
-                    query.value(14).toBool(),
-                    query.value(15).toBool(),
+                    query.value(14).toInt(),
+                    query.value(15).toInt(),
                     query.value(16).toInt(),
                     query.value(17).toInt(),
                     query.value(18).toInt(),
-                    query.value(19).toInt()
+                    query.value(19).toInt(),
+                    query.value(20).toInt()
                     );
 
         animals[i] = c;

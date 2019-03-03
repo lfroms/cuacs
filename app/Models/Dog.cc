@@ -82,7 +82,7 @@ void Dog::update(QString nGender,
                 bool nAffection,
                 int nEnergyLevel,
                 int nAnxietyLevel,
-                int nCuriosityLevel
+                int nCuriosityLevel,
                 int nFriendlinessDogs,
                 bool nHouseTrained,
                 int nBarkTendency

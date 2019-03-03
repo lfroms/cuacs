@@ -98,20 +98,21 @@ void MainWindow::handleAddAnimalSubmit() {
                     ui->breedEdit->text(),
                     ui->ageEdit->text().toInt(),
                     ui->neuteredCheckBox->isChecked(),
+                    ui->medicalCheckbox->isChecked(),
                     ui->nameEdit->text(),
                     false,
                     ui->biteSlider->value(),
                     ui->scratchSlider->value(),
+                    ui->dominanceSlider->value(),
                     ui->adultFriendlinessSlider->value(),
                     ui->childFriendlinessSlider->value(),
-                    ui->noiseSlider->value(),
+                    ui->animalFriendlinessSlider->value(),
+                    ui->noisinessSlider->value(),
                     ui->independenceSlider->value(),
-                    ui->bedSleepSlider->value(),
-                    ui->snoreSlider->value(),
+                    ui->affectionSlider->value(),
                     ui->energySlider->value(),
-                    ui->vetComfortSlider->value(),
-                    ui->handledComfortSlider->value(),
-                    ui->escapeSlider->value()
+                    ui->anxietySlider->value(),
+                    ui->curiositySlider->value()
                     );
 
     } else if (animalType == "Cat") {
@@ -121,20 +122,21 @@ void MainWindow::handleAddAnimalSubmit() {
                     ui->breedEdit->text(),
                     ui->ageEdit->text().toInt(),
                     ui->neuteredCheckBox->isChecked(),
+                    ui->medicalCheckbox->isChecked(),
                     ui->nameEdit->text(),
                     false,
                     ui->biteSlider->value(),
                     ui->scratchSlider->value(),
+                    ui->dominanceSlider->value(),
                     ui->adultFriendlinessSlider->value(),
                     ui->childFriendlinessSlider->value(),
-                    ui->noiseSlider->value(),
+                    ui->animalFriendlinessSlider->value(),
+                    ui->noisinessSlider->value(),
                     ui->independenceSlider->value(),
-                    ui->bedSleepSlider->value(),
-                    ui->snoreSlider->value(),
+                    ui->affectionSlider->value(),
                     ui->energySlider->value(),
-                    ui->vetComfortSlider->value(),
-                    ui->handledComfortSlider->value(),
-                    ui->escapeSlider->value()
+                    ui->anxietySlider->value(),
+                    ui->curiositySlider->value()
                     );
 
     } else if (animalType == "Rabbit") {
@@ -144,20 +146,21 @@ void MainWindow::handleAddAnimalSubmit() {
                     ui->breedEdit->text(),
                     ui->ageEdit->text().toInt(),
                     ui->neuteredCheckBox->isChecked(),
+                    ui->medicalCheckbox->isChecked(),
                     ui->nameEdit->text(),
                     false,
                     ui->biteSlider->value(),
                     ui->scratchSlider->value(),
+                    ui->dominanceSlider->value(),
                     ui->adultFriendlinessSlider->value(),
                     ui->childFriendlinessSlider->value(),
-                    ui->noiseSlider->value(),
+                    ui->animalFriendlinessSlider->value(),
+                    ui->noisinessSlider->value(),
                     ui->independenceSlider->value(),
-                    ui->bedSleepSlider->value(),
-                    ui->snoreSlider->value(),
+                    ui->affectionSlider->value(),
                     ui->energySlider->value(),
-                    ui->vetComfortSlider->value(),
-                    ui->handledComfortSlider->value(),
-                    ui->escapeSlider->value()
+                    ui->anxietySlider->value(),
+                    ui->curiositySlider->value()
                     );
     }
 
