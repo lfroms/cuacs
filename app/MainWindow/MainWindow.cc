@@ -5,7 +5,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
-                this, SLOT(onAnimalClicked(QListWidgetItem*)));
+            this, SLOT(onAnimalClicked(QListWidgetItem*)));
     db = DatabaseAdapter::getInstance();
 
     renderListItems();
@@ -24,7 +24,7 @@ void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     modal.exec();
 }
 
-void MainWindow::renderListItems() {
+void MainWindow::renderAnimalList() {
     ui->animalsListWidget->clear();
 
     int numAnimals = db->getTotalAnimals();
@@ -38,22 +38,55 @@ void MainWindow::renderListItems() {
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
-        AnimalWidgetItem *animalWidget = new AnimalWidgetItem;
-        animalWidget->setName(name);
-        animalWidget->setBreed(breed);
+        DetailListWidgetItem *animalWidget = new DetailListWidgetItem;
+        animalWidget->setTitle(name);
+        animalWidget->setSubtitle(breed);
 
         //Sizing list widget appropriately
-        listWidgetItem->setSizeHint (animalWidget->sizeHint ());
+        listWidgetItem->setSizeHint(animalWidget->sizeHint());
 
         //Turn Animal to QVariant to attach it to listWidgetItem
         QVariant var = QVariant::fromValue(animals[i]);
         listWidgetItem->setData(Qt::UserRole, var);
 
         //Finally attach animalWidget to listItem
-        ui->animalsListWidget->setItemWidget (listWidgetItem, animalWidget);
-
+        ui->animalsListWidget->setItemWidget(listWidgetItem, animalWidget);
     }
 }
+
+void MainWindow::renderClientList() {
+    ui->clientsListWidget->clear();
+
+    int numClients = db->getClientCount();
+    Client * clients[numClients];
+    db->getClients(clients);
+
+    for (int i = 0; i < numClients; i++) {
+        QString name, email;
+        clients[i]->getName(name);
+        clients[i]->getEmail(email);
+
+        QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
+
+        DetailListWidgetItem *clientWidget = new DetailListWidgetItem;
+        clientWidget->setTitle(name);
+        clientWidget->setSubtitle(email);
+
+        listWidgetItem->setSizeHint(clientWidget->sizeHint());
+
+        QVariant var = QVariant::fromValue(clients[i]);
+        listWidgetItem->setData(Qt::UserRole, var);
+
+        ui->clientsListWidget->setItemWidget(listWidgetItem, clientWidget);
+    }
+}
+
+
+void MainWindow::renderListItems() {
+    renderAnimalList();
+    renderClientList();
+}
+
 
 void MainWindow::handleAddAnimalSubmit() {
     QString animalType = ui->animalTypeBox->currentText();

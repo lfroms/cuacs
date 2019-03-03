@@ -2,6 +2,7 @@
 #define CLIENT_H
 
 #include <QString>
+#include <QObject>
 #include <iostream>
 #include <sstream>
 
@@ -21,7 +22,9 @@ public:
             QString phoneNumber,
             QString email
             );
+
     void getName(QString& outStr);
+    void getEmail(QString& outStr);
 
     QString getTableName();
     void toCommaSeperated(QString& outStr);
@@ -33,4 +36,5 @@ private:
     QString email;
 };
 
+Q_DECLARE_METATYPE(Client*)
 #endif // CLIENT_H

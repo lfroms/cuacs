@@ -25,6 +25,10 @@ void Client::getName(QString& outStr) {
     outStr = name;
 }
 
+void Client::getEmail(QString& outStr) {
+    outStr = email;
+}
+
 QString Client::getTableName() {
     return QString("clients");
 }
