@@ -45,13 +45,28 @@
      </sizepolicy>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <widget class="QWidget" name="viewAnimalsTab">
      <attribute name="title">
       <string>View Animals</string>
      </attribute>
      <widget class="QListWidget" name="animalsListWidget">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>711</width>
+        <height>381</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
+    <widget class="QWidget" name="viewClientsTab">
+     <attribute name="title">
+      <string>View Clients</string>
+     </attribute>
+     <widget class="QListWidget" name="clientsListWidget">
       <property name="geometry">
        <rect>
         <x>10</x>
