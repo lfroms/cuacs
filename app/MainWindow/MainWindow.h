@@ -22,6 +22,7 @@ public:
 
 private slots:
     void handleAddAnimalSubmit();
+    void handleAddClientSubmit();
     void onAnimalClicked(QListWidgetItem*);
 
 private:
