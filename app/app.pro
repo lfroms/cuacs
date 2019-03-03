@@ -28,25 +28,31 @@ SOURCES += \
         MainWindow/MainWindow.cc \
     DatabaseAdapter/DatabaseAdapter.cc \
     main.cc \
-    Models/animal.cc \
-    Models/cat.cc \
-    Models/dog.cc \
-    Models/rabbit.cc \
     Models/Client.cc \
-    DatabaseAdapter/Seeds.cc
+    DatabaseAdapter/Seeds.cc \
+    MainWindow/AnimalDetailsModal.cc \
+    MainWindow/AnimalWidgetItem.cc \
+    Models/Animal.cc \
+    Models/Cat.cc \
+    Models/Dog.cc \
+    Models/Rabbit.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
     DatabaseAdapter/DatabaseAdapter.h \
-    Models/animal.h \
-    Models/cat.h \
-    Models/dog.h \
-    Models/rabbit.h \
     Models/Client.h \
-    DatabaseAdapter/Seeds.h
+    DatabaseAdapter/Seeds.h \
+    MainWindow/AnimalDetailsModal.h \
+    MainWindow/AnimalWidgetItem.h \
+    Models/Animal.h \
+    Models/Cat.h \
+    Models/Dog.h \
+    Models/Rabbit.h
 
 FORMS += \
-        MainWindow/MainWindow.ui
+        MainWindow/MainWindow.ui \
+    MainWindow/AnimalDetailsModal.ui \
+    MainWindow/AnimalWidgetItem.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

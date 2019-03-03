@@ -6,9 +6,9 @@
 #include <QSqlQuery>
 #include <QDebug>
 
-#include <Models/dog.h>
-#include <Models/cat.h>
-#include <Models/rabbit.h>
+#include <Models/Dog.h>
+#include <Models/Cat.h>
+#include <Models/Rabbit.h>
 #include <Models/Client.h>
 
 #include <DatabaseAdapter/Seeds.h>

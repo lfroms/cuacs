@@ -1,4 +1,4 @@
-#include "cat.h"
+#include "Cat.h"
 
 Cat::Cat(QString gender,
          QString mainColor,
@@ -40,6 +40,10 @@ Cat::Cat(QString gender,
                  comfortableHandled,
                  escapeTendency
                  ) {}
+
+Cat::Cat(const Cat & cat) : Animal(cat) {
+
+}
 
 Cat::~Cat(){}
 

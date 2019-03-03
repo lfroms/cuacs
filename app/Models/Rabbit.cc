@@ -1,4 +1,4 @@
-#include "rabbit.h"
+#include "Rabbit.h"
 
 Rabbit::Rabbit(QString gender,
                QString mainColor,
@@ -40,6 +40,10 @@ Rabbit::Rabbit(QString gender,
                        comfortableHandled,
                        escapeTendency
                        ) {}
+
+Rabbit::Rabbit(const Rabbit & rabbit) : Animal(rabbit) {
+
+}
 
 Rabbit::~Rabbit(){}
 

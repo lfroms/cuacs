@@ -1,5 +1,5 @@
 #include "DatabaseAdapter.h"
-#include "Models/animal.h"
+#include "Models/Animal.h"
 
 static const QString DATABASE_PATH = "cuacs.db";
 

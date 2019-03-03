@@ -1,10 +1,10 @@
 #ifndef SEEDS_H
 #define SEEDS_H
 
-#include <Models/cat.h>
-#include <Models/dog.h>
-#include <Models/rabbit.h>
-#include <Models/animal.h>
+#include <Models/Cat.h>
+#include <Models/Dog.h>
+#include <Models/Rabbit.h>
+#include <Models/Animal.h>
 #include <Models/Client.h>
 
 using namespace std;

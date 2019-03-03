@@ -4,6 +4,8 @@
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
     connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
+    connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+                this, SLOT(onAnimalClicked(QListWidgetItem*)));
     db = DatabaseAdapter::getInstance();
 
     renderListItems();
@@ -11,6 +13,15 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
+    QVariant var = animalWidgetItem->data(Qt::UserRole);
+    Animal * animal = var.value<Animal *>();
+
+    AnimalDetailsModal modal(animal);
+    modal.setModal(true);
+    modal.exec();
 }
 
 void MainWindow::renderListItems() {
@@ -21,10 +32,26 @@ void MainWindow::renderListItems() {
     db->getAnimals(animals);
 
     for (int i = 0; i < numAnimals; i++) {
-        QString label;
-        animals[i]->getName(label);
+        QString name, breed;
+        animals[i]->getName(name);
+        animals[i]->getBreed(breed);
 
-        ui->animalsListWidget->addItem(label);
+        QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
+
+        AnimalWidgetItem *animalWidget = new AnimalWidgetItem;
+        animalWidget->setName(name);
+        animalWidget->setBreed(breed);
+
+        //Sizing list widget appropriately
+        listWidgetItem->setSizeHint (animalWidget->sizeHint ());
+
+        //Turn Animal to QVariant to attach it to listWidgetItem
+        QVariant var = QVariant::fromValue(animals[i]);
+        listWidgetItem->setData(Qt::UserRole, var);
+
+        //Finally attach animalWidget to listItem
+        ui->animalsListWidget->setItemWidget (listWidgetItem, animalWidget);
+
     }
 }
 

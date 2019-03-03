@@ -1,4 +1,4 @@
-#include "dog.h"
+#include "Dog.h"
 Dog::Dog(
         QString gender,
         QString mainColor,
@@ -40,6 +40,10 @@ Dog::Dog(
                 comfortableHandled,
                 escapeTendency
                 ) {}
+
+Dog::Dog(const Dog & dog) : Animal(dog) {
+
+}
 
 Dog::~Dog(){}
 
