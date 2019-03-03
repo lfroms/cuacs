@@ -1,20 +1,18 @@
-#include "animaldetailsmodal.h"
+#include "AnimalDetailsModal.h"
 #include "ui_animaldetailsmodal.h"
 
-AnimalDetailsModal::AnimalDetailsModal(QWidget *parent) :
+AnimalDetailsModal::AnimalDetailsModal(Animal* a, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AnimalDetailsModal)
 {
     ui->setupUi(this);
+    animal = a;
+    setupViews();
 }
 
 AnimalDetailsModal::~AnimalDetailsModal()
 {
     delete ui;
-}
-
-void AnimalDetailsModal::setAnimal(Animal* a) {
-    animal = a;
 }
 
 void AnimalDetailsModal::setupViews() {
@@ -23,6 +21,11 @@ void AnimalDetailsModal::setupViews() {
     animal->getGender(gender);
     animal->getMainColor(mainColor);
     animal->getBreed(breed);
+
+    //Setup Window properties
+    this->setWindowTitle(name + QString("'s")+ QString(" Details"));
+
+    //Setup UI elements
     ui->nameEdit->setText(name);
     ui->breedEdit->setText(breed);
     ui->genderEdit->setText(gender);
@@ -41,5 +44,6 @@ void AnimalDetailsModal::setupViews() {
     ui->handledComfortSlider->setValue(animal->getComfortableHandled());
     ui->escapeSlider->setValue(animal->getEscapeTendency());
     ui->neuteredCheckBox->setChecked(animal->getNeuteredOrSpayed());
+    ui->neuteredCheckBox->setEnabled(false);
     ui->animalTypeLabel->setText(animal->getTableName());
 }

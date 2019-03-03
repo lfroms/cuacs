@@ -2,7 +2,7 @@
 #define ANIMALDETAILSMODAL_H
 
 #include <QDialog>
-#include <Models/animal.h>
+#include <Models/Animal.h>
 
 namespace Ui {
 class AnimalDetailsModal;
@@ -13,14 +13,14 @@ class AnimalDetailsModal : public QDialog
     Q_OBJECT
 
 public:
-    explicit AnimalDetailsModal(QWidget *parent = 0);
+    explicit AnimalDetailsModal(Animal* a, QWidget *parent = 0);
     ~AnimalDetailsModal();
-    void setAnimal(Animal* a);
-    void setupViews();
 
 private:
     Ui::AnimalDetailsModal *ui;
     Animal* animal;
+
+    void setupViews();
 };
 
 #endif // ANIMALDETAILSMODAL_H

@@ -1,4 +1,4 @@
-#include "cat.h"
+#include "Cat.h"
 
 Cat::Cat(QString gender,
          QString mainColor,

@@ -15,15 +15,12 @@ MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::onAnimalClicked(QListWidgetItem* animal) {
-    QVariant var = animal->data(Qt::UserRole);
-    Animal * a = var.value<Animal *>();
-    qDebug() << ui->animalsListWidget->currentRow();
+void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
+    QVariant var = animalWidgetItem->data(Qt::UserRole);
+    Animal * animal = var.value<Animal *>();
 
-    AnimalDetailsModal modal;
-    modal.setAnimal(a);
+    AnimalDetailsModal modal(animal);
     modal.setModal(true);
-    modal.setupViews();
     modal.exec();
 }
 
@@ -39,24 +36,22 @@ void MainWindow::renderListItems() {
         animals[i]->getName(name);
         animals[i]->getBreed(breed);
 
-        //Creating a new list widget item whose parent is the listwidget itself
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
-        //Creating an object of the designed widget which is to be added to the listwidget
-        AnimalWidgetItem *theWidgetItem = new AnimalWidgetItem;
-        theWidgetItem->setName(name);
-        theWidgetItem->setBreed(breed);
-        //Making sure that the listWidgetItem has the same size as the TheWidgetItem
-        QSize a = theWidgetItem->sizeHint();
-        listWidgetItem->setSizeHint (theWidgetItem->sizeHint ());
+        AnimalWidgetItem *animalWidget = new AnimalWidgetItem;
+        animalWidget->setName(name);
+        animalWidget->setBreed(breed);
 
+        //Sizing list widget appropriately
+        listWidgetItem->setSizeHint (animalWidget->sizeHint ());
+
+        //Turn Animal to QVariant to attach it to listWidgetItem
         QVariant var = QVariant::fromValue(animals[i]);
         listWidgetItem->setData(Qt::UserRole, var);
-        //Finally adding the itemWidget to the list
-        ui->animalsListWidget->setItemWidget (listWidgetItem, theWidgetItem);
 
-        //Adding the item to the listwidget
-        //ui->animalsListWidget->addItem (label);
+        //Finally attach animalWidget to listItem
+        ui->animalsListWidget->setItemWidget (listWidgetItem, animalWidget);
+
     }
 }
 

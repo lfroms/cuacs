@@ -1,6 +1,6 @@
 #ifndef RABBIT_H
 #define RABBIT_H
-#include "Models/animal.h"
+#include "Models/Animal.h"
 
 class Rabbit : public Animal {
 public:

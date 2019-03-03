@@ -5,8 +5,8 @@
 #include <QDebug>
 #include <QListWidgetItem>
 #include <DatabaseAdapter/DatabaseAdapter.h>
-#include <MainWindow/animalwidgetitem.h>
-#include <MainWindow/animaldetailsmodal.h>
+#include <MainWindow/AnimalWidgetItem.h>
+#include <MainWindow/AnimalDetailsModal.h>
 
 namespace Ui {
 class MainWindow;

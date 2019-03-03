@@ -1,4 +1,4 @@
-#include "rabbit.h"
+#include "Rabbit.h"
 
 Rabbit::Rabbit(QString gender,
                QString mainColor,

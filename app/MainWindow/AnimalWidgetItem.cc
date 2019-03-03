@@ -1,4 +1,4 @@
-#include "animalwidgetitem.h"
+#include "AnimalWidgetItem.h"
 #include "ui_animalwidgetitem.h"
 
 AnimalWidgetItem::AnimalWidgetItem(QWidget *parent) :

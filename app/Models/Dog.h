@@ -1,13 +1,10 @@
-#ifndef CAT_H
-#define CAT_H
-#include "Models/animal.h"
-#include <iostream>
-#include <QString>
-using namespace std;
+#ifndef DOG_H
+#define DOG_H
+#include "Models/Animal.h"
 
-class Cat : public Animal {
+class Dog : public Animal {
 public:
-    Cat(QString gender = QString("female"),
+    Dog(QString gender = QString("female"),
         QString mainColor = QString("brown"),
         QString breed = QString("Siberian Default"),
         int age = 0,
@@ -27,44 +24,43 @@ public:
         int comfortableHandled = 0,
         int escapeTendency = 0);
 
-    Cat(const Cat&);
-    ~Cat();
+    Dog(const Dog&);
+    ~Dog();
 
     void toCommaSeperated(QString& outStr);
 
-    QString getSpecies();
-
-    void update(bool nIndoorOutdoor,
-                int nLitterTrained,
-                int nFriendlinessCats,
-                QString nGender,
+    void update(QString nGender,
                 QString nMainColor,
-                QString nName,
                 QString nBreed,
-                bool nNeuteredOrSpayed,
-                bool nHypothetical,
                 int nAge,
+                bool nNeuteredOrSpayed,
+                QString nName,
+                bool nHypothetical,
                 int nBiteTendency,
                 int nScratchTendency,
                 int nFriendlinessAdults,
                 int nFriendlinessChildren,
                 int nNoiseLevel,
                 int nAloneComfort,
-                int nLikesBedSleep,
-                int nSnores,
+                bool nLikesBedSleep,
+                bool nSnores,
                 int nEnergyLevel,
                 int nComfortableVet,
                 int nComfortableHandled,
-                int nEscapeTendency);
+                int nEscapeTendency,
+                int nFriendlinessDogs,
+                bool nHouseTrained,
+                int nBarkTendency);
 
-
+    QString getSpecies();
     QString getTableName();
 
 private:
-    bool indoorOutdoor;
-    int litterTrained;
-    int friendlinessCats;
+    int friendlinessDogs;
+    int houseTrained;
+    int barkTendency;
 };
 
-Q_DECLARE_METATYPE(Cat)
-#endif // CAT_H
+Q_DECLARE_METATYPE(Dog)
+
+#endif // DOG_H

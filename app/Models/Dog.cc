@@ -1,4 +1,4 @@
-#include "dog.h"
+#include "Dog.h"
 Dog::Dog(
         QString gender,
         QString mainColor,
