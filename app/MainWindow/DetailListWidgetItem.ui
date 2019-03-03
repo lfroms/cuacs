@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>AnimalWidgetItem</class>
- <widget class="QWidget" name="AnimalWidgetItem">
+ <class>DetailListWidgetItem</class>
+ <widget class="QWidget" name="DetailListWidgetItem">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -19,14 +19,14 @@
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_2">
        <item>
-        <widget class="QLabel" name="nameLabel">
+        <widget class="QLabel" name="titleLabel">
          <property name="text">
           <string>TextLabel</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QLabel" name="breedLabel">
+        <widget class="QLabel" name="subtitleLabel">
          <property name="text">
           <string>Text from lineEdit</string>
          </property>

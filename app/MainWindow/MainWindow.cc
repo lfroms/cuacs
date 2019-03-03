@@ -5,7 +5,7 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
-                this, SLOT(onAnimalClicked(QListWidgetItem*)));
+            this, SLOT(onAnimalClicked(QListWidgetItem*)));
     db = DatabaseAdapter::getInstance();
 
     renderListItems();
@@ -38,9 +38,9 @@ void MainWindow::renderListItems() {
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
-        AnimalWidgetItem *animalWidget = new AnimalWidgetItem;
-        animalWidget->setName(name);
-        animalWidget->setBreed(breed);
+        DetailListWidgetItem *animalWidget = new DetailListWidgetItem;
+        animalWidget->setTitle(name);
+        animalWidget->setSubtitle(breed);
 
         //Sizing list widget appropriately
         listWidgetItem->setSizeHint (animalWidget->sizeHint ());
