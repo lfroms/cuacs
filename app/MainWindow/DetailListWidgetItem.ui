@@ -13,6 +13,9 @@
   <property name="windowTitle">
    <string>Form</string>
   </property>
+  <property name="styleSheet">
+   <string notr="true"/>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <layout class="QVBoxLayout" name="verticalLayout">
@@ -32,6 +35,12 @@
          <weight>75</weight>
          <bold>true</bold>
         </font>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: transparent;</string>
        </property>
        <property name="text">
         <string>Text from lineEdit</string>
@@ -58,7 +67,8 @@
         <bool>false</bool>
        </property>
        <property name="styleSheet">
-        <string notr="true">text-transform: uppercase;</string>
+        <string notr="true">background-color: transparent;
+text-transform: uppercase;</string>
        </property>
        <property name="text">
         <string>TextLabel</string>
