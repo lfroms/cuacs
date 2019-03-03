@@ -1,5 +1,5 @@
 #include "AnimalDetailsModal.h"
-#include "ui_animaldetailsmodal.h"
+#include "ui_AnimalDetailsModal.h"
 
 AnimalDetailsModal::AnimalDetailsModal(Animal* a, QWidget *parent) :
     QDialog(parent),

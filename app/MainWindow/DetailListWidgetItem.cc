@@ -1,5 +1,5 @@
 #include "DetailListWidgetItem.h"
-#include "ui_DetailListWigetItem.h"
+#include "ui_DetailListWidgetItem.h"
 
 DetailListWidgetItem::DetailListWidgetItem(QWidget *parent) :
     QWidget(parent),
