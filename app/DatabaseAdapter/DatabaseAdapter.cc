@@ -10,20 +10,21 @@ static const QString commonAttributes =
         "breed TEXT NOT NULL,"
         "age INTEGER NOT NULL,"
         "neutered_or_spayed INTEGER NOT NULL,"
+        "requires_medical INTEGER NOT NULL"
         "name TEXT NOT NULL,"
         "hypothetical INTEGER NOT NULL,"
         "bite_tendency INTEGER NOT NULL,"
         "scratch_tendency INTEGER NOT NULL,"
+        "dominance_tendency INTEGER NOT NULL"
         "friendliness_adults INTEGER NOT NULL,"
         "friendliness_children INTEGER NOT NULL,"
+        "friendliness_animals INTEGER NOT NULL,"
         "noise_level INTEGER NOT NULL,"
-        "alone_comfort INTEGER NOT NULL,"
-        "likes_bed_sleep INTEGER NOT NULL,"
-        "snores INTEGER NOT NULL,"
+        "independence INTEGER NOT NULL,"
+        "affection INTEGER NOT NULL,"
         "energy_level INTEGER NOT NULL,"
-        "comfortable_vet INTEGER NOT NULL,"
-        "comfortable_handled INTEGER NOT NULL,"
-        "escape_tendency INTEGER NOT NULL";
+        "anxiety_level INTEGER NOT NULL,"
+        "curiosity_level INTEGER NOT NULL,";
 
 static const QString clientSchema =
         "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
