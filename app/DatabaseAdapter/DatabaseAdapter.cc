@@ -279,7 +279,7 @@ int DatabaseAdapter::getClientCount() {
 }
 
 bool DatabaseAdapter::seed() {
-    for (int i = getTotalAnimals(); i < 5; i++) {
+    for (int i = getTotalAnimals(); i < 25; i++) {
         Animal* a = Seeds().getAnimals()[i];
 
         if (!insertAnimal(a)) {

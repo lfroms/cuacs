@@ -11,7 +11,7 @@ using namespace std;
 
 class Seeds {
     private:
-        Animal* animals[5];
+        Animal* animals[25];
         Client* clients[1];
 
     public:
