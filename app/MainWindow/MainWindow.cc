@@ -6,6 +6,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onAnimalClicked(QListWidgetItem*)));
+    connect(ui->clientSubmit, SIGNAL (released()), this, SLOT (handleAddClientSubmit()));
+
     db = DatabaseAdapter::getInstance();
 
     renderListItems();
@@ -163,7 +165,29 @@ void MainWindow::handleAddAnimalSubmit() {
 
     if (!db->insertAnimal(animal)) {
         qDebug() << "Failed to add animal to database.";
+        return;
     }
 
-    renderListItems();
+    renderAnimalList();
+}
+
+void MainWindow::handleAddClientSubmit() {
+    Client* client = new Client(
+                ui->clientNameEdit->text(),
+                ui->clientAgeEdit->text().toInt(),
+                ui->clientPhoneNumberEdit->text(),
+                ui->clientEmailEdit->text()
+                );
+
+    if (!db->saveClient(client)) {
+        qDebug() << "Failed to add client to database.";
+        return;
+    }
+
+    ui->clientNameEdit->clear();
+    ui->clientAgeEdit->clear();
+    ui->clientPhoneNumberEdit->clear();
+    ui->clientEmailEdit->clear();
+
+    renderClientList();
 }

@@ -54,7 +54,7 @@
         </sizepolicy>
        </property>
        <property name="currentIndex">
-        <number>1</number>
+        <number>0</number>
        </property>
        <widget class="QWidget" name="viewAnimalsTab">
         <attribute name="title">
@@ -481,6 +481,88 @@
            <string>Rabbit</string>
           </property>
          </item>
+        </widget>
+       </widget>
+       <widget class="QWidget" name="addClientTab">
+        <attribute name="title">
+         <string>Add Client</string>
+        </attribute>
+        <widget class="QWidget" name="verticalLayoutWidget_5">
+         <property name="geometry">
+          <rect>
+           <x>20</x>
+           <y>20</y>
+           <width>231</width>
+           <height>254</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="clientVerticalLayout1">
+          <item>
+           <widget class="QLabel" name="clientNameLabel">
+            <property name="text">
+             <string>Name</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="clientNameEdit"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="clientAgeLabel">
+            <property name="text">
+             <string>Age</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="clientAgeEdit"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="clientPhoneNumberLabel">
+            <property name="text">
+             <string>Phone Number</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="clientPhoneNumberEdit"/>
+          </item>
+          <item>
+           <widget class="QLabel" name="clientEmailLabel">
+            <property name="text">
+             <string>Email</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QLineEdit" name="clientEmailEdit"/>
+          </item>
+          <item>
+           <widget class="QPushButton" name="clientSubmit">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>36</height>
+             </size>
+            </property>
+            <property name="text">
+             <string>Submit</string>
+            </property>
+            <property name="autoDefault">
+             <bool>false</bool>
+            </property>
+            <property name="flat">
+             <bool>false</bool>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </widget>
