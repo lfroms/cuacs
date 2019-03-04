@@ -24,6 +24,7 @@ private slots:
     void handleAddAnimalSubmit();
     void handleAddClientSubmit();
     void onAnimalClicked(QListWidgetItem*);
+    void onUserPermissionsChanged(const QString&);
 
 private:
     Ui::MainWindow *ui;

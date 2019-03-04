@@ -569,6 +569,26 @@
      </item>
     </layout>
    </widget>
+   <widget class="QComboBox" name="staffOrClientSelector">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>10</y>
+      <width>86</width>
+      <height>25</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Staff</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Client</string>
+     </property>
+    </item>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
