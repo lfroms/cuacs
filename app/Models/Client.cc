@@ -25,6 +25,14 @@ void Client::getName(QString& outStr) {
     outStr = name;
 }
 
+void Client::getAge(int &outInt) {
+    outInt = age;
+}
+
+void Client::getPhoneNumber(QString &outStr) {
+    outStr = phoneNumber;
+}
+
 void Client::getEmail(QString& outStr) {
     outStr = email;
 }

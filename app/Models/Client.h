@@ -24,6 +24,8 @@ public:
             );
 
     void getName(QString& outStr);
+    void getAge(int& outInt);
+    void getPhoneNumber(QString& outStr);
     void getEmail(QString& outStr);
 
     QString getTableName();
