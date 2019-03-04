@@ -12,7 +12,7 @@ using namespace std;
 class Seeds {
     private:
         Animal* animals[25];
-        Client* clients[1];
+        Client* clients[5];
 
     public:
         Seeds();

@@ -288,7 +288,7 @@ bool DatabaseAdapter::seed() {
         }
     }
 
-    for (int i = getClientCount(); i < 1; i++) {
+    for (int i = getClientCount(); i < 5; i++) {
         Client* c = Seeds().getClients()[i];
 
         if (!saveClient(c)) {

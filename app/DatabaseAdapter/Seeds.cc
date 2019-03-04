@@ -33,6 +33,10 @@ Seeds::Seeds() {
     animals[24] = new Rabbit("male", "grey", "Holland Lop", 14, false, false, "Reese", false, 4, 10, 7, 4, 2, 3, 1, 0, 1, 1, 1, 0);
 
     clients[0] = new Client("Johnny Appleseed", 24, "613-928-5235", "johnny@cuacs.ca");
+    clients[1] = new Client("Niko Kouloufakos", 19, "613-413-5276", "niko.kouloufakos@shopify.com");
+    clients[2] = new Client("William Lu", 42, "613-765-9265", "william@wildfox.ca");
+    clients[3] = new Client("Lulu Sheng", 34, "613-067-8564", "lulusheng@cmail.carleton.ca");
+    clients[4] = new Client("Lukas Romsicki", 64, "613-341-0696", "lukas@gmail.com");
 }
 
 Animal** Seeds::getAnimals() {
