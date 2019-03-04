@@ -3,10 +3,13 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
+    this->setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;}");
+
     connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onAnimalClicked(QListWidgetItem*)));
     connect(ui->clientSubmit, SIGNAL (released()), this, SLOT (handleAddClientSubmit()));
+    connect(ui->staffOrClientSelector, SIGNAL (currentIndexChanged(const QString&)), this, SLOT(onUserPermissionsChanged(const QString&)));
 
     db = DatabaseAdapter::getInstance();
 
@@ -15,6 +18,20 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {
+    if (permissionLevel == QString("Client")) {
+        ui->tabWidget->setCurrentIndex(0);
+        ui->tabWidget->setTabEnabled(3, false);
+        ui->tabWidget->setTabEnabled(2, false);
+        ui->tabWidget->setTabEnabled(1, false);
+    } else {
+        ui->tabWidget->setTabEnabled(3, true);
+        ui->tabWidget->setTabEnabled(2, true);
+        ui->tabWidget->setTabEnabled(1, true);
+    }
+
 }
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
