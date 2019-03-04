@@ -1,7 +1,7 @@
 # cuACS  🐶🐱🐰👩‍💻
 _cuACS_ is a software system that matches animals to people.
 
-## Make and Launch instructions
+## Make and Launch Instructions
 Ensure you are in the same directory as `cuacs.pro`
 
 To Make:
