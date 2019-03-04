@@ -13,7 +13,7 @@ class AnimalDetailsModal : public QDialog
     Q_OBJECT
 
 public:
-    explicit AnimalDetailsModal(Animal* a, QWidget *parent = 0);
+    explicit AnimalDetailsModal(Animal* a, QWidget *parent = nullptr);
     ~AnimalDetailsModal();
 
 private:

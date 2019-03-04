@@ -35,7 +35,8 @@ SOURCES += \
     Models/Cat.cc \
     Models/Dog.cc \
     Models/Rabbit.cc \
-    MainWindow/DetailListWidgetItem.cc
+    MainWindow/DetailListWidgetItem.cc \
+    MainWindow/ClientDetailsModal.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -47,12 +48,14 @@ HEADERS += \
     Models/Cat.h \
     Models/Dog.h \
     Models/Rabbit.h \
-    MainWindow/DetailListWidgetItem.h
+    MainWindow/DetailListWidgetItem.h \
+    MainWindow/ClientDetailsModal.h
 
 FORMS += \
         MainWindow/MainWindow.ui \
     MainWindow/AnimalDetailsModal.ui \
-    MainWindow/DetailListWidgetItem.ui
+    MainWindow/DetailListWidgetItem.ui \
+    MainWindow/ClientDetailsModal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

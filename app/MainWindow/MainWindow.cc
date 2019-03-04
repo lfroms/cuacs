@@ -10,6 +10,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             this, SLOT(onAnimalClicked(QListWidgetItem*)));
     connect(ui->clientSubmit, SIGNAL (released()), this, SLOT (handleAddClientSubmit()));
     connect(ui->staffOrClientSelector, SIGNAL (currentIndexChanged(const QString&)), this, SLOT(onUserPermissionsChanged(const QString&)));
+    connect(ui->clientsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+            this, SLOT(onClientClicked(QListWidgetItem*)));
 
     db = DatabaseAdapter::getInstance();
 
@@ -39,6 +41,15 @@ void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     Animal * animal = var.value<Animal *>();
 
     AnimalDetailsModal modal(animal);
+    modal.setModal(true);
+    modal.exec();
+}
+
+void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
+    QVariant var = clientWidgetItem->data(Qt::UserRole);
+    Client * client = var.value<Client *>();
+
+    ClientDetailsModal modal(client);
     modal.setModal(true);
     modal.exec();
 }

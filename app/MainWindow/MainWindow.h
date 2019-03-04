@@ -7,6 +7,7 @@
 #include <DatabaseAdapter/DatabaseAdapter.h>
 #include <MainWindow/DetailListWidgetItem.h>
 #include <MainWindow/AnimalDetailsModal.h>
+#include <MainWindow/ClientDetailsModal.h>
 
 namespace Ui {
 class MainWindow;
@@ -25,6 +26,7 @@ private slots:
     void handleAddClientSubmit();
     void onAnimalClicked(QListWidgetItem*);
     void onUserPermissionsChanged(const QString&);
+    void onClientClicked(QListWidgetItem*);
 
 private:
     Ui::MainWindow *ui;
