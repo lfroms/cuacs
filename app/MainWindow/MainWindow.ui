@@ -114,7 +114,7 @@
            <x>40</x>
            <y>30</y>
            <width>160</width>
-           <height>295</height>
+           <height>324</height>
           </rect>
          </property>
          <layout class="QVBoxLayout" name="verticalLayout">
@@ -175,6 +175,13 @@
             </property>
            </widget>
           </item>
+          <item>
+           <widget class="QCheckBox" name="medicalCheckbox">
+            <property name="text">
+             <string>Medical Required</string>
+            </property>
+           </widget>
+          </item>
          </layout>
         </widget>
         <widget class="QWidget" name="verticalLayoutWidget_2">
@@ -228,6 +235,26 @@
            </widget>
           </item>
           <item>
+           <widget class="QLabel" name="noiseLabel">
+            <property name="text">
+             <string>Dominance Tendency</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="dominanceSlider">
+            <property name="maximum">
+             <number>10</number>
+            </property>
+            <property name="sliderPosition">
+             <number>5</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLabel" name="adultFriendlinessLabel">
             <property name="text">
              <string>Friendliness (Adults)</string>
@@ -268,14 +295,46 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="noiseLabel">
+           <widget class="QLabel" name="animalFriendlinessLabel">
+            <property name="text">
+             <string>Friendliness (Animals)</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QSlider" name="animalFriendlinessSlider">
+            <property name="maximum">
+             <number>10</number>
+            </property>
+            <property name="sliderPosition">
+             <number>5</number>
+            </property>
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="verticalLayoutWidget_3">
+         <property name="geometry">
+          <rect>
+           <x>490</x>
+           <y>20</y>
+           <width>191</width>
+           <height>311</height>
+          </rect>
+         </property>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <widget class="QLabel" name="noisinessLabel">
             <property name="text">
              <string>Noisiness</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSlider" name="noiseSlider">
+           <widget class="QSlider" name="noisinessSlider">
             <property name="maximum">
              <number>10</number>
             </property>
@@ -307,47 +366,15 @@
             </property>
            </widget>
           </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="verticalLayoutWidget_3">
-         <property name="geometry">
-          <rect>
-           <x>490</x>
-           <y>20</y>
-           <width>191</width>
-           <height>311</height>
-          </rect>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_3">
           <item>
-           <widget class="QLabel" name="bedSleepLabel">
+           <widget class="QLabel" name="affectionLabel">
             <property name="text">
-             <string>Sleeps in Bed</string>
+             <string>Affection</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSlider" name="bedSleepSlider">
-            <property name="maximum">
-             <number>10</number>
-            </property>
-            <property name="sliderPosition">
-             <number>5</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="snoreLabel">
-            <property name="text">
-             <string>Snoring Level</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSlider" name="snoreSlider">
+           <widget class="QSlider" name="affectionSlider">
             <property name="maximum">
              <number>10</number>
             </property>
@@ -362,7 +389,7 @@
           <item>
            <widget class="QLabel" name="energyLabel">
             <property name="text">
-             <string>Energy</string>
+             <string> Energy Level</string>
             </property>
            </widget>
           </item>
@@ -380,14 +407,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="vetComfortLabel">
+           <widget class="QLabel" name="anxietyLabel">
             <property name="text">
-             <string>Comfort with Veterinarian</string>
+             <string>Anxiety Level</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSlider" name="vetComfortSlider">
+           <widget class="QSlider" name="anxietySlider">
             <property name="maximum">
              <number>10</number>
             </property>
@@ -400,34 +427,14 @@
            </widget>
           </item>
           <item>
-           <widget class="QLabel" name="handledComfortLabel">
+           <widget class="QLabel" name="curiosityLabel">
             <property name="text">
-             <string>Comfort being Handled</string>
+             <string>Curiosity Level</string>
             </property>
            </widget>
           </item>
           <item>
-           <widget class="QSlider" name="handledComfortSlider">
-            <property name="maximum">
-             <number>10</number>
-            </property>
-            <property name="sliderPosition">
-             <number>5</number>
-            </property>
-            <property name="orientation">
-             <enum>Qt::Horizontal</enum>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QLabel" name="escapeLabel">
-            <property name="text">
-             <string>Escape Tendency</string>
-            </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QSlider" name="escapeSlider">
+           <widget class="QSlider" name="curiositySlider">
             <property name="maximum">
              <number>10</number>
             </property>
@@ -458,7 +465,7 @@
          <property name="geometry">
           <rect>
            <x>40</x>
-           <y>350</y>
+           <y>360</y>
            <width>161</width>
            <height>25</height>
           </rect>

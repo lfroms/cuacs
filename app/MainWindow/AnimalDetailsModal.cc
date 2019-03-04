@@ -33,17 +33,19 @@ void AnimalDetailsModal::setupViews() {
     ui->ageEdit->setText(QString::number(animal->getAge()));
     ui->biteSlider->setValue(animal->getBiteTendency());
     ui->scratchSlider->setValue(animal->getScratchTendency());
+    ui->dominanceSlider->setValue(animal->getDominanceTendency());
     ui->adultFriendlinessSlider->setValue(animal->getFriendlinessAdults());
     ui->childFriendlinessSlider->setValue(animal->getFriendlinessChildren());
-    ui->noiseSlider->setValue(animal->getNoiseLevel());
-    ui->independenceSlider->setValue(animal->getAloneComfort());
-    ui->bedSleepSlider->setValue(animal->getLikesBedSleep());
-    ui->snoreSlider->setValue(animal->getSnores());
+    ui->animalFriendlinessSlider->setValue(animal->getFriendlinessAnimals());
+    ui->noisinessSlider->setValue(animal->getNoiseLevel());
+    ui->independenceSlider->setValue(animal->getIndependence());
+    ui->affectionSlider->setValue(animal->getAffection());
     ui->energySlider->setValue(animal->getEnergyLevel());
-    ui->vetComfortSlider->setValue(animal->getComfortableVet());
-    ui->handledComfortSlider->setValue(animal->getComfortableHandled());
-    ui->escapeSlider->setValue(animal->getEscapeTendency());
+    ui->anxietySlider->setValue(animal->getAnxietyLevel());
+    ui->curiositySlider->setValue(animal->getCuriosityLevel());
     ui->neuteredCheckBox->setChecked(animal->getNeuteredOrSpayed());
     ui->neuteredCheckBox->setEnabled(false);
+    ui->medicalCheckbox->setChecked(animal->getRequiresMedicalAttention());
+    ui->medicalCheckbox->setEnabled(false);
     ui->animalTypeLabel->setText(animal->getTableName());
 }

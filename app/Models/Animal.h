@@ -15,20 +15,21 @@ public:
             QString breed,
             int age,
             bool neuteredOrSpayed,
+            bool requiresMedicalAttention,
             QString name,
             bool hypothetical,
             int biteTendency,
             int scratchTendency,
+            int dominanceTendency,
             int friendlinessAdults,
             int friendlinessChildren,
+            int friendlinessAnimals,
             int noiseLevel,
-            int aloneComfort,
-            bool likesBedSleep,
-            bool snores,
+            int independence,
+            bool affection,
             int energyLevel,
-            int comfortableVet,
-            int comfortableHandled,
-            int escapeTendency
+            int anxietyLevel,
+            int curiosityLevel
             );
 
     Animal();
@@ -44,20 +45,21 @@ public:
             QString breed,
             int age,
             bool neuteredOrSpayed,
+            bool requiresMedicalAttention,
             QString name,
             bool hypothetical,
             int biteTendency,
             int scratchTendency,
+            int dominanceTendency,
             int friendlinessAdults,
             int friendlinessChildren,
+            int friendlinessAnimals,
             int noiseLevel,
-            int aloneComfort,
-            bool likesBedSleep,
-            bool snores,
+            int independence,
+            bool affection,
             int energyLevel,
-            int comfortableVet,
-            int comfortableHandled,
-            int escapeTendency
+            int anxietyLevel,
+            int curiosityLevel
             );
 
     void getGender(QString& outStr);
@@ -66,18 +68,19 @@ public:
     void getBreed(QString& outStr);
     int  getAge();
     bool getNeuteredOrSpayed();
+    bool getRequiresMedicalAttention();
     int getBiteTendency();
     int getScratchTendency();
+    int getDominanceTendency();
     int getFriendlinessAdults();
     int getFriendlinessChildren();
+    int getFriendlinessAnimals();
     int getNoiseLevel();
-    int getAloneComfort();
-    bool getLikesBedSleep();
-    bool getSnores();
+    int getIndependence();
+    bool getAffection();
     int getEnergyLevel();
-    int getComfortableVet();
-    int getComfortableHandled();
-    int getEscapeTendency();
+    int getAnxietyLevel();
+    int getCuriosityLevel();
 
     virtual QString getSpecies() = 0;
 
@@ -90,21 +93,22 @@ private:
     QString breed;
 
     bool neuteredOrSpayed;
+    bool requiresMedicalAttention;
     bool hypothetical;
 
     int age;
     int biteTendency;
     int scratchTendency;
+    int dominanceTendency;
     int friendlinessAdults;
     int friendlinessChildren;
+    int friendlinessAnimals;
     int noiseLevel;
-    int aloneComfort;
-    int likesBedSleep;
-    int snores;
+    int independence;
+    int affection;
     int energyLevel;
-    int comfortableVet;
-    int comfortableHandled;
-    int escapeTendency;
+    int anxietyLevel;
+    int curiosityLevel;
 };
 
 Q_DECLARE_METATYPE(Animal*)

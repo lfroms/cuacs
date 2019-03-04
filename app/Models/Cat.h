@@ -7,25 +7,27 @@ using namespace std;
 
 class Cat : public Animal {
 public:
-    Cat(QString gender = QString("female"),
-        QString mainColor = QString("brown"),
-        QString breed = QString("Siberian Default"),
-        int age = 0,
-        bool neuteredOrSpayed = false,
-        QString name = QString("Johanna"),
-        bool hypothetical = false,
-        int biteTendency = 0,
-        int scratchTendency = 0,
-        int friendlinessAdults = 0,
-        int friendlinessChildren = 0,
-        int noiseLevel = 0,
-        int aloneComfort = 0,
-        bool likesBedSleep = 0,
-        bool snores = 0,
-        int energyLevel = 0,
-        int comfortableVet = 0,
-        int comfortableHandled = 0,
-        int escapeTendency = 0);
+    Cat(    QString gender = QString("female"),
+            QString mainColor = QString("brown"),
+            QString breed = QString("Siberian Default"),
+            int age = 0,
+            bool neuteredOrSpayed = false,
+            bool requiresMedicalAttention = false,
+            QString name = QString("Johanna"),
+            bool hypothetical = false,
+            int biteTendency = 0,
+            int scratchTendency = 0,
+            int dominanceTendency = 0,
+            int friendlinessAdults = 0,
+            int friendlinessChildren = 0,
+            int friendlinessAnimals = 0,
+            int noiseLevel = 0,
+            int independence = 0,
+            bool affection = 0,
+            int energyLevel = 0,
+            int anxietyLevel = 0,
+            int curiosityLevel = 0
+            );
 
     Cat(const Cat&);
     ~Cat();
@@ -39,23 +41,24 @@ public:
                 int nFriendlinessCats,
                 QString nGender,
                 QString nMainColor,
-                QString nName,
                 QString nBreed,
-                bool nNeuteredOrSpayed,
-                bool nHypothetical,
                 int nAge,
+                bool nNeuteredOrSpayed,
+                bool nRequiresMedicalAttention,
+                QString nName,
+                bool nHypothetical,
                 int nBiteTendency,
                 int nScratchTendency,
+                int nDominanceTendency,
                 int nFriendlinessAdults,
                 int nFriendlinessChildren,
+                int nFriendlinessAnimals,
                 int nNoiseLevel,
-                int nAloneComfort,
-                int nLikesBedSleep,
-                int nSnores,
+                int nIndependence,
+                bool nAffection,
                 int nEnergyLevel,
-                int nComfortableVet,
-                int nComfortableHandled,
-                int nEscapeTendency);
+                int nAnxietyLevel,
+                int nCuriosityLevel);
 
 
     QString getTableName();

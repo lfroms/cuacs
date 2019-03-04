@@ -7,64 +7,67 @@ Animal::Animal(
         QString breed,
         int age,
         bool neuteredOrSpayed,
+        bool requiresMedicalAttention,
         QString name,
         bool hypothetical,
         int biteTendency,
         int scratchTendency,
+        int dominanceTendency,
         int friendlinessAdults,
         int friendlinessChildren,
+        int friendlinessAnimals,
         int noiseLevel,
-        int aloneComfort,
-        bool likesBedSleep,
-        bool snores,
+        int independence,
+        bool affection,
         int energyLevel,
-        int comfortableVet,
-        int comfortableHandled,
-        int escapeTendency
+        int anxietyLevel,
+        int curiosityLevel
         ) {
 
-    update(gender,
-           mainColor,
-           breed,
-           age,
-           neuteredOrSpayed,
-           name,
-           hypothetical,
-           biteTendency,
-           scratchTendency,
-           friendlinessAdults,
-           friendlinessChildren,
-           noiseLevel,
-           aloneComfort,
-           likesBedSleep,
-           snores,
-           energyLevel,
-           comfortableVet,
-           comfortableHandled,
-           escapeTendency
+    update( gender,
+            mainColor,
+            breed,
+            age,
+            neuteredOrSpayed,
+            requiresMedicalAttention,
+            name,
+            hypothetical,
+            biteTendency,
+            scratchTendency,
+            dominanceTendency,
+            friendlinessAdults,
+            friendlinessChildren,
+            friendlinessAnimals,
+            noiseLevel,
+            independence,
+            affection,
+            energyLevel,
+            anxietyLevel,
+            curiosityLevel
            );
 }
 
 Animal::Animal(const Animal &animal) {
-    update(animal.gender,
-           animal.mainColor,
-           animal.breed,
-           animal.age,
-           animal.neuteredOrSpayed,
-           animal.name,
-           animal.hypothetical,
-           animal.biteTendency,
-           animal.scratchTendency,
-           animal.friendlinessAdults,
-           animal.friendlinessChildren,
-           animal.noiseLevel,
-           animal.aloneComfort,
-           animal.likesBedSleep,
-           animal.snores,
-           animal.energyLevel,
-           animal.comfortableVet,
-           animal.comfortableHandled,
-           animal.escapeTendency
+    update( animal.gender,
+            animal.mainColor,
+            animal.breed,
+            animal.age,
+            animal.neuteredOrSpayed,
+            animal.requiresMedicalAttention,
+            animal.name,
+            animal.hypothetical,
+            animal.biteTendency,
+            animal.scratchTendency,
+            animal.dominanceTendency,
+            animal.friendlinessAdults,
+            animal.friendlinessChildren,
+            animal.friendlinessAnimals,
+            animal.noiseLevel,
+            animal.independence,
+            animal.affection,
+            animal.energyLevel,
+            animal.anxietyLevel,
+            animal.curiosityLevel
            );
 }
 
@@ -89,18 +92,19 @@ void Animal::getMainColor(QString& outStr) {
 
 int Animal::getAge() { return age; }
 bool Animal::getNeuteredOrSpayed() { return neuteredOrSpayed; }
+bool Animal::getRequiresMedicalAttention() { return requiresMedicalAttention; }
 int Animal::getBiteTendency() { return biteTendency; }
 int Animal::getScratchTendency() { return scratchTendency; }
+int Animal::getDominanceTendency() { return dominanceTendency; }
 int Animal::getFriendlinessAdults() { return friendlinessAdults; }
 int Animal::getFriendlinessChildren() { return friendlinessChildren; }
+int Animal::getFriendlinessAnimals() { return friendlinessAnimals; }
 int Animal::getNoiseLevel() { return noiseLevel; }
-int Animal::getAloneComfort() { return aloneComfort; }
-bool Animal::getLikesBedSleep() { return likesBedSleep; }
-bool Animal::getSnores() { return snores; }
+int Animal::getIndependence() { return independence; }
+bool Animal::getAffection() { return affection; }
 int Animal::getEnergyLevel() { return energyLevel; }
-int Animal::getComfortableVet() { return comfortableVet; }
-int Animal::getComfortableHandled() { return comfortableHandled; }
-int Animal::getEscapeTendency() { return escapeTendency; }
+int Animal::getAnxietyLevel() { return anxietyLevel; }
+int Animal::getCuriosityLevel() { return curiosityLevel; }
 
 void Animal::toCommaSeperated(QString& outStr){
     stringstream a;
@@ -110,45 +114,47 @@ void Animal::toCommaSeperated(QString& outStr){
       << "'" << breed.toStdString() << "', "
       << "'" << age << "', "
       << "'" << neuteredOrSpayed << "', "
+      << "'" << requiresMedicalAttention << "', "
       << "'" << name.toStdString() << "', "
       << "'" << hypothetical << "', "
       << "'" << biteTendency << "', "
       << "'" << scratchTendency << "', "
+      << "'" << dominanceTendency << "', "
       << "'" << friendlinessAdults << "', "
       << "'" << friendlinessChildren << "', "
+      << "'" << friendlinessAnimals << "', "
       << "'" << noiseLevel << "', "
-      << "'" << aloneComfort << "', "
-      << "'" << likesBedSleep << "', "
-      << "'" << snores << "', "
+      << "'" << independence << "', "
+      << "'" << affection << "', "
       << "'" << energyLevel << "', "
-      << "'" << comfortableVet << "', "
-      << "'" << comfortableHandled << "', "
-      << "'" << escapeTendency << "'";
+      << "'" << anxietyLevel << "', "
+      << "'" << curiosityLevel << "'";
 
     outStr = QString::fromStdString(a.str());
 }
 
 void Animal::update(
-        QString nGender,
-        QString nMainColor,
-        QString nBreed,
-        int nAge,
-        bool nNeuteredOrSpayed,
-        QString nName,
-        bool nHypothetical,
-        int nBiteTendency,
-        int nScratchTendency,
-        int nFriendlinessAdults,
-        int nFriendlinessChildren,
-        int nNoiseLevel,
-        int nAloneComfort,
-        bool nLikesBedSleep,
-        bool nSnores,
-        int nEnergyLevel,
-        int nComfortableVet,
-        int nComfortableHandled,
-        int nEscapeTendency
-        ) {
+            QString nGender,
+            QString nMainColor,
+            QString nBreed,
+            int nAge,
+            bool nNeuteredOrSpayed,
+            bool nRequiresMedicalAttention,
+            QString nName,
+            bool nHypothetical,
+            int nBiteTendency,
+            int nScratchTendency,
+            int nDominanceTendency,
+            int nFriendlinessAdults,
+            int nFriendlinessChildren,
+            int nFriendlinessAnimals,
+            int nNoiseLevel,
+            int nIndependence,
+            bool nAffection,
+            int nEnergyLevel,
+            int nAnxietyLevel,
+            int nCuriosityLevel
+            ) {
 
     gender = nGender;
     mainColor = nMainColor;
@@ -156,19 +162,20 @@ void Animal::update(
     breed = nBreed;
 
     neuteredOrSpayed = nNeuteredOrSpayed;
+    requiresMedicalAttention = nRequiresMedicalAttention;
     hypothetical = nHypothetical;
 
     age = nAge;
     biteTendency = nBiteTendency;
     scratchTendency = nScratchTendency;
+    dominanceTendency = nDominanceTendency;
     friendlinessAdults = nFriendlinessAdults;
     friendlinessChildren = nFriendlinessChildren;
+    friendlinessAnimals = nFriendlinessAnimals;
     noiseLevel = nNoiseLevel;
-    aloneComfort = nAloneComfort;
-    likesBedSleep = nLikesBedSleep;
-    snores = nSnores;
+    independence = nIndependence;
+    affection = nAffection;
     energyLevel = nEnergyLevel;
-    comfortableVet = nComfortableVet;
-    comfortableHandled = nComfortableHandled;
-    escapeTendency = nEscapeTendency;
+    anxietyLevel = nAnxietyLevel;
+    curiosityLevel = nCuriosityLevel;
 }
