@@ -15,5 +15,18 @@ ClientDetailsModal::~ClientDetailsModal() {
 }
 
 void ClientDetailsModal::setupViews() {
+    int age;
+    QString name, phoneNumber, email;
 
+    client->getName(name);
+    client->getAge(age);
+    client->getPhoneNumber(phoneNumber);
+    client->getEmail(email);
+
+    this->setWindowTitle(name + QString("'s")+ QString(" Details"));
+
+    ui->clientNameEdit->setText(name);
+    ui->clientAgeEdit->setText(QString(age));
+    ui->clientPhoneNumberEdit->setText(phoneNumber);
+    ui->clientEmailEdit->setText(email);
 }
