@@ -13,6 +13,15 @@ To Launch:
 cd app && ./app
 ```
 
+## Running Instructions
+You can switch between Staff and Client mode by selecting the mode in the top right corner.
+
+The Client mode offers just View Animals and View Animal Details.
+
+The Staff mode offers the same features as Client, as well as Add Animal, Add Client, View Client, and View Client Details.
+
+You can view details of an Animal or Client by double clicking on them.  This will open another window in which you will be able to view the details.
+
 ## Development
 * Ubuntu (64-bit)
 * Qt Creator 4.8.1
