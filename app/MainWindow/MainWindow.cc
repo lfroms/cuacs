@@ -199,6 +199,26 @@ void MainWindow::handleAddAnimalSubmit() {
         return;
     }
 
+    ui->genderEdit->clear();
+    ui->colorEdit->clear();
+    ui->breedEdit->clear();
+    ui->ageEdit->clear();
+    ui->neuteredCheckBox->setChecked(false);
+    ui->medicalCheckbox->setChecked(false);
+    ui->nameEdit->clear();
+    ui->biteSlider->setValue(5);
+    ui->scratchSlider->setValue(5);
+    ui->dominanceSlider->setValue(5);
+    ui->adultFriendlinessSlider->setValue(5);
+    ui->childFriendlinessSlider->setValue(5);
+    ui->animalFriendlinessSlider->setValue(5);
+    ui->noisinessSlider->setValue(5);
+    ui->independenceSlider->setValue(5);
+    ui->affectionSlider->setValue(5);
+    ui->energySlider->setValue(5);
+    ui->anxietySlider->setValue(5);
+    ui->curiositySlider->setValue(5);
+
     renderAnimalList();
 }
 
