@@ -2,6 +2,7 @@
 using namespace std;
 
 Animal::Animal(
+        QString species,
         QString gender,
         QString mainColor,
         QString breed,
@@ -24,7 +25,8 @@ Animal::Animal(
         int curiosityLevel
         ) {
 
-    update( gender,
+    update( species,
+            gender,
             mainColor,
             breed,
             age,
@@ -47,8 +49,10 @@ Animal::Animal(
            );
 }
 
+//Copy Constructor
 Animal::Animal(const Animal &animal) {
-    update( animal.gender,
+    update( animal.species,
+            animal.gender,
             animal.mainColor,
             animal.breed,
             animal.age,
@@ -74,6 +78,10 @@ Animal::Animal(const Animal &animal) {
 Animal::Animal() {}
 
 Animal::~Animal(){}
+
+void Animal::getSpecies(QString& outStr) {
+    outStr = species;
+}
 
 void Animal::getName(QString& outStr) {
     outStr = name;
@@ -109,7 +117,8 @@ int Animal::getCuriosityLevel() { return curiosityLevel; }
 void Animal::toCommaSeperated(QString& outStr){
     stringstream a;
 
-    a << "'" << gender.toStdString() << "', "
+    a << "'" << species.toStdString() << "', "
+      << "'" << gender.toStdString() << "', "
       << "'" << mainColor.toStdString() << "', "
       << "'" << breed.toStdString() << "', "
       << "'" << age << "', "
@@ -134,6 +143,7 @@ void Animal::toCommaSeperated(QString& outStr){
 }
 
 void Animal::update(
+            QString nSpecies,
             QString nGender,
             QString nMainColor,
             QString nBreed,
@@ -156,6 +166,7 @@ void Animal::update(
             int nCuriosityLevel
             ) {
 
+    species = nSpecies;
     gender = nGender;
     mainColor = nMainColor;
     name = nName;

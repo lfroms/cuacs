@@ -32,9 +32,6 @@ SOURCES += \
     DatabaseAdapter/Seeds.cc \
     MainWindow/AnimalDetailsModal.cc \
     Models/Animal.cc \
-    Models/Cat.cc \
-    Models/Dog.cc \
-    Models/Rabbit.cc \
     MainWindow/DetailListWidgetItem.cc \
     MainWindow/ClientDetailsModal.cc
 
@@ -45,9 +42,6 @@ HEADERS += \
     DatabaseAdapter/Seeds.h \
     MainWindow/AnimalDetailsModal.h \
     Models/Animal.h \
-    Models/Cat.h \
-    Models/Dog.h \
-    Models/Rabbit.h \
     MainWindow/DetailListWidgetItem.h \
     MainWindow/ClientDetailsModal.h
 

@@ -16,11 +16,12 @@ AnimalDetailsModal::~AnimalDetailsModal()
 }
 
 void AnimalDetailsModal::setupViews() {
-    QString name, gender, mainColor, breed;
+    QString species, name, gender, mainColor, breed;
     animal->getName(name);
     animal->getGender(gender);
     animal->getMainColor(mainColor);
     animal->getBreed(breed);
+    animal->getSpecies(species);
 
     //Setup Window properties
     this->setWindowTitle(name + QString("'s")+ QString(" Details"));
@@ -30,6 +31,7 @@ void AnimalDetailsModal::setupViews() {
     ui->breedEdit->setText(breed);
     ui->genderEdit->setText(gender);
     ui->colorEdit->setText(mainColor);
+    ui->animalTypeLabel->setText(species);
     ui->ageEdit->setText(QString::number(animal->getAge()));
     ui->biteSlider->setValue(animal->getBiteTendency());
     ui->scratchSlider->setValue(animal->getScratchTendency());
@@ -47,5 +49,4 @@ void AnimalDetailsModal::setupViews() {
     ui->neuteredCheckBox->setEnabled(false);
     ui->medicalCheckbox->setChecked(animal->getRequiresMedicalAttention());
     ui->medicalCheckbox->setEnabled(false);
-    ui->animalTypeLabel->setText(animal->getTableName());
 }
