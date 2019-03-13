@@ -1,40 +1,8 @@
 #include "DatabaseAdapter.h"
 #include "Models/Animal.h"
+#include "Schema.h"
 
 static const QString DATABASE_PATH = "cuacs.db";
-static const QString ANIMAL_TABLE = "animals";
-static const QString CLIENT_TABLE = "clients";
-
-static const QString commonAttributes =
-        "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-        "species TEXT NOT NULL,"
-        "gender TEXT NOT NULL,"
-        "main_color TEXT NOT NULL,"
-        "breed TEXT NOT NULL,"
-        "age INTEGER NOT NULL,"
-        "neutered_or_spayed INTEGER NOT NULL,"
-        "requires_medical INTEGER NOT NULL,"
-        "name TEXT NOT NULL,"
-        "hypothetical INTEGER NOT NULL,"
-        "bite_tendency INTEGER NOT NULL,"
-        "scratch_tendency INTEGER NOT NULL,"
-        "dominance_tendency INTEGER NOT NULL,"
-        "friendliness_adults INTEGER NOT NULL,"
-        "friendliness_children INTEGER NOT NULL,"
-        "friendliness_animals INTEGER NOT NULL,"
-        "noise_level INTEGER NOT NULL,"
-        "independence INTEGER NOT NULL,"
-        "affection INTEGER NOT NULL,"
-        "energy_level INTEGER NOT NULL,"
-        "anxiety_level INTEGER NOT NULL,"
-        "curiosity_level INTEGER NOT NULL";
-
-static const QString clientSchema =
-        "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-        "name TEXT NOT NULL,"
-        "age INTEGER NOT NULL,"
-        "phone_number TEXT NOT NULL,"
-        "email TEXT NOT NULL";
 
 QSqlDatabase DatabaseAdapter::db;
 
@@ -66,7 +34,7 @@ bool DatabaseAdapter::init() {
     QString animalQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(ANIMAL_TABLE)
-            .arg(commonAttributes);
+            .arg(animalSchema);
 
     QSqlQuery createClients;
     QString clientQuery =

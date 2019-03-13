@@ -43,7 +43,8 @@ HEADERS += \
     MainWindow/AnimalDetailsModal.h \
     Models/Animal.h \
     MainWindow/DetailListWidgetItem.h \
-    MainWindow/ClientDetailsModal.h
+    MainWindow/ClientDetailsModal.h \
+    DatabaseAdapter/Schema.h
 
 FORMS += \
         MainWindow/MainWindow.ui \
