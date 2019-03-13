@@ -44,7 +44,8 @@ HEADERS += \
     Models/Animal.h \
     MainWindow/DetailListWidgetItem.h \
     MainWindow/ClientDetailsModal.h \
-    DatabaseAdapter/Schema.h
+    DatabaseAdapter/Schema.h \
+    DatabaseAdapter/Config.h
 
 FORMS += \
         MainWindow/MainWindow.ui \

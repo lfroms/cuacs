@@ -1,13 +1,13 @@
 #include "DatabaseAdapter.h"
 #include "Models/Animal.h"
-#include "Schema.h"
 
-static const QString DATABASE_PATH = "cuacs.db";
+#include "Config.h"
+#include "Schema.h"
 
 QSqlDatabase DatabaseAdapter::db;
 
 DatabaseAdapter::DatabaseAdapter() {
-    db = QSqlDatabase::addDatabase("QSQLITE");
+    db = QSqlDatabase::addDatabase(DATABASE_TYPE);
     db.setDatabaseName(DATABASE_PATH);
 
     // Connect and init the database.
@@ -42,12 +42,29 @@ bool DatabaseAdapter::init() {
             .arg(CLIENT_TABLE)
             .arg(CLIENT_SCHEMA);
 
-    if (createAnimals.exec(animalQuery) &&
-            createClients.exec(clientQuery)) {
+    QSqlQuery createAttributes;
+    QString attributesQuery =
+            QString("CREATE TABLE IF NOT EXISTS %1(%2)")
+            .arg(ATTRIBUTE_TABLE)
+            .arg(ATTRIBUTE_SCHEMA);
+
+    QSqlQuery createAnimalAttributes;
+    QString animalAttributesQuery =
+            QString("CREATE TABLE IF NOT EXISTS %1(%2)")
+            .arg(ANIMAL_ATTRIBUTE_TABLE)
+            .arg(ANIMAL_ATTRIBUTE_SCHEMA);
+
+    bool didCompleteQueries =
+            createAnimals.exec(animalQuery) &&
+            createClients.exec(clientQuery) &&
+            createAttributes.exec(attributesQuery) &&
+            createAnimalAttributes.exec(animalAttributesQuery);
+
+    if (didCompleteQueries) {
         return seed();
-    } else {
-        return false;
     }
+
+    return false;
 }
 
 /* === Public-Facing Database Operation Methods === */
