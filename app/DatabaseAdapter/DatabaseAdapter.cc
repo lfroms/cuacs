@@ -2,6 +2,8 @@
 #include "Models/Animal.h"
 
 static const QString DATABASE_PATH = "cuacs.db";
+static const QString ANIMAL_TABLE = "animals";
+static const QString CLIENT_TABLE = "clients";
 
 static const QString commonAttributes =
         "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
@@ -63,13 +65,13 @@ bool DatabaseAdapter::init() {
     QSqlQuery createAnimals;
     QString animalQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
-            .arg("animals")
+            .arg(ANIMAL_TABLE)
             .arg(commonAttributes);
 
     QSqlQuery createClients;
     QString clientQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
-            .arg("clients")
+            .arg(CLIENT_TABLE)
             .arg(clientSchema);
 
     if (createAnimals.exec(animalQuery) &&
@@ -90,7 +92,7 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
 
     QString addAnimalQuery =
             QString("INSERT INTO %1 VALUES(null, %2);")
-            .arg("animals")
+            .arg(ANIMAL_TABLE)
             .arg(animalCommaSeparated);
 
     return  addAnimal.exec(addAnimalQuery);
@@ -98,7 +100,7 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
 
 bool DatabaseAdapter::getAnimals(Animal** animals){
     QSqlQuery query;
-    query.exec("SELECT * FROM animals;");
+    query.exec(QString("SELECT * FROM %1;").arg(ANIMAL_TABLE));
     int i = 0;
 
     // Loading all animals
@@ -135,7 +137,7 @@ bool DatabaseAdapter::getAnimals(Animal** animals){
 }
 
 int DatabaseAdapter::getTotalAnimals() {
-    QSqlQuery animalCountQ("SELECT COUNT(*) FROM animals;");
+    QSqlQuery animalCountQ(QString("SELECT COUNT(*) FROM %1;").arg(ANIMAL_TABLE));
     animalCountQ.first();
     int animalCount = animalCountQ.value(0).toInt();
 
@@ -150,7 +152,7 @@ bool DatabaseAdapter::saveClient(Client * client) {
 
     QString addClientQuery =
             QString("INSERT INTO %1 VALUES(null, %2);")
-            .arg(client->getTableName())
+            .arg(CLIENT_TABLE)
             .arg(clientCommaSeparated);
 
     return addClient.exec(addClientQuery);
@@ -160,7 +162,7 @@ bool DatabaseAdapter::getClients(Client ** clients){
     QSqlQuery query;
 
     int i = 0;
-    query.exec("SELECT * FROM clients");
+    query.exec(QString("SELECT * FROM %1").arg(CLIENT_TABLE));
 
     while (query.next()) {
         Client* c = new Client(
@@ -182,14 +184,14 @@ bool DatabaseAdapter::deleteClient(int clientId) {
 
     QString deleteClientQuery =
             QString("DELETE FROM %1 WHERE id = %2;")
-            .arg("clients")
+            .arg(CLIENT_TABLE)
             .arg(clientId);
 
     return deleteClient.exec(deleteClientQuery);
 }
 
 int DatabaseAdapter::getClientCount() {
-    QSqlQuery clientCountQuery("SELECT COUNT(*) FROM clients;");
+    QSqlQuery clientCountQuery(QString("SELECT COUNT(*) FROM %1;").arg(CLIENT_TABLE));
     clientCountQuery.first();
 
     int count = clientCountQuery.value(0).toInt();

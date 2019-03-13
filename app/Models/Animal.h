@@ -85,8 +85,6 @@ public:
     int getAnxietyLevel();
     int getCuriosityLevel();
 
-    QString getTableName();
-
 private:
     QString species;
     QString gender;

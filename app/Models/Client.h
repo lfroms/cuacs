@@ -28,7 +28,6 @@ public:
     void getPhoneNumber(QString& outStr);
     void getEmail(QString& outStr);
 
-    QString getTableName();
     void toCommaSeperated(QString& outStr);
 
 private:
