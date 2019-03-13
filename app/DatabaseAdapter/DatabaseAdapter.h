@@ -6,8 +6,8 @@
 #include <QSqlQuery>
 #include <QDebug>
 
-#include <Models/Animal.h>
-#include <Models/Client.h>
+#include <Models/Animal/Animal.h>
+#include <Models/Client/Client.h>
 
 #include <DatabaseAdapter/Seeds.h>
 

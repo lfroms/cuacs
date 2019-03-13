@@ -28,20 +28,20 @@ SOURCES += \
         MainWindow/MainWindow.cc \
     DatabaseAdapter/DatabaseAdapter.cc \
     main.cc \
-    Models/Client.cc \
+    Models/Client/Client.cc \
     DatabaseAdapter/Seeds.cc \
     MainWindow/AnimalDetailsModal.cc \
-    Models/Animal.cc \
+    Models/Animal/Animal.cc \
     MainWindow/DetailListWidgetItem.cc \
     MainWindow/ClientDetailsModal.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
     DatabaseAdapter/DatabaseAdapter.h \
-    Models/Client.h \
+    Models/Client/Client.h \
     DatabaseAdapter/Seeds.h \
     MainWindow/AnimalDetailsModal.h \
-    Models/Animal.h \
+    Models/Animal/Animal.h \
     MainWindow/DetailListWidgetItem.h \
     MainWindow/ClientDetailsModal.h \
     DatabaseAdapter/Schema.h \

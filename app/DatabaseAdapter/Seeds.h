@@ -1,8 +1,8 @@
 #ifndef SEEDS_H
 #define SEEDS_H
 
-#include <Models/Animal.h>
-#include <Models/Client.h>
+#include <Models/Animal/Animal.h>
+#include <Models/Client/Client.h>
 
 using namespace std;
 
