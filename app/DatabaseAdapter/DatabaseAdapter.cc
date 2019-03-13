@@ -34,13 +34,13 @@ bool DatabaseAdapter::init() {
     QString animalQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(ANIMAL_TABLE)
-            .arg(animalSchema);
+            .arg(ANIMAL_SCHEMA);
 
     QSqlQuery createClients;
     QString clientQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(CLIENT_TABLE)
-            .arg(clientSchema);
+            .arg(CLIENT_SCHEMA);
 
     if (createAnimals.exec(animalQuery) &&
             createClients.exec(clientQuery)) {
