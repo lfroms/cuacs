@@ -10,6 +10,7 @@ using namespace std;
 class Animal {
 public:
     Animal(
+            QString species,
             QString gender,
             QString mainColor,
             QString breed,
@@ -37,9 +38,10 @@ public:
 
     ~Animal();
 
-    virtual void toCommaSeperated(QString& outStr) = 0;
+    void toCommaSeperated(QString& outStr);
 
     void update(
+            QString species,
             QString gender,
             QString mainColor,
             QString breed,
@@ -62,6 +64,7 @@ public:
             int curiosityLevel
             );
 
+    void getSpecies(QString& outStr);
     void getGender(QString& outStr);
     void getMainColor(QString& outStr);
     void getName(QString& outStr);
@@ -82,11 +85,8 @@ public:
     int getAnxietyLevel();
     int getCuriosityLevel();
 
-    virtual QString getSpecies() = 0;
-
-    virtual QString getTableName() = 0;
-
 private:
+    QString species;
     QString gender;
     QString mainColor;
     QString name;

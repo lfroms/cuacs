@@ -37,10 +37,6 @@ void Client::getEmail(QString& outStr) {
     outStr = email;
 }
 
-QString Client::getTableName() {
-    return QString("clients");
-}
-
 void Client::toCommaSeperated(QString &outStr) {
     stringstream a;
 

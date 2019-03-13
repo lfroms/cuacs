@@ -119,80 +119,30 @@ void MainWindow::renderListItems() {
 
 
 void MainWindow::handleAddAnimalSubmit() {
-    QString animalType = ui->animalTypeBox->currentText();
     Animal* animal;
-    if (animalType == "Dog") {
-        animal = new Dog(
-                    ui->genderEdit->text(),
-                    ui->colorEdit->text(),
-                    ui->breedEdit->text(),
-                    ui->ageEdit->text().toInt(),
-                    ui->neuteredCheckBox->isChecked(),
-                    ui->medicalCheckbox->isChecked(),
-                    ui->nameEdit->text(),
-                    false,
-                    ui->biteSlider->value(),
-                    ui->scratchSlider->value(),
-                    ui->dominanceSlider->value(),
-                    ui->adultFriendlinessSlider->value(),
-                    ui->childFriendlinessSlider->value(),
-                    ui->animalFriendlinessSlider->value(),
-                    ui->noisinessSlider->value(),
-                    ui->independenceSlider->value(),
-                    ui->affectionSlider->value(),
-                    ui->energySlider->value(),
-                    ui->anxietySlider->value(),
-                    ui->curiositySlider->value()
-                    );
-
-    } else if (animalType == "Cat") {
-        animal = new Cat(
-                    ui->genderEdit->text(),
-                    ui->colorEdit->text(),
-                    ui->breedEdit->text(),
-                    ui->ageEdit->text().toInt(),
-                    ui->neuteredCheckBox->isChecked(),
-                    ui->medicalCheckbox->isChecked(),
-                    ui->nameEdit->text(),
-                    false,
-                    ui->biteSlider->value(),
-                    ui->scratchSlider->value(),
-                    ui->dominanceSlider->value(),
-                    ui->adultFriendlinessSlider->value(),
-                    ui->childFriendlinessSlider->value(),
-                    ui->animalFriendlinessSlider->value(),
-                    ui->noisinessSlider->value(),
-                    ui->independenceSlider->value(),
-                    ui->affectionSlider->value(),
-                    ui->energySlider->value(),
-                    ui->anxietySlider->value(),
-                    ui->curiositySlider->value()
-                    );
-
-    } else if (animalType == "Rabbit") {
-        animal = new Rabbit(
-                    ui->genderEdit->text(),
-                    ui->colorEdit->text(),
-                    ui->breedEdit->text(),
-                    ui->ageEdit->text().toInt(),
-                    ui->neuteredCheckBox->isChecked(),
-                    ui->medicalCheckbox->isChecked(),
-                    ui->nameEdit->text(),
-                    false,
-                    ui->biteSlider->value(),
-                    ui->scratchSlider->value(),
-                    ui->dominanceSlider->value(),
-                    ui->adultFriendlinessSlider->value(),
-                    ui->childFriendlinessSlider->value(),
-                    ui->animalFriendlinessSlider->value(),
-                    ui->noisinessSlider->value(),
-                    ui->independenceSlider->value(),
-                    ui->affectionSlider->value(),
-                    ui->energySlider->value(),
-                    ui->anxietySlider->value(),
-                    ui->curiositySlider->value()
-                    );
-    }
+    animal = new Animal(
+        ui->animalTypeBox->currentText(),
+        ui->genderEdit->text(),
+        ui->colorEdit->text(),
+        ui->breedEdit->text(),
+        ui->ageEdit->text().toInt(),
+        ui->neuteredCheckBox->isChecked(),
+        ui->medicalCheckbox->isChecked(),
+        ui->nameEdit->text(),
+        false,
+        ui->biteSlider->value(),
+        ui->scratchSlider->value(),
+        ui->dominanceSlider->value(),
+        ui->adultFriendlinessSlider->value(),
+        ui->childFriendlinessSlider->value(),
+        ui->animalFriendlinessSlider->value(),
+        ui->noisinessSlider->value(),
+        ui->independenceSlider->value(),
+        ui->affectionSlider->value(),
+        ui->energySlider->value(),
+        ui->anxietySlider->value(),
+        ui->curiositySlider->value()
+    );
 
     if (!db->insertAnimal(animal)) {
         qDebug() << "Failed to add animal to database.";

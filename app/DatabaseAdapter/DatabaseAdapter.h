@@ -6,9 +6,7 @@
 #include <QSqlQuery>
 #include <QDebug>
 
-#include <Models/Dog.h>
-#include <Models/Cat.h>
-#include <Models/Rabbit.h>
+#include <Models/Animal.h>
 #include <Models/Client.h>
 
 #include <DatabaseAdapter/Seeds.h>
@@ -19,8 +17,6 @@ class DatabaseAdapter {
     public:
         static DatabaseAdapter* getInstance();
 
-        static bool insertDog(Dog*);
-        static bool insertCat(Cat*);
         static bool insertAnimal(Animal*);
         static bool getAnimals(Animal** animal);
         static int getTotalAnimals();

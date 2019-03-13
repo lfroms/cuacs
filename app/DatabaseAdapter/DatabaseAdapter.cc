@@ -2,9 +2,12 @@
 #include "Models/Animal.h"
 
 static const QString DATABASE_PATH = "cuacs.db";
+static const QString ANIMAL_TABLE = "animals";
+static const QString CLIENT_TABLE = "clients";
 
 static const QString commonAttributes =
         "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+        "species TEXT NOT NULL,"
         "gender TEXT NOT NULL,"
         "main_color TEXT NOT NULL,"
         "breed TEXT NOT NULL,"
@@ -59,33 +62,19 @@ DatabaseAdapter* DatabaseAdapter::getInstance() {
 
 // Set up the database.
 bool DatabaseAdapter::init() {
-    QSqlQuery createDogs;
-    QString dogQuery =
+    QSqlQuery createAnimals;
+    QString animalQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
-            .arg("dogs")
-            .arg(commonAttributes);
-
-    QSqlQuery createCats;
-    QString catQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
-            .arg("cats")
-            .arg(commonAttributes);
-
-    QSqlQuery createRabbits;
-    QString rabbitQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
-            .arg("rabbits")
+            .arg(ANIMAL_TABLE)
             .arg(commonAttributes);
 
     QSqlQuery createClients;
     QString clientQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
-            .arg("clients")
+            .arg(CLIENT_TABLE)
             .arg(clientSchema);
 
-    if (createDogs.exec(dogQuery) &&
-            createCats.exec(catQuery) &&
-            createRabbits.exec(rabbitQuery) &&
+    if (createAnimals.exec(animalQuery) &&
             createClients.exec(clientQuery)) {
         return seed();
     } else {
@@ -103,7 +92,7 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
 
     QString addAnimalQuery =
             QString("INSERT INTO %1 VALUES(null, %2);")
-            .arg(animal->getTableName())
+            .arg(ANIMAL_TABLE)
             .arg(animalCommaSeparated);
 
     return  addAnimal.exec(addAnimalQuery);
@@ -111,21 +100,21 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
 
 bool DatabaseAdapter::getAnimals(Animal** animals){
     QSqlQuery query;
-    query.exec("SELECT * FROM rabbits;");
+    query.exec(QString("SELECT * FROM %1;").arg(ANIMAL_TABLE));
     int i = 0;
 
-    // Loading all rabbits
+    // Loading all animals
     while (query.next()) {
-        Rabbit* r = new Rabbit(
+        Animal* r = new Animal(
                     query.value(1).toString(),
                     query.value(2).toString(),
                     query.value(3).toString(),
-                    query.value(4).toInt(),
-                    query.value(5).toBool(),
+                    query.value(4).toString(),
+                    query.value(5).toInt(),
                     query.value(6).toBool(),
-                    query.value(7).toString(),
-                    query.value(8).toBool(),
-                    query.value(9).toInt(),
+                    query.value(7).toBool(),
+                    query.value(8).toString(),
+                    query.value(9).toBool(),
                     query.value(10).toInt(),
                     query.value(11).toInt(),
                     query.value(12).toInt(),
@@ -136,72 +125,11 @@ bool DatabaseAdapter::getAnimals(Animal** animals){
                     query.value(17).toInt(),
                     query.value(18).toInt(),
                     query.value(19).toInt(),
-                    query.value(20).toInt()
+                    query.value(20).toInt(),
+                    query.value(21).toInt()
                     );
 
         animals[i] = r;
-        i++;
-    }
-
-    query.exec("SELECT * FROM dogs");
-
-    // Loading all dogs
-    while (query.next()) {
-        Dog* d = new Dog(
-                    query.value(1).toString(),
-                    query.value(2).toString(),
-                    query.value(3).toString(),
-                    query.value(4).toInt(),
-                    query.value(5).toBool(),
-                    query.value(6).toBool(),
-                    query.value(7).toString(),
-                    query.value(8).toBool(),
-                    query.value(9).toInt(),
-                    query.value(10).toInt(),
-                    query.value(11).toInt(),
-                    query.value(12).toInt(),
-                    query.value(13).toInt(),
-                    query.value(14).toInt(),
-                    query.value(15).toInt(),
-                    query.value(16).toInt(),
-                    query.value(17).toInt(),
-                    query.value(18).toInt(),
-                    query.value(19).toInt(),
-                    query.value(20).toInt()
-                    );
-
-        animals[i] = d;
-        i++;
-    }
-
-    query.exec("SELECT * FROM cats");
-
-    // Loading all cats
-    while (query.next()) {
-        Cat* c = new Cat(
-                    query.value(1).toString(),
-                    query.value(2).toString(),
-                    query.value(3).toString(),
-                    query.value(4).toInt(),
-                    query.value(5).toBool(),
-                    query.value(6).toBool(),
-                    query.value(7).toString(),
-                    query.value(8).toBool(),
-                    query.value(9).toInt(),
-                    query.value(10).toInt(),
-                    query.value(11).toInt(),
-                    query.value(12).toInt(),
-                    query.value(13).toInt(),
-                    query.value(14).toInt(),
-                    query.value(15).toInt(),
-                    query.value(16).toInt(),
-                    query.value(17).toInt(),
-                    query.value(18).toInt(),
-                    query.value(19).toInt(),
-                    query.value(20).toInt()
-                    );
-
-        animals[i] = c;
         i++;
     }
 
@@ -209,19 +137,11 @@ bool DatabaseAdapter::getAnimals(Animal** animals){
 }
 
 int DatabaseAdapter::getTotalAnimals() {
-    QSqlQuery rabbitCountQ("SELECT COUNT(*) FROM rabbits;");
-    rabbitCountQ.first();
-    int rabbitCount = rabbitCountQ.value(0).toInt();
+    QSqlQuery animalCountQ(QString("SELECT COUNT(*) FROM %1;").arg(ANIMAL_TABLE));
+    animalCountQ.first();
+    int animalCount = animalCountQ.value(0).toInt();
 
-    QSqlQuery catCountQ("SELECT COUNT(*) FROM cats;");
-    catCountQ.first();
-    int catCount = catCountQ.value(0).toInt();
-
-    QSqlQuery dogCountQ("SELECT COUNT(*) FROM dogs;");
-    dogCountQ.first();
-    int dogCount = dogCountQ.value(0).toInt();
-
-    return rabbitCount + dogCount + catCount;
+    return animalCount;
 }
 
 bool DatabaseAdapter::saveClient(Client * client) {
@@ -232,7 +152,7 @@ bool DatabaseAdapter::saveClient(Client * client) {
 
     QString addClientQuery =
             QString("INSERT INTO %1 VALUES(null, %2);")
-            .arg(client->getTableName())
+            .arg(CLIENT_TABLE)
             .arg(clientCommaSeparated);
 
     return addClient.exec(addClientQuery);
@@ -242,7 +162,7 @@ bool DatabaseAdapter::getClients(Client ** clients){
     QSqlQuery query;
 
     int i = 0;
-    query.exec("SELECT * FROM clients");
+    query.exec(QString("SELECT * FROM %1").arg(CLIENT_TABLE));
 
     while (query.next()) {
         Client* c = new Client(
@@ -264,14 +184,14 @@ bool DatabaseAdapter::deleteClient(int clientId) {
 
     QString deleteClientQuery =
             QString("DELETE FROM %1 WHERE id = %2;")
-            .arg("clients")
+            .arg(CLIENT_TABLE)
             .arg(clientId);
 
     return deleteClient.exec(deleteClientQuery);
 }
 
 int DatabaseAdapter::getClientCount() {
-    QSqlQuery clientCountQuery("SELECT COUNT(*) FROM clients;");
+    QSqlQuery clientCountQuery(QString("SELECT COUNT(*) FROM %1;").arg(CLIENT_TABLE));
     clientCountQuery.first();
 
     int count = clientCountQuery.value(0).toInt();
