@@ -121,28 +121,16 @@ void MainWindow::renderListItems() {
 void MainWindow::handleAddAnimalSubmit() {
     Animal* animal;
     animal = new Animal(
-        ui->animalTypeBox->currentText(),
-        ui->genderEdit->text(),
-        ui->colorEdit->text(),
-        ui->breedEdit->text(),
-        ui->ageEdit->text().toInt(),
-        ui->neuteredCheckBox->isChecked(),
-        ui->medicalCheckbox->isChecked(),
-        ui->nameEdit->text(),
-        false,
-        ui->biteSlider->value(),
-        ui->scratchSlider->value(),
-        ui->dominanceSlider->value(),
-        ui->adultFriendlinessSlider->value(),
-        ui->childFriendlinessSlider->value(),
-        ui->animalFriendlinessSlider->value(),
-        ui->noisinessSlider->value(),
-        ui->independenceSlider->value(),
-        ui->affectionSlider->value(),
-        ui->energySlider->value(),
-        ui->anxietySlider->value(),
-        ui->curiositySlider->value()
-    );
+                ui->nameEdit->text(),
+                ui->animalTypeBox->currentText(),
+                ui->genderEdit->text(),
+                ui->breedEdit->text(),
+                ui->ageEdit->text().toInt(),
+                ui->neuteredCheckBox->isChecked(),
+                ui->medicalCheckbox->isChecked(),
+                ui->colorEdit->text(),
+                false
+                );
 
     if (!db->insertAnimal(animal)) {
         qDebug() << "Failed to add animal to database.";

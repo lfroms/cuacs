@@ -16,10 +16,10 @@ AnimalDetailsModal::~AnimalDetailsModal()
 }
 
 void AnimalDetailsModal::setupViews() {
-    QString species, name, gender, mainColor, breed;
+    QString species, name, gender, color, breed;
     animal->getName(name);
     animal->getGender(gender);
-    animal->getMainColor(mainColor);
+    animal->getColor(color);
     animal->getBreed(breed);
     animal->getSpecies(species);
 
@@ -30,23 +30,24 @@ void AnimalDetailsModal::setupViews() {
     ui->nameEdit->setText(name);
     ui->breedEdit->setText(breed);
     ui->genderEdit->setText(gender);
-    ui->colorEdit->setText(mainColor);
+    ui->colorEdit->setText(color);
     ui->animalTypeLabel->setText(species);
     ui->ageEdit->setText(QString::number(animal->getAge()));
-    ui->biteSlider->setValue(animal->getBiteTendency());
-    ui->scratchSlider->setValue(animal->getScratchTendency());
-    ui->dominanceSlider->setValue(animal->getDominanceTendency());
-    ui->adultFriendlinessSlider->setValue(animal->getFriendlinessAdults());
-    ui->childFriendlinessSlider->setValue(animal->getFriendlinessChildren());
-    ui->animalFriendlinessSlider->setValue(animal->getFriendlinessAnimals());
-    ui->noisinessSlider->setValue(animal->getNoiseLevel());
-    ui->independenceSlider->setValue(animal->getIndependence());
-    ui->affectionSlider->setValue(animal->getAffection());
-    ui->energySlider->setValue(animal->getEnergyLevel());
-    ui->anxietySlider->setValue(animal->getAnxietyLevel());
-    ui->curiositySlider->setValue(animal->getCuriosityLevel());
+
+    // Temporarily set to 5 because these don't exist yet.
+    ui->biteSlider->setValue(5);
+    ui->scratchSlider->setValue(5);
+    ui->dominanceSlider->setValue(5);
+    ui->adultFriendlinessSlider->setValue(5);
+    ui->childFriendlinessSlider->setValue(5);
+    ui->animalFriendlinessSlider->setValue(5);
+    ui->noisinessSlider->setValue(5);
+    ui->independenceSlider->setValue(5);
+    ui->affectionSlider->setValue(5);
+    ui->energySlider->setValue(5);
+    ui->anxietySlider->setValue(5);
+    ui->curiositySlider->setValue(5);
     ui->neuteredCheckBox->setChecked(animal->getNeuteredOrSpayed());
     ui->neuteredCheckBox->setEnabled(false);
-    ui->medicalCheckbox->setChecked(animal->getRequiresMedicalAttention());
-    ui->medicalCheckbox->setEnabled(false);
+    ui->medicalCheckbox->setChecked(animal->getRequiresMedicalAttn());
 }

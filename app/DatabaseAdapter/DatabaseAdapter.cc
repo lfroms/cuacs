@@ -80,12 +80,16 @@ bool DatabaseAdapter::insertAnimal(Animal * animal) {
             .arg(ANIMAL_TABLE)
             .arg(animalCommaSeparated);
 
-    return  addAnimal.exec(addAnimalQuery);
+    return addAnimal.exec(addAnimalQuery);
 }
 
-bool DatabaseAdapter::getAnimals(Animal** animals){
+bool DatabaseAdapter::getAnimals(Animal** animals) {
     QSqlQuery query;
-    query.exec(QString("SELECT * FROM %1;").arg(ANIMAL_TABLE));
+    QString getAnimalsQuery =
+            QString("SELECT * FROM %1;")
+            .arg(ANIMAL_TABLE);
+
+    query.exec(getAnimalsQuery);
     int i = 0;
 
     // Loading all animals
@@ -99,20 +103,11 @@ bool DatabaseAdapter::getAnimals(Animal** animals){
                     query.value(6).toBool(),
                     query.value(7).toBool(),
                     query.value(8).toString(),
-                    query.value(9).toBool(),
-                    query.value(10).toInt(),
-                    query.value(11).toInt(),
-                    query.value(12).toInt(),
-                    query.value(13).toInt(),
-                    query.value(14).toInt(),
-                    query.value(15).toInt(),
-                    query.value(16).toInt(),
-                    query.value(17).toInt(),
-                    query.value(18).toInt(),
-                    query.value(19).toInt(),
-                    query.value(20).toInt(),
-                    query.value(21).toInt()
+                    query.value(9).toBool()
                     );
+
+        int id = query.value(0).toInt();
+        r->setId(id);
 
         animals[i] = r;
         i++;
@@ -122,7 +117,11 @@ bool DatabaseAdapter::getAnimals(Animal** animals){
 }
 
 int DatabaseAdapter::getTotalAnimals() {
-    QSqlQuery animalCountQ(QString("SELECT COUNT(*) FROM %1;").arg(ANIMAL_TABLE));
+    QString getAnimalsCount =
+            QString("SELECT COUNT(*) FROM %1;")
+            .arg(ANIMAL_TABLE);
+    QSqlQuery animalCountQ(getAnimalsCount);
+
     animalCountQ.first();
     int animalCount = animalCountQ.value(0).toInt();
 

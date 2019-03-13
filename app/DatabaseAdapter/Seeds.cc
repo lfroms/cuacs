@@ -2,35 +2,35 @@
 using namespace std;
 
 Seeds::Seeds() {
-    animals[0] = new Animal("Dog", "male", "brown", "Yorkshire Terrier", 1, false, false, "Timothy", false, 8, 9, 8, 9, 2, 10, 5, 9, 1, 5, 5, 5);
-    animals[1] = new Animal("Dog", "female", "yellow", "Labrador Retriever", 10, false, false, "Holly", false, 5, 9, 1, 5, 5, 5, 8, 9, 8, 9, 2, 10);
-    animals[2] = new Animal("Cat", "male", "orange", "Tabby", 6, false, false, "Whiskers", false, 2, 5, 7, 10, 2, 5, 4, 9, 7, 8, 6, 10);
-    animals[3] = new Animal("Cat", "female", "black", "American Shorthair", 11, false, false, "Salem", false, 4, 9, 7, 8, 6, 10, 2, 5, 7, 10, 2, 5);
-    animals[4] = new Animal("Rabbit", "male", "grey", "Britannia Petite", 3, false, false, "Bugs", false, 9, 2, 10, 10, 5, 1, 6, 5, 2, 9, 1, 0);
-    
-    animals[5] = new Animal("Dog", "male", "grey", "Husky", 8, false, false, "Charles", false, 2, 2, 6, 5, 2, 9, 7, 1, 9, 10, 7, 1);
-    animals[6] = new Animal("Dog", "female", "yellow", "German Shepherd", 3, false, false, "Jamie", false, 7, 1, 9, 10, 7, 4, 2, 6, 5, 2, 9, 7);
-    animals[7] = new Animal("Cat", "male", "grey", "Russian Blue", 2, false, false, "Patrick", false, 1, 4, 8, 7, 3, 2, 1, 10, 6, 3, 3, 2);
-    animals[8] = new Animal("Cat", "female", "white", "Persian", 6, false, false, "Nibbles", false, 1, 10, 6, 3, 3, 2, 1, 4, 8, 7, 3, 2);
-    animals[9] = new Animal("Rabbit", "female", "grey", "Dutch", 2, false, false, "Pickles", false, 1, 5, 7, 9, 3, 6, 3, 8, 10, 7, 7, 10);
-    
-    animals[10] = new Animal("Dog", "male", "black and white", "Dalmation", 1, false, false, "Spot", false, 3, 8, 10, 7, 7, 10, 5, 2, 1, 9, 2, 5);
-    animals[11] = new Animal("Dog", "female", "black", "Pug", 2, false, false, "Ivy", false, 5, 2, 1, 9, 2, 5, 7, 10, 5, 2, 1, 9);
-    animals[12] = new Animal("Cat", "male", "beige", "Siamese", 4, false, false, "Bill", false, 5, 10, 10, 6, 7, 10, 3, 1, 7, 5, 4, 5);
-    animals[13] = new Animal("Cat", "female", "brown", "Scottish Fold", 8, false, false, "Caroline", false, 10, 3, 1, 7, 5, 4, 5, 10, 10, 6, 7, 10);
-    animals[14] = new Animal("Rabbit", "male", "brown", "Dwarf Hotot", 16, false, false, "BoJack", false, 3, 1, 5, 1, 2, 1, 7, 5, 4, 5, 10, 10);
+    animals[0] = new Animal("Timothy", "Dog", "male", "Yorkshire Terrier", 1, false, false, "brown", false);
+    animals[1] = new Animal("Holly", "Dog", "female", "Labrador Retriever", 10, false, false, "yellow", false);
+    animals[2] = new Animal("Whiskers", "Cat", "male", "Tabby", 6, false, false, "orange", false);
+    animals[3] = new Animal("Salem", "Cat", "female", "American Shorthair", 11, false, false, "black", false);
+    animals[4] = new Animal("Bugs", "Rabbit", "male", "Britannia Petite", 3, false, false, "grey", false);
 
-    animals[15] = new Animal("Dog", "male", "white", "Chihuahua", 2, false, false, "Harold", false, 6, 3, 7, 10, 9, 2, 2, 8, 3, 10, 8, 3);
-    animals[16] = new Animal("Dog", "female", "brown and white", "Shih Tzu", 4, false, false, "Nadeen", false, 2, 8, 3, 10, 8, 3, 6, 3, 7, 10, 9, 2);
-    animals[17] = new Animal("Cat", "male", "yellow", "British Shorthair", 5, false, false, "Dirk", false, 3, 2, 8, 5, 8, 8, 1, 3, 9, 3, 2, 4);
-    animals[18] = new Animal("Cat", "female", "pink", "Sphynx", 7, false, false, "Alexandra", false, 1, 3, 9, 3, 2, 4, 3, 2, 8, 5, 8, 8);
-    animals[19] = new Animal("Rabbit", "male", "white", "Himalayan", 9, false, false, "Sunny", false, 10, 7, 5, 1, 10, 9, 3, 2, 4, 3, 2, 8);
+    animals[5] = new Animal("Charles", "Dog", "male", "Husky", 8, false, false, "grey", false);
+    animals[6] = new Animal("Jamie", "Dog", "female", "German Shepherd", 3, false, false, "yellow", false);
+    animals[7] = new Animal("Patrick", "Cat", "male", "Russian Blue", 2, false, false, "grey", false);
+    animals[8] = new Animal("Nibbles", "Cat", "female", "Persian", 6, false, false, "white", false);
+    animals[9] = new Animal("Pickles", "Rabbit", "male", "Dutch", 2, false, false, "grey", false);
 
-    animals[20] = new Animal("Dog", "male", "grey", "Greyhound", 1, false, false, "Pearl", false, 2, 5, 8, 7, 5, 9, 5, 3, 4, 9, 5, 8);
-    animals[21] = new Animal("Dog", "female", "yellow", "Cocker Spaniel", 3, false, false, "Carol", false, 5, 2, 5, 3, 4, 9, 5, 8, 7, 5, 9, 1);
-    animals[22] = new Animal("Cat", "male", "orange", "Tabby", 1, false, false, "Floyd", false, 9, 2, 6, 3, 1, 6, 8, 5, 3, 5, 7, 4);
-    animals[23] = new Animal("Cat", "female", "white", "American Shorthair", 4, false, false, "Hayley", false, 8, 5, 3, 5, 7, 4, 9, 2, 6, 3, 1, 6);
-    animals[24] = new Animal("Rabbit", "male", "grey", "Holland Lop", 14, false, false, "Reese", false, 4, 10, 7, 4, 2, 3, 5, 3, 5, 7, 4, 9);
+    animals[10] = new Animal("Spot", "Dog", "male", "Dalmation", 1, false, false, "black and white", false);
+    animals[11] = new Animal("Ivy", "Dog", "female", "Pug", 2, false, false, "black", false);
+    animals[12] = new Animal("Bill", "Cat", "male", "Siamese", 4, false, false, "beige", false);
+    animals[13] = new Animal("Caroline", "Cat", "female", "Scottish Fold", 8, false, false, "brown", false);
+    animals[14] = new Animal("BoJack", "Rabbit", "male", "Dwarf Hotot", 16, false, false, "brown", false);
+
+    animals[15] = new Animal("Harold", "Dog", "male", "Chihuahua", 2, false, false, "white", false);
+    animals[16] = new Animal("Nadeen", "Dog", "female", "Shih Tzu", 4, false, false, "brown and white", false);
+    animals[17] = new Animal("Dirk", "Cat", "male", "British Shorthair", 5, false, false, "yellow", false);
+    animals[18] = new Animal("Alexandra", "Cat", "female", "Sphynx", 7, false, false, "pink", false);
+    animals[19] = new Animal("Sunny", "Rabbit", "male", "Himalayan", 9, false, false, "white", false);
+
+    animals[20] = new Animal("Pearl", "Dog", "male", "Greyhound", 1, false, false, "grey", false);
+    animals[21] = new Animal("Carol", "Dog", "female", "Cocker Spaniel", 3, false, false, "yellow", false);
+    animals[22] = new Animal("Floyd", "Cat", "male", "Tabby", 1, false, false, "orange", false);
+    animals[23] = new Animal("Hayley", "Cat", "female", "American Shorthair", 4, false, false, "white", false);
+    animals[24] = new Animal("Reese", "Rabbit", "male", "Holland Lop", 4, false, false, "grey", false);
 
     clients[0] = new Client("Johnny Appleseed", 24, "613-928-5235", "johnny@cuacs.ca");
     clients[1] = new Client("Niko Kouloufakos", 19, "613-413-5276", "niko.kouloufakos@shopify.com");
