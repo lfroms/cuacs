@@ -2,14 +2,12 @@
 #define ANIMAL_H
 
 #include <QString>
-#include <QTextStream>
+#include <QObject>
 #include <iostream>
 #include <sstream>
-#include <QObject>
+#include <Models/ActiveObject/ActiveObject.h>
 
 using namespace std;
-
-#include <Models/ActiveObject/ActiveObject.h>
 
 class Animal : public ActiveObject<Animal> {
 public:

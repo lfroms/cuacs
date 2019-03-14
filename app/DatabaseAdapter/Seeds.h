@@ -5,14 +5,14 @@
 #include <Models/Client/Client.h>
 
 class Seeds {
-    private:
-        Animal* animals[25];
-        Client* clients[5];
+private:
+    Animal* animals[25];
+    Client* clients[5];
 
-    public:
-        Seeds();
-        Animal** getAnimals();
-        Client** getClients();
+public:
+    Seeds();
+    Animal** getAnimals();
+    Client** getClients();
 };
 
 #endif // SEEDS_H

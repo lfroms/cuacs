@@ -20,6 +20,7 @@ public:
     static bool first(T*);
     static bool last(T*);
     static int count();
+    static bool where(T*, int id);
 
 protected:
     int id;
@@ -103,6 +104,27 @@ bool ActiveObject<T>::last(T* output) {
             .arg(tableName);
 
     if (!query.exec(getLastQuery)) {
+        return false;
+    }
+
+    QSqlRecord record = query.record();
+    output = new T(&record);
+
+    return true;
+}
+
+template <class T>
+bool ActiveObject<T>::where(T* output, int id) {
+    QString tableName;
+    getTableName(tableName);
+
+    QSqlQuery query;
+    QString getFirstQuery =
+            QString("SELECT * FROM %1 WHERE id = %2 LIMIT 1;")
+            .arg(tableName)
+            .arg(id);
+
+    if (!query.exec(getFirstQuery)) {
         return false;
     }
 

@@ -1,5 +1,4 @@
 #include "DatabaseAdapter.h"
-#include <Models/Animal/Animal.h>
 
 #include "Config.h"
 #include "Schema.h"
