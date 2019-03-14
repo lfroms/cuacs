@@ -22,6 +22,9 @@ public:
     static int count();
     static bool where(T*, int id);
 
+    template <typename U>
+    static bool where(T*, QString colName, U value);
+
 protected:
     int id;
     ActiveObject();
@@ -119,12 +122,35 @@ bool ActiveObject<T>::where(T* output, int id) {
     getTableName(tableName);
 
     QSqlQuery query;
-    QString getFirstQuery =
+    QString getWhereQuery =
             QString("SELECT * FROM %1 WHERE id = %2 LIMIT 1;")
             .arg(tableName)
             .arg(id);
 
-    if (!query.exec(getFirstQuery)) {
+    if (!query.exec(getWhereQuery)) {
+        return false;
+    }
+
+    QSqlRecord record = query.record();
+    output = new T(&record);
+
+    return true;
+}
+
+template <class T>
+template <typename U>
+bool ActiveObject<T>::where(T* output, QString colName, U value) {
+    QString tableName;
+    getTableName(tableName);
+
+    QSqlQuery query;
+    QString getWhereQuery =
+            QString("SELECT * FROM %1 WHERE %2 = %3 LIMIT 1;")
+            .arg(tableName)
+            .arg(colName)
+            .arg(value);
+
+    if (!query.exec(getWhereQuery)) {
         return false;
     }
 
