@@ -2,7 +2,7 @@
 #define ATTRIBUTE_H
 
 #include <QString>
-#include <Models/ActiveObject/ActiveObject.h>
+#include <ActiveObject/ActiveObject.h>
 
 using namespace std;
 

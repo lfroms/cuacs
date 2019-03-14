@@ -47,7 +47,7 @@ HEADERS += \
     MainWindow/ClientDetailsModal.h \
     DatabaseAdapter/Schema.h \
     DatabaseAdapter/Config.h \
-    Models/ActiveObject/ActiveObject.h \
+    ActiveObject/ActiveObject.h \
     Models/Attribute/Attribute.h
 
 FORMS += \
