@@ -14,26 +14,17 @@
 #include <vector>
 
 class DatabaseAdapter {
-    public:
-        static DatabaseAdapter* getInstance();
+public:
+    static bool init();
 
-        static bool getAnimals(Animal** animal);
-        static int getTotalAnimals();
+private:
+    DatabaseAdapter();
+    ~DatabaseAdapter();
 
-        static bool getClients(Client**);
-        static int getClientCount();
+    static QSqlDatabase db;
 
-        static bool insert(QString& tableName, QString& args);
-        static bool update(int& id, QString& tableName, QString& args);
-        static bool destroy(int& id, QString& tableName);
-
-    private:
-        DatabaseAdapter();
-        ~DatabaseAdapter();
-        static QSqlDatabase db;
-
-        static bool init();
-        static bool seed();
+    static bool setup();
+    static bool seed();
 };
 
 #endif // DATABASEADAPTER_H

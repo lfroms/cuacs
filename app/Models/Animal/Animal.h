@@ -11,7 +11,7 @@ using namespace std;
 
 #include <Models/ActiveObject/ActiveObject.h>
 
-class Animal : public ActiveObject {
+class Animal : public ActiveObject<Animal> {
 public:
     Animal(
             QString name,
@@ -25,9 +25,9 @@ public:
             bool isHypothetical
             );
 
-    ~Animal();
+    Animal(QSqlRecord* record);
 
-    void toCommaSeparated(QString& outStr);
+    ~Animal();
 
     void getName(QString& outStr);
     void getSpecies(QString& outStr);
@@ -39,7 +39,8 @@ public:
     void getColor(QString& outStr);
     bool getIsHypothetical();
 
-    void getTableName(QString& outStr);
+    void toCommaSeparated(QString& outStr);
+    static void getTableName(QString& outStr);
 
 private:
     QString name;

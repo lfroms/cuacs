@@ -7,20 +7,23 @@ Client::Client(
         QString phoneNumber,
         QString email
         ) {
-    update(name, age, phoneNumber, email);
+    this->name = name;
+    this->age = age;
+    this->phoneNumber = phoneNumber;
+    this->email = email;
 }
 
-void Client::update(
-        QString nName,
-        int nAge,
-        QString nPhoneNumber,
-        QString nEmail
-        ) {
-    name = nName;
-    age = nAge;
-    phoneNumber = nPhoneNumber;
-    email = nEmail;
+// Define how the SQL record should be decomposed into this object.
+Client::Client(QSqlRecord* record) :
+    Client(record->field("name").value().toString(),
+           record->field("age").value().toInt(),
+           record->field("phone_number").value().toString(),
+           record->field("email").value().toString()
+           ) {
+    this->id = record->field("id").value().toInt();
 }
+
+Client::~Client() {}
 
 void Client::getName(QString& outStr) {
     outStr = name;

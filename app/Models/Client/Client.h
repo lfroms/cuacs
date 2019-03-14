@@ -6,11 +6,11 @@
 #include <iostream>
 #include <sstream>
 
-#include <Models/ActiveObject/ActiveObject.h>
-
 using namespace std;
 
-class Client : public ActiveObject {
+#include <Models/ActiveObject/ActiveObject.h>
+
+class Client : public ActiveObject<Client> {
 public:
     Client(
             QString name,
@@ -18,12 +18,10 @@ public:
             QString phoneNumber,
             QString email
             );
-    void update(
-            QString name,
-            int age,
-            QString phoneNumber,
-            QString email
-            );
+
+    Client(QSqlRecord* record);
+
+    ~Client();
 
     void getName(QString& outStr);
     void getAge(int& outInt);
@@ -31,7 +29,7 @@ public:
     void getEmail(QString& outStr);
 
     void toCommaSeparated(QString& outStr);
-    void getTableName(QString& outStr);
+    static void getTableName(QString& outStr);
 
 private:
     QString name;

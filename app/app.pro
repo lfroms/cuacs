@@ -33,8 +33,7 @@ SOURCES += \
     MainWindow/AnimalDetailsModal.cc \
     Models/Animal/Animal.cc \
     MainWindow/DetailListWidgetItem.cc \
-    MainWindow/ClientDetailsModal.cc \
-    Models/ActiveObject/ActiveObject.cc
+    MainWindow/ClientDetailsModal.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \

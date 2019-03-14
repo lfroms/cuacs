@@ -13,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->clientsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onClientClicked(QListWidgetItem*)));
 
-    db = DatabaseAdapter::getInstance();
-
     renderListItems();
 }
 
@@ -57,9 +55,9 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
 void MainWindow::renderAnimalList() {
     ui->animalsListWidget->clear();
 
-    int numAnimals = db->getTotalAnimals();
+    int numAnimals = Animal::count();
     Animal * animals[numAnimals];
-    db->getAnimals(animals);
+    Animal::all(animals);
 
     for (int i = 0; i < numAnimals; i++) {
         QString name, breed;
@@ -87,9 +85,9 @@ void MainWindow::renderAnimalList() {
 void MainWindow::renderClientList() {
     ui->clientsListWidget->clear();
 
-    int numClients = db->getClientCount();
+    int numClients = Client::count();
     Client * clients[numClients];
-    db->getClients(clients);
+    Client::all(clients);
 
     for (int i = 0; i < numClients; i++) {
         QString name, email;
