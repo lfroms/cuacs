@@ -1,4 +1,5 @@
 #include "Client.h"
+#include <DatabaseAdapter/Schema.h>
 
 Client::Client(
         QString name,
@@ -37,7 +38,7 @@ void Client::getEmail(QString& outStr) {
     outStr = email;
 }
 
-void Client::toCommaSeperated(QString &outStr) {
+void Client::toCommaSeparated(QString &outStr) {
     stringstream a;
 
     a << "'" << name.toStdString() << "', "
@@ -47,4 +48,8 @@ void Client::toCommaSeperated(QString &outStr) {
       << "null";
 
     outStr = QString::fromStdString(a.str());
+}
+
+void Client::getTableName(QString &outStr) {
+    outStr = CLIENT_TABLE;
 }

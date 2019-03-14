@@ -132,7 +132,9 @@ void MainWindow::handleAddAnimalSubmit() {
                 false
                 );
 
-    if (!db->insertAnimal(animal)) {
+    bool animalSaved = animal->create();
+
+    if (!animalSaved) {
         qDebug() << "Failed to add animal to database.";
         return;
     }
@@ -168,7 +170,9 @@ void MainWindow::handleAddClientSubmit() {
                 ui->clientEmailEdit->text()
                 );
 
-    if (!db->saveClient(client)) {
+    bool clientSaved = client->create();
+
+    if (!clientSaved) {
         qDebug() << "Failed to add client to database.";
         return;
     }

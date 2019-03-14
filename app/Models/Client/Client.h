@@ -6,9 +6,11 @@
 #include <iostream>
 #include <sstream>
 
+#include <Models/ActiveObject/ActiveObject.h>
+
 using namespace std;
 
-class Client {
+class Client : public ActiveObject {
 public:
     Client(
             QString name,
@@ -28,7 +30,8 @@ public:
     void getPhoneNumber(QString& outStr);
     void getEmail(QString& outStr);
 
-    void toCommaSeperated(QString& outStr);
+    void toCommaSeparated(QString& outStr);
+    void getTableName(QString& outStr);
 
 private:
     QString name;

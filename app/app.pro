@@ -33,7 +33,8 @@ SOURCES += \
     MainWindow/AnimalDetailsModal.cc \
     Models/Animal/Animal.cc \
     MainWindow/DetailListWidgetItem.cc \
-    MainWindow/ClientDetailsModal.cc
+    MainWindow/ClientDetailsModal.cc \
+    Models/ActiveObject/ActiveObject.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -45,7 +46,8 @@ HEADERS += \
     MainWindow/DetailListWidgetItem.h \
     MainWindow/ClientDetailsModal.h \
     DatabaseAdapter/Schema.h \
-    DatabaseAdapter/Config.h
+    DatabaseAdapter/Config.h \
+    Models/ActiveObject/ActiveObject.h
 
 FORMS += \
         MainWindow/MainWindow.ui \

@@ -67,21 +67,39 @@ bool DatabaseAdapter::init() {
     return false;
 }
 
-/* === Public-Facing Database Operation Methods === */
 
-bool DatabaseAdapter::insertAnimal(Animal * animal) {
-    QSqlQuery addAnimal;
-
-    QString animalCommaSeparated;
-    animal->toCommaSeperated(animalCommaSeparated);
-
-    QString addAnimalQuery =
+bool DatabaseAdapter::insert(QString &tableName, QString &args) {
+    QSqlQuery insert;
+    QString insertQuery =
             QString("INSERT INTO %1 VALUES(null, %2);")
-            .arg(ANIMAL_TABLE)
-            .arg(animalCommaSeparated);
+            .arg(tableName)
+            .arg(args);
 
-    return addAnimal.exec(addAnimalQuery);
+    return insert.exec(insertQuery);
 }
+
+bool DatabaseAdapter::update(int &id, QString &tableName, QString &args) {
+    QSqlQuery update;
+    QString updateQuery =
+            QString("REPLACE INTO %1 VALUES(%2, %3);")
+            .arg(tableName)
+            .arg(id)
+            .arg(args);
+
+    return update.exec(updateQuery);
+}
+
+bool DatabaseAdapter::destroy(int &id, QString &tableName) {
+    QSqlQuery destroy;
+    QString destroyQuery =
+            QString("DELETE FROM %1 WHERE id = %2;")
+            .arg(tableName)
+            .arg(id);
+
+    return destroy.exec(destroyQuery);
+}
+
+/* === Public-Facing Database Operation Methods === */
 
 bool DatabaseAdapter::getAnimals(Animal** animals) {
     QSqlQuery query;
@@ -106,9 +124,6 @@ bool DatabaseAdapter::getAnimals(Animal** animals) {
                     query.value(9).toBool()
                     );
 
-        int id = query.value(0).toInt();
-        r->setId(id);
-
         animals[i] = r;
         i++;
     }
@@ -126,20 +141,6 @@ int DatabaseAdapter::getTotalAnimals() {
     int animalCount = animalCountQ.value(0).toInt();
 
     return animalCount;
-}
-
-bool DatabaseAdapter::saveClient(Client * client) {
-    QSqlQuery addClient;
-
-    QString clientCommaSeparated;
-    client->toCommaSeperated(clientCommaSeparated);
-
-    QString addClientQuery =
-            QString("INSERT INTO %1 VALUES(null, %2);")
-            .arg(CLIENT_TABLE)
-            .arg(clientCommaSeparated);
-
-    return addClient.exec(addClientQuery);
 }
 
 bool DatabaseAdapter::getClients(Client ** clients){
@@ -163,17 +164,6 @@ bool DatabaseAdapter::getClients(Client ** clients){
     return true;
 }
 
-bool DatabaseAdapter::deleteClient(int clientId) {
-    QSqlQuery deleteClient;
-
-    QString deleteClientQuery =
-            QString("DELETE FROM %1 WHERE id = %2;")
-            .arg(CLIENT_TABLE)
-            .arg(clientId);
-
-    return deleteClient.exec(deleteClientQuery);
-}
-
 int DatabaseAdapter::getClientCount() {
     QSqlQuery clientCountQuery(QString("SELECT COUNT(*) FROM %1;").arg(CLIENT_TABLE));
     clientCountQuery.first();
@@ -186,7 +176,9 @@ bool DatabaseAdapter::seed() {
     for (int i = getTotalAnimals(); i < 25; i++) {
         Animal* a = Seeds().getAnimals()[i];
 
-        if (!insertAnimal(a)) {
+        bool animalSaved = a->save();
+
+        if (!animalSaved) {
             qDebug() << "Failed to seed database.";
             return false;
         }
@@ -195,7 +187,9 @@ bool DatabaseAdapter::seed() {
     for (int i = getClientCount(); i < 5; i++) {
         Client* c = Seeds().getClients()[i];
 
-        if (!saveClient(c)) {
+        bool clientSaved = c->save();
+
+        if (!clientSaved) {
             qDebug() << "Failed to seed database.";
             return false;
         }

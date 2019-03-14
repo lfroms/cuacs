@@ -1,5 +1,5 @@
 #include "Animal.h"
-using namespace std;
+#include <DatabaseAdapter/Schema.h>
 
 Animal::Animal(
         QString name,
@@ -23,30 +23,7 @@ Animal::Animal(
     this->isHypothetical = isHypothetical;
 }
 
-//Copy Constructor
-Animal::Animal(const Animal &animal) {
-    name = animal.name;
-    species = animal.species;
-    gender = animal.gender;
-    breed = animal.breed;
-    age = animal.age;
-    neuteredOrSpayed = animal.neuteredOrSpayed;
-    requiresMedicalAttn = animal.requiresMedicalAttn;
-    color = animal.color;
-    isHypothetical = animal.isHypothetical;
-}
-
-Animal::Animal() {}
-
 Animal::~Animal() {}
-
-void Animal::setId(int id) {
-    this->id = id;
-}
-
-int Animal::getId() {
-    return id;
-}
 
 void Animal::getName(QString& outStr) {
     outStr = name;
@@ -72,7 +49,7 @@ bool Animal::getNeuteredOrSpayed() { return neuteredOrSpayed; }
 bool Animal::getRequiresMedicalAttn() { return requiresMedicalAttn; }
 bool Animal::getIsHypothetical() { return isHypothetical; }
 
-void Animal::toCommaSeperated(QString& outStr){
+void Animal::toCommaSeparated(QString& outStr){
     stringstream a;
 
     a << "'" << name.toStdString() << "', "
@@ -86,4 +63,8 @@ void Animal::toCommaSeperated(QString& outStr){
       << "'" << isHypothetical << "'";
 
     outStr = QString::fromStdString(a.str());
+}
+
+void Animal::getTableName(QString &outStr) {
+    outStr = ANIMAL_TABLE;
 }

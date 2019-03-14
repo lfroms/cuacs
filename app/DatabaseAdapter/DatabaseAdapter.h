@@ -17,14 +17,15 @@ class DatabaseAdapter {
     public:
         static DatabaseAdapter* getInstance();
 
-        static bool insertAnimal(Animal*);
         static bool getAnimals(Animal** animal);
         static int getTotalAnimals();
 
-        static bool saveClient(Client*);
-        static bool deleteClient(int);
         static bool getClients(Client**);
         static int getClientCount();
+
+        static bool insert(QString& tableName, QString& args);
+        static bool update(int& id, QString& tableName, QString& args);
+        static bool destroy(int& id, QString& tableName);
 
     private:
         DatabaseAdapter();
