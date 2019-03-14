@@ -66,19 +66,15 @@ bool DatabaseAdapter::setup() {
 }
 
 bool DatabaseAdapter::seed() {
-    qDebug() << "SEEDING";
     for (int i = Animal::count(); i < 25; i++) {
         Animal* a = Seeds().getAnimals()[i];
-        qDebug() << "FIRST";
 
-        bool animalSaved = a->save();
+        bool animalSaved = a->create();
 
         QString test;
         a->getName(test);
 
         if (!animalSaved) {
-            qDebug() << "SECOND" << test;
-
             qDebug() << "Failed to seed database.";
             return false;
         }
@@ -87,7 +83,7 @@ bool DatabaseAdapter::seed() {
     for (int i = Client::count(); i < 5; i++) {
         Client* c = Seeds().getClients()[i];
 
-        bool clientSaved = c->save();
+        bool clientSaved = c->create();
 
         if (!clientSaved) {
             qDebug() << "Failed to seed database.";

@@ -2,6 +2,7 @@
 #define ACTIVEOBJECT_H
 
 #include <QString>
+#include <QDebug>
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlField>
@@ -147,6 +148,7 @@ bool ActiveObject<T>::save() {
     this->getTableName(tableName);
 
     if (!this->id) {
+        qDebug() << "Cannot save object with no id.";
         return false;
     }
 
@@ -166,6 +168,7 @@ bool ActiveObject<T>::destroy() {
     this->getTableName(tableName);
 
     if (!this->id) {
+        qDebug() << "Cannot destroy object with no id.";
         return false;
     }
 
