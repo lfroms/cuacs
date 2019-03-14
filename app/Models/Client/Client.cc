@@ -13,6 +13,20 @@ Client::Client(
     this->email = email;
 }
 
+Client::Client(
+        QString name,
+        int age,
+        QString phoneNumber,
+        QString email,
+        int idealAnimalId
+        ) {
+    this->name = name;
+    this->age = age;
+    this->phoneNumber = phoneNumber;
+    this->email = email;
+    this->idealAnimalId = idealAnimalId;
+}
+
 // Define how the SQL record should be decomposed into this object.
 Client::Client(QSqlRecord* record) :
     Client(record->field("name").value().toString(),
@@ -21,6 +35,7 @@ Client::Client(QSqlRecord* record) :
            record->field("email").value().toString()
            ) {
     this->id = record->field("id").value().toInt();
+    this->idealAnimalId = record->field("ideal_animal_id").value().toInt();
 }
 
 Client::~Client() {}
@@ -44,11 +59,17 @@ void Client::getEmail(QString& outStr) {
 void Client::toCommaSeparated(QString &outStr) {
     stringstream a;
 
+    QString idealAsString = "'" + QString(idealAnimalId) + "'";
+    string idealAnimalNullable =
+            idealAnimalId ?
+                idealAsString.toStdString() :
+                "null";
+
     a << "'" << name.toStdString() << "', "
       << "'" << age << "', "
       << "'" << phoneNumber.toStdString() << "', "
       << "'" << email.toStdString() << "', "
-      << "null";
+      << idealAnimalNullable;
 
     outStr = QString::fromStdString(a.str());
 }

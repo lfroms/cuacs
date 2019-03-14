@@ -143,7 +143,7 @@ bool ActiveObject<T>::create() {
     bool queryDidSucceed = insert.exec(insertQuery);
 
     if (queryDidSucceed) {
-        this->id = insert.value("id").toInt();
+        this->id = insert.record().value("id").toInt();
         return true;
     }
 
