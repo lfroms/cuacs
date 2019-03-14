@@ -44,9 +44,9 @@ private:
     QString phoneNumber;
     QString email;
 
-    // Set to 0 (falsy) so that we can insert NULL into the database.
+    // Set to -1 so that we can insert NULL into the database.
     // See source file.
-    int idealAnimalId = 0;
+    int idealAnimalId = -1;
 };
 
 Q_DECLARE_METATYPE(Client*)

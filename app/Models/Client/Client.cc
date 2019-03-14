@@ -61,9 +61,9 @@ void Client::toCommaSeparated(QString &outStr) {
 
     QString idealAsString = "'" + QString(idealAnimalId) + "'";
     string idealAnimalNullable =
-            idealAnimalId ?
-                idealAsString.toStdString() :
-                "null";
+            idealAnimalId == -1 ?
+                "null" :
+                idealAsString.toStdString();
 
     a << "'" << name.toStdString() << "', "
       << "'" << age << "', "
