@@ -140,7 +140,14 @@ bool ActiveObject<T>::create() {
             .arg(tableName)
             .arg(args);
 
-    return insert.exec(insertQuery);
+    bool queryDidSucceed = insert.exec(insertQuery);
+
+    if (queryDidSucceed) {
+        this->id = insert.value("id").toInt();
+        return true;
+    }
+
+    return false;
 }
 
 template <class T>
