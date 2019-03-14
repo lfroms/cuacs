@@ -2,9 +2,6 @@
 #define CLIENT_H
 
 #include <QString>
-#include <QObject>
-#include <iostream>
-#include <sstream>
 #include <Models/ActiveObject/ActiveObject.h>
 
 using namespace std;

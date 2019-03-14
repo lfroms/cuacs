@@ -30,12 +30,11 @@ void Attribute::getDescription(QString &outStr) {
 }
 
 void Attribute::toCommaSeparated(QString &outStr) {
-    stringstream a;
+    QString formatted = QString("'%1', '%2'")
+            .arg(name)
+            .arg(description);
 
-    a << "'" << name.toStdString() << "', "
-      << "'" << description.toStdString() << "'";
-
-    outStr = QString::fromStdString(a.str());
+    outStr = formatted;
 }
 
 void Attribute::getTableName(QString &outStr) {

@@ -64,20 +64,19 @@ bool Animal::getNeuteredOrSpayed() { return neuteredOrSpayed; }
 bool Animal::getRequiresMedicalAttn() { return requiresMedicalAttn; }
 bool Animal::getIsHypothetical() { return isHypothetical; }
 
-void Animal::toCommaSeparated(QString& outStr){
-    stringstream a;
+void Animal::toCommaSeparated(QString& outStr) {
+    QString formatted = QString("'%1', '%2', '%3', '%4', %5, %6, %7, '%8', %9")
+            .arg(name)
+            .arg(species)
+            .arg(gender)
+            .arg(breed)
+            .arg(age)
+            .arg(neuteredOrSpayed)
+            .arg(requiresMedicalAttn)
+            .arg(color)
+            .arg(isHypothetical);
 
-    a << "'" << name.toStdString() << "', "
-      << "'" << species.toStdString() << "', "
-      << "'" << gender.toStdString() << "', "
-      << "'" << breed.toStdString() << "', "
-      << "'" << age << "', "
-      << "'" << neuteredOrSpayed << "', "
-      << "'" << requiresMedicalAttn << "', "
-      << "'" << color.toStdString() << "', "
-      << "'" << isHypothetical << "'";
-
-    outStr = QString::fromStdString(a.str());
+    outStr = formatted;
 }
 
 void Animal::getTableName(QString &outStr) {

@@ -57,21 +57,20 @@ void Client::getEmail(QString& outStr) {
 }
 
 void Client::toCommaSeparated(QString &outStr) {
-    stringstream a;
-
     QString idealAsString = "'" + QString(idealAnimalId) + "'";
-    string idealAnimalNullable =
+    QString idealAnimalNullable =
             idealAnimalId == -1 ?
                 "null" :
-                idealAsString.toStdString();
+                idealAsString;
 
-    a << "'" << name.toStdString() << "', "
-      << "'" << age << "', "
-      << "'" << phoneNumber.toStdString() << "', "
-      << "'" << email.toStdString() << "', "
-      << idealAnimalNullable;
+    QString formatted = QString("'%1', %2, '%3', '%4', %5")
+            .arg(name)
+            .arg(age)
+            .arg(phoneNumber)
+            .arg(email)
+            .arg(idealAnimalNullable);
 
-    outStr = QString::fromStdString(a.str());
+    outStr = formatted;
 }
 
 void Client::getTableName(QString &outStr) {
