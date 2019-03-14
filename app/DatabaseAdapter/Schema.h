@@ -37,7 +37,7 @@ static const QString CLIENT_SCHEMA =
 static const QString ATTRIBUTE_SCHEMA =
         QString(
             "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-            "name TEXT NOT NULL,"
+            "name TEXT NOT NULL UNIQUE,"
             "description TEXT"
             );
 
