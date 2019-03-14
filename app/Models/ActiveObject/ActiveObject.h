@@ -118,11 +118,13 @@ int ActiveObject<T>::count() {
     getTableName(tableName);
 
     QSqlQuery query;
-    QString getCountQUery =
+    QString getCountQuery =
             QString("SELECT COUNT(*) FROM %1;")
             .arg(tableName);
 
+    query.exec(getCountQuery);
     query.first();
+
     return query.value(0).toInt();
 }
 
