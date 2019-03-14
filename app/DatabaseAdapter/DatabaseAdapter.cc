@@ -90,6 +90,17 @@ bool DatabaseAdapter::seed() {
         }
     }
 
+    for (int i = Attribute::count(); i < 5; i++) {
+        Attribute* a = Seeds().getAttributes()[i];
+
+        bool attributeSaved = a->create();
+
+        if (!attributeSaved) {
+            qDebug() << "Failed to seed database.";
+            return false;
+        }
+    }
+
     qDebug() << "Seed succeeded.";
     return true;
 }

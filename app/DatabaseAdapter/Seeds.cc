@@ -37,6 +37,21 @@ Seeds::Seeds() {
     clients[2] = new Client("William Lu", 42, "613-765-9265", "william@wildfox.ca");
     clients[3] = new Client("Lulu Sheng", 34, "613-067-8564", "lulusheng@cmail.carleton.ca");
     clients[4] = new Client("Lukas Romsicki", 64, "613-341-0696", "lukas@gmail.com");
+
+    attributes[0] = new Attribute("bite_tendency");
+    attributes[1] = new Attribute("scratch_tendency");
+    attributes[2] = new Attribute("asssert_dominance_tendency");
+    attributes[3] = new Attribute("friendliness_humans");
+
+    attributes[4] = new Attribute("friendliness_children");
+    attributes[5] = new Attribute("friendliness_animals");
+    attributes[6] = new Attribute("noise_level");
+    attributes[7] = new Attribute("independence_level");
+
+    attributes[8] = new Attribute("affection_level");
+    attributes[9] = new Attribute("energy_level");
+    attributes[10] = new Attribute("anxiety_level");
+    attributes[11] = new Attribute("curiosity_level");
 }
 
 Animal** Seeds::getAnimals() {
@@ -45,4 +60,8 @@ Animal** Seeds::getAnimals() {
 
 Client** Seeds::getClients() {
     return clients;
+}
+
+Attribute** Seeds::getAttributes() {
+    return attributes;
 }
