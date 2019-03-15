@@ -17,14 +17,14 @@ public:
     bool save();
     bool destroy();
 
-    static QVector<T>* all();
+    static QVector<T*>* all();
     static T* first();
     static T* last();
     static int count();
     static T* where(int id);
 
     template <typename U>
-    static QVector<T>* where(QString colName, U value);
+    static QVector<T*>* where(QString colName, U value);
 
     int getId();
 
@@ -47,7 +47,7 @@ template <class T>
 ActiveObject<T>::~ActiveObject() {}
 
 template <class T>
-QVector<T>* ActiveObject<T>::all(){
+QVector<T*>* ActiveObject<T>::all(){
     QString tableName;
     getTableName(tableName);
 
@@ -57,15 +57,15 @@ QVector<T>* ActiveObject<T>::all(){
             .arg(tableName);
 
     if (!query.exec(getAllQuery)) {
-        return new QVector<T>();
+        return new QVector<T*>();
     }
 
-    QVector<T>* output = new QVector<T>();
+    QVector<T*>* output = new QVector<T*>();
 
     while (query.next()) {
         QSqlRecord record = query.record();
         T* t = new T(&record);
-        output->append(*t);
+        output->append(t);
     }
 
     return output;
@@ -128,7 +128,7 @@ T* ActiveObject<T>::where(int id) {
 
 template <class T>
 template <typename U>
-QVector<T>* ActiveObject<T>::where(QString colName, U value) {
+QVector<T*>* ActiveObject<T>::where(QString colName, U value) {
     QString tableName;
     getTableName(tableName);
 
@@ -140,15 +140,15 @@ QVector<T>* ActiveObject<T>::where(QString colName, U value) {
             .arg(value);
 
     if (!query.exec(getWhereQuery)) {
-        return new QVector<T>();
+        return new QVector<T*>();
     }
 
-    QVector<T>* output = new QVector<T>();
+    QVector<T*>* output = new QVector<T*>();
 
     while (query.next()) {
         QSqlRecord record = query.record();
         T* t = new T(&record);
-        output->append(*t);
+        output->append(t);
     }
 
     return output;

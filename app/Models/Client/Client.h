@@ -47,5 +47,5 @@ private:
     int idealAnimalId = -1;
 };
 
-Q_DECLARE_METATYPE(Client)
+Q_DECLARE_METATYPE(Client*)
 #endif // CLIENT_H

@@ -54,6 +54,6 @@ private:
     bool isHypothetical;
 };
 
-Q_DECLARE_METATYPE(Animal)
+Q_DECLARE_METATYPE(Animal*)
 
 #endif // ANIMAL_H

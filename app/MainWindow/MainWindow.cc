@@ -36,18 +36,18 @@ void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
-    Animal animal = var.value<Animal>();
+    Animal* animal = var.value<Animal*>();
 
-    AnimalDetailsModal modal(&animal);
+    AnimalDetailsModal modal(animal);
     modal.setModal(true);
     modal.exec();
 }
 
 void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
-    Client client = var.value<Client>();
+    Client* client = var.value<Client*>();
 
-    ClientDetailsModal modal(&client);
+    ClientDetailsModal modal(client);
     modal.setModal(true);
     modal.exec();
 }
@@ -55,15 +55,15 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
 void MainWindow::renderAnimalList() {
     ui->animalsListWidget->clear();
 
-    QVector<Animal>* animalVector = Animal::all();
-    QVectorIterator<Animal> i(*animalVector);
+    QVector<Animal*>* animalVector = Animal::all();
+    QVectorIterator<Animal*> i(*animalVector);
 
     while (i.hasNext()) {
-        Animal currentAnimal = i.next();
+        Animal* currentAnimal = i.next();
 
         QString name, breed;
-        currentAnimal.getName(name);
-        currentAnimal.getBreed(breed);
+        currentAnimal->getName(name);
+        currentAnimal->getBreed(breed);
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
@@ -83,15 +83,15 @@ void MainWindow::renderAnimalList() {
 void MainWindow::renderClientList() {
     ui->clientsListWidget->clear();
 
-    QVector<Client>* clientVector = Client::all();
-    QVectorIterator<Client> i(*clientVector);
+    QVector<Client*>* clientVector = Client::all();
+    QVectorIterator<Client*> i(*clientVector);
 
     while (i.hasNext()) {
-        Client currentClient = i.next();
+        Client* currentClient = i.next();
 
         QString name, email;
-        currentClient.getName(name);
-        currentClient.getEmail(email);
+        currentClient->getName(name);
+        currentClient->getEmail(email);
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
