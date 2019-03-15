@@ -50,7 +50,7 @@ void Seeds::runAll() {
     if (Attribute::count() < 12) {
         Attribute("bite_tendency", "Tendency to Bite").create();
         Attribute("scratch_tendency", "Tendency to Scratch").create();
-        Attribute("asssert_dominance_tendency", "Tendency to Assert Dominance").create();
+        Attribute("assert_dominance_tendency", "Tendency to Assert Dominance").create();
         Attribute("friendliness_humans", "Friendliness towards Humans").create();
 
         Attribute("friendliness_children", "Friendlienss towards Children").create();
@@ -72,7 +72,7 @@ void Seeds::runAll() {
         Animal* a = Animal::where(i);
 
         for (int j = Attribute::first()->getId(); j <= Attribute::count(); j++) {
-            int randomValue = rand() % 10 + 1;
+            int randomValue = rand() % 10;
             a->setAttr(j, randomValue);
         }
     }

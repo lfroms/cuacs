@@ -134,7 +134,7 @@ QVector<T>* ActiveObject<T>::where(QString colName, U value) {
 
     QSqlQuery query;
     QString getWhereQuery =
-            QString("SELECT * FROM %1 WHERE %2 = %3;")
+            QString("SELECT * FROM %1 WHERE %2 = '%3';")
             .arg(tableName)
             .arg(colName)
             .arg(value);
