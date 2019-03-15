@@ -17,10 +17,10 @@ public:
     bool destroy();
 
     static bool all(T**);
-    static bool first(T*);
-    static bool last(T*);
+    static bool first(T&);
+    static bool last(T&);
     static int count();
-    static bool where(T*, int id);
+    static bool where(T&, int id);
 
     template <typename U>
     static bool where(T**, QString colName, U value);
@@ -30,7 +30,6 @@ public:
 protected:
     int id = -1;
     ActiveObject();
-    ActiveObject(int id);
     virtual ~ActiveObject() = 0;
 
     virtual void toCommaSeparated(QString& outStr) = 0;
@@ -45,11 +44,6 @@ ActiveObject<T>::ActiveObject() {}
 
 template <class T>
 ActiveObject<T>::~ActiveObject() {}
-
-template <class T>
-ActiveObject<T>::ActiveObject(int id) {
-    this->id = id;
-}
 
 template <class T>
 bool ActiveObject<T>::all(T** output) {
@@ -79,7 +73,7 @@ bool ActiveObject<T>::all(T** output) {
 }
 
 template <class T>
-bool ActiveObject<T>::first(T* output) {
+bool ActiveObject<T>::first(T& output) {
     QString tableName;
     getTableName(tableName);
 
@@ -90,7 +84,7 @@ bool ActiveObject<T>::first(T* output) {
 
     if (query.exec(getFirstQuery) && query.first()) {
         QSqlRecord record = query.record();
-        output = new T(&record);
+        output = T(&record);
 
         return true;
     }
@@ -99,7 +93,7 @@ bool ActiveObject<T>::first(T* output) {
 }
 
 template <class T>
-bool ActiveObject<T>::last(T* output) {
+bool ActiveObject<T>::last(T& output) {
     QString tableName;
     getTableName(tableName);
 
@@ -110,7 +104,7 @@ bool ActiveObject<T>::last(T* output) {
 
     if (query.exec(getLastQuery) && query.first()) {
         QSqlRecord record = query.record();
-        output = new T(&record);
+        output = T(&record);
 
         return true;
     }
@@ -119,7 +113,7 @@ bool ActiveObject<T>::last(T* output) {
 }
 
 template <class T>
-bool ActiveObject<T>::where(T* output, int id) {
+bool ActiveObject<T>::where(T& output, int id) {
     QString tableName;
     getTableName(tableName);
 
@@ -131,7 +125,7 @@ bool ActiveObject<T>::where(T* output, int id) {
 
     if (query.exec(getWhereQuery) && query.first()) {
         QSqlRecord record = query.record();
-        output = new T(&record);
+        output = T(&record);
 
         return true;
     }

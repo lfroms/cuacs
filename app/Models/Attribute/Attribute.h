@@ -12,6 +12,7 @@ public:
     Attribute(QString name, QString description);
     Attribute(QSqlRecord* record);
 
+    Attribute();
     ~Attribute();
 
     void getName(QString& outStr);

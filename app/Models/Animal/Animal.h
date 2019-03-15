@@ -22,6 +22,7 @@ public:
             );
 
     Animal(QSqlRecord* record);
+Animal();
 
     ~Animal();
 

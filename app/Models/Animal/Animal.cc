@@ -38,6 +38,8 @@ Animal::Animal(QSqlRecord* record) :
     this->id = record->field("id").value().toInt();
 }
 
+Animal::Animal() {}
+
 Animal::~Animal() {}
 
 void Animal::getName(QString& outStr) {

@@ -19,6 +19,8 @@ Attribute::Attribute(QSqlRecord* record) :
     this->id = record->field("id").value().toInt();
 }
 
+Attribute::Attribute() {}
+
 Attribute::~Attribute() {}
 
 void Attribute::getName(QString& outStr) {
