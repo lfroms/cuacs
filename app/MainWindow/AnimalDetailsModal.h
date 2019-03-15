@@ -8,8 +8,7 @@ namespace Ui {
 class AnimalDetailsModal;
 }
 
-class AnimalDetailsModal : public QDialog
-{
+class AnimalDetailsModal : public QDialog {
     Q_OBJECT
 
 public:

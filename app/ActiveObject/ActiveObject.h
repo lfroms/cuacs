@@ -6,6 +6,7 @@
 #include <QSqlQuery>
 #include <QSqlRecord>
 #include <QSqlField>
+#include <QVector>
 
 #include <DatabaseAdapter/Schema.h>
 
@@ -16,14 +17,14 @@ public:
     bool save();
     bool destroy();
 
-    static bool all(T**);
-    static bool first(T&);
-    static bool last(T&);
+    static QVector<T>* all();
+    static T* first();
+    static T* last();
     static int count();
-    static bool where(T&, int id);
+    static T* where(int id);
 
     template <typename U>
-    static bool where(T**, QString colName, U value);
+    static QVector<T>* where(QString colName, U value);
 
     int getId();
 
@@ -46,7 +47,7 @@ template <class T>
 ActiveObject<T>::~ActiveObject() {}
 
 template <class T>
-bool ActiveObject<T>::all(T** output) {
+QVector<T>* ActiveObject<T>::all(){
     QString tableName;
     getTableName(tableName);
 
@@ -56,24 +57,22 @@ bool ActiveObject<T>::all(T** output) {
             .arg(tableName);
 
     if (!query.exec(getAllQuery)) {
-        return false;
+        return new QVector<T>();
     }
 
-    int i = 0;
+    QVector<T>* output = new QVector<T>();
 
     while (query.next()) {
         QSqlRecord record = query.record();
-        T* item = new T(&record);
-
-        output[i] = item;
-        i++;
+        T* t = new T(&record);
+        output->append(*t);
     }
 
-    return true;
+    return output;
 }
 
 template <class T>
-bool ActiveObject<T>::first(T& output) {
+T* ActiveObject<T>::first() {
     QString tableName;
     getTableName(tableName);
 
@@ -84,16 +83,14 @@ bool ActiveObject<T>::first(T& output) {
 
     if (query.exec(getFirstQuery) && query.first()) {
         QSqlRecord record = query.record();
-        output = T(&record);
-
-        return true;
+        return new T(&record);
     }
 
-    return false;
+    return nullptr;
 }
 
 template <class T>
-bool ActiveObject<T>::last(T& output) {
+T* ActiveObject<T>::last() {
     QString tableName;
     getTableName(tableName);
 
@@ -104,16 +101,14 @@ bool ActiveObject<T>::last(T& output) {
 
     if (query.exec(getLastQuery) && query.first()) {
         QSqlRecord record = query.record();
-        output = T(&record);
-
-        return true;
+        return new T(&record);
     }
 
-    return false;
+    return nullptr;
 }
 
 template <class T>
-bool ActiveObject<T>::where(T& output, int id) {
+T* ActiveObject<T>::where(int id) {
     QString tableName;
     getTableName(tableName);
 
@@ -125,42 +120,38 @@ bool ActiveObject<T>::where(T& output, int id) {
 
     if (query.exec(getWhereQuery) && query.first()) {
         QSqlRecord record = query.record();
-        output = T(&record);
-
-        return true;
+        return new T(&record);
     }
 
-    return false;
+    return nullptr;
 }
 
 template <class T>
 template <typename U>
-bool ActiveObject<T>::where(T** output, QString colName, U value) {
+QVector<T>* ActiveObject<T>::where(QString colName, U value) {
     QString tableName;
     getTableName(tableName);
 
     QSqlQuery query;
     QString getWhereQuery =
-            QString("SELECT * FROM %1 WHERE %2 = %3 LIMIT 1;")
+            QString("SELECT * FROM %1 WHERE %2 = %3;")
             .arg(tableName)
             .arg(colName)
             .arg(value);
 
     if (!query.exec(getWhereQuery)) {
-        return false;
+        return new QVector<T>();
     }
 
-    int i = 0;
+    QVector<T>* output = new QVector<T>();
 
     while (query.next()) {
         QSqlRecord record = query.record();
-        T* item = new T(&record);
-
-        output[i] = item;
-        i++;
+        T* t = new T(&record);
+        output->append(*t);
     }
 
-    return true;
+    return output;
 }
 
 template <class T>

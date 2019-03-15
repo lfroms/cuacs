@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QListWidgetItem>
+#include <QVectorIterator>
 #include <MainWindow/DetailListWidgetItem.h>
 #include <MainWindow/AnimalDetailsModal.h>
 #include <MainWindow/ClientDetailsModal.h>

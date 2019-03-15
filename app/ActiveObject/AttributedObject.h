@@ -65,10 +65,7 @@ AttributedObject<T>* AttributedObject<T>::setAttr(int attrId, int value) {
 
 template <class T>
 AttributedObject<T>* AttributedObject<T>::setAttr(QString attrName, int value) {
-    Attribute** a;
-    Attribute::where(a, "name", attrName);
-
-    int attributeId = a[0]->getId();
+    int attributeId = Attribute::where("name", attrName)->first().getId();
     return this->setAttr(attributeId, value);
 }
 
@@ -97,7 +94,7 @@ bool AttributedObject<T>::clearAttribute(int attrId) {
 
     return queryDidSucceed;
 }
-
+#include <QSqlError>
 template <class T>
 int AttributedObject<T>::attr(int attrId) {
     int objectId = this->getId();
@@ -125,21 +122,14 @@ int AttributedObject<T>::attr(int attrId) {
 
 template <class T>
 int AttributedObject<T>::attr(QString attrName) {
-    Attribute** a;
-    Attribute::where(a, "name", attrName);
-
-    int attributeId = a[0]->getId();
+    int attributeId = Attribute::where("name", attrName)->first().getId();
     return this->attr(attributeId);
 }
 
 template <class T>
 bool AttributedObject<T>::clearAttribute(QString attrName) {
-    Attribute** a;
-    Attribute::where(a, "name", attrName);
-
-    int attributeId = a[0]->getId();
+    int attributeId = Attribute::where("name", attrName)->first().getId();
     return this->clearAttribute(attributeId);
 }
-
 
 #endif // ATTRIBUTEDOBJECT_H

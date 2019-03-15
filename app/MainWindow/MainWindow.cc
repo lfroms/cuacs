@@ -36,18 +36,18 @@ void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
-    Animal * animal = var.value<Animal *>();
+    Animal animal = var.value<Animal>();
 
-    AnimalDetailsModal modal(animal);
+    AnimalDetailsModal modal(&animal);
     modal.setModal(true);
     modal.exec();
 }
 
 void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
-    Client * client = var.value<Client *>();
+    Client client = var.value<Client>();
 
-    ClientDetailsModal modal(client);
+    ClientDetailsModal modal(&client);
     modal.setModal(true);
     modal.exec();
 }
@@ -55,14 +55,15 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
 void MainWindow::renderAnimalList() {
     ui->animalsListWidget->clear();
 
-    int numAnimals = Animal::count();
-    Animal * animals[numAnimals];
-    Animal::all(animals);
+    QVector<Animal>* animalVector = Animal::all();
+    QVectorIterator<Animal> i(*animalVector);
 
-    for (int i = 0; i < numAnimals; i++) {
+    while (i.hasNext()) {
+        Animal currentAnimal = i.next();
+
         QString name, breed;
-        animals[i]->getName(name);
-        animals[i]->getBreed(breed);
+        currentAnimal.getName(name);
+        currentAnimal.getBreed(breed);
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
@@ -70,14 +71,11 @@ void MainWindow::renderAnimalList() {
         animalWidget->setTitle(name);
         animalWidget->setSubtitle(breed);
 
-        //Sizing list widget appropriately
         listWidgetItem->setSizeHint(animalWidget->sizeHint());
 
-        //Turn Animal to QVariant to attach it to listWidgetItem
-        QVariant var = QVariant::fromValue(animals[i]);
+        QVariant var = QVariant::fromValue(currentAnimal);
         listWidgetItem->setData(Qt::UserRole, var);
 
-        //Finally attach animalWidget to listItem
         ui->animalsListWidget->setItemWidget(listWidgetItem, animalWidget);
     }
 }
@@ -85,14 +83,15 @@ void MainWindow::renderAnimalList() {
 void MainWindow::renderClientList() {
     ui->clientsListWidget->clear();
 
-    int numClients = Client::count();
-    Client * clients[numClients];
-    Client::all(clients);
+    QVector<Client>* clientVector = Client::all();
+    QVectorIterator<Client> i(*clientVector);
 
-    for (int i = 0; i < numClients; i++) {
+    while (i.hasNext()) {
+        Client currentClient = i.next();
+
         QString name, email;
-        clients[i]->getName(name);
-        clients[i]->getEmail(email);
+        currentClient.getName(name);
+        currentClient.getEmail(email);
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
@@ -102,19 +101,17 @@ void MainWindow::renderClientList() {
 
         listWidgetItem->setSizeHint(clientWidget->sizeHint());
 
-        QVariant var = QVariant::fromValue(clients[i]);
+        QVariant var = QVariant::fromValue(currentClient);
         listWidgetItem->setData(Qt::UserRole, var);
 
         ui->clientsListWidget->setItemWidget(listWidgetItem, clientWidget);
     }
 }
 
-
 void MainWindow::renderListItems() {
     renderAnimalList();
     renderClientList();
 }
-
 
 void MainWindow::handleAddAnimalSubmit() {
     Animal* animal;

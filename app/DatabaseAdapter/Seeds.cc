@@ -68,19 +68,12 @@ void Seeds::runAll() {
     // SEED ANIMAL ATTRIBUTES
     qDebug() << "Seeding animal attributes...";
 
-    Animal firstAnimal;
-    Animal::first(firstAnimal);
+    for (int i = Animal::first()->getId(); i <= Animal::count(); i++) {
+        Animal* a = Animal::where(i);
 
-    Attribute firstAttribute;
-    Attribute::first(firstAttribute);
-
-    for (int i = firstAnimal.getId(); i <= Animal::count(); i++) {
-        Animal a;
-        Animal::where(a, i);
-
-        for (int j = firstAttribute.getId(); j <= Attribute::count(); j++) {
+        for (int j = Attribute::first()->getId(); j <= Attribute::count(); j++) {
             int randomValue = rand() % 10 + 1;
-            a.setAttr(j, randomValue);
+            a->setAttr(j, randomValue);
         }
     }
 }
