@@ -51,7 +51,7 @@ void Seeds::runAll() {
         Attribute("bite_tendency", "Tendency to Bite").create();
         Attribute("scratch_tendency", "Tendency to Scratch").create();
         Attribute("assert_dominance_tendency", "Tendency to Assert Dominance").create();
-        Attribute("friendliness_humans", "Friendliness towards Humans").create();
+        Attribute("friendliness_adults", "Friendliness towards Adults").create();
 
         Attribute("friendliness_children", "Friendlienss towards Children").create();
         Attribute("friendliness_animals", "Friendliness towards Animals").create();

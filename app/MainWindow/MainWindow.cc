@@ -135,38 +135,38 @@ void MainWindow::handleAddAnimalSubmit() {
     }
 
     animal
-            ->setAttr("bite_tendency", ui->biteSlider->value())
-            ->setAttr("scratch_tendency", ui->scratchSlider->value())
-            ->setAttr("assert_dominance_tendency", ui->dominanceSlider->value())
-            ->setAttr("friendliness_humans", ui->adultFriendlinessSlider->value())
-            ->setAttr("friendliness_children", ui->childFriendlinessSlider->value())
-            ->setAttr("friendliness_animals", ui->animalFriendlinessSlider->value())
-            ->setAttr("noise_level", ui->noisinessSlider->value())
-            ->setAttr("independence_level", ui->independenceSlider->value())
-            ->setAttr("affection_level", ui->affectionSlider->value())
-            ->setAttr("energy_level", ui->energySlider->value())
-            ->setAttr("anxiety_level", ui->anxietySlider->value())
-            ->setAttr("curiosity_level", ui->curiositySlider->value());
+            ->setAttr("bite_tendency", ui->bite->value())
+            ->setAttr("scratch_tendency", ui->scratch->value())
+            ->setAttr("assert_dominance_tendency", ui->dominance->value())
+            ->setAttr("friendliness_adults", ui->adultFriendliness->value())
+            ->setAttr("friendliness_children", ui->childFriendliness->value())
+            ->setAttr("friendliness_animals", ui->animalFriendliness->value())
+            ->setAttr("noise_level", ui->noise->value())
+            ->setAttr("independence_level", ui->independence->value())
+            ->setAttr("affection_level", ui->affection->value())
+            ->setAttr("energy_level", ui->energy->value())
+            ->setAttr("anxiety_level", ui->anxiety->value())
+            ->setAttr("curiosity_level", ui->curiosity->value());
 
+    ui->nameEdit->clear();
     ui->genderEdit->clear();
     ui->colorEdit->clear();
     ui->breedEdit->clear();
     ui->ageEdit->clear();
     ui->neuteredCheckBox->setChecked(false);
     ui->medicalCheckbox->setChecked(false);
-    ui->nameEdit->clear();
-    ui->biteSlider->setValue(5);
-    ui->scratchSlider->setValue(5);
-    ui->dominanceSlider->setValue(5);
-    ui->adultFriendlinessSlider->setValue(5);
-    ui->childFriendlinessSlider->setValue(5);
-    ui->animalFriendlinessSlider->setValue(5);
-    ui->noisinessSlider->setValue(5);
-    ui->independenceSlider->setValue(5);
-    ui->affectionSlider->setValue(5);
-    ui->energySlider->setValue(5);
-    ui->anxietySlider->setValue(5);
-    ui->curiositySlider->setValue(5);
+    ui->bite->setValue(5);
+    ui->scratch->setValue(5);
+    ui->dominance->setValue(5);
+    ui->adultFriendliness->setValue(5);
+    ui->childFriendliness->setValue(5);
+    ui->animalFriendliness->setValue(5);
+    ui->noise->setValue(5);
+    ui->independence->setValue(5);
+    ui->affection->setValue(5);
+    ui->energy->setValue(5);
+    ui->anxiety->setValue(5);
+    ui->curiosity->setValue(5);
 
     renderAnimalList();
 }
