@@ -4,6 +4,7 @@ using namespace std;
 Seeds::Seeds() {}
 
 void Seeds::runAll() {
+    qDebug() << "Seeding animals...";
     Animal("Timothy", "Dog", "male", "Yorkshire Terrier", 1, false, false, "brown", false).create();
     Animal("Holly", "Dog", "female", "Labrador Retriever", 10, false, false, "yellow", false).create();
     Animal("Whiskers", "Cat", "male", "Tabby", 6, false, false, "orange", false).create();
@@ -34,12 +35,14 @@ void Seeds::runAll() {
     Animal("Hayley", "Cat", "female", "American Shorthair", 4, false, false, "white", false).create();
     Animal("Reese", "Rabbit", "male", "Holland Lop", 4, false, false, "grey", false).create();
 
+    qDebug() << "Seeding clients...";
     Client("Johnny Appleseed", 24, "613-928-5235", "johnny@cuacs.ca").create();
     Client("Niko Kouloufakos", 19, "613-413-5276", "niko.kouloufakos@shopify.com").create();
     Client("William Lu", 42, "613-765-9265", "william@wildfox.ca").create();
     Client("Lulu Sheng", 34, "613-067-8564", "lulusheng@cmail.carleton.ca").create();
     Client("Lukas Romsicki", 64, "613-341-0696", "lukas@gmail.com").create();
 
+    qDebug() << "Seeding attributes...";
     Attribute("bite_tendency", "Tendency to Bite").create();
     Attribute("scratch_tendency", "Tendency to Scratch").create();
     Attribute("asssert_dominance_tendency", "Tendency to Assert Dominance").create();
@@ -54,6 +57,10 @@ void Seeds::runAll() {
     Attribute("energy_level", "Energy Level").create();
     Attribute("anxiety_level", "Anxiety Level").create();
     Attribute("curiosity_level", "Curiosity Level").create();
+
+
+    // SEED ANIMAL ATTRIBUTES
+    qDebug() << "Seeding animal attributes...";
 
     Animal* firstAnimal = nullptr;
     Animal::first(firstAnimal);
