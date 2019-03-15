@@ -11,8 +11,11 @@
 template <class T>
 class AttributedObject : public ActiveObject<T> {
 public:
-    AttributedObject<T>* attr(QString attrName, int value);
-    AttributedObject<T>* attr(int attrId, int value);
+    AttributedObject<T>* setAttr(QString attrName, int value);
+    AttributedObject<T>* setAttr(int attrId, int value);
+
+    int attr(QString attrName);
+    int attr(int attrId);
 
     bool clearAttribute(QString attrName);
     bool clearAttribute(int attrId);
@@ -37,7 +40,7 @@ template <class T>
 AttributedObject<T>::~AttributedObject() {}
 
 template <class T>
-AttributedObject<T>* AttributedObject<T>::attr(int attrId, int value) {
+AttributedObject<T>* AttributedObject<T>::setAttr(int attrId, int value) {
     int objectId = this->getId();
     QString attributeTableName;
     this->getAttributeTableName(attributeTableName);
@@ -61,13 +64,12 @@ AttributedObject<T>* AttributedObject<T>::attr(int attrId, int value) {
 }
 
 template <class T>
-AttributedObject<T>* AttributedObject<T>::attr(QString attrName, int value) {
+AttributedObject<T>* AttributedObject<T>::setAttr(QString attrName, int value) {
     Attribute** a;
     Attribute::where(a, "name", attrName);
 
     int attributeId = a[0]->getId();
-    qDebug() << attributeId;
-    return this->attr(attributeId, value);
+    return this->setAttr(attributeId, value);
 }
 
 template <class T>
@@ -80,11 +82,10 @@ bool AttributedObject<T>::clearAttribute(int attrId) {
 
     QSqlQuery insert;
     QString deleteQuery =
-            QString("DELETE FROM %1 WHERE %2 = %3 AND %4 = %5;")
+            QString("DELETE FROM %1 WHERE %2 = %3 AND attribute_id = %5;")
             .arg(attributeTableName)
             .arg(attributeColumnName)
             .arg(objectId)
-            .arg("attribute_id")
             .arg(attrId);
 
     bool queryDidSucceed = insert.exec(deleteQuery);
@@ -95,6 +96,40 @@ bool AttributedObject<T>::clearAttribute(int attrId) {
     }
 
     return queryDidSucceed;
+}
+
+template <class T>
+int AttributedObject<T>::attr(int attrId) {
+    int objectId = this->getId();
+    QString attributeTableName, attributeColumnName;
+    this->getAttributeTableName(attributeTableName);
+    this->getAttributeIdColumnName(attributeColumnName);
+
+    QSqlQuery query;
+    QString getAttrQuery =
+            QString("SELECT * FROM %1 WHERE %2 = %3 AND attribute_id = %4;")
+            .arg(attributeTableName)
+            .arg(attributeColumnName)
+            .arg(objectId)
+            .arg(attrId);
+
+    bool queryDidSucceed = query.exec(getAttrQuery) && query.first();
+
+    if (!queryDidSucceed) {
+        qDebug() << QString("Failed to get attribute. It may not exist.");
+        return -1;
+    }
+
+    return query.record().field("value").value().toInt();
+}
+
+template <class T>
+int AttributedObject<T>::attr(QString attrName) {
+    Attribute** a;
+    Attribute::where(a, "name", attrName);
+
+    int attributeId = a[0]->getId();
+    return this->attr(attributeId);
 }
 
 template <class T>

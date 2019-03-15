@@ -68,23 +68,23 @@ void Seeds::runAll() {
     Attribute* firstAttribute = nullptr;
     Attribute::first(firstAttribute);
 
-    if (firstAnimal == nullptr || firstAttribute == nullptr) {
-        qDebug() << "Couldn't find an animal or attribute to start seeding at.";
-        return;
-    }
+    //    if (firstAnimal == nullptr || firstAttribute == nullptr) {
+    //        qDebug() << "Couldn't find an animal or attribute to start seeding at.";
+    //        return;
+    //    }
 
     for (int i = firstAnimal->getId(); i <= Animal::count(); i++) {
         Animal* a = nullptr;
         Animal::where(a, i);
 
-        if (a == nullptr) {
-            qDebug() << "Encountered missing animal entry when seeding. Skipping...";
-            break;
-        }
+        //        if (a == nullptr) {
+        //            qDebug() << "Encountered missing animal entry when seeding. Skipping...";
+        //            break;
+        //        }
 
         for (int j = firstAttribute->getId(); j <= Attribute::count(); j++) {
             int randomValue = rand() % 10 + 1;
-            a->attr(j, randomValue);
+            a->setAttr(j, randomValue);
         }
     }
 }
