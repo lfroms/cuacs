@@ -205,8 +205,7 @@ bool ActiveObject<T>::save() {
     this->getTableName(tableName);
 
     if (!this->id) {
-        qDebug() << "Cannot save object with no id.";
-        return false;
+        return this->create();
     }
 
     QSqlQuery update;
@@ -225,7 +224,7 @@ bool ActiveObject<T>::destroy() {
     this->getTableName(tableName);
 
     if (!this->id) {
-        qDebug() << "Cannot destroy object with no id.";
+        qDebug() << "Cannot destroy (unsaved) object with no id.";
         return false;
     }
 
