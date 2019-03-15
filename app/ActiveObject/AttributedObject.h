@@ -47,7 +47,7 @@ AttributedObject<T>* AttributedObject<T>::setAttr(int attrId, int value) {
 
     QSqlQuery insert;
     QString insertQuery =
-            QString("INSERT OR REPLACE INTO %1 VALUES(null, %2, %3, %4);")
+            QString("INSERT OR REPLACE INTO %1 VALUES(%2, %3, %4);")
             .arg(attributeTableName)
             .arg(objectId)
             .arg(attrId)

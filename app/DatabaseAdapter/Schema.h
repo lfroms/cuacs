@@ -45,13 +45,12 @@ static const QString ATTRIBUTE_SCHEMA =
 
 static const QString ANIMAL_ATTRIBUTE_SCHEMA =
         QString(
-            "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
             "%3 INTEGER NOT NULL,"
             "attribute_id INTEGER NOT NULL,"
             "value INTEGER NOT NULL,"
             "FOREIGN KEY (%3) REFERENCES %1(id),"
             "FOREIGN KEY (attribute_id) REFERENCES %2(id),"
-            "UNIQUE (%3, attribute_id)"
+            "PRIMARY KEY (%3, attribute_id)"
             )
         .arg(ANIMAL_TABLE)
         .arg(ATTRIBUTE_TABLE)
