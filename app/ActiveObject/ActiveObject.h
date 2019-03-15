@@ -228,7 +228,15 @@ bool ActiveObject<T>::destroy() {
             .arg(tableName)
             .arg(id);
 
-    return destroy.exec(destroyQuery);
+    bool didDestroy = destroy.exec(destroyQuery);
+
+    if (!didDestroy) {
+        qDebug() << "Could not destroy the record. Is this object stale?";
+        return false;
+    }
+
+    this->id = -1;
+    return true;
 }
 
 template <class T>
