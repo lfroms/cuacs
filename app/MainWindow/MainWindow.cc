@@ -134,6 +134,20 @@ void MainWindow::handleAddAnimalSubmit() {
         return;
     }
 
+    animal
+            ->setAttr("bite_tendency", ui->biteSlider->value())
+            ->setAttr("scratch_tendency", ui->scratchSlider->value())
+            ->setAttr("assert_dominance_tendency", ui->dominanceSlider->value())
+            ->setAttr("friendliness_humans", ui->adultFriendlinessSlider->value())
+            ->setAttr("friendliness_children", ui->childFriendlinessSlider->value())
+            ->setAttr("friendliness_animals", ui->animalFriendlinessSlider->value())
+            ->setAttr("noise_level", ui->noisinessSlider->value())
+            ->setAttr("independence_level", ui->independenceSlider->value())
+            ->setAttr("affection_level", ui->affectionSlider->value())
+            ->setAttr("energy_level", ui->energySlider->value())
+            ->setAttr("anxiety_level", ui->anxietySlider->value())
+            ->setAttr("curiosity_level", ui->curiositySlider->value());
+
     ui->genderEdit->clear();
     ui->colorEdit->clear();
     ui->breedEdit->clear();
