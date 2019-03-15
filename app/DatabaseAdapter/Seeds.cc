@@ -54,5 +54,21 @@ void Seeds::runAll() {
     Attribute("energy_level", "Energy Level").create();
     Attribute("anxiety_level", "Anxiety Level").create();
     Attribute("curiosity_level", "Curiosity Level").create();
+
+
+    for (int i = 1; i <= Animal::count(); i++) {
+        Animal* a = nullptr;
+        Animal::where(a, i);
+
+        if (a == nullptr) {
+            qDebug() << "Encountered missing animal entry when seeding. Skipping...";
+            break;
+        }
+
+        for (int j = 1; j <= Attribute::count(); j++) {
+            int randomValue = rand() % 10 + 1;
+            a->attr(j, randomValue);
+        }
+    }
 }
 
