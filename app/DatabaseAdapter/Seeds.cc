@@ -55,8 +55,18 @@ void Seeds::runAll() {
     Attribute("anxiety_level", "Anxiety Level").create();
     Attribute("curiosity_level", "Curiosity Level").create();
 
+    Animal* firstAnimal = nullptr;
+    Animal::first(firstAnimal);
 
-    for (int i = 1; i <= Animal::count(); i++) {
+    Attribute* firstAttribute = nullptr;
+    Attribute::first(firstAttribute);
+
+    if (firstAnimal == nullptr || firstAttribute == nullptr) {
+        qDebug() << "Couldn't find an animal or attribute to start seeding at.";
+        return;
+    }
+
+    for (int i = firstAnimal->getId(); i <= Animal::count(); i++) {
         Animal* a = nullptr;
         Animal::where(a, i);
 
@@ -65,7 +75,7 @@ void Seeds::runAll() {
             break;
         }
 
-        for (int j = 1; j <= Attribute::count(); j++) {
+        for (int j = firstAttribute->getId(); j <= Attribute::count(); j++) {
             int randomValue = rand() % 10 + 1;
             a->attr(j, randomValue);
         }

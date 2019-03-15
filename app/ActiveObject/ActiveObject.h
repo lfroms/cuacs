@@ -88,14 +88,14 @@ bool ActiveObject<T>::first(T* output) {
             QString("SELECT * FROM %1 ORDER BY id ASC LIMIT 1;")
             .arg(tableName);
 
-    if (!query.exec(getFirstQuery)) {
-        return false;
+    if (query.exec(getFirstQuery) && query.first()) {
+        QSqlRecord record = query.record();
+        output = new T(&record);
+
+        return true;
     }
 
-    QSqlRecord record = query.record();
-    output = new T(&record);
-
-    return true;
+    return false;
 }
 
 template <class T>
@@ -108,14 +108,14 @@ bool ActiveObject<T>::last(T* output) {
             QString("SELECT * FROM %1 ORDER BY id DESC LIMIT 1;")
             .arg(tableName);
 
-    if (!query.exec(getLastQuery)) {
-        return false;
+    if (query.exec(getLastQuery) && query.first()) {
+        QSqlRecord record = query.record();
+        output = new T(&record);
+
+        return true;
     }
 
-    QSqlRecord record = query.record();
-    output = new T(&record);
-
-    return true;
+    return false;
 }
 
 template <class T>
@@ -129,14 +129,14 @@ bool ActiveObject<T>::where(T* output, int id) {
             .arg(tableName)
             .arg(id);
 
-    if (!query.exec(getWhereQuery)) {
-        return false;
+    if (query.exec(getWhereQuery) && query.first()) {
+        QSqlRecord record = query.record();
+        output = new T(&record);
+
+        return true;
     }
 
-    QSqlRecord record = query.record();
-    output = new T(&record);
-
-    return true;
+    return false;
 }
 
 template <class T>
