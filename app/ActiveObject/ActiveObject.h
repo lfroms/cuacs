@@ -23,10 +23,12 @@ public:
     static bool where(T*, int id);
 
     template <typename U>
-    static bool where(T*, QString colName, U value);
+    static bool where(T**, QString colName, U value);
+
+    int getId();
 
 protected:
-    int id;
+    int id = -1;
     ActiveObject();
     ActiveObject(int id);
     virtual ~ActiveObject() = 0;
@@ -139,7 +141,7 @@ bool ActiveObject<T>::where(T* output, int id) {
 
 template <class T>
 template <typename U>
-bool ActiveObject<T>::where(T* output, QString colName, U value) {
+bool ActiveObject<T>::where(T** output, QString colName, U value) {
     QString tableName;
     getTableName(tableName);
 
@@ -154,8 +156,15 @@ bool ActiveObject<T>::where(T* output, QString colName, U value) {
         return false;
     }
 
-    QSqlRecord record = query.record();
-    output = new T(&record);
+    int i = 0;
+
+    while (query.next()) {
+        QSqlRecord record = query.record();
+        T* item = new T(&record);
+
+        output[i] = item;
+        i++;
+    }
 
     return true;
 }
@@ -191,7 +200,7 @@ bool ActiveObject<T>::create() {
     bool queryDidSucceed = insert.exec(insertQuery);
 
     if (queryDidSucceed) {
-        this->id = insert.record().value("id").toInt();
+        this->id = insert.lastInsertId().toInt();
         return true;
     }
 
@@ -204,7 +213,7 @@ bool ActiveObject<T>::save() {
     this->toCommaSeparated(args);
     this->getTableName(tableName);
 
-    if (!this->id) {
+    if (this->id == -1) {
         return this->create();
     }
 
@@ -223,7 +232,7 @@ bool ActiveObject<T>::destroy() {
     QString tableName;
     this->getTableName(tableName);
 
-    if (!this->id) {
+    if (this->id == -1) {
         qDebug() << "Cannot destroy (unsaved) object with no id.";
         return false;
     }
@@ -235,6 +244,11 @@ bool ActiveObject<T>::destroy() {
             .arg(id);
 
     return destroy.exec(destroyQuery);
+}
+
+template <class T>
+int ActiveObject<T>::getId() {
+    return id;
 }
 
 #endif // ACTIVEOBJECT_H

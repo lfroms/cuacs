@@ -24,7 +24,7 @@ private:
     static QSqlDatabase db;
 
     static bool setup();
-    static bool seed();
+    static void seed();
 };
 
 #endif // DATABASEADAPTER_H

@@ -27,6 +27,9 @@ bool DatabaseAdapter::init() {
 
 // Set up the database.
 bool DatabaseAdapter::setup() {
+    QSqlQuery setup;
+    setup.exec("PRAGMA foreign_keys = ON;");
+
     QSqlQuery createAnimals;
     QString animalQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
@@ -58,49 +61,14 @@ bool DatabaseAdapter::setup() {
             createAnimalAttributes.exec(animalAttributesQuery);
 
     if (didCompleteQueries) {
-        return seed();
+        seed();
+        return true;
     }
 
     return false;
 }
 
-bool DatabaseAdapter::seed() {
-    for (int i = Animal::count(); i < 25; i++) {
-        Animal* a = Seeds().getAnimals()[i];
-
-        bool animalSaved = a->create();
-
-        QString test;
-        a->getName(test);
-
-        if (!animalSaved) {
-            qDebug() << "Failed to seed database.";
-            return false;
-        }
-    }
-
-    for (int i = Client::count(); i < 5; i++) {
-        Client* c = Seeds().getClients()[i];
-
-        bool clientSaved = c->create();
-
-        if (!clientSaved) {
-            qDebug() << "Failed to seed database.";
-            return false;
-        }
-    }
-
-    for (int i = Attribute::count(); i < 5; i++) {
-        Attribute* a = Seeds().getAttributes()[i];
-
-        bool attributeSaved = a->create();
-
-        if (!attributeSaved) {
-            qDebug() << "Failed to seed database.";
-            return false;
-        }
-    }
-
-    qDebug() << "Seed succeeded.";
-    return true;
+void DatabaseAdapter::seed() {
+    Seeds::runAll();
+    qDebug() << "Database seeded.";
 }

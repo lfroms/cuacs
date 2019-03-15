@@ -3,10 +3,11 @@
 
 #include <QString>
 #include <ActiveObject/ActiveObject.h>
+#include <ActiveObject/AttributedObject.h>
 
 using namespace std;
 
-class Animal : public ActiveObject<Animal> {
+class Animal : public AttributedObject<Animal> {
 public:
     Animal(
             QString name,
@@ -36,6 +37,9 @@ public:
 
     void toCommaSeparated(QString& outStr);
     static void getTableName(QString& outStr);
+
+    static void getAttributeTableName(QString& outStr);
+    static void getAttributeIdColumnName(QString& outStr);
 
 private:
     QString name;

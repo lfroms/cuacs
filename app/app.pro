@@ -48,7 +48,8 @@ HEADERS += \
     DatabaseAdapter/Schema.h \
     DatabaseAdapter/Config.h \
     ActiveObject/ActiveObject.h \
-    Models/Attribute/Attribute.h
+    Models/Attribute/Attribute.h \
+    ActiveObject/AttributedObject.h
 
 FORMS += \
         MainWindow/MainWindow.ui \

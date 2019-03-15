@@ -82,3 +82,11 @@ void Animal::toCommaSeparated(QString& outStr) {
 void Animal::getTableName(QString &outStr) {
     outStr = ANIMAL_TABLE;
 }
+
+void Animal::getAttributeTableName(QString &outStr) {
+    outStr = ANIMAL_ATTRIBUTE_TABLE;
+}
+
+void Animal::getAttributeIdColumnName(QString &outStr) {
+    outStr = ANIMAL_ATTRIBUTE_COLUMN_NAME;
+}

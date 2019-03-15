@@ -8,6 +8,8 @@ static const QString CLIENT_TABLE = "clients";
 static const QString ATTRIBUTE_TABLE = "attributes";
 static const QString ANIMAL_ATTRIBUTE_TABLE = "animals_attributes";
 
+static const QString ANIMAL_ATTRIBUTE_COLUMN_NAME = "animal_id";
+
 static const QString ANIMAL_SCHEMA =
         QString(
             "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
@@ -44,13 +46,15 @@ static const QString ATTRIBUTE_SCHEMA =
 static const QString ANIMAL_ATTRIBUTE_SCHEMA =
         QString(
             "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-            "animal_id INTEGER NOT NULL,"
+            "%3 INTEGER NOT NULL,"
             "attribute_id INTEGER NOT NULL,"
             "value INTEGER NOT NULL,"
-            "FOREIGN KEY (animal_id) REFERENCES %1(id),"
-            "FOREIGN KEY (attribute_id) REFERENCES %2(id)"
+            "FOREIGN KEY (%3) REFERENCES %1(id),"
+            "FOREIGN KEY (attribute_id) REFERENCES %2(id),"
+            "UNIQUE (%3, attribute_id)"
             )
         .arg(ANIMAL_TABLE)
-        .arg(ATTRIBUTE_TABLE);
+        .arg(ATTRIBUTE_TABLE)
+        .arg(ANIMAL_ATTRIBUTE_COLUMN_NAME);
 
 #endif // SCHEMA_H

@@ -7,15 +7,10 @@
 
 class Seeds {
 private:
-    Animal* animals[25];
-    Client* clients[5];
-    Attribute* attributes[12];
+    Seeds();
 
 public:
-    Seeds();
-    Animal** getAnimals();
-    Client** getClients();
-    Attribute** getAttributes();
+    static void runAll();
 };
 
 #endif // SEEDS_H
