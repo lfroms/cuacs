@@ -68,12 +68,23 @@ void Seeds::runAll() {
     // SEED ANIMAL ATTRIBUTES
     qDebug() << "Seeding animal attributes...";
 
-    for (int i = Animal::first()->getId(); i <= Animal::count(); i++) {
-        Animal* a = Animal::where(i);
+    QVector<Animal*>* animalsVector = Animal::all();
+    QVectorIterator<Animal*> animals(*animalsVector);
 
-        for (int j = Attribute::first()->getId(); j <= Attribute::count(); j++) {
-            int randomValue = rand() % 10;
-            a->setAttr(j, randomValue);
+    QVector<Attribute*>* attributesVector = Attribute::all();
+    QVectorIterator<Attribute*> attributes(*attributesVector);
+
+    if (!animalsVector->isEmpty() && !attributesVector->isEmpty()) {
+        while (animals.hasNext()) {
+            Animal* currentAnimal = animals.next();
+            attributes.toFront();
+
+            while (attributes.hasNext()) {
+                Attribute* currentAttribute = attributes.next();
+
+                int randomValue = rand() % 10;
+                currentAnimal->setAttr(currentAttribute->getId(), randomValue);
+            }
         }
     }
 }
