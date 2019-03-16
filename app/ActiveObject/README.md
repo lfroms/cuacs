@@ -18,12 +18,9 @@
     - `::where(id)` (static, returns a record where `id` matches)
     - `::where(colName, value)` (static, returns a record where a column's value matches)
   - In `AttributedObject`, you also get access to these:
-    - `.setAttr(attrName, int)` (sets an attribute, or updates if it does not exist, given an attribute name and its target value)
-    - _Dangerous:_ `.setAttr(attrId, int)` (sets an attribute, or updates if it does not exist, given an attribute `id` and its target value)
+    - `.setAttr(attrName, value)` (sets an attribute, or updates if it does not exist, given an attribute name and its target value)
     - `.attr(attrName)` (gets the value of the attribute for this object given an attribute name)
-    - _Dangerous:_ `.attr(attrId)` (gets the value of the attribute for this object given an attribute `id`)
     - `.clearAttr(attrName)` (deletes the attribute for this object given an attribute name)
-    - _Dangerous:_ `.clearAttr(attrId)` (deletes the attribute for this object given an attribute `id`)
 
 **Note:**
 When accessing `->first()` on a vector retrieved using `::where()` or `::all()`, for example, make sure to check:
