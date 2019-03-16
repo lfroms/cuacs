@@ -84,7 +84,7 @@ void Seeds::runAll() {
                 QString attrName;
                 currentAttribute->getName(attrName);
 
-                int randomValue = rand() % 10;
+                int randomValue = rand() % 11;
                 currentAnimal->setAttr(attrName, randomValue);
             }
         }
