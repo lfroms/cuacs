@@ -21,22 +21,18 @@ Attribute::Attribute(QSqlRecord* record) :
 
 Attribute::~Attribute() {}
 
-void Attribute::getName(QString& outStr) {
-    outStr = name;
-}
+const QString Attribute::getName() { return name; }
 
-void Attribute::getDescription(QString &outStr) {
-    outStr = description;
-}
+const QString Attribute::getDescription() { return description; }
 
-void Attribute::toCommaSeparated(QString &outStr) {
+const QString Attribute::toCommaSeparated() {
     QString formatted = QString("'%1', '%2'")
             .arg(name)
             .arg(description);
 
-    outStr = formatted;
+    return formatted;
 }
 
-void Attribute::getTableName(QString &outStr) {
-    outStr = ATTRIBUTE_TABLE;
+const QString Attribute::getTableName() {
+    return ATTRIBUTE_TABLE;
 }

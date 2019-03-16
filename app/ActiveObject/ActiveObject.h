@@ -33,10 +33,10 @@ protected:
     ActiveObject();
     virtual ~ActiveObject() = 0;
 
-    virtual void toCommaSeparated(QString& outStr) = 0;
+    virtual const QString toCommaSeparated() = 0;
 
-    static void getTableName(QString& outStr) {
-        T::getTableName(outStr);
+    const static QString getTableName() {
+        return T::getTableName();
     }
 };
 
@@ -48,13 +48,10 @@ ActiveObject<T>::~ActiveObject() {}
 
 template <class T>
 QVector<T*>* ActiveObject<T>::all(){
-    QString tableName;
-    getTableName(tableName);
-
     QSqlQuery query;
     QString getAllQuery =
             QString("SELECT * FROM %1;")
-            .arg(tableName);
+            .arg(getTableName());
 
     if (!query.exec(getAllQuery)) {
         return new QVector<T*>();
@@ -73,13 +70,10 @@ QVector<T*>* ActiveObject<T>::all(){
 
 template <class T>
 T* ActiveObject<T>::first() {
-    QString tableName;
-    getTableName(tableName);
-
     QSqlQuery query;
     QString getFirstQuery =
             QString("SELECT * FROM %1 ORDER BY id ASC LIMIT 1;")
-            .arg(tableName);
+            .arg(getTableName());
 
     if (query.exec(getFirstQuery) && query.first()) {
         QSqlRecord record = query.record();
@@ -91,13 +85,10 @@ T* ActiveObject<T>::first() {
 
 template <class T>
 T* ActiveObject<T>::last() {
-    QString tableName;
-    getTableName(tableName);
-
     QSqlQuery query;
     QString getLastQuery =
             QString("SELECT * FROM %1 ORDER BY id DESC LIMIT 1;")
-            .arg(tableName);
+            .arg(getTableName());
 
     if (query.exec(getLastQuery) && query.first()) {
         QSqlRecord record = query.record();
@@ -109,13 +100,10 @@ T* ActiveObject<T>::last() {
 
 template <class T>
 T* ActiveObject<T>::where(int id) {
-    QString tableName;
-    getTableName(tableName);
-
     QSqlQuery query;
     QString getWhereQuery =
             QString("SELECT * FROM %1 WHERE id = %2 LIMIT 1;")
-            .arg(tableName)
+            .arg(getTableName())
             .arg(id);
 
     if (query.exec(getWhereQuery) && query.first()) {
@@ -129,13 +117,10 @@ T* ActiveObject<T>::where(int id) {
 template <class T>
 template <typename U>
 QVector<T*>* ActiveObject<T>::where(QString colName, U value) {
-    QString tableName;
-    getTableName(tableName);
-
     QSqlQuery query;
     QString getWhereQuery =
             QString("SELECT * FROM %1 WHERE %2 = '%3';")
-            .arg(tableName)
+            .arg(getTableName())
             .arg(colName)
             .arg(value);
 
@@ -156,13 +141,10 @@ QVector<T*>* ActiveObject<T>::where(QString colName, U value) {
 
 template <class T>
 int ActiveObject<T>::count() {
-    QString tableName;
-    getTableName(tableName);
-
     QSqlQuery query;
     QString getCountQuery =
             QString("SELECT COUNT(*) FROM %1;")
-            .arg(tableName);
+            .arg(getTableName());
 
     query.exec(getCountQuery);
     query.first();
@@ -172,15 +154,11 @@ int ActiveObject<T>::count() {
 
 template <class T>
 bool ActiveObject<T>::create() {
-    QString args, tableName;
-    this->toCommaSeparated(args);
-    this->getTableName(tableName);
-
     QSqlQuery insert;
     QString insertQuery =
             QString("INSERT INTO %1 VALUES(null, %2);")
-            .arg(tableName)
-            .arg(args);
+            .arg(getTableName())
+            .arg(toCommaSeparated());
 
     bool queryDidSucceed = insert.exec(insertQuery);
 
@@ -194,10 +172,6 @@ bool ActiveObject<T>::create() {
 
 template <class T>
 bool ActiveObject<T>::save() {
-    QString args, tableName;
-    this->toCommaSeparated(args);
-    this->getTableName(tableName);
-
     if (this->id == -1) {
         return this->create();
     }
@@ -205,18 +179,15 @@ bool ActiveObject<T>::save() {
     QSqlQuery update;
     QString updateQuery =
             QString("REPLACE INTO %1 VALUES(%2, %3);")
-            .arg(tableName)
+            .arg(getTableName())
             .arg(id)
-            .arg(args);
+            .arg(toCommaSeparated());
 
     return update.exec(updateQuery);
 }
 
 template <class T>
 bool ActiveObject<T>::destroy() {
-    QString tableName;
-    this->getTableName(tableName);
-
     if (this->id == -1) {
         qDebug() << "Cannot destroy (unsaved) object with no id.";
         return false;
@@ -225,7 +196,7 @@ bool ActiveObject<T>::destroy() {
     QSqlQuery destroy;
     QString destroyQuery =
             QString("DELETE FROM %1 WHERE id = %2;")
-            .arg(tableName)
+            .arg(getTableName())
             .arg(id);
 
     bool didDestroy = destroy.exec(destroyQuery);

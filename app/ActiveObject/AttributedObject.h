@@ -24,12 +24,12 @@ protected:
     AttributedObject();
     virtual ~AttributedObject() = 0;
 
-    static void getAttributeTableName(QString& outStr) {
-        T::getAttributeTableName(outStr);
+    static QString getAttributeTableName() {
+        return T::getAttributeTableName();
     }
 
-    static void getAttributeIdColumnName(QString& outStr) {
-        T::getAttributeIdColumnName(outStr);
+    static QString getAttributeIdColumnName() {
+        return T::getAttributeIdColumnName();
     }
 };
 
@@ -42,13 +42,11 @@ AttributedObject<T>::~AttributedObject() {}
 template <class T>
 AttributedObject<T>* AttributedObject<T>::setAttr(int attrId, int value) {
     int objectId = this->getId();
-    QString attributeTableName;
-    this->getAttributeTableName(attributeTableName);
 
     QSqlQuery insert;
     QString insertQuery =
             QString("INSERT OR REPLACE INTO %1 VALUES(%2, %3, %4);")
-            .arg(attributeTableName)
+            .arg(getAttributeTableName())
             .arg(objectId)
             .arg(attrId)
             .arg(value);
@@ -72,15 +70,12 @@ AttributedObject<T>* AttributedObject<T>::setAttr(QString attrName, int value) {
 template <class T>
 int AttributedObject<T>::attr(int attrId) {
     int objectId = this->getId();
-    QString attributeTableName, attributeColumnName;
-    this->getAttributeTableName(attributeTableName);
-    this->getAttributeIdColumnName(attributeColumnName);
 
     QSqlQuery query;
     QString getAttrQuery =
             QString("SELECT value FROM %1 WHERE %2 = %3 AND attribute_id = %4;")
-            .arg(attributeTableName)
-            .arg(attributeColumnName)
+            .arg(getAttributeTableName())
+            .arg(getAttributeIdColumnName())
             .arg(objectId)
             .arg(attrId);
 
@@ -104,15 +99,13 @@ template <class T>
 bool AttributedObject<T>::clearAttr(int attrId) {
     int objectId = this->getId();
 
-    QString attributeTableName, attributeColumnName;
-    this->getAttributeTableName(attributeTableName);
-    this->getAttributeIdColumnName(attributeColumnName);
+    QString attributeTableName = getAttributeTableName();
 
     QSqlQuery insert;
     QString deleteQuery =
             QString("DELETE FROM %1 WHERE %2 = %3 AND attribute_id = %4;")
             .arg(attributeTableName)
-            .arg(attributeColumnName)
+            .arg(getAttributeIdColumnName())
             .arg(objectId)
             .arg(attrId);
 

@@ -3,8 +3,8 @@
 
 DetailListWidgetItem::DetailListWidgetItem(QWidget *parent) :
     QWidget(parent),
-    ui(new Ui::DetailListWidgetItem)
-{
+    ui(new Ui::DetailListWidgetItem) {
+
     ui->setupUi(this);
 }
 
