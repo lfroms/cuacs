@@ -24,11 +24,11 @@ protected:
     AttributedObject();
     virtual ~AttributedObject() = 0;
 
-    static QString getAttributeTableName() {
+    static const QString getAttributeTableName() {
         return T::getAttributeTableName();
     }
 
-    static QString getAttributeIdColumnName() {
+    static const QString getAttributeIdColumnName() {
         return T::getAttributeIdColumnName();
     }
 };
