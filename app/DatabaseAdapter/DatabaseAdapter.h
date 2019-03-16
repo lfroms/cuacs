@@ -6,33 +6,25 @@
 #include <QSqlQuery>
 #include <QDebug>
 
-#include <Models/Animal.h>
-#include <Models/Client.h>
+#include <Models/Animal/Animal.h>
+#include <Models/Client/Client.h>
 
 #include <DatabaseAdapter/Seeds.h>
 
 #include <vector>
 
 class DatabaseAdapter {
-    public:
-        static DatabaseAdapter* getInstance();
+public:
+    static bool init();
 
-        static bool insertAnimal(Animal*);
-        static bool getAnimals(Animal** animal);
-        static int getTotalAnimals();
+private:
+    DatabaseAdapter();
+    ~DatabaseAdapter();
 
-        static bool saveClient(Client*);
-        static bool deleteClient(int);
-        static bool getClients(Client**);
-        static int getClientCount();
+    static QSqlDatabase db;
 
-    private:
-        DatabaseAdapter();
-        ~DatabaseAdapter();
-        static QSqlDatabase db;
-
-        static bool init();
-        static bool seed();
+    static bool setup();
+    static void seed();
 };
 
 #endif // DATABASEADAPTER_H

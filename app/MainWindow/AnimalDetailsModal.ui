@@ -44,7 +44,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="biteSlider">
+     <widget class="QSlider" name="bite">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -67,7 +67,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="scratchSlider">
+     <widget class="QSlider" name="scratch">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -83,14 +83,14 @@
      </widget>
     </item>
     <item>
-     <widget class="QLabel" name="noiseLabel">
+     <widget class="QLabel" name="assertDominanceLabel">
       <property name="text">
        <string>Dominance Tendency</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="dominanceSlider">
+     <widget class="QSlider" name="assertDominance">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -113,7 +113,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="adultFriendlinessSlider">
+     <widget class="QSlider" name="adultFriendliness">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -136,7 +136,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="childFriendlinessSlider">
+     <widget class="QSlider" name="childFriendliness">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -159,7 +159,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="animalFriendlinessSlider">
+     <widget class="QSlider" name="animalFriendliness">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -187,14 +187,14 @@
    </property>
    <layout class="QVBoxLayout" name="verticalLayout_3">
     <item>
-     <widget class="QLabel" name="noisinessLabel">
+     <widget class="QLabel" name="noiseLabel">
       <property name="text">
        <string>Noisiness</string>
       </property>
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="noisinessSlider">
+     <widget class="QSlider" name="noise">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -217,7 +217,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="independenceSlider">
+     <widget class="QSlider" name="independence">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -240,7 +240,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="affectionSlider">
+     <widget class="QSlider" name="affection">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -263,7 +263,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="energySlider">
+     <widget class="QSlider" name="energy">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -286,7 +286,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="anxietySlider">
+     <widget class="QSlider" name="anxiety">
       <property name="enabled">
        <bool>false</bool>
       </property>
@@ -309,7 +309,7 @@
      </widget>
     </item>
     <item>
-     <widget class="QSlider" name="curiositySlider">
+     <widget class="QSlider" name="curiosity">
       <property name="enabled">
        <bool>false</bool>
       </property>

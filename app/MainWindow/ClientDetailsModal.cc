@@ -3,8 +3,7 @@
 
 ClientDetailsModal::ClientDetailsModal(Client * c, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::ClientDetailsModal)
-{
+    ui(new Ui::ClientDetailsModal) {
     ui->setupUi(this);
     client = c;
     setupViews();

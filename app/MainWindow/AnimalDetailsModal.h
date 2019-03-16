@@ -2,14 +2,13 @@
 #define ANIMALDETAILSMODAL_H
 
 #include <QDialog>
-#include <Models/Animal.h>
+#include <Models/Animal/Animal.h>
 
 namespace Ui {
 class AnimalDetailsModal;
 }
 
-class AnimalDetailsModal : public QDialog
-{
+class AnimalDetailsModal : public QDialog {
     Q_OBJECT
 
 public:

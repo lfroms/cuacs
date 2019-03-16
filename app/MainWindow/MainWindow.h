@@ -4,7 +4,7 @@
 #include <QMainWindow>
 #include <QDebug>
 #include <QListWidgetItem>
-#include <DatabaseAdapter/DatabaseAdapter.h>
+#include <QVectorIterator>
 #include <MainWindow/DetailListWidgetItem.h>
 #include <MainWindow/AnimalDetailsModal.h>
 #include <MainWindow/ClientDetailsModal.h>
@@ -30,7 +30,6 @@ private slots:
 
 private:
     Ui::MainWindow *ui;
-    DatabaseAdapter* db;
     void renderListItems();
     void renderAnimalList();
     void renderClientList();

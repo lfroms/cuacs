@@ -13,8 +13,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     connect(ui->clientsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onClientClicked(QListWidgetItem*)));
 
-    db = DatabaseAdapter::getInstance();
-
     renderListItems();
 }
 
@@ -38,7 +36,7 @@ void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
-    Animal * animal = var.value<Animal *>();
+    Animal* animal = var.value<Animal*>();
 
     AnimalDetailsModal modal(animal);
     modal.setModal(true);
@@ -47,7 +45,7 @@ void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
 
 void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
-    Client * client = var.value<Client *>();
+    Client* client = var.value<Client*>();
 
     ClientDetailsModal modal(client);
     modal.setModal(true);
@@ -57,14 +55,15 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
 void MainWindow::renderAnimalList() {
     ui->animalsListWidget->clear();
 
-    int numAnimals = db->getTotalAnimals();
-    Animal * animals[numAnimals];
-    db->getAnimals(animals);
+    QVector<Animal*>* animalVector = Animal::all();
+    QVectorIterator<Animal*> i(*animalVector);
 
-    for (int i = 0; i < numAnimals; i++) {
+    while (i.hasNext()) {
+        Animal* currentAnimal = i.next();
+
         QString name, breed;
-        animals[i]->getName(name);
-        animals[i]->getBreed(breed);
+        currentAnimal->getName(name);
+        currentAnimal->getBreed(breed);
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
@@ -72,14 +71,11 @@ void MainWindow::renderAnimalList() {
         animalWidget->setTitle(name);
         animalWidget->setSubtitle(breed);
 
-        //Sizing list widget appropriately
         listWidgetItem->setSizeHint(animalWidget->sizeHint());
 
-        //Turn Animal to QVariant to attach it to listWidgetItem
-        QVariant var = QVariant::fromValue(animals[i]);
+        QVariant var = QVariant::fromValue(currentAnimal);
         listWidgetItem->setData(Qt::UserRole, var);
 
-        //Finally attach animalWidget to listItem
         ui->animalsListWidget->setItemWidget(listWidgetItem, animalWidget);
     }
 }
@@ -87,14 +83,15 @@ void MainWindow::renderAnimalList() {
 void MainWindow::renderClientList() {
     ui->clientsListWidget->clear();
 
-    int numClients = db->getClientCount();
-    Client * clients[numClients];
-    db->getClients(clients);
+    QVector<Client*>* clientVector = Client::all();
+    QVectorIterator<Client*> i(*clientVector);
 
-    for (int i = 0; i < numClients; i++) {
+    while (i.hasNext()) {
+        Client* currentClient = i.next();
+
         QString name, email;
-        clients[i]->getName(name);
-        clients[i]->getEmail(email);
+        currentClient->getName(name);
+        currentClient->getEmail(email);
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
@@ -104,70 +101,72 @@ void MainWindow::renderClientList() {
 
         listWidgetItem->setSizeHint(clientWidget->sizeHint());
 
-        QVariant var = QVariant::fromValue(clients[i]);
+        QVariant var = QVariant::fromValue(currentClient);
         listWidgetItem->setData(Qt::UserRole, var);
 
         ui->clientsListWidget->setItemWidget(listWidgetItem, clientWidget);
     }
 }
 
-
 void MainWindow::renderListItems() {
     renderAnimalList();
     renderClientList();
 }
 
-
 void MainWindow::handleAddAnimalSubmit() {
     Animal* animal;
     animal = new Animal(
-        ui->animalTypeBox->currentText(),
-        ui->genderEdit->text(),
-        ui->colorEdit->text(),
-        ui->breedEdit->text(),
-        ui->ageEdit->text().toInt(),
-        ui->neuteredCheckBox->isChecked(),
-        ui->medicalCheckbox->isChecked(),
-        ui->nameEdit->text(),
-        false,
-        ui->biteSlider->value(),
-        ui->scratchSlider->value(),
-        ui->dominanceSlider->value(),
-        ui->adultFriendlinessSlider->value(),
-        ui->childFriendlinessSlider->value(),
-        ui->animalFriendlinessSlider->value(),
-        ui->noisinessSlider->value(),
-        ui->independenceSlider->value(),
-        ui->affectionSlider->value(),
-        ui->energySlider->value(),
-        ui->anxietySlider->value(),
-        ui->curiositySlider->value()
-    );
+                ui->nameEdit->text(),
+                ui->animalTypeBox->currentText(),
+                ui->genderEdit->text(),
+                ui->breedEdit->text(),
+                ui->ageEdit->text().toInt(),
+                ui->neuteredCheckBox->isChecked(),
+                ui->medicalCheckbox->isChecked(),
+                ui->colorEdit->text(),
+                false
+                );
 
-    if (!db->insertAnimal(animal)) {
+    bool animalSaved = animal->create();
+
+    if (!animalSaved) {
         qDebug() << "Failed to add animal to database.";
         return;
     }
 
+    animal
+            ->setAttr("bite_tendency", ui->bite->value())
+            ->setAttr("scratch_tendency", ui->scratch->value())
+            ->setAttr("assert_dominance_tendency", ui->dominance->value())
+            ->setAttr("friendliness_adults", ui->adultFriendliness->value())
+            ->setAttr("friendliness_children", ui->childFriendliness->value())
+            ->setAttr("friendliness_animals", ui->animalFriendliness->value())
+            ->setAttr("noise_level", ui->noise->value())
+            ->setAttr("independence_level", ui->independence->value())
+            ->setAttr("affection_level", ui->affection->value())
+            ->setAttr("energy_level", ui->energy->value())
+            ->setAttr("anxiety_level", ui->anxiety->value())
+            ->setAttr("curiosity_level", ui->curiosity->value());
+
+    ui->nameEdit->clear();
     ui->genderEdit->clear();
     ui->colorEdit->clear();
     ui->breedEdit->clear();
     ui->ageEdit->clear();
     ui->neuteredCheckBox->setChecked(false);
     ui->medicalCheckbox->setChecked(false);
-    ui->nameEdit->clear();
-    ui->biteSlider->setValue(5);
-    ui->scratchSlider->setValue(5);
-    ui->dominanceSlider->setValue(5);
-    ui->adultFriendlinessSlider->setValue(5);
-    ui->childFriendlinessSlider->setValue(5);
-    ui->animalFriendlinessSlider->setValue(5);
-    ui->noisinessSlider->setValue(5);
-    ui->independenceSlider->setValue(5);
-    ui->affectionSlider->setValue(5);
-    ui->energySlider->setValue(5);
-    ui->anxietySlider->setValue(5);
-    ui->curiositySlider->setValue(5);
+    ui->bite->setValue(5);
+    ui->scratch->setValue(5);
+    ui->dominance->setValue(5);
+    ui->adultFriendliness->setValue(5);
+    ui->childFriendliness->setValue(5);
+    ui->animalFriendliness->setValue(5);
+    ui->noise->setValue(5);
+    ui->independence->setValue(5);
+    ui->affection->setValue(5);
+    ui->energy->setValue(5);
+    ui->anxiety->setValue(5);
+    ui->curiosity->setValue(5);
 
     renderAnimalList();
 }
@@ -180,7 +179,9 @@ void MainWindow::handleAddClientSubmit() {
                 ui->clientEmailEdit->text()
                 );
 
-    if (!db->saveClient(client)) {
+    bool clientSaved = client->create();
+
+    if (!clientSaved) {
         qDebug() << "Failed to add client to database.";
         return;
     }

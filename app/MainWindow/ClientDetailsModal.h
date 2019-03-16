@@ -2,7 +2,7 @@
 #define CLIENTDETAILSMODAL_H
 
 #include <QDialog>
-#include <Models/Client.h>
+#include <Models/Client/Client.h>
 
 namespace Ui {
 class ClientDetailsModal;

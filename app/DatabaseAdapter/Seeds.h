@@ -1,20 +1,16 @@
 #ifndef SEEDS_H
 #define SEEDS_H
 
-#include <Models/Animal.h>
-#include <Models/Client.h>
-
-using namespace std;
+#include <Models/Animal/Animal.h>
+#include <Models/Client/Client.h>
+#include <Models/Attribute/Attribute.h>
 
 class Seeds {
-    private:
-        Animal* animals[25];
-        Client* clients[5];
+private:
+    Seeds();
 
-    public:
-        Seeds();
-        Animal** getAnimals();
-        Client** getClients();
+public:
+    static void runAll();
 };
 
 #endif // SEEDS_H
