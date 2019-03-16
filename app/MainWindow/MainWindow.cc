@@ -60,16 +60,11 @@ void MainWindow::renderAnimalList() {
 
     while (i.hasNext()) {
         Animal* currentAnimal = i.next();
-
-        QString name, breed;
-        currentAnimal->getName(name);
-        currentAnimal->getBreed(breed);
-
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
         DetailListWidgetItem *animalWidget = new DetailListWidgetItem;
-        animalWidget->setTitle(name);
-        animalWidget->setSubtitle(breed);
+        animalWidget->setTitle(currentAnimal->getName());
+        animalWidget->setSubtitle(currentAnimal->getBreed());
 
         listWidgetItem->setSizeHint(animalWidget->sizeHint());
 
@@ -88,16 +83,11 @@ void MainWindow::renderClientList() {
 
     while (i.hasNext()) {
         Client* currentClient = i.next();
-
-        QString name, email;
-        currentClient->getName(name);
-        currentClient->getEmail(email);
-
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
         DetailListWidgetItem *clientWidget = new DetailListWidgetItem;
-        clientWidget->setTitle(name);
-        clientWidget->setSubtitle(email);
+        clientWidget->setTitle(currentClient->getName());
+        clientWidget->setSubtitle(currentClient->getEmail());
 
         listWidgetItem->setSizeHint(clientWidget->sizeHint());
 

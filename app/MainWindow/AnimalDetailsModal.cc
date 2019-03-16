@@ -3,35 +3,29 @@
 
 AnimalDetailsModal::AnimalDetailsModal(Animal* a, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::AnimalDetailsModal)
-{
+    ui(new Ui::AnimalDetailsModal) {
+
     ui->setupUi(this);
     animal = a;
     setupViews();
 }
 
-AnimalDetailsModal::~AnimalDetailsModal()
-{
+AnimalDetailsModal::~AnimalDetailsModal() {
     delete ui;
 }
 
 void AnimalDetailsModal::setupViews() {
-    QString species, name, gender, color, breed;
-    animal->getName(name);
-    animal->getGender(gender);
-    animal->getColor(color);
-    animal->getBreed(breed);
-    animal->getSpecies(species);
+    QString animalName = animal->getName();
 
     //Setup Window properties
-    this->setWindowTitle(name + QString("'s")+ QString(" Details"));
+    this->setWindowTitle(animalName + QString("'s")+ QString(" Details"));
 
     //Setup UI elements
-    ui->nameEdit->setText(name);
-    ui->breedEdit->setText(breed);
-    ui->genderEdit->setText(gender);
-    ui->colorEdit->setText(color);
-    ui->animalTypeLabel->setText(species);
+    ui->nameEdit->setText(animalName);
+    ui->breedEdit->setText(animal->getBreed());
+    ui->genderEdit->setText(animal->getGender());
+    ui->colorEdit->setText(animal->getColor());
+    ui->animalTypeLabel->setText(animal->getSpecies());
     ui->ageEdit->setText(QString::number(animal->getAge()));
 
     ui->neuteredCheckBox->setChecked(animal->getNeuteredOrSpayed());

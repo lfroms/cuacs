@@ -24,21 +24,21 @@ public:
     Animal(QSqlRecord* record);
     ~Animal();
 
-    void getName(QString& outStr);
-    void getSpecies(QString& outStr);
-    void getGender(QString& outStr);
-    void getBreed(QString& outStr);
+    const QString getName();
+    const QString getSpecies();
+    const QString getGender();
+    const QString getBreed();
     int getAge();
     bool getNeuteredOrSpayed();
     bool getRequiresMedicalAttn();
-    void getColor(QString& outStr);
+    const QString getColor();
     bool getIsHypothetical();
 
-    void toCommaSeparated(QString& outStr);
-    static void getTableName(QString& outStr);
+    const QString toCommaSeparated();
+    static const QString getTableName();
 
-    static void getAttributeTableName(QString& outStr);
-    static void getAttributeIdColumnName(QString& outStr);
+    static const QString getAttributeTableName();
+    static const QString getAttributeIdColumnName();
 
 private:
     QString name;

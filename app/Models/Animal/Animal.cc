@@ -40,31 +40,18 @@ Animal::Animal(QSqlRecord* record) :
 
 Animal::~Animal() {}
 
-void Animal::getName(QString& outStr) {
-    outStr = name;
-}
-
-void Animal::getSpecies(QString &outStr) {
-    outStr = species;
-}
-
-void Animal::getGender(QString& outStr) {
-    outStr = breed;
-}
-
-void Animal::getBreed(QString& outStr) {
-    outStr = breed;
-}
-void Animal::getColor(QString& outStr) {
-    outStr = color;
-}
+const QString Animal::getName() { return name; }
+const QString Animal::getSpecies() { return species; }
+const QString Animal::getGender() { return gender; }
+const QString Animal::getBreed() { return breed; }
+const QString Animal::getColor() { return color; }
 
 int Animal::getAge() { return age; }
 bool Animal::getNeuteredOrSpayed() { return neuteredOrSpayed; }
 bool Animal::getRequiresMedicalAttn() { return requiresMedicalAttn; }
 bool Animal::getIsHypothetical() { return isHypothetical; }
 
-void Animal::toCommaSeparated(QString& outStr) {
+const QString Animal::toCommaSeparated() {
     QString formatted = QString("'%1', '%2', '%3', '%4', %5, %6, %7, '%8', %9")
             .arg(name)
             .arg(species)
@@ -76,17 +63,17 @@ void Animal::toCommaSeparated(QString& outStr) {
             .arg(color)
             .arg(isHypothetical);
 
-    outStr = formatted;
+    return formatted;
 }
 
-void Animal::getTableName(QString &outStr) {
-    outStr = ANIMAL_TABLE;
+const QString Animal::getTableName() {
+    return ANIMAL_TABLE;
 }
 
-void Animal::getAttributeTableName(QString &outStr) {
-    outStr = ANIMAL_ATTRIBUTE_TABLE;
+const QString Animal::getAttributeTableName() {
+    return ANIMAL_ATTRIBUTE_TABLE;
 }
 
-void Animal::getAttributeIdColumnName(QString &outStr) {
-    outStr = ANIMAL_ATTRIBUTE_COLUMN_NAME;
+const QString Animal::getAttributeIdColumnName() {
+    return ANIMAL_ATTRIBUTE_COLUMN_NAME;
 }

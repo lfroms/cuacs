@@ -40,23 +40,12 @@ Client::Client(QSqlRecord* record) :
 
 Client::~Client() {}
 
-void Client::getName(QString& outStr) {
-    outStr = name;
-}
+const QString Client::getName() { return name; }
+int Client::getAge() { return age; }
+const QString Client::getPhoneNumber() { return phoneNumber; }
+const QString Client::getEmail() { return email; }
 
-void Client::getAge(int &outInt) {
-    outInt = age;
-}
-
-void Client::getPhoneNumber(QString &outStr) {
-    outStr = phoneNumber;
-}
-
-void Client::getEmail(QString& outStr) {
-    outStr = email;
-}
-
-void Client::toCommaSeparated(QString &outStr) {
+const QString Client::toCommaSeparated() {
     QString idealAsString = "'" + QString(idealAnimalId) + "'";
     QString idealAnimalNullable =
             idealAnimalId == -1 ?
@@ -70,9 +59,9 @@ void Client::toCommaSeparated(QString &outStr) {
             .arg(email)
             .arg(idealAnimalNullable);
 
-    outStr = formatted;
+    return formatted;
 }
 
-void Client::getTableName(QString &outStr) {
-    outStr = CLIENT_TABLE;
+const QString Client::getTableName() {
+    return CLIENT_TABLE;
 }

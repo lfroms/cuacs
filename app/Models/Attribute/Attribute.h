@@ -14,11 +14,11 @@ public:
 
     ~Attribute();
 
-    void getName(QString& outStr);
-    void getDescription(QString& outStr);
+    const QString getName();
+    const QString getDescription();
 
-    void toCommaSeparated(QString& outStr);
-    static void getTableName(QString& outStr);
+    const QString toCommaSeparated();
+    static const QString getTableName();
 
 private:
     QString name;

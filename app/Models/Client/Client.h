@@ -26,13 +26,13 @@ public:
     Client(QSqlRecord* record);
     ~Client();
 
-    void getName(QString& outStr);
-    void getAge(int& outInt);
-    void getPhoneNumber(QString& outStr);
-    void getEmail(QString& outStr);
+    const QString getName();
+    int getAge();
+    const QString getPhoneNumber();
+    const QString getEmail();
 
-    void toCommaSeparated(QString& outStr);
-    static void getTableName(QString& outStr);
+    const QString toCommaSeparated();
+    static const QString getTableName();
 
 private:
     QString name;
