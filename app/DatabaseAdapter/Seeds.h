@@ -5,6 +5,8 @@
 #include <Models/Client/Client.h>
 #include <Models/Attribute/Attribute.h>
 
+#include <QVectorIterator>
+
 class Seeds {
 private:
     Seeds();
