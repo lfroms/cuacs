@@ -1,7 +1,6 @@
 #include "MatchCreator.h"
-#include <QDebug>
 
-void MatchCreator::computeOptimalMatches(QHash<Animal*, QVector<Match*>> inputHash) {
+QVector<Match*> MatchCreator::computeOptimalMatches(QHash<Animal*, QVector<Match*>> inputHash) {
     QHashIterator<Animal*, QVector<Match*>> inputHash_i(inputHash);
 
     QHash<Animal*, QVector<Match*>> sortedMatchesHash;
@@ -11,17 +10,17 @@ void MatchCreator::computeOptimalMatches(QHash<Animal*, QVector<Match*>> inputHa
         inputHash_i.next();
         sortedMatchesHash[inputHash_i.key()] = sortAndThresholdMatches(inputHash_i.value());
     }
+
+    return computeMatches(sortedMatchesHash);
 }
 
 QVector<Match*> MatchCreator::sortAndThresholdMatches(QVector<Match*> inputMatchVector) {
     QVectorIterator<Match*> input_i(inputMatchVector);
 
-    qDebug() << "Unsorted";
     // Apply thresholding to reject matches
     QVector<Match*> thresholdedMatches;
     while(input_i.hasNext()) {
         Match* currentMatch = input_i.next();
-        qDebug() << currentMatch->getScore();
 
         if(currentMatch->getScore() >= MATCH_SCORE_THRESHOLD){
             thresholdedMatches.append(currentMatch);
@@ -32,16 +31,59 @@ QVector<Match*> MatchCreator::sortAndThresholdMatches(QVector<Match*> inputMatch
         return a->getScore() > b->getScore();
     });
 
-    QVectorIterator<Match*> thresholdI(thresholdedMatches);
-    qDebug() << "Sorted";
-    while(thresholdI.hasNext()){
-        Match* match = thresholdI.next();
-        qDebug() << match->getScore();
-    }
-
     return thresholdedMatches;
 }
 
-QHash<Animal*, QVector<Match*>> MatchCreator::computeMatches(QHash<Animal*, QVector<Match*>> inputHash)
+QVector<Match*> MatchCreator::computeMatches(QHash<Animal*, QVector<Match*>> inputHash)
 {
+    QHash<Client*, Match*> clientsTopPick;
+    QHashIterator<Animal*, QVector<Match*>> inputHashI(inputHash);
+
+    // Getting all animals from inputHash
+    QVector<Animal*> animalProposerQueue;
+
+    while(inputHashI.hasNext()) {
+        inputHashI.next();
+        animalProposerQueue.append(inputHashI.key());
+    }
+
+    // Gale-Shapely's stable marriage algorithm, with the animals as the proposers, and the clients as the proposed.
+    QVectorIterator<Animal*> animalProposerQueueI(animalProposerQueue);
+    while(animalProposerQueueI.hasNext()) {
+        Animal* currentAnimal = animalProposerQueueI.next();
+
+        QVector<Match*> currentAnimalMatches = inputHash[currentAnimal];
+        QVectorIterator<Match*> currentAnimalMatchesI(currentAnimalMatches);
+
+        while(currentAnimalMatchesI.hasNext()) {
+            Match* currentMatch = currentAnimalMatchesI.next();
+
+            // If this animal hash a higher score with this client, then the client's current match, this animal will be assigned to that client, and the animal that was originally matched
+            // will be re-enqued to the animalProposerQueue
+
+            Match* clientPreviousTopMatch = clientsTopPick[currentMatch->getClient()];
+            if (clientPreviousTopMatch == 0)
+            {
+                clientsTopPick[currentMatch->getClient()] = currentMatch;
+            } else if(clientPreviousTopMatch->getScore() < currentMatch->getScore()){
+                clientsTopPick[currentMatch->getClient()] = currentMatch;
+                animalProposerQueue.append(clientPreviousTopMatch->getAnimal());
+                break;
+            }
+        }
+    }
+
+    QHashIterator<Client*, Match*> clientsTopPickI(clientsTopPick);
+    QVector<Match*> optimalMatches;
+
+    while(clientsTopPickI.hasNext()){
+        clientsTopPickI.next();
+        Match* currentMatch = clientsTopPickI.value();
+
+        if(currentMatch->getScore() > 0) {
+            optimalMatches.append(currentMatch);
+        }
+    }
+
+    return optimalMatches;
 }

@@ -15,11 +15,11 @@ using namespace std;
 class MatchCreator
 {
 public:
-    static void computeOptimalMatches(QHash<Animal*, QVector<Match*>>);
+    static QVector<Match*> computeOptimalMatches(QHash<Animal*, QVector<Match*>>);
 
 //private:
     static QVector<Match*> sortAndThresholdMatches(QVector<Match*>);
-    static QHash<Animal*, QVector<Match*>> computeMatches(QHash<Animal*, QVector<Match*>>);
+    static QVector<Match*> computeMatches(QHash<Animal*, QVector<Match*>>);
 };
 
 #endif // MATCHCREATOR_H
