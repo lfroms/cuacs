@@ -81,9 +81,11 @@ void Seeds::runAll() {
 
             while (attributes.hasNext()) {
                 Attribute* currentAttribute = attributes.next();
+                QString attrName;
+                currentAttribute->getName(attrName);
 
                 int randomValue = rand() % 10;
-                currentAnimal->setAttr(currentAttribute->getId(), randomValue);
+                currentAnimal->setAttr(attrName, randomValue);
             }
         }
     }

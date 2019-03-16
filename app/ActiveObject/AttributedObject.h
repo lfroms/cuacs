@@ -12,13 +12,8 @@ template <class T>
 class AttributedObject : public ActiveObject<T> {
 public:
     AttributedObject<T>* setAttr(QString attrName, int value);
-    AttributedObject<T>* setAttr(int attrId, int value);
-
     int attr(QString attrName);
-    int attr(int attrId);
-
     bool clearAttr(QString attrName);
-    bool clearAttr(int attrId);
 
 protected:
     AttributedObject();
@@ -31,6 +26,11 @@ protected:
     static void getAttributeIdColumnName(QString& outStr) {
         T::getAttributeIdColumnName(outStr);
     }
+
+private:
+    AttributedObject<T>* setAttr(int attrId, int value);
+    int attr(int attrId);
+    bool clearAttr(int attrId);
 };
 
 template <class T>
