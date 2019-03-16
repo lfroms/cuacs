@@ -24,8 +24,6 @@ public:
             );
 
     Client(QSqlRecord* record);
-    Client();
-
     ~Client();
 
     void getName(QString& outStr);

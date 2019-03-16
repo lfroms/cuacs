@@ -31,14 +31,12 @@ Animal::Animal(QSqlRecord* record) :
            record->field("breed").value().toString(),
            record->field("age").value().toInt(),
            record->field("neutered_or_spayed").value().toBool(),
-           record->field("required_medical").value().toInt(),
+           record->field("required_medical").value().toBool(),
            record->field("main_color").value().toString(),
            record->field("hypothetical").value().toBool()
            ) {
     this->id = record->field("id").value().toInt();
 }
-
-Animal::Animal() {}
 
 Animal::~Animal() {}
 

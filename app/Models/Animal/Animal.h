@@ -22,8 +22,6 @@ public:
             );
 
     Animal(QSqlRecord* record);
-    Animal();
-
     ~Animal();
 
     void getName(QString& outStr);

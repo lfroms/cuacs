@@ -78,7 +78,7 @@ int AttributedObject<T>::attr(int attrId) {
 
     QSqlQuery query;
     QString getAttrQuery =
-            QString("SELECT * FROM %1 WHERE %2 = %3 AND attribute_id = %4;")
+            QString("SELECT value FROM %1 WHERE %2 = %3 AND attribute_id = %4;")
             .arg(attributeTableName)
             .arg(attributeColumnName)
             .arg(objectId)
@@ -110,7 +110,7 @@ bool AttributedObject<T>::clearAttr(int attrId) {
 
     QSqlQuery insert;
     QString deleteQuery =
-            QString("DELETE FROM %1 WHERE %2 = %3 AND attribute_id = %5;")
+            QString("DELETE FROM %1 WHERE %2 = %3 AND attribute_id = %4;")
             .arg(attributeTableName)
             .arg(attributeColumnName)
             .arg(objectId)
