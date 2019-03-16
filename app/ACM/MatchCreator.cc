@@ -55,12 +55,12 @@ QVector<Match*> MatchCreator::computeMatches(QHash<Animal*, QVector<Match*>> inp
         QVector<Match*> currentAnimalMatches = inputHash[currentAnimal];
         QVectorIterator<Match*> currentAnimalMatchesI(currentAnimalMatches);
 
+        Match* currentMatch;
         while(currentAnimalMatchesI.hasNext()) {
-            Match* currentMatch = currentAnimalMatchesI.next();
+            currentMatch = currentAnimalMatchesI.next();
 
             // If this animal hash a higher score with this client, then the client's current match, this animal will be assigned to that client, and the animal that was originally matched
             // will be re-enqued to the animalProposerQueue
-
             Match* clientPreviousTopMatch = clientsTopPick[currentMatch->getClient()];
             if (clientPreviousTopMatch == 0)
             {
@@ -70,6 +70,12 @@ QVector<Match*> MatchCreator::computeMatches(QHash<Animal*, QVector<Match*>> inp
                 animalProposerQueue.append(clientPreviousTopMatch->getAnimal());
                 break;
             }
+        }
+
+        // Delete all matches that the animal has already attempted
+        if(currentMatch)
+        {
+            inputHash[currentAnimal].remove(0, currentAnimalMatches.indexOf(currentMatch) + 1);
         }
     }
 
