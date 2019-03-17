@@ -9,12 +9,17 @@ To Make:
 qmake -o Makefile cuacs.pro && make
 ```
 
-To Launch:
+To Launch (First Time):
 ```bash
 cd app && ./app data-reset && ./app
 ```
 
-Note that the command above makes use of 3 separate actions:
+To Launch (Subsequent Times)"
+```bash
+./app
+```
+
+Note that the first launch command above makes use of 3 separate actions:
 * `cd app` will move you into the location that the compiled source lives.
 * `./app data-reset` will load new data into the database.
 * `./app` will launch the application.
