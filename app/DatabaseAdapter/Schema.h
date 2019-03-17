@@ -3,12 +3,16 @@
 
 #include <QString>
 
-static const QString ANIMAL_TABLE = "animals";
-static const QString CLIENT_TABLE = "clients";
-static const QString ATTRIBUTE_TABLE = "attributes";
+#include <Models/Animal/Animal.h>
+#include <Models/Client/Client.h>
+#include <Models/Attribute/Attribute.h>
 
-static const QString ANIMAL_ATTRIBUTE_TABLE = "animals_attributes";
-static const QString ANIMAL_ATTRIBUTE_COLUMN_NAME = "animal_id";
+static const QString ANIMAL_TABLE = Animal::getTableName();
+static const QString CLIENT_TABLE = Client::getTableName();
+static const QString ATTRIBUTE_TABLE = Attribute::getTableName();
+
+static const QString ANIMAL_ATTRIBUTE_TABLE = Animal::getAttributeTableName();
+static const QString ANIMAL_ATTRIBUTE_COLUMN_NAME = Animal::getAttributeIdColumnName();
 
 static const QString ANIMAL_SCHEMA =
         QString(

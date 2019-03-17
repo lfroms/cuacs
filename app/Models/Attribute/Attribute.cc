@@ -1,7 +1,5 @@
 #include "Attribute.h"
 
-#include <DatabaseAdapter/Schema.h>
-
 Attribute::Attribute(QString name) {
     this->name = name;
 }
@@ -38,6 +36,6 @@ const QString Attribute::toCommaSeparated() {
     return formatted;
 }
 
-const QString Attribute::getTableName() {
-    return ATTRIBUTE_TABLE;
+const QString Attribute::className() {
+    return "attribute";
 }

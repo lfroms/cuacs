@@ -1,5 +1,4 @@
 #include "Client.h"
-#include <DatabaseAdapter/Schema.h>
 
 Client::Client(
         QString name,
@@ -62,6 +61,6 @@ const QString Client::toCommaSeparated() {
     return formatted;
 }
 
-const QString Client::getTableName() {
-    return CLIENT_TABLE;
+const QString Client::className() {
+    return "client";
 }

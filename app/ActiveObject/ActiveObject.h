@@ -8,8 +8,6 @@
 #include <QSqlField>
 #include <QVector>
 
-#include <DatabaseAdapter/Schema.h>
-
 template <class T>
 class ActiveObject {
 public:
@@ -28,6 +26,10 @@ public:
 
     int getId();
 
+    const static QString getTableName() {
+        return T::className() + "s";
+    }
+
 protected:
     int id = -1;
     ActiveObject();
@@ -35,8 +37,8 @@ protected:
 
     virtual const QString toCommaSeparated() = 0;
 
-    const static QString getTableName() {
-        return T::getTableName();
+    static const QString className() {
+        return T::className();
     }
 };
 

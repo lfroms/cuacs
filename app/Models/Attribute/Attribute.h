@@ -18,7 +18,7 @@ public:
     const QString getDescription();
 
     const QString toCommaSeparated();
-    static const QString getTableName();
+    static const QString className();
 
 private:
     QString name;

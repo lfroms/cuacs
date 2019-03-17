@@ -1,5 +1,4 @@
 #include "Animal.h"
-#include <DatabaseAdapter/Schema.h>
 
 Animal::Animal(
         QString name,
@@ -57,14 +56,6 @@ const QString Animal::toCommaSeparated() {
     return formatted;
 }
 
-const QString Animal::getTableName() {
-    return ANIMAL_TABLE;
-}
-
-const QString Animal::getAttributeTableName() {
-    return ANIMAL_ATTRIBUTE_TABLE;
-}
-
-const QString Animal::getAttributeIdColumnName() {
-    return ANIMAL_ATTRIBUTE_COLUMN_NAME;
+const QString Animal::className() {
+    return "animal";
 }
