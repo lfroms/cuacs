@@ -39,7 +39,7 @@ SOURCES += \
     Authentication/LoginWindow.cc \
     Repository/Session/Session.cc \
     ACM/Match.cc \
-    ACM/MatchCreator.cc
+    ACM/MatchCreator.cc \
     Components/ACM/CompatibilityScorer.cc
 
 HEADERS += \
@@ -60,7 +60,7 @@ HEADERS += \
     Authentication/LoginWindow.h \
     Repository/Session/Session.h \
     ACM/Match.h \
-    ACM/MatchCreator.h
+    ACM/MatchCreator.h \
     Components/ACM/CompatibilityScorer.h
 
 FORMS += \
