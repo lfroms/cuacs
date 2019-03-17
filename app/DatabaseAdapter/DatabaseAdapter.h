@@ -16,6 +16,7 @@
 class DatabaseAdapter {
 public:
     static bool init();
+    static bool resetAll();
 
 private:
     DatabaseAdapter();
@@ -24,7 +25,6 @@ private:
     static QSqlDatabase db;
 
     static bool setup();
-    static void seed();
 };
 
 #endif // DATABASEADAPTER_H
