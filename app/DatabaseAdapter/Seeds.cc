@@ -4,8 +4,11 @@ using namespace std;
 Seeds::Seeds() {}
 
 void Seeds::runAll() {
+    bool animalsSeedDidRun = false, attributesSeedDidRun = false;
+
     qDebug() << "Seeding animals...";
     if (Animal::count() < 25) {
+        animalsSeedDidRun = true;
         Animal("Timothy", "Dog", "male", "Yorkshire Terrier", 1, false, false, "brown", false).create();
         Animal("Holly", "Dog", "female", "Labrador Retriever", 10, false, false, "yellow", false).create();
         Animal("Whiskers", "Cat", "male", "Tabby", 6, false, false, "orange", false).create();
@@ -48,6 +51,7 @@ void Seeds::runAll() {
 
     qDebug() << "Seeding attributes...";
     if (Attribute::count() < 12) {
+        attributesSeedDidRun = true;
         Attribute("bite_tendency", "Tendency to Bite").create();
         Attribute("scratch_tendency", "Tendency to Scratch").create();
         Attribute("assert_dominance_tendency", "Tendency to Assert Dominance").create();
@@ -74,7 +78,10 @@ void Seeds::runAll() {
     QVector<Attribute*>* attributesVector = Attribute::all();
     QVectorIterator<Attribute*> attributes(*attributesVector);
 
-    if (!animalsVector->isEmpty() && !attributesVector->isEmpty()) {
+    bool vectorsNotEmpty = !animalsVector->isEmpty() && !attributesVector->isEmpty();
+    bool appropriateSeedsDidRun = animalsSeedDidRun || attributesSeedDidRun;
+
+    if (vectorsNotEmpty && appropriateSeedsDidRun) {
         while (animals.hasNext()) {
             Animal* currentAnimal = animals.next();
             attributes.toFront();
