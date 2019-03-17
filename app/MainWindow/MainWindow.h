@@ -13,8 +13,7 @@ namespace Ui {
 class MainWindow;
 }
 
-class MainWindow : public QMainWindow
-{
+class MainWindow : public QMainWindow {
     Q_OBJECT
 
 public:
@@ -22,7 +21,7 @@ public:
     ~MainWindow();
 
 private slots:
-    void handleAddAnimalSubmit();
+    void handleAddAnimalAction();
     void handleAddClientSubmit();
     void onAnimalClicked(QListWidgetItem*);
     void onUserPermissionsChanged(const QString&);
@@ -33,6 +32,9 @@ private:
     void renderListItems();
     void renderAnimalList();
     void renderClientList();
+
+    void setReadOnlyEnabled();
+    bool readOnly = false;
 };
 
 #endif // MAINWINDOW_H

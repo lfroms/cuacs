@@ -38,18 +38,9 @@ Animal::Animal(QSqlRecord* record) :
     this->id = record->field("id").value().toInt();
 }
 
+Animal::Animal() {};
+
 Animal::~Animal() {}
-
-const QString Animal::getName() { return name; }
-const QString Animal::getSpecies() { return species; }
-const QString Animal::getGender() { return gender; }
-const QString Animal::getBreed() { return breed; }
-const QString Animal::getColor() { return color; }
-
-int Animal::getAge() { return age; }
-bool Animal::getNeuteredOrSpayed() { return neuteredOrSpayed; }
-bool Animal::getRequiresMedicalAttn() { return requiresMedicalAttn; }
-bool Animal::getIsHypothetical() { return isHypothetical; }
 
 const QString Animal::toCommaSeparated() {
     QString formatted = QString("'%1', '%2', '%3', '%4', %5, %6, %7, '%8', %9")

@@ -5,7 +5,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
     ui->setupUi(this);
     this->setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;}");
 
-    connect(ui->submitButton, SIGNAL (released()), this, SLOT (handleAddAnimalSubmit()));
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onAnimalClicked(QListWidgetItem*)));
     connect(ui->clientSubmit, SIGNAL (released()), this, SLOT (handleAddClientSubmit()));
@@ -21,26 +20,29 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {
-    if (permissionLevel == QString("Client")) {
-        ui->tabWidget->setCurrentIndex(0);
-        ui->tabWidget->setTabEnabled(3, false);
-        ui->tabWidget->setTabEnabled(2, false);
-        ui->tabWidget->setTabEnabled(1, false);
-    } else {
-        ui->tabWidget->setTabEnabled(3, true);
-        ui->tabWidget->setTabEnabled(2, true);
-        ui->tabWidget->setTabEnabled(1, true);
-    }
+    readOnly = permissionLevel == "Client" ? true : false;
+    setReadOnlyEnabled();
+}
 
+void MainWindow::setReadOnlyEnabled() {
+    bool enabled = !readOnly;
+
+    ui->actionAdd_Animal->setEnabled(enabled);
+    ui->actionAdd_Client->setEnabled(enabled);
+    ui->tabWidget->setCurrentIndex(0);
+    ui->tabWidget->setTabEnabled(3, enabled);
+    ui->tabWidget->setTabEnabled(2, enabled);
+    ui->tabWidget->setTabEnabled(1, enabled);
 }
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
     Animal* animal = var.value<Animal*>();
 
-    AnimalDetailsModal modal(animal);
+    AnimalDetailsModal modal(animal, readOnly);
     modal.setModal(true);
     modal.exec();
+    renderAnimalList();
 }
 
 void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
@@ -63,8 +65,8 @@ void MainWindow::renderAnimalList() {
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
         DetailListWidgetItem *animalWidget = new DetailListWidgetItem;
-        animalWidget->setTitle(currentAnimal->getName());
-        animalWidget->setSubtitle(currentAnimal->getBreed());
+        animalWidget->setTitle(currentAnimal->name);
+        animalWidget->setSubtitle(currentAnimal->breed);
 
         listWidgetItem->setSizeHint(animalWidget->sizeHint());
 
@@ -103,61 +105,9 @@ void MainWindow::renderListItems() {
     renderClientList();
 }
 
-void MainWindow::handleAddAnimalSubmit() {
-    Animal* animal;
-    animal = new Animal(
-                ui->nameEdit->text(),
-                ui->animalTypeBox->currentText(),
-                ui->genderEdit->text(),
-                ui->breedEdit->text(),
-                ui->ageEdit->text().toInt(),
-                ui->neuteredCheckBox->isChecked(),
-                ui->medicalCheckbox->isChecked(),
-                ui->colorEdit->text(),
-                false
-                );
-
-    bool animalSaved = animal->create();
-
-    if (!animalSaved) {
-        qDebug() << "Failed to add animal to database.";
-        return;
-    }
-
-    animal
-            ->setAttr("bite_tendency", ui->bite->value())
-            ->setAttr("scratch_tendency", ui->scratch->value())
-            ->setAttr("assert_dominance_tendency", ui->dominance->value())
-            ->setAttr("friendliness_adults", ui->adultFriendliness->value())
-            ->setAttr("friendliness_children", ui->childFriendliness->value())
-            ->setAttr("friendliness_animals", ui->animalFriendliness->value())
-            ->setAttr("noise_level", ui->noise->value())
-            ->setAttr("independence_level", ui->independence->value())
-            ->setAttr("affection_level", ui->affection->value())
-            ->setAttr("energy_level", ui->energy->value())
-            ->setAttr("anxiety_level", ui->anxiety->value())
-            ->setAttr("curiosity_level", ui->curiosity->value());
-
-    ui->nameEdit->clear();
-    ui->genderEdit->clear();
-    ui->colorEdit->clear();
-    ui->breedEdit->clear();
-    ui->ageEdit->clear();
-    ui->neuteredCheckBox->setChecked(false);
-    ui->medicalCheckbox->setChecked(false);
-    ui->bite->setValue(5);
-    ui->scratch->setValue(5);
-    ui->dominance->setValue(5);
-    ui->adultFriendliness->setValue(5);
-    ui->childFriendliness->setValue(5);
-    ui->animalFriendliness->setValue(5);
-    ui->noise->setValue(5);
-    ui->independence->setValue(5);
-    ui->affection->setValue(5);
-    ui->energy->setValue(5);
-    ui->anxiety->setValue(5);
-    ui->curiosity->setValue(5);
-
+void MainWindow::handleAddAnimalAction() {
+    AnimalDetailsModal modal(nullptr, false);
+    modal.exec();
     renderAnimalList();
 }
 
