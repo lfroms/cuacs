@@ -56,12 +56,12 @@ void AnimalDetailsModal::loadProfileData() {
     ui->adultFriendliness->setValue(animal->attr("friendliness_adults"));
     ui->childFriendliness->setValue(animal->attr("friendliness_children"));
     ui->animalFriendliness->setValue(animal->attr("friendliness_animals"));
-    ui->noise->setValue(animal->attr("noise_level"));
-    ui->independence->setValue(animal->attr("independence_level"));
-    ui->affection->setValue(animal->attr("affection_level"));
-    ui->energy->setValue(animal->attr("energy_level"));
-    ui->anxiety->setValue(animal->attr("anxiety_level"));
-    ui->curiosity->setValue(animal->attr("curiosity_level"));
+    ui->noise->setValue(animal->attr("noisiness"));
+    ui->independence->setValue(animal->attr("independence"));
+    ui->affection->setValue(animal->attr("affection"));
+    ui->energy->setValue(animal->attr("energy"));
+    ui->anxiety->setValue(animal->attr("anxiety"));
+    ui->curiosity->setValue(animal->attr("curiosity"));
 }
 
 void AnimalDetailsModal::setFieldsEnabled() {
@@ -123,12 +123,12 @@ void AnimalDetailsModal::handleSave() {
             ->setAttr("friendliness_adults", ui->adultFriendliness->value())
             ->setAttr("friendliness_children", ui->childFriendliness->value())
             ->setAttr("friendliness_animals", ui->animalFriendliness->value())
-            ->setAttr("noise_level", ui->noise->value())
-            ->setAttr("independence_level", ui->independence->value())
-            ->setAttr("affection_level", ui->affection->value())
-            ->setAttr("energy_level", ui->energy->value())
-            ->setAttr("anxiety_level", ui->anxiety->value())
-            ->setAttr("curiosity_level", ui->curiosity->value());
+            ->setAttr("noisiness", ui->noise->value())
+            ->setAttr("independence", ui->independence->value())
+            ->setAttr("affection", ui->affection->value())
+            ->setAttr("energy", ui->energy->value())
+            ->setAttr("anxiety", ui->anxiety->value())
+            ->setAttr("curiosity", ui->curiosity->value());
 
     messageBox.setText("Animal profile saved.");
     messageBox.exec();
