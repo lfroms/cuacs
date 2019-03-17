@@ -44,13 +44,13 @@ bool DatabaseAdapter::setup() {
 
     QSqlQuery createAttributes;
     QString attributesQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2)")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(ATTRIBUTE_TABLE)
             .arg(ATTRIBUTE_SCHEMA);
 
     QSqlQuery createAnimalAttributes;
     QString animalAttributesQuery =
-            QString("CREATE TABLE IF NOT EXISTS %1(%2)")
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(ANIMAL_ATTRIBUTE_TABLE)
             .arg(ANIMAL_ATTRIBUTE_SCHEMA);
 
@@ -60,15 +60,55 @@ bool DatabaseAdapter::setup() {
             createAttributes.exec(attributesQuery) &&
             createAnimalAttributes.exec(animalAttributesQuery);
 
-    if (didCompleteQueries) {
-        seed();
-        return true;
-    }
-
-    return false;
+    return didCompleteQueries;
 }
 
-void DatabaseAdapter::seed() {
+bool DatabaseAdapter::resetAll() {
+    qDebug() << "\nResetting all data...";
+
+    QSqlQuery drop;
+
+    // Need to disable foreign keys so that constraints are ignored
+    // when dropping database tables.  They are re-enabled in setup();
+    drop.exec("PRAGMA foreign_keys = OFF;");
+
+    QString animalQuery =
+            QString("DROP TABLE IF EXISTS %1;")
+            .arg(ANIMAL_TABLE);
+
+    QString clientQuery =
+            QString("DROP TABLE IF EXISTS %1;")
+            .arg(CLIENT_TABLE);
+
+    QString attributesQuery =
+            QString("DROP TABLE IF EXISTS %1;")
+            .arg(ATTRIBUTE_TABLE);
+
+    QString animalAttributesQuery =
+            QString("DROP TABLE IF EXISTS %1;")
+            .arg(ANIMAL_ATTRIBUTE_TABLE);
+
+    bool didDropAll =
+            drop.exec(animalQuery) &&
+            drop.exec(clientQuery) &&
+            drop.exec(attributesQuery) &&
+            drop.exec(animalAttributesQuery);
+
+    if (!didDropAll) {
+        qDebug() << "Could not delete tables.";
+        return false;
+    }
+
+    bool didSetUp = setup();
+
+    if (!didSetUp) {
+        qDebug() << "Could not set up database tables.";
+        return false;
+    }
+
     Seeds::runAll();
-    qDebug() << "Database seeded.";
+
+    qDebug() << "\nDatabase successfully reset and seeded.";
+
+    return true;
 }
