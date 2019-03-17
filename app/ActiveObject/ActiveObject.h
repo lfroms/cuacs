@@ -24,7 +24,7 @@ public:
     static T* where(int id);
 
     template <typename U>
-    static QVector<T*>* where(QString colName, U value);
+    static QVector<T*>* where(QString colName, U value, bool includeNull = false);
 
     int getId();
 
@@ -116,13 +116,19 @@ T* ActiveObject<T>::where(int id) {
 
 template <class T>
 template <typename U>
-QVector<T*>* ActiveObject<T>::where(QString colName, U value) {
+QVector<T*>* ActiveObject<T>::where(QString colName, U value, bool includeNull) {
     QSqlQuery query;
+
+    QString includeNullSegment =
+            QString("OR %1 = NULL")
+            .arg(colName);
+
     QString getWhereQuery =
-            QString("SELECT * FROM %1 WHERE %2 = '%3';")
+            QString("SELECT * FROM %1 WHERE %2 = '%3' %4;")
             .arg(getTableName())
             .arg(colName)
-            .arg(value);
+            .arg(value)
+            .arg(includeNull ? includeNullSegment : "");
 
     if (!query.exec(getWhereQuery)) {
         return new QVector<T*>();
