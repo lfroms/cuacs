@@ -14,7 +14,7 @@ To Launch (First Time):
 cd app && ./app data-reset && ./app
 ```
 
-To Launch (Subsequent Times)"
+To Launch (Subsequent Times):
 ```bash
 ./app
 ```
