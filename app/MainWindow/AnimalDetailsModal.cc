@@ -17,16 +17,22 @@ AnimalDetailsModal::~AnimalDetailsModal() {
 void AnimalDetailsModal::setupViews() {
     QString animalName = animal->getName();
 
-    //Setup Window properties
-    this->setWindowTitle(animalName + QString("'s")+ QString(" Details"));
+    // Set up window properties
+    QString windowTitle = QString("%1's Details").arg(animalName);
+    this->setWindowTitle(windowTitle);
 
-    //Setup UI elements
+    // UI Elements
+    int typeIndex = ui->animalType->findText(animal->getSpecies());
+    ui->animalType->setCurrentIndex(typeIndex);
+
     ui->nameEdit->setText(animalName);
     ui->breedEdit->setText(animal->getBreed());
-    ui->genderEdit->setText(animal->getGender());
+
+    int genderIndex = ui->gender->findText(animal->getGender());
+    ui->gender->setCurrentIndex(genderIndex);
+
     ui->colorEdit->setText(animal->getColor());
-    ui->animalTypeLabel->setText(animal->getSpecies());
-    ui->ageEdit->setText(QString::number(animal->getAge()));
+    ui->ageEdit->setValue(animal->getAge());
 
     ui->neuteredCheckBox->setChecked(animal->getNeuteredOrSpayed());
     ui->neuteredCheckBox->setEnabled(false);

@@ -7,25 +7,12 @@
     <x>0</x>
     <y>0</y>
     <width>677</width>
-    <height>391</height>
+    <height>442</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Animal Details</string>
   </property>
-  <widget class="QLabel" name="animalTypeLabel">
-   <property name="geometry">
-    <rect>
-     <x>20</x>
-     <y>360</y>
-     <width>67</width>
-     <height>17</height>
-    </rect>
-   </property>
-   <property name="text">
-    <string>Animal</string>
-   </property>
-  </widget>
   <widget class="QWidget" name="verticalLayoutWidget_2">
    <property name="geometry">
     <rect>
@@ -332,10 +319,55 @@
      <x>10</x>
      <y>20</y>
      <width>160</width>
-     <height>324</height>
+     <height>410</height>
     </rect>
    </property>
    <layout class="QVBoxLayout" name="verticalLayout">
+    <item>
+     <widget class="QComboBox" name="animalType">
+      <property name="maxVisibleItems">
+       <number>10</number>
+      </property>
+      <item>
+       <property name="text">
+        <string>Dog</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Cat</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Rabbit</string>
+       </property>
+      </item>
+     </widget>
+    </item>
+    <item>
+     <widget class="Line" name="line">
+      <property name="orientation">
+       <enum>Qt::Horizontal</enum>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <spacer name="verticalSpacer">
+      <property name="orientation">
+       <enum>Qt::Vertical</enum>
+      </property>
+      <property name="sizeType">
+       <enum>QSizePolicy::Fixed</enum>
+      </property>
+      <property name="sizeHint" stdset="0">
+       <size>
+        <width>20</width>
+        <height>4</height>
+       </size>
+      </property>
+     </spacer>
+    </item>
     <item>
      <widget class="QLabel" name="nameLabel">
       <property name="text">
@@ -358,10 +390,17 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="genderEdit">
-      <property name="enabled">
-       <bool>false</bool>
-      </property>
+     <widget class="QComboBox" name="gender">
+      <item>
+       <property name="text">
+        <string>male</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>female</string>
+       </property>
+      </item>
      </widget>
     </item>
     <item>
@@ -372,9 +411,9 @@
      </widget>
     </item>
     <item>
-     <widget class="QLineEdit" name="ageEdit">
-      <property name="enabled">
-       <bool>false</bool>
+     <widget class="QSpinBox" name="ageEdit">
+      <property name="value">
+       <number>1</number>
       </property>
      </widget>
     </item>
