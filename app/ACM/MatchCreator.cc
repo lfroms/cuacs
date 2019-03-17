@@ -1,14 +1,14 @@
 #include "MatchCreator.h"
 
 QVector<Match*> MatchCreator::computeOptimalMatches(QHash<Animal*, QVector<Match*>> inputHash) {
-    QHashIterator<Animal*, QVector<Match*>> inputHash_i(inputHash);
+    QHashIterator<Animal*, QVector<Match*>> inputHashI(inputHash);
 
     QHash<Animal*, QVector<Match*>> sortedMatchesHash;
 
     // Sorting every animal's matches in descending order
-    while(inputHash_i.hasNext()) {
-        inputHash_i.next();
-        sortedMatchesHash[inputHash_i.key()] = sortAndThresholdMatches(inputHash_i.value());
+    while(inputHashI.hasNext()) {
+        inputHashI.next();
+        sortedMatchesHash[inputHashI.key()] = sortAndThresholdMatches(inputHashI.value());
     }
 
     return computeMatches(sortedMatchesHash);
