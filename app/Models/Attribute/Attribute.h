@@ -9,7 +9,7 @@ using namespace std;
 class Attribute : public ActiveObject<Attribute> {
 public:
     Attribute(QString name);
-    Attribute(QString name, QString description);
+    Attribute(QString name, QString description, QString type = "");
     Attribute(QSqlRecord* record);
 
     ~Attribute();
@@ -23,6 +23,7 @@ public:
 private:
     QString name;
     QString description;
+    QString type;
 };
 
 #endif // ATTRIBUTE_H

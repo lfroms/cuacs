@@ -40,7 +40,8 @@ static const QString ATTRIBUTE_SCHEMA =
         QString(
             "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
             "name TEXT NOT NULL UNIQUE,"
-            "description TEXT"
+            "description TEXT,"
+            "type TEXT"
             );
 
 static const QString ANIMAL_ATTRIBUTE_SCHEMA =
