@@ -2,6 +2,7 @@
 #define ANIMALDETAILSMODAL_H
 
 #include <QDialog>
+#include <QMessageBox>
 #include <Models/Animal/Animal.h>
 
 namespace Ui {
@@ -14,6 +15,10 @@ class AnimalDetailsModal : public QDialog {
 public:
     explicit AnimalDetailsModal(Animal* a, bool readOnly, QWidget *parent = nullptr);
     ~AnimalDetailsModal();
+
+private slots:
+    void handleCancel();
+    void handleSave();
 
 private:
     Ui::AnimalDetailsModal *ui;

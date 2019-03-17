@@ -2,472 +2,714 @@
 <ui version="4.0">
  <class>AnimalDetailsModal</class>
  <widget class="QDialog" name="AnimalDetailsModal">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>677</width>
-    <height>442</height>
+    <width>673</width>
+    <height>439</height>
    </rect>
   </property>
   <property name="windowTitle">
    <string>Animal Details</string>
   </property>
-  <widget class="QWidget" name="verticalLayoutWidget_2">
-   <property name="geometry">
-    <rect>
-     <x>220</x>
-     <y>20</y>
-     <width>191</width>
-     <height>311</height>
-    </rect>
+  <property name="sizeGripEnabled">
+   <bool>false</bool>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
+  </property>
+  <layout class="QVBoxLayout" name="verticalLayout">
+   <property name="spacing">
+    <number>6</number>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_2">
-    <item>
-     <widget class="QLabel" name="biteLabel">
-      <property name="text">
-       <string>Bite Tendency</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="bite">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="scratchLabel">
-      <property name="text">
-       <string>Scratch Tendency</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="scratch">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="assertDominanceLabel">
-      <property name="text">
-       <string>Dominance Tendency</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="assertDominance">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="adultFriendlinessLabel">
-      <property name="text">
-       <string>Friendliness (Adults)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="adultFriendliness">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="childFriendlinessLabel">
-      <property name="text">
-       <string>Friendliness (Children)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="childFriendliness">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="animalFriendlinessLabel">
-      <property name="text">
-       <string>Friendliness (Animals)</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="animalFriendliness">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget_3">
-   <property name="geometry">
-    <rect>
-     <x>460</x>
-     <y>20</y>
-     <width>191</width>
-     <height>311</height>
-    </rect>
+   <property name="leftMargin">
+    <number>16</number>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout_3">
-    <item>
-     <widget class="QLabel" name="noiseLabel">
-      <property name="text">
-       <string>Noisiness</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="noise">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="independenceLabel">
-      <property name="text">
-       <string>Independence</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="independence">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="affectionLabel">
-      <property name="text">
-       <string>Affection</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="affection">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="energyLabel">
-      <property name="text">
-       <string> Energy Level</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="energy">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="anxietyLabel">
-      <property name="text">
-       <string>Anxiety Level</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="anxiety">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="curiosityLabel">
-      <property name="text">
-       <string>Curiosity Level</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSlider" name="curiosity">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="maximum">
-       <number>10</number>
-      </property>
-      <property name="sliderPosition">
-       <number>5</number>
-      </property>
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
-  <widget class="QWidget" name="verticalLayoutWidget">
-   <property name="geometry">
-    <rect>
-     <x>10</x>
-     <y>20</y>
-     <width>160</width>
-     <height>410</height>
-    </rect>
+   <property name="topMargin">
+    <number>16</number>
    </property>
-   <layout class="QVBoxLayout" name="verticalLayout">
-    <item>
-     <widget class="QComboBox" name="animalType">
-      <property name="maxVisibleItems">
-       <number>10</number>
-      </property>
-      <item>
-       <property name="text">
-        <string>Dog</string>
+   <property name="rightMargin">
+    <number>16</number>
+   </property>
+   <property name="bottomMargin">
+    <number>16</number>
+   </property>
+   <item>
+    <layout class="QHBoxLayout" name="horizontalLayout" stretch="1,0,1,0,1">
+     <property name="spacing">
+      <number>12</number>
+     </property>
+     <property name="sizeConstraint">
+      <enum>QLayout::SetDefaultConstraint</enum>
+     </property>
+     <item>
+      <layout class="QVBoxLayout" name="FirstColumn">
+       <item>
+        <widget class="QComboBox" name="animalType">
+         <property name="maxVisibleItems">
+          <number>10</number>
+         </property>
+         <item>
+          <property name="text">
+           <string>Dog</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Cat</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Rabbit</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="Line" name="line">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="nameLabel">
+         <property name="text">
+          <string>Name</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="nameEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="genderLabel">
+         <property name="text">
+          <string>Gender</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QComboBox" name="gender">
+         <item>
+          <property name="text">
+           <string>male</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>female</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="ageLabel">
+         <property name="text">
+          <string>Age</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSpinBox" name="ageEdit">
+         <property name="value">
+          <number>1</number>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="breedLabel">
+         <property name="text">
+          <string>Breed</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="breedEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="colorLabel">
+         <property name="text">
+          <string>Color</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLineEdit" name="colorEdit">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="neuteredCheckBox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>Neutered/Spayed</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QCheckBox" name="medicalCheckbox">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="text">
+          <string>Medical Required</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Cat</string>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Rabbit</string>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="SecondColumn" stretch="0,0,0,0,0,0,0,0,0,0,0,0,0">
+       <property name="spacing">
+        <number>12</number>
        </property>
-      </item>
-     </widget>
-    </item>
-    <item>
-     <widget class="Line" name="line">
-      <property name="orientation">
-       <enum>Qt::Horizontal</enum>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <spacer name="verticalSpacer">
-      <property name="orientation">
-       <enum>Qt::Vertical</enum>
-      </property>
-      <property name="sizeType">
-       <enum>QSizePolicy::Fixed</enum>
-      </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>4</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item>
-     <widget class="QLabel" name="nameLabel">
-      <property name="text">
-       <string>Name</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="nameEdit">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="genderLabel">
-      <property name="text">
-       <string>Gender</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QComboBox" name="gender">
-      <item>
-       <property name="text">
-        <string>male</string>
+       <property name="sizeConstraint">
+        <enum>QLayout::SetDefaultConstraint</enum>
        </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>female</string>
+       <property name="leftMargin">
+        <number>0</number>
        </property>
-      </item>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="ageLabel">
-      <property name="text">
-       <string>Age</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QSpinBox" name="ageEdit">
-      <property name="value">
-       <number>1</number>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="breedLabel">
-      <property name="text">
-       <string>Breed</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="breedEdit">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLabel" name="colorLabel">
-      <property name="text">
-       <string>Color</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QLineEdit" name="colorEdit">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="neuteredCheckBox">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="text">
-       <string>Neutered/Spayed</string>
-      </property>
-     </widget>
-    </item>
-    <item>
-     <widget class="QCheckBox" name="medicalCheckbox">
-      <property name="enabled">
-       <bool>true</bool>
-      </property>
-      <property name="text">
-       <string>Medical Required</string>
-      </property>
-     </widget>
-    </item>
-   </layout>
-  </widget>
+       <item>
+        <widget class="QLabel" name="biteLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Bite Tendency</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="bite">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="scratchLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Scratch Tendency</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="scratch">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="assertDominanceLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Dominance Tendency</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="assertDominance">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="adultFriendlinessLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Friendliness (Adults)</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="adultFriendliness">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="childFriendlinessLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Friendliness (Children)</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="childFriendliness">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="animalFriendlinessLabel">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="text">
+          <string>Friendliness (Animals)</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="animalFriendliness">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Preferred</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="horizontalSpacer_2">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="ThirdColumn">
+       <property name="spacing">
+        <number>12</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="noiseLabel">
+         <property name="text">
+          <string>Noisiness</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="noise">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="independenceLabel">
+         <property name="text">
+          <string>Independence</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="independence">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="affectionLabel">
+         <property name="text">
+          <string>Affection</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="affection">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="energyLabel">
+         <property name="text">
+          <string> Energy Level</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="energy">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="anxietyLabel">
+         <property name="text">
+          <string>Anxiety Level</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="anxiety">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="curiosityLabel">
+         <property name="text">
+          <string>Curiosity Level</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignLeading|Qt::AlignLeft</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QSlider" name="curiosity">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
+         <property name="maximum">
+          <number>10</number>
+         </property>
+         <property name="sliderPosition">
+          <number>5</number>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Preferred</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <layout class="QHBoxLayout" name="Actions" stretch="0,0,0">
+     <item>
+      <spacer name="toolbarSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <widget class="QPushButton" name="cancelButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Cancel/Close</string>
+       </property>
+       <property name="autoDefault">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="saveButton">
+       <property name="sizePolicy">
+        <sizepolicy hsizetype="Maximum" vsizetype="Fixed">
+         <horstretch>0</horstretch>
+         <verstretch>0</verstretch>
+        </sizepolicy>
+       </property>
+       <property name="text">
+        <string>Save Animal Profile</string>
+       </property>
+       <property name="default">
+        <bool>true</bool>
+       </property>
+       <property name="flat">
+        <bool>false</bool>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cancelButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AnimalDetailsModal</receiver>
+   <slot>handleCancel()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>452</x>
+     <y>409</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>336</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>saveButton</sender>
+   <signal>clicked()</signal>
+   <receiver>AnimalDetailsModal</receiver>
+   <slot>handleSave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>585</x>
+     <y>409</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>336</x>
+     <y>219</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>handleCancel()</slot>
+  <slot>handleSave()</slot>
+ </slots>
 </ui>
