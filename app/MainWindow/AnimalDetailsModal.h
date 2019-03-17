@@ -25,7 +25,7 @@ private:
     Animal* animal;
     bool readOnly;
 
-    void setupViews();
+    void loadProfileData();
     void setFieldsEnabled();
     void configureWindow();
 };

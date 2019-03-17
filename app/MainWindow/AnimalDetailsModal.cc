@@ -1,4 +1,4 @@
-#include "AnimalDetailsModal.h"
+﻿#include "AnimalDetailsModal.h"
 #include "ui_AnimalDetailsModal.h"
 
 AnimalDetailsModal::AnimalDetailsModal(Animal* a, bool readOnly, QWidget *parent) :
@@ -11,7 +11,7 @@ AnimalDetailsModal::AnimalDetailsModal(Animal* a, bool readOnly, QWidget *parent
     this->readOnly = readOnly;
 
     if (a != nullptr) {
-        setupViews();
+        loadProfileData();
     }
 
     configureWindow();
@@ -31,11 +31,10 @@ void AnimalDetailsModal::configureWindow() {
         windowTitle = QString("New Animal");
     }
 
-
     this->setWindowTitle(windowTitle);
 }
 
-void AnimalDetailsModal::setupViews() {
+void AnimalDetailsModal::loadProfileData() {
     int typeIndex = ui->animalType->findText(animal->species);
     ui->animalType->setCurrentIndex(typeIndex);
 
