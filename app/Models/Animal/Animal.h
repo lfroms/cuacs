@@ -22,17 +22,8 @@ public:
             );
 
     Animal(QSqlRecord* record);
+    Animal();
     ~Animal();
-
-    const QString getName();
-    const QString getSpecies();
-    const QString getGender();
-    const QString getBreed();
-    int getAge();
-    bool getNeuteredOrSpayed();
-    bool getRequiresMedicalAttn();
-    const QString getColor();
-    bool getIsHypothetical();
 
     const QString toCommaSeparated();
     static const QString getTableName();
@@ -40,7 +31,6 @@ public:
     static const QString getAttributeTableName();
     static const QString getAttributeIdColumnName();
 
-private:
     QString name;
     QString species;
     QString gender;

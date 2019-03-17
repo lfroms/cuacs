@@ -643,7 +643,7 @@
         </sizepolicy>
        </property>
        <property name="text">
-        <string>Cancel/Close</string>
+        <string>Close</string>
        </property>
        <property name="autoDefault">
         <bool>false</bool>

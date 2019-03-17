@@ -26,7 +26,7 @@ void AnimalDetailsModal::configureWindow() {
     QString windowTitle;
 
     if (animal != nullptr) {
-        windowTitle = QString("%1's Details").arg(animal->getName());
+        windowTitle = QString("%1's Details").arg(animal->name);
     } else {
         windowTitle = QString("New Animal");
     }
@@ -36,20 +36,20 @@ void AnimalDetailsModal::configureWindow() {
 }
 
 void AnimalDetailsModal::setupViews() {
-    int typeIndex = ui->animalType->findText(animal->getSpecies());
+    int typeIndex = ui->animalType->findText(animal->species);
     ui->animalType->setCurrentIndex(typeIndex);
 
-    ui->nameEdit->setText(animal->getName());
-    ui->breedEdit->setText(animal->getBreed());
+    ui->nameEdit->setText(animal->name);
+    ui->breedEdit->setText(animal->breed);
 
-    int genderIndex = ui->gender->findText(animal->getGender());
+    int genderIndex = ui->gender->findText(animal->gender);
     ui->gender->setCurrentIndex(genderIndex);
 
-    ui->colorEdit->setText(animal->getColor());
-    ui->ageEdit->setValue(animal->getAge());
+    ui->colorEdit->setText(animal->color);
+    ui->ageEdit->setValue(animal->age);
 
-    ui->neuteredCheckBox->setChecked(animal->getNeuteredOrSpayed());
-    ui->medicalCheckbox->setChecked(animal->getRequiresMedicalAttn());
+    ui->neuteredCheckBox->setChecked(animal->neuteredOrSpayed);
+    ui->medicalCheckbox->setChecked(animal->requiresMedicalAttn);
 
     ui->bite->setValue(animal->attr("bite_tendency"));
     ui->scratch->setValue(animal->attr("scratch_tendency"));
@@ -93,21 +93,27 @@ void AnimalDetailsModal::setFieldsEnabled() {
 }
 
 void AnimalDetailsModal::handleSave() {
-//    animal->name = ui->nameEdit->text();
-//    animal->species = ui->animalType->currentText();
-//    animal->gender =ui->gender->currentText();
-//    animal->breed = ui->breedEdit->text();
-//    animal->age = ui->ageEdit->text().toInt();
-//    animal->neuteredOrSpayed = ui->neuteredCheckBox->isChecked();
-//    animal->requiresMedicalAttn =  ui->medicalCheckbox->isChecked();
-//    animal->color = ui->colorEdit->text();
+    QMessageBox messageBox;
+    messageBox.setWindowTitle("cuACS");
+
+    if (animal == nullptr) {
+        animal = new Animal();
+    }
+
+    animal->name = ui->nameEdit->text();
+    animal->species = ui->animalType->currentText();
+    animal->gender =ui->gender->currentText();
+    animal->breed = ui->breedEdit->text();
+    animal->age = ui->ageEdit->text().toInt();
+    animal->neuteredOrSpayed = ui->neuteredCheckBox->isChecked();
+    animal->requiresMedicalAttn =  ui->medicalCheckbox->isChecked();
+    animal->color = ui->colorEdit->text();
 
     bool animalSaved = animal->save();
 
     if (!animalSaved) {
-        QMessageBox errorBox;
-        errorBox.setText("Failed to save animal.");
-        errorBox.exec();
+        messageBox.setText("Failed to save animal.");
+        messageBox.exec();
         return;
     }
 
@@ -125,7 +131,8 @@ void AnimalDetailsModal::handleSave() {
             ->setAttr("anxiety_level", ui->anxiety->value())
             ->setAttr("curiosity_level", ui->curiosity->value());
 
-    this->close();
+    messageBox.setText("Animal profile saved.");
+    messageBox.exec();
 }
 
 void AnimalDetailsModal::handleCancel() {

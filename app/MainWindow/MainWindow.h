@@ -32,6 +32,9 @@ private:
     void renderListItems();
     void renderAnimalList();
     void renderClientList();
+
+    void setReadOnlyEnabled();
+    bool readOnly = false;
 };
 
 #endif // MAINWINDOW_H

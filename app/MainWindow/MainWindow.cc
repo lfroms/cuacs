@@ -20,26 +20,29 @@ MainWindow::~MainWindow() {
 }
 
 void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {
-    if (permissionLevel == "Client") {
-        ui->tabWidget->setCurrentIndex(0);
-        ui->tabWidget->setTabEnabled(3, false);
-        ui->tabWidget->setTabEnabled(2, false);
-        ui->tabWidget->setTabEnabled(1, false);
-    } else {
-        ui->tabWidget->setTabEnabled(3, true);
-        ui->tabWidget->setTabEnabled(2, true);
-        ui->tabWidget->setTabEnabled(1, true);
-    }
+    readOnly = permissionLevel == "Client" ? true : false;
+    setReadOnlyEnabled();
+}
 
+void MainWindow::setReadOnlyEnabled() {
+    bool enabled = !readOnly;
+
+    ui->actionAdd_Animal->setEnabled(enabled);
+    ui->actionAdd_Client->setEnabled(enabled);
+    ui->tabWidget->setCurrentIndex(0);
+    ui->tabWidget->setTabEnabled(3, enabled);
+    ui->tabWidget->setTabEnabled(2, enabled);
+    ui->tabWidget->setTabEnabled(1, enabled);
 }
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
     Animal* animal = var.value<Animal*>();
 
-    AnimalDetailsModal modal(animal, false);
+    AnimalDetailsModal modal(animal, readOnly);
     modal.setModal(true);
     modal.exec();
+    renderAnimalList();
 }
 
 void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
@@ -62,8 +65,8 @@ void MainWindow::renderAnimalList() {
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->animalsListWidget);
 
         DetailListWidgetItem *animalWidget = new DetailListWidgetItem;
-        animalWidget->setTitle(currentAnimal->getName());
-        animalWidget->setSubtitle(currentAnimal->getBreed());
+        animalWidget->setTitle(currentAnimal->name);
+        animalWidget->setSubtitle(currentAnimal->breed);
 
         listWidgetItem->setSizeHint(animalWidget->sizeHint());
 
