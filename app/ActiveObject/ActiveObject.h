@@ -122,7 +122,7 @@ QVector<T*>* ActiveObject<T>::where(QString colName, U value, bool includeNull) 
     QSqlQuery query;
 
     QString includeNullSegment =
-            QString("OR %1 = NULL")
+            QString("OR %1 IS NULL")
             .arg(colName);
 
     QString getWhereQuery =

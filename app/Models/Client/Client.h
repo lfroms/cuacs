@@ -2,11 +2,11 @@
 #define CLIENT_H
 
 #include <QString>
-#include <ActiveObject/ActiveObject.h>
+#include <ActiveObject/AttributedObject.h>
 
 using namespace std;
 
-class Client : public ActiveObject<Client> {
+class Client : public AttributedObject<Client> {
 public:
     Client(
             QString name,
