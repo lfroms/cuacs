@@ -1,31 +1,45 @@
 #include "AnimalDetailsModal.h"
 #include "ui_AnimalDetailsModal.h"
 
-AnimalDetailsModal::AnimalDetailsModal(Animal* a, QWidget *parent) :
+AnimalDetailsModal::AnimalDetailsModal(Animal* a, bool readOnly, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::AnimalDetailsModal) {
 
     ui->setupUi(this);
+
     animal = a;
-    setupViews();
+    this->readOnly = readOnly;
+
+    if (a != nullptr) {
+        setupViews();
+    }
+
+    configureWindow();
+    setFieldsEnabled();
 }
 
 AnimalDetailsModal::~AnimalDetailsModal() {
     delete ui;
 }
 
-void AnimalDetailsModal::setupViews() {
-    QString animalName = animal->getName();
+void AnimalDetailsModal::configureWindow() {
+    QString windowTitle;
 
-    // Set up window properties
-    QString windowTitle = QString("%1's Details").arg(animalName);
+    if (animal != nullptr) {
+        windowTitle = QString("%1's Details").arg(animal->getName());
+    } else {
+        windowTitle = QString("New Animal");
+    }
+
+
     this->setWindowTitle(windowTitle);
+}
 
-    // UI Elements
+void AnimalDetailsModal::setupViews() {
     int typeIndex = ui->animalType->findText(animal->getSpecies());
     ui->animalType->setCurrentIndex(typeIndex);
 
-    ui->nameEdit->setText(animalName);
+    ui->nameEdit->setText(animal->getName());
     ui->breedEdit->setText(animal->getBreed());
 
     int genderIndex = ui->gender->findText(animal->getGender());
@@ -35,7 +49,6 @@ void AnimalDetailsModal::setupViews() {
     ui->ageEdit->setValue(animal->getAge());
 
     ui->neuteredCheckBox->setChecked(animal->getNeuteredOrSpayed());
-    ui->neuteredCheckBox->setEnabled(false);
     ui->medicalCheckbox->setChecked(animal->getRequiresMedicalAttn());
 
     ui->bite->setValue(animal->attr("bite_tendency"));
@@ -50,4 +63,29 @@ void AnimalDetailsModal::setupViews() {
     ui->energy->setValue(animal->attr("energy_level"));
     ui->anxiety->setValue(animal->attr("anxiety_level"));
     ui->curiosity->setValue(animal->attr("curiosity_level"));
+}
+
+void AnimalDetailsModal::setFieldsEnabled() {
+    bool enabled = !readOnly;
+
+    ui->animalType->setEnabled(enabled);
+    ui->nameEdit->setEnabled(enabled);
+    ui->breedEdit->setEnabled(enabled);
+    ui->gender->setEnabled(enabled);
+    ui->colorEdit->setEnabled(enabled);
+    ui->ageEdit->setEnabled(enabled);
+    ui->neuteredCheckBox->setEnabled(enabled);
+    ui->medicalCheckbox->setEnabled(enabled);
+    ui->bite->setEnabled(enabled);
+    ui->scratch->setEnabled(enabled);
+    ui->assertDominance->setEnabled(enabled);
+    ui->adultFriendliness->setEnabled(enabled);
+    ui->childFriendliness->setEnabled(enabled);
+    ui->animalFriendliness->setEnabled(enabled);
+    ui->noise->setEnabled(enabled);
+    ui->independence->setEnabled(enabled);
+    ui->affection->setEnabled(enabled);
+    ui->energy->setEnabled(enabled);
+    ui->anxiety->setEnabled(enabled);
+    ui->curiosity->setEnabled(enabled);
 }

@@ -12,14 +12,17 @@ class AnimalDetailsModal : public QDialog {
     Q_OBJECT
 
 public:
-    explicit AnimalDetailsModal(Animal* a, QWidget *parent = nullptr);
+    explicit AnimalDetailsModal(Animal* a, bool readOnly, QWidget *parent = nullptr);
     ~AnimalDetailsModal();
 
 private:
     Ui::AnimalDetailsModal *ui;
     Animal* animal;
+    bool readOnly;
 
     void setupViews();
+    void setFieldsEnabled();
+    void configureWindow();
 };
 
 #endif // ANIMALDETAILSMODAL_H

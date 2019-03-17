@@ -33,7 +33,7 @@
     <item>
      <widget class="QSlider" name="bite">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -56,7 +56,7 @@
     <item>
      <widget class="QSlider" name="scratch">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -79,7 +79,7 @@
     <item>
      <widget class="QSlider" name="assertDominance">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -102,7 +102,7 @@
     <item>
      <widget class="QSlider" name="adultFriendliness">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -125,7 +125,7 @@
     <item>
      <widget class="QSlider" name="childFriendliness">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -148,7 +148,7 @@
     <item>
      <widget class="QSlider" name="animalFriendliness">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -183,7 +183,7 @@
     <item>
      <widget class="QSlider" name="noise">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -206,7 +206,7 @@
     <item>
      <widget class="QSlider" name="independence">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -229,7 +229,7 @@
     <item>
      <widget class="QSlider" name="affection">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -252,7 +252,7 @@
     <item>
      <widget class="QSlider" name="energy">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -275,7 +275,7 @@
     <item>
      <widget class="QSlider" name="anxiety">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -298,7 +298,7 @@
     <item>
      <widget class="QSlider" name="curiosity">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="maximum">
        <number>10</number>
@@ -378,7 +378,7 @@
     <item>
      <widget class="QLineEdit" name="nameEdit">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -427,7 +427,7 @@
     <item>
      <widget class="QLineEdit" name="breedEdit">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
     </item>
@@ -441,14 +441,14 @@
     <item>
      <widget class="QLineEdit" name="colorEdit">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
     </item>
     <item>
      <widget class="QCheckBox" name="neuteredCheckBox">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Neutered/Spayed</string>
@@ -458,7 +458,7 @@
     <item>
      <widget class="QCheckBox" name="medicalCheckbox">
       <property name="enabled">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
       <property name="text">
        <string>Medical Required</string>

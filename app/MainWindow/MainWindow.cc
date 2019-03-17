@@ -38,7 +38,7 @@ void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
     Animal* animal = var.value<Animal*>();
 
-    AnimalDetailsModal modal(animal);
+    AnimalDetailsModal modal(animal, true);
     modal.setModal(true);
     modal.exec();
 }
