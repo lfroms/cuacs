@@ -6,6 +6,7 @@
 #include <QSqlRecord>
 #include <QSqlField>
 #include <QDebug>
+#include <QVector>
 #include <Models/Attribute/Attribute.h>
 
 template <class T>
@@ -63,7 +64,14 @@ AttributedObject<T>* AttributedObject<T>::setAttr(int attrId, int value) {
 
 template <class T>
 AttributedObject<T>* AttributedObject<T>::setAttr(QString attrName, int value) {
-    int attributeId = Attribute::where("name", attrName)->first()->getId();
+    QVector<Attribute*>* attributes = Attribute::where("name", attrName);
+
+    if (attributes->isEmpty()) {
+        qDebug() << QString("Could not find attribute named %1.").arg(attrName);
+        return this;
+    }
+
+    int attributeId = attributes->first()->getId();
     return this->setAttr(attributeId, value);
 }
 
@@ -91,7 +99,14 @@ int AttributedObject<T>::attr(int attrId) {
 
 template <class T>
 int AttributedObject<T>::attr(QString attrName) {
-    int attributeId = Attribute::where("name", attrName)->first()->getId();
+    QVector<Attribute*>* attributes = Attribute::where("name", attrName);
+
+    if (attributes->isEmpty()) {
+        qDebug() << QString("Could not find attribute named %1.").arg(attrName);
+        return -1;
+    }
+
+    int attributeId = attributes->first()->getId();
     return this->attr(attributeId);
 }
 
@@ -121,7 +136,14 @@ bool AttributedObject<T>::clearAttr(int attrId) {
 
 template <class T>
 bool AttributedObject<T>::clearAttr(QString attrName) {
-    int attributeId = Attribute::where("name", attrName)->first()->getId();
+    QVector<Attribute*>* attributes = Attribute::where("name", attrName);
+
+    if (attributes->isEmpty()) {
+        qDebug() << QString("Could not find attribute named %1.").arg(attrName);
+        return -1;
+    }
+
+    int attributeId = attributes->first()->getId();
     return this->clearAttr(attributeId);
 }
 
