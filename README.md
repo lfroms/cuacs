@@ -19,7 +19,7 @@ To Launch (Subsequent Times)"
 ./app
 ```
 
-Note that the first launch command above makes use of 3 separate actions:
+Note that the first launch command will remove all data then load new seed data into the database:
 * `cd app` will move you into the location that the compiled source lives.
 * `./app data-reset` will load new data into the database.
 * `./app` will launch the application.
