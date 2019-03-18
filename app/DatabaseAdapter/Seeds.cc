@@ -58,7 +58,7 @@ void Seeds::runAll() {
     Attribute("independence", "Level of Independence").create();
 
     Attribute("affection", "Level of Affection").create();
-    Attribute("energy", "Energy Level", animalType).create();
+    Attribute("energy", "Energy/Fitness Level").create();
     Attribute("anxiety", "Anxiety Level").create();
     Attribute("curiosity", "Curiosity Level").create();
 
@@ -67,7 +67,6 @@ void Seeds::runAll() {
 
     Attribute("assertiveness", "Level of Assertiveness", clientType).create();
     Attribute("socialness", "Level of Socialness", clientType).create();
-    Attribute("fitness", "Fitness Level", clientType).create();
 
 
     // SEED ANIMAL ATTRIBUTES
