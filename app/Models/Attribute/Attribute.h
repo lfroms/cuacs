@@ -9,7 +9,7 @@ using namespace std;
 class Attribute : public ActiveObject<Attribute> {
 public:
     Attribute(QString name);
-    Attribute(QString name, QString description);
+    Attribute(QString name, QString description, QString type = "");
     Attribute(QSqlRecord* record);
 
     ~Attribute();
@@ -18,11 +18,12 @@ public:
     const QString getDescription();
 
     const QString toCommaSeparated();
-    static const QString getTableName();
+    static const QString className();
 
 private:
     QString name;
     QString description;
+    QString type;
 };
 
 #endif // ATTRIBUTE_H

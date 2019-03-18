@@ -8,8 +8,6 @@
 #include <QSqlField>
 #include <QVector>
 
-#include <DatabaseAdapter/Schema.h>
-
 template <class T>
 class ActiveObject {
 public:
@@ -24,9 +22,13 @@ public:
     static T* where(int id);
 
     template <typename U>
-    static QVector<T*>* where(QString colName, U value);
+    static QVector<T*>* where(QString colName, U value, bool includeNull = false);
 
     int getId();
+
+    const static QString getTableName() {
+        return T::className() + "s";
+    }
 
 protected:
     int id = -1;
@@ -35,8 +37,8 @@ protected:
 
     virtual const QString toCommaSeparated() = 0;
 
-    const static QString getTableName() {
-        return T::getTableName();
+    static const QString className() {
+        return T::className();
     }
 };
 
@@ -116,13 +118,19 @@ T* ActiveObject<T>::where(int id) {
 
 template <class T>
 template <typename U>
-QVector<T*>* ActiveObject<T>::where(QString colName, U value) {
+QVector<T*>* ActiveObject<T>::where(QString colName, U value, bool includeNull) {
     QSqlQuery query;
+
+    QString includeNullSegment =
+            QString("OR %1 IS NULL")
+            .arg(colName);
+
     QString getWhereQuery =
-            QString("SELECT * FROM %1 WHERE %2 = '%3';")
+            QString("SELECT * FROM %1 WHERE %2 = '%3' %4;")
             .arg(getTableName())
             .arg(colName)
-            .arg(value);
+            .arg(value)
+            .arg(includeNull ? includeNullSegment : "");
 
     if (!query.exec(getWhereQuery)) {
         return new QVector<T*>();

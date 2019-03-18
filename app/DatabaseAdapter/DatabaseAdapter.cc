@@ -30,35 +30,37 @@ bool DatabaseAdapter::setup() {
     QSqlQuery setup;
     setup.exec("PRAGMA foreign_keys = ON;");
 
-    QSqlQuery createAnimals;
     QString animalQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(ANIMAL_TABLE)
             .arg(ANIMAL_SCHEMA);
 
-    QSqlQuery createClients;
     QString clientQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(CLIENT_TABLE)
             .arg(CLIENT_SCHEMA);
 
-    QSqlQuery createAttributes;
     QString attributesQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(ATTRIBUTE_TABLE)
             .arg(ATTRIBUTE_SCHEMA);
 
-    QSqlQuery createAnimalAttributes;
     QString animalAttributesQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(ANIMAL_ATTRIBUTE_TABLE)
             .arg(ANIMAL_ATTRIBUTE_SCHEMA);
 
+    QString clientAttributesQuery =
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
+            .arg(CLIENT_ATTRIBUTE_TABLE)
+            .arg(CLIENT_ATTRIBUTE_SCHEMA);
+
     bool didCompleteQueries =
-            createAnimals.exec(animalQuery) &&
-            createClients.exec(clientQuery) &&
-            createAttributes.exec(attributesQuery) &&
-            createAnimalAttributes.exec(animalAttributesQuery);
+            setup.exec(animalQuery) &&
+            setup.exec(clientQuery) &&
+            setup.exec(attributesQuery) &&
+            setup.exec(animalAttributesQuery) &&
+            setup.exec(clientAttributesQuery);
 
     return didCompleteQueries;
 }
@@ -88,11 +90,16 @@ bool DatabaseAdapter::resetAll() {
             QString("DROP TABLE IF EXISTS %1;")
             .arg(ANIMAL_ATTRIBUTE_TABLE);
 
+    QString clientAttributesQuery =
+            QString("DROP TABLE IF EXISTS %1;")
+            .arg(CLIENT_ATTRIBUTE_TABLE);
+
     bool didDropAll =
             drop.exec(animalQuery) &&
             drop.exec(clientQuery) &&
             drop.exec(attributesQuery) &&
-            drop.exec(animalAttributesQuery);
+            drop.exec(animalAttributesQuery) &&
+            drop.exec(clientAttributesQuery);
 
     if (!didDropAll) {
         qDebug() << "Could not delete tables.";

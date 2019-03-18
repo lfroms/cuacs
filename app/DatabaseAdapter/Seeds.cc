@@ -42,21 +42,32 @@ void Seeds::runAll() {
     Client("Lulu Sheng", 34, "613-067-8564", "lulusheng@cmail.carleton.ca").create();
     Client("Lukas Romsicki", 64, "613-341-0696", "lukas@gmail.com").create();
 
+
     qDebug() << "Seeding attributes...";
-    Attribute("bite_tendency", "Tendency to Bite").create();
-    Attribute("scratch_tendency", "Tendency to Scratch").create();
-    Attribute("assert_dominance_tendency", "Tendency to Assert Dominance").create();
-    Attribute("friendliness_adults", "Friendliness towards Adults").create();
 
-    Attribute("friendliness_children", "Friendlienss towards Children").create();
-    Attribute("friendliness_animals", "Friendliness towards Animals").create();
-    Attribute("noise_level", "Noise Level").create();
-    Attribute("independence_level", "Independence Level").create();
+    QString animalType = Animal::className();
 
-    Attribute("affection_level", "Affection Level").create();
-    Attribute("energy_level", "Energy Level").create();
-    Attribute("anxiety_level", "Anxiety Level").create();
-    Attribute("curiosity_level", "Curiosity Level").create();
+    Attribute("bite_tendency", "Tendency to Bite", animalType).create();
+    Attribute("scratch_tendency", "Tendency to Scratch", animalType).create();
+    Attribute("assert_dominance_tendency", "Tendency to Assert Dominance", animalType).create();
+    Attribute("friendliness_adults", "Friendliness towards Adults", animalType).create();
+
+    Attribute("friendliness_children", "Friendlienss towards Children", animalType).create();
+    Attribute("friendliness_animals", "Friendliness towards Animals", animalType).create();
+    Attribute("noisiness", "Noise Level").create();
+    Attribute("independence", "Level of Independence").create();
+
+    Attribute("affection", "Level of Affection").create();
+    Attribute("energy", "Energy/Fitness Level").create();
+    Attribute("anxiety", "Anxiety Level").create();
+    Attribute("curiosity", "Curiosity Level").create();
+
+
+    QString clientType = Client::className();
+
+    Attribute("assertiveness", "Level of Assertiveness", clientType).create();
+    Attribute("socialness", "Level of Socialness", clientType).create();
+
 
     // SEED ANIMAL ATTRIBUTES
     qDebug() << "Seeding animal attributes...";
@@ -64,21 +75,46 @@ void Seeds::runAll() {
     QVector<Animal*>* animalsVector = Animal::all();
     QVectorIterator<Animal*> animals(*animalsVector);
 
-    QVector<Attribute*>* attributesVector = Attribute::all();
-    QVectorIterator<Attribute*> attributes(*attributesVector);
+    QVector<Attribute*>* animalAttributesVector = Attribute::where("type", animalType, true);
+    QVectorIterator<Attribute*> animalAttributes(*animalAttributesVector);
 
-    bool vectorsNotEmpty = !animalsVector->isEmpty() && !attributesVector->isEmpty();
+    bool animalVectorsNotEmpty = !animalsVector->isEmpty() && !animalAttributesVector->isEmpty();
 
-    if (vectorsNotEmpty) {
+    if (animalVectorsNotEmpty) {
         while (animals.hasNext()) {
             Animal* currentAnimal = animals.next();
-            attributes.toFront();
+            animalAttributes.toFront();
 
-            while (attributes.hasNext()) {
-                Attribute* currentAttribute = attributes.next();
+            while (animalAttributes.hasNext()) {
+                Attribute* currentAttribute = animalAttributes.next();
 
                 int randomValue = rand() % 11;
                 currentAnimal->setAttr(currentAttribute->getName(), randomValue);
+            }
+        }
+    }
+
+    // SEED CLIENT ATTRIBUTES
+    qDebug() << "Seeding client attributes...";
+
+    QVector<Client*>* clientsVector = Client::all();
+    QVectorIterator<Client*> clients(*clientsVector);
+
+    QVector<Attribute*>* clientAttributesVector = Attribute::where("type", clientType, true);
+    QVectorIterator<Attribute*> clientAttributes(*clientAttributesVector);
+
+    bool clientVectorsNotEmpty = !clientsVector->isEmpty() && !clientAttributesVector->isEmpty();
+
+    if (clientVectorsNotEmpty) {
+        while (clients.hasNext()) {
+            Client* currentClient = clients.next();
+            clientAttributes.toFront();
+
+            while (clientAttributes.hasNext()) {
+                Attribute* currentAttribute = clientAttributes.next();
+
+                int randomValue = rand() % 11;
+                currentClient->setAttr(currentAttribute->getName(), randomValue);
             }
         }
     }

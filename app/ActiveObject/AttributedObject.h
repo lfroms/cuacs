@@ -16,17 +16,17 @@ public:
     int attr(QString attrName);
     bool clearAttr(QString attrName);
 
-protected:
-    AttributedObject();
-    virtual ~AttributedObject() = 0;
-
     static const QString getAttributeTableName() {
-        return T::getAttributeTableName();
+        return T::className() + "s_attributes";
     }
 
     static const QString getAttributeIdColumnName() {
-        return T::getAttributeIdColumnName();
+        return T::className() + "_id";
     }
+
+protected:
+    AttributedObject();
+    virtual ~AttributedObject() = 0;
 
 private:
     AttributedObject<T>* setAttr(int attrId, int value);

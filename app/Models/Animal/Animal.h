@@ -26,10 +26,7 @@ public:
     ~Animal();
 
     const QString toCommaSeparated();
-    static const QString getTableName();
-
-    static const QString getAttributeTableName();
-    static const QString getAttributeIdColumnName();
+    static const QString className();
 
     QString name;
     QString species;
