@@ -80,6 +80,9 @@
        </item>
        <item>
         <widget class="QSpinBox" name="age">
+         <property name="maximum">
+          <number>999</number>
+         </property>
          <property name="value">
           <number>1</number>
          </property>
@@ -427,7 +430,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="sqFoot"/>
+        <widget class="QSpinBox" name="sqFoot">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="salaryLabel">
@@ -440,7 +447,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="salary"/>
+        <widget class="QSpinBox" name="salary">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QLabel" name="hrDedicationLabel">
@@ -453,7 +464,11 @@
         </widget>
        </item>
        <item>
-        <widget class="QSpinBox" name="hrDedication"/>
+        <widget class="QSpinBox" name="hrDedication">
+         <property name="maximum">
+          <number>999999999</number>
+         </property>
+        </widget>
        </item>
        <item>
         <widget class="QCheckBox" name="ownedAnimal">
