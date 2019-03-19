@@ -22,7 +22,7 @@ public:
 
 private slots:
     void handleAddAnimalAction();
-    void handleAddClientSubmit();
+    void handleAddClientAction();
     void onAnimalClicked(QListWidgetItem*);
     void onUserPermissionsChanged(const QString&);
     void onClientClicked(QListWidgetItem*);

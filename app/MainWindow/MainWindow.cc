@@ -7,10 +7,10 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
 
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onAnimalClicked(QListWidgetItem*)));
-    connect(ui->clientSubmit, SIGNAL (released()), this, SLOT (handleAddClientSubmit()));
-    connect(ui->staffOrClientSelector, SIGNAL (currentIndexChanged(const QString&)), this, SLOT(onUserPermissionsChanged(const QString&)));
     connect(ui->clientsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onClientClicked(QListWidgetItem*)));
+
+    connect(ui->staffOrClientSelector, SIGNAL (currentIndexChanged(const QString&)), this, SLOT(onUserPermissionsChanged(const QString&)));
 
     renderListItems();
 }
@@ -49,9 +49,10 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
     Client* client = var.value<Client*>();
 
-    ClientDetailsModal modal(client);
+    ClientDetailsModal modal(client, readOnly);
     modal.setModal(true);
     modal.exec();
+    renderClientList();
 }
 
 void MainWindow::renderAnimalList() {
@@ -88,8 +89,8 @@ void MainWindow::renderClientList() {
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
         DetailListWidgetItem *clientWidget = new DetailListWidgetItem;
-        clientWidget->setTitle(currentClient->getName());
-        clientWidget->setSubtitle(currentClient->getEmail());
+        clientWidget->setTitle(currentClient->name);
+        clientWidget->setSubtitle(currentClient->email);
 
         listWidgetItem->setSizeHint(clientWidget->sizeHint());
 
@@ -111,25 +112,9 @@ void MainWindow::handleAddAnimalAction() {
     renderAnimalList();
 }
 
-void MainWindow::handleAddClientSubmit() {
-    Client* client = new Client(
-                ui->clientNameEdit->text(),
-                ui->clientAgeEdit->text().toInt(),
-                ui->clientPhoneNumberEdit->text(),
-                ui->clientEmailEdit->text()
-                );
 
-    bool clientSaved = client->create();
-
-    if (!clientSaved) {
-        qDebug() << "Failed to add client to database.";
-        return;
-    }
-
-    ui->clientNameEdit->clear();
-    ui->clientAgeEdit->clear();
-    ui->clientPhoneNumberEdit->clear();
-    ui->clientEmailEdit->clear();
-
+void MainWindow::handleAddClientAction() {
+    ClientDetailsModal modal(nullptr, false);
+    modal.exec();
     renderClientList();
 }
