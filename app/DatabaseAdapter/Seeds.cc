@@ -147,5 +147,24 @@ void Seeds::runAll() {
             }
         }
     }
+
+
+    // SEED USERS
+    qDebug() << "Seeding user accounts...";
+
+    if (!clientsVector->isEmpty()) {
+        clients.toFront();
+
+        while (clients.hasNext()) {
+            Client* currentClient = clients.next();
+
+            QString randomPass = QString::number(rand() % 200 + 100);
+            User* u = new User(currentClient->name.toLower().replace(" ", ""), randomPass);
+            u->create();
+
+            currentClient->userId = u->getId();
+            currentClient->save();
+        }
+    }
 }
 

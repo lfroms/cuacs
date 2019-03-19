@@ -36,6 +36,7 @@ static const QString ANIMAL_SCHEMA =
 static const QString CLIENT_SCHEMA =
         QString(
             "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            "user_id INTEGER,"
             "name TEXT NOT NULL,"
             "age INTEGER NOT NULL,"
             "phone_number TEXT NOT NULL,"
@@ -47,9 +48,11 @@ static const QString CLIENT_SCHEMA =
             "hrs_dedication INT NOT NULL,"
             "has_children INT NOT NULL,"
             "ideal_animal_id INTEGER,"
-            "FOREIGN KEY (ideal_animal_id) REFERENCES %1(id)"
+            "FOREIGN KEY (ideal_animal_id) REFERENCES %1(id),"
+            "FOREIGN KEY (user_id) REFERENCES %2(id)"
             )
-        .arg(ANIMAL_TABLE);
+        .arg(ANIMAL_TABLE)
+        .arg(USER_TABLE);
 
 static const QString ATTRIBUTE_SCHEMA =
         QString(

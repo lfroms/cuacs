@@ -11,7 +11,8 @@ Client::Client(
         int salary,
         int hrsDedication,
         bool hasChildren,
-        int idealAnimalId
+        int idealAnimalId,
+        int userId
         ) {
     this->name = name;
     this->age = age;
@@ -24,6 +25,7 @@ Client::Client(
     this->hrsDedication = hrsDedication;
     this->hasChildren = hasChildren;
     this->idealAnimalId = idealAnimalId;
+    this->userId= userId;
 }
 
 // Define how the SQL record should be decomposed into this object.
@@ -43,6 +45,9 @@ Client::Client(QSqlRecord* record) :
 
     bool dbIdealAnimalIdNull = record->field("ideal_animal_id").isNull();
     this->idealAnimalId = dbIdealAnimalIdNull ? -1 : record->field("ideal_animal_id").value().toInt();
+
+    bool dbUserIdNull = record->field("user_id").isNull();
+    this->idealAnimalId = dbUserIdNull ? -1 : record->field("user_id").value().toInt();
 }
 
 Client::Client() {}
@@ -56,7 +61,13 @@ const QString Client::toCommaSeparated() {
                 "null" :
                 idealAsString;
 
-    QString formatted = QString("'%1', %2, '%3', '%4', %5, %6, %7, %8, %9, %10, %11")
+    QString userIdNullable =
+            userId == -1 ?
+                "null" :
+                QString::number(userId);
+
+    QString formatted = QString("%1, '%2', %3, '%4', '%5', %6, %7, %8, %9, %10, %11, %12")
+            .arg(userIdNullable)
             .arg(name)
             .arg(age)
             .arg(phoneNumber)
