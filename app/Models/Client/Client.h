@@ -19,8 +19,7 @@ public:
             int salary,
             int hrsDedication,
             bool hasChildren,
-            int idealAnimalId = -1,
-            int userId = -1
+            int idealAnimalId = -1
             );
 
     Client(QSqlRecord* record);

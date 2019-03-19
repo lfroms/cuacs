@@ -11,8 +11,7 @@ Client::Client(
         int salary,
         int hrsDedication,
         bool hasChildren,
-        int idealAnimalId,
-        int userId
+        int idealAnimalId
         ) {
     this->name = name;
     this->age = age;
@@ -25,7 +24,6 @@ Client::Client(
     this->hrsDedication = hrsDedication;
     this->hasChildren = hasChildren;
     this->idealAnimalId = idealAnimalId;
-    this->userId = userId;
 }
 
 // Define how the SQL record should be decomposed into this object.
