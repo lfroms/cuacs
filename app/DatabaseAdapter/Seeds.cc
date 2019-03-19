@@ -35,6 +35,12 @@ void Seeds::runAll() {
     Animal("Hayley", "Cat", "female", "American Shorthair", 4, false, false, "white", false).create();
     Animal("Reese", "Rabbit", "male", "Holland Lop", 4, false, false, "grey", false).create();
 
+    Animal("Angie", "Dog", "female", "Poodle", 1, false, false, "grey", false).create();
+    Animal("Angel", "Rabbit", "female", "Dwarf", 3, false, false, "brown", false).create();
+    Animal("Boo", "Cat", "male", "Tabby", 1, false, false, "orange", false).create();
+    Animal("Ghost", "Dog", "male", "Pug", 4, false, false, "black", false).create();
+    Animal("Fluffy", "Rabbit", "female", "Holland Lop", 4, false, false, "grey", false).create();
+
     qDebug() << "Seeding clients...";
     Client("Johnny Appleseed", 24, "613-928-5235", "johnny@cuacs.ca").create();
     Client("Niko Kouloufakos", 19, "613-413-5276", "niko.kouloufakos@shopify.com").create();
@@ -42,6 +48,29 @@ void Seeds::runAll() {
     Client("Lulu Sheng", 34, "613-067-8564", "lulusheng@cmail.carleton.ca").create();
     Client("Lukas Romsicki", 64, "613-341-0696", "lukas@gmail.com").create();
 
+    Client("Lady Gaga", 29, "613-432-5252", "ladygaga@hotmail.com").create();
+    Client("Daniel Radcliffe", 39, "613-413-5555", "radcliffeD@gmail.com").create();
+    Client("Prince James", 54, "613-765-9482", "prince@james.ca").create();
+    Client("Jake Dagger", 19, "613-493-8564", "theDagger@cmail.carleton.ca").create();
+    Client("Luke Yang", 22, "613-341-3248", "yukelang@gmail.com").create();
+
+    Client("Jesse Mccarthy", 24, "613-392-5235", "mccarthy@shopify.ca").create();
+    Client("Wyatt Fisher", 45, "613-413-3928", "wyattTheFish@shopify.com").create();
+    Client("Melanie Smith", 55, "613-444-9265", "melanie.smith@gmail.ca").create();
+    Client("Jessica Jones", 50, "613-067-0000", "jessicaJJ@cmail.carleton.ca").create();
+    Client("Matt Gordon", 28, "613-341-9282", "gordon.matt@gmail.com").create();
+
+    Client("Kate Middleton", 31, "613-324-9485", "middleton@cuacs.ca").create();
+    Client("Tina Zhang", 35, "613-098-5845", "Tina.zhang123@shopify.com").create();
+    Client("Jaqueline Tan", 41, "613-492-0003", "jaqueline432@wildfox.ca").create();
+    Client("Emily Wong", 47, "613-067-3847", "emily.wong983@cmail.carleton.ca").create();
+    Client("Helena Beat", 44, "613-444-0696", "helena@hotmail.com").create();
+
+    Client("Nathan Witherspoon", 51, "613-928-4491", "nathaniel@cuacs.ca").create();
+    Client("Timothy Jersey", 58, "613-413-1912", "timothyGoesToSchool@shopify.com").create();
+    Client("Rocky Williams", 23, "613-111-9265", "rocky123@wildfox.ca").create();
+    Client("Grace Smith", 22, "613-067-9583", "grace.smith@cmail.carleton.ca").create();
+    Client("John Smith", 22, "613-341-2332", "boringJohnSmith@gmail.com").create();
 
     qDebug() << "Seeding attributes...";
 
