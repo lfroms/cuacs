@@ -37,10 +37,12 @@ Client::Client(QSqlRecord* record) :
            record->field("owns_animal").value().toBool(),
            record->field("salary").value().toInt(),
            record->field("hrs_dedication").value().toInt(),
-           record->field("has_children").value().toBool(),
-           record->field("ideal_animal_id").value().toInt()
+           record->field("has_children").value().toBool()
            ) {
     this->id = record->field("id").value().toInt();
+
+    bool dbIdealAnimalIdNull = record->field("ideal_animal_id").isNull();
+    this->idealAnimalId = dbIdealAnimalIdNull ? -1 : record->field("ideal_animal_id").value().toInt();
 }
 
 Client::Client() {}

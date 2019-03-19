@@ -104,7 +104,6 @@ void ClientDetailsModal::handleSave() {
     client->ownedAnimal = ui->ownedAnimal->isChecked();
     client->ownsAnimal = ui->ownsAnimal->isChecked();
     client->hasChildren = ui->hasChildren->isChecked();
-    client->idealAnimalId = -1;
 
     bool clientSaved = client->save();
 
