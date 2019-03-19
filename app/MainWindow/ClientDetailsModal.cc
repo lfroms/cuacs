@@ -38,14 +38,35 @@ void ClientDetailsModal::loadProfileData() {
     QString clientName = client->getName();
     this->setWindowTitle(clientName + QString("'s")+ QString(" Details"));
 
-    ui->clientNameEdit->setText(clientName);
-    ui->clientAgeEdit->setText(QString::number(client->getAge()));
-    ui->clientPhoneNumberEdit->setText(client->getPhoneNumber());
-    ui->clientEmailEdit->setText(client->getEmail());
+    ui->name->setText(clientName);
+    ui->age->setValue(client->getAge());
+    ui->phoneNumber->setText(client->getPhoneNumber());
+    ui->email->setText(client->getEmail());
 }
 
 void ClientDetailsModal::setFieldsEnabled() {
     bool enabled = !readOnly;
+
+    ui->name->setEnabled(enabled);
+    ui->age->setEnabled(enabled);
+    ui->phoneNumber->setEnabled(enabled);
+    ui->email->setEnabled(enabled);
+
+    ui->assertiveness->setEnabled(enabled);
+    ui->socialness->setEnabled(enabled);
+    ui->noisiness->setEnabled(enabled);
+    ui->independence->setEnabled(enabled);
+    ui->affection->setEnabled(enabled);
+    ui->fitness->setEnabled(enabled);
+    ui->anxiety->setEnabled(enabled);
+    ui->curiosity->setEnabled(enabled);
+
+    ui->sqFoot->setEnabled(enabled);
+    ui->salary->setEnabled(enabled);
+    ui->hrDedication->setEnabled(enabled);
+    ui->ownedAnimal->setEnabled(enabled);
+    ui->ownsAnimal->setEnabled(enabled);
+    ui->hasChildren->setEnabled(enabled);
 }
 
 void ClientDetailsModal::handleSave() {
