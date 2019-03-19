@@ -25,7 +25,7 @@ Client::Client(
     this->hrsDedication = hrsDedication;
     this->hasChildren = hasChildren;
     this->idealAnimalId = idealAnimalId;
-    this->userId= userId;
+    this->userId = userId;
 }
 
 // Define how the SQL record should be decomposed into this object.
