@@ -26,7 +26,7 @@ void ClientDetailsModal::configureWindow() {
     QString windowTitle;
 
     if (client != nullptr) {
-        windowTitle = QString("%1's Details").arg(client->getName());
+        windowTitle = QString("%1's Details").arg(client->name);
     } else {
         windowTitle = QString("New Client");
     }
@@ -35,13 +35,29 @@ void ClientDetailsModal::configureWindow() {
 }
 
 void ClientDetailsModal::loadProfileData() {
-    QString clientName = client->getName();
+    QString clientName = client->name;
     this->setWindowTitle(clientName + QString("'s")+ QString(" Details"));
 
     ui->name->setText(clientName);
-    ui->age->setValue(client->getAge());
-    ui->phoneNumber->setText(client->getPhoneNumber());
-    ui->email->setText(client->getEmail());
+    ui->age->setValue(client->age);
+    ui->phoneNumber->setText(client->phoneNumber);
+    ui->email->setText(client->email);
+
+    ui->assertiveness->setValue(client->attr("assertiveness"));
+    ui->socialness->setValue(client->attr("socialness"));
+    ui->noisiness->setValue(client->attr("noisiness"));
+    ui->independence->setValue(client->attr("independence"));
+    ui->affection->setValue(client->attr("affection"));
+    ui->fitness->setValue(client->attr("energy"));
+    ui->anxiety->setValue(client->attr("anxiety"));
+    ui->curiosity->setValue(client->attr("curiosity"));
+
+    ui->sqFoot->setValue(client->homeSqFoot);
+    ui->salary->setValue(client->salary);
+    ui->hrDedication->setValue(client->hrsDedication);
+    ui->ownedAnimal->setChecked(client->ownedAnimal);
+    ui->ownsAnimal->setChecked(client->ownsAnimal);
+    ui->hasChildren->setChecked(client->hasChildren);
 }
 
 void ClientDetailsModal::setFieldsEnabled() {
@@ -87,7 +103,15 @@ void ClientDetailsModal::handleSave() {
         return;
     }
 
-    // TODO: Set attributes of client
+    client
+            ->setAttr("assertiveness", ui->assertiveness->value())
+            ->setAttr("socialness", ui->socialness->value())
+            ->setAttr("noisiness", ui->noisiness->value())
+            ->setAttr("independence", ui->independence->value())
+            ->setAttr("affection", ui->affection->value())
+            ->setAttr("energy", ui->fitness->value())
+            ->setAttr("anxiety", ui->anxiety->value())
+            ->setAttr("curiosity", ui->curiosity->value());
 
     messageBox.setText("Client profile saved.");
     messageBox.exec();

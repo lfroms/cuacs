@@ -38,6 +38,12 @@ static const QString CLIENT_SCHEMA =
             "age INTEGER NOT NULL,"
             "phone_number TEXT NOT NULL,"
             "email TEXT NOT NULL,"
+            "home_sq_foot INT NOT NULL,"
+            "owned_animal INT NOT NULL,"
+            "owns_animal INT NOT NULL,"
+            "salary INT NOT NULL,"
+            "hrs_dedication INT NOT NULL,"
+            "has_children INT NOT NULL,"
             "ideal_animal_id INTEGER,"
             "FOREIGN KEY (ideal_animal_id) REFERENCES %1(id)"
             )
