@@ -6,10 +6,12 @@
 #include <Models/Animal/Animal.h>
 #include <Models/Client/Client.h>
 #include <Models/Attribute/Attribute.h>
+#include <Models/User/User.h>
 
 static const QString ANIMAL_TABLE = Animal::getTableName();
 static const QString CLIENT_TABLE = Client::getTableName();
 static const QString ATTRIBUTE_TABLE = Attribute::getTableName();
+static const QString USER_TABLE = User::getTableName();
 
 static const QString ANIMAL_ATTRIBUTE_TABLE = Animal::getAttributeTableName();
 static const QString ANIMAL_ATTRIBUTE_COLUMN_NAME = Animal::getAttributeIdColumnName();
@@ -55,6 +57,14 @@ static const QString ATTRIBUTE_SCHEMA =
             "name TEXT NOT NULL UNIQUE,"
             "description TEXT,"
             "type TEXT"
+            );
+
+
+static const QString USER_SCHEMA =
+        QString(
+            "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            "username TEXT NOT NULL UNIQUE,"
+            "password TEXT NOT NULL"
             );
 
 static const QString ANIMAL_ATTRIBUTE_SCHEMA =

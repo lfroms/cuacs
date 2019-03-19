@@ -45,6 +45,11 @@ bool DatabaseAdapter::setup() {
             .arg(ATTRIBUTE_TABLE)
             .arg(ATTRIBUTE_SCHEMA);
 
+    QString userQuery =
+            QString("CREATE TABLE IF NOT EXISTS %1(%2);")
+            .arg(USER_TABLE)
+            .arg(USER_SCHEMA);
+
     QString animalAttributesQuery =
             QString("CREATE TABLE IF NOT EXISTS %1(%2);")
             .arg(ANIMAL_ATTRIBUTE_TABLE)
@@ -59,6 +64,7 @@ bool DatabaseAdapter::setup() {
             setup.exec(animalQuery) &&
             setup.exec(clientQuery) &&
             setup.exec(attributesQuery) &&
+            setup.exec(userQuery) &&
             setup.exec(animalAttributesQuery) &&
             setup.exec(clientAttributesQuery);
 
@@ -86,6 +92,10 @@ bool DatabaseAdapter::resetAll() {
             QString("DROP TABLE IF EXISTS %1;")
             .arg(ATTRIBUTE_TABLE);
 
+    QString userQuery =
+            QString("DROP TABLE IF EXISTS %1;")
+            .arg(USER_TABLE);
+
     QString animalAttributesQuery =
             QString("DROP TABLE IF EXISTS %1;")
             .arg(ANIMAL_ATTRIBUTE_TABLE);
@@ -98,6 +108,7 @@ bool DatabaseAdapter::resetAll() {
             drop.exec(animalQuery) &&
             drop.exec(clientQuery) &&
             drop.exec(attributesQuery) &&
+            drop.exec(userQuery) &&
             drop.exec(animalAttributesQuery) &&
             drop.exec(clientAttributesQuery);
 
