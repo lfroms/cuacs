@@ -129,104 +129,33 @@
          <attribute name="title">
           <string>View Clients</string>
          </attribute>
-         <widget class="QListWidget" name="clientsListWidget">
-          <property name="geometry">
-           <rect>
-            <x>0</x>
-            <y>0</y>
-            <width>755</width>
-            <height>398</height>
-           </rect>
+         <layout class="QGridLayout" name="gridLayout_2">
+          <property name="leftMargin">
+           <number>0</number>
           </property>
-          <property name="frameShape">
-           <enum>QFrame::NoFrame</enum>
+          <property name="topMargin">
+           <number>0</number>
           </property>
-          <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+          <property name="rightMargin">
+           <number>0</number>
           </property>
-         </widget>
-        </widget>
-        <widget class="QWidget" name="addClientTab">
-         <attribute name="title">
-          <string>Add Client</string>
-         </attribute>
-         <widget class="QWidget" name="verticalLayoutWidget_5">
-          <property name="geometry">
-           <rect>
-            <x>20</x>
-            <y>20</y>
-            <width>231</width>
-            <height>254</height>
-           </rect>
+          <property name="bottomMargin">
+           <number>0</number>
           </property>
-          <layout class="QVBoxLayout" name="clientVerticalLayout1">
-           <item>
-            <widget class="QLabel" name="clientNameLabel">
-             <property name="text">
-              <string>Name</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="clientNameEdit"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="clientAgeLabel">
-             <property name="text">
-              <string>Age</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="clientAgeEdit"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="clientPhoneNumberLabel">
-             <property name="text">
-              <string>Phone Number</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="clientPhoneNumberEdit"/>
-           </item>
-           <item>
-            <widget class="QLabel" name="clientEmailLabel">
-             <property name="text">
-              <string>Email</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QLineEdit" name="clientEmailEdit"/>
-           </item>
-           <item>
-            <widget class="QPushButton" name="clientSubmit">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
-             <property name="minimumSize">
-              <size>
-               <width>0</width>
-               <height>36</height>
-              </size>
-             </property>
-             <property name="text">
-              <string>Submit</string>
-             </property>
-             <property name="autoDefault">
-              <bool>false</bool>
-             </property>
-             <property name="flat">
-              <bool>false</bool>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </widget>
+          <property name="spacing">
+           <number>0</number>
+          </property>
+          <item row="0" column="0">
+           <widget class="QListWidget" name="clientsListWidget">
+            <property name="frameShape">
+             <enum>QFrame::NoFrame</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Plain</enum>
+            </property>
+           </widget>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
@@ -282,8 +211,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionAdd_Client</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>handleAddClientAction()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handleAddAnimalAction()</slot>
+  <slot>handleAddClientAction()</slot>
  </slots>
 </ui>

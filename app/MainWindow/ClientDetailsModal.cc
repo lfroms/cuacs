@@ -93,7 +93,18 @@ void ClientDetailsModal::handleSave() {
         client = new Client();
     }
 
-    // TODO: Set members of client (i.e. client->name = ui->...)
+    client->name = ui->name->text();
+    client->age = ui->age->value();
+    client->phoneNumber = ui->phoneNumber->text();
+    client->email = ui->email->text();
+
+    client->homeSqFoot = ui->sqFoot->value();
+    client->salary = ui->salary->value();
+    client->hrsDedication = ui->hrDedication->value();
+    client->ownedAnimal = ui->ownedAnimal->isChecked();
+    client->ownsAnimal = ui->ownsAnimal->isChecked();
+    client->hasChildren = ui->hasChildren->isChecked();
+    client->idealAnimalId = -1;
 
     bool clientSaved = client->save();
 

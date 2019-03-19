@@ -47,7 +47,6 @@ Client::Client() {}
 
 Client::~Client() {}
 
-
 const QString Client::toCommaSeparated() {
     QString idealAsString = "'" + QString(idealAnimalId) + "'";
     QString idealAnimalNullable =
