@@ -49,7 +49,7 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
     Client* client = var.value<Client*>();
 
-    ClientDetailsModal modal(client);
+    ClientDetailsModal modal(client, true);
     modal.setModal(true);
     modal.exec();
 }

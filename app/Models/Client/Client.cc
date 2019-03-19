@@ -37,6 +37,8 @@ Client::Client(QSqlRecord* record) :
     this->idealAnimalId = record->field("ideal_animal_id").value().toInt();
 }
 
+Client::Client() {}
+
 Client::~Client() {}
 
 const QString Client::getName() { return name; }

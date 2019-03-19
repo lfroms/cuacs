@@ -24,6 +24,7 @@ public:
             );
 
     Client(QSqlRecord* record);
+    Client();
     ~Client();
 
     const QString getName();
