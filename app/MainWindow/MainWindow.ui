@@ -24,47 +24,12 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QVBoxLayout" name="verticalLayout_5">
-    <item>
-     <layout class="QHBoxLayout" name="horizontalLayout">
-      <property name="topMargin">
-       <number>0</number>
-      </property>
-      <item>
-       <spacer name="horizontalSpacer">
-        <property name="orientation">
-         <enum>Qt::Horizontal</enum>
-        </property>
-        <property name="sizeHint" stdset="0">
-         <size>
-          <width>40</width>
-          <height>20</height>
-         </size>
-        </property>
-       </spacer>
-      </item>
-      <item>
-       <widget class="QLabel" name="label">
-        <property name="text">
-         <string>Current User:</string>
-        </property>
-       </widget>
-      </item>
-      <item>
-       <widget class="QComboBox" name="staffOrClientSelector">
-        <item>
-         <property name="text">
-          <string>Staff</string>
-         </property>
-        </item>
-        <item>
-         <property name="text">
-          <string>Client</string>
-         </property>
-        </item>
-       </widget>
-      </item>
-     </layout>
-    </item>
+    <property name="spacing">
+     <number>6</number>
+    </property>
+    <property name="topMargin">
+     <number>16</number>
+    </property>
     <item>
      <layout class="QVBoxLayout" name="verticalLayout_4">
       <property name="sizeConstraint">

@@ -9,8 +9,6 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             this, SLOT(onAnimalClicked(QListWidgetItem*)));
     connect(ui->clientsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onClientClicked(QListWidgetItem*)));
-
-    connect(ui->staffOrClientSelector, SIGNAL (currentIndexChanged(const QString&)), this, SLOT(onUserPermissionsChanged(const QString&)));
 }
 
 MainWindow::~MainWindow() {
@@ -28,30 +26,24 @@ void MainWindow::showEvent(QShowEvent *event) {
         return;
     }
 
+    setGlobalElementsEnabled();
     renderListItems();
 }
 
-void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {
-    readOnly = permissionLevel == "Client" ? true : false;
-    setReadOnlyEnabled();
-}
+void MainWindow::setGlobalElementsEnabled() {
+    bool isAdmin = CurrentUser::user->getIsAdmin();
 
-void MainWindow::setReadOnlyEnabled() {
-    bool enabled = !readOnly;
-
-    ui->actionAdd_Animal->setEnabled(enabled);
-    ui->actionAdd_Client->setEnabled(enabled);
-    ui->tabWidget->setCurrentIndex(0);
-    ui->tabWidget->setTabEnabled(3, enabled);
-    ui->tabWidget->setTabEnabled(2, enabled);
-    ui->tabWidget->setTabEnabled(1, enabled);
+    ui->actionAdd_Animal->setEnabled(isAdmin);
+    ui->actionAdd_Client->setEnabled(isAdmin);
 }
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
     Animal* animal = var.value<Animal*>();
 
-    AnimalDetailsModal modal(animal, readOnly);
+    bool canEdit = CurrentUser::user->getIsAdmin();
+
+    AnimalDetailsModal modal(animal, !canEdit);
     modal.setModal(true);
     modal.exec();
     renderAnimalList();
@@ -61,7 +53,13 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
     Client* client = var.value<Client*>();
 
-    ClientDetailsModal modal(client, readOnly);
+    bool canEdit = CurrentUser::user->getIsAdmin();
+
+    if (client->getId() == CurrentUser::user->getId()) {
+        canEdit = true;
+    }
+
+    ClientDetailsModal modal(client, !canEdit);
     modal.setModal(true);
     modal.exec();
     renderClientList();
@@ -99,6 +97,17 @@ void MainWindow::renderClientList() {
     while (i.hasNext()) {
         Client* currentClient = i.next();
         User* currentUser = User::findBy(currentClient->userId);
+
+        bool hasReadWritePermission = CurrentUser::user->getIsAdmin();
+
+        if (currentClient->getId() == CurrentUser::user->getId()) {
+            hasReadWritePermission = true;
+        }
+
+        if (!hasReadWritePermission) {
+            continue;
+        }
+
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
         DetailListWidgetItem *clientWidget = new DetailListWidgetItem;

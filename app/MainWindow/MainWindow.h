@@ -28,7 +28,6 @@ private slots:
     void handleAddAnimalAction();
     void handleAddClientAction();
     void onAnimalClicked(QListWidgetItem*);
-    void onUserPermissionsChanged(const QString&);
     void onClientClicked(QListWidgetItem*);
 
 private:
@@ -37,8 +36,7 @@ private:
     void renderAnimalList();
     void renderClientList();
 
-    void setReadOnlyEnabled();
-    bool readOnly = false;
+    void setGlobalElementsEnabled();
 
     void showEvent(QShowEvent *event);
 };
