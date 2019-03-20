@@ -34,7 +34,8 @@ SOURCES += \
     Models/Animal/Animal.cc \
     MainWindow/DetailListWidgetItem.cc \
     MainWindow/ClientDetailsModal.cc \
-    Models/Attribute/Attribute.cc
+    Models/Attribute/Attribute.cc \
+    Models/User/User.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -49,7 +50,8 @@ HEADERS += \
     DatabaseAdapter/Config.h \
     ActiveObject/ActiveObject.h \
     Models/Attribute/Attribute.h \
-    ActiveObject/AttributedObject.h
+    ActiveObject/AttributedObject.h \
+    Models/User/User.h
 
 FORMS += \
         MainWindow/MainWindow.ui \

@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <Models/Client/Client.h>
+#include <Models/User/User.h>
 
 namespace Ui {
 class ClientDetailsModal;

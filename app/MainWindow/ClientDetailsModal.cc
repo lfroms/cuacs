@@ -26,7 +26,9 @@ void ClientDetailsModal::configureWindow() {
     QString windowTitle;
 
     if (client != nullptr) {
-        windowTitle = QString("%1's Details").arg(client->name);
+        User* user = User::findBy(client->userId);
+
+        windowTitle = QString("%1's Details").arg(user->getName());
     } else {
         windowTitle = QString("New Client");
     }
@@ -35,7 +37,8 @@ void ClientDetailsModal::configureWindow() {
 }
 
 void ClientDetailsModal::loadProfileData() {
-    QString clientName = client->name;
+    User* user = User::findBy(client->userId);
+    QString clientName = user->getName();
     this->setWindowTitle(clientName + QString("'s")+ QString(" Details"));
 
     ui->name->setText(clientName);
@@ -89,11 +92,25 @@ void ClientDetailsModal::handleSave() {
     QMessageBox messageBox;
     messageBox.setWindowTitle("cuACS");
 
+    User* user = nullptr;
+
     if (client == nullptr) {
         client = new Client();
+        user = new User(ui->name->text(), "", Client::className());
+    } else {
+        user = User::findBy(client->userId);
+        user->setName(ui->name->text());
     }
 
-    client->name = ui->name->text();
+    bool userSaved = user->save();
+
+    if (!userSaved) {
+        messageBox.setText("Failed to save user.");
+        messageBox.exec();
+        return;
+    }
+
+    client->userId = user->getId();
     client->age = ui->age->value();
     client->phoneNumber = ui->phoneNumber->text();
     client->email = ui->email->text();
