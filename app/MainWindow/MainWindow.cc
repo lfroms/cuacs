@@ -47,9 +47,8 @@ void MainWindow::handleEditMyProfile() {
     }
 
     Client* c = clients->first();
-    bool canEdit = c->getId() == Session::currentUser->getId();
 
-    ClientDetailsModal modal(c, !canEdit);
+    ClientDetailsModal modal(c, false);
     modal.setModal(true);
     modal.exec();
 }
@@ -70,11 +69,8 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
     Client* client = var.value<Client*>();
 
-    bool canEdit = Session::currentUser->getIsAdmin();
-
-    if (client->getId() == Session::currentUser->getId()) {
-        canEdit = true;
-    }
+    int currentId = Session::currentUser->getId();
+    bool canEdit = client->getId() == currentId;
 
     ClientDetailsModal modal(client, !canEdit);
     modal.setModal(true);
