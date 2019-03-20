@@ -27,6 +27,7 @@ public:
 private slots:
     void handleAddAnimalAction();
     void handleAddClientAction();
+    void handleEditMyProfile();
     void onAnimalClicked(QListWidgetItem*);
     void onClientClicked(QListWidgetItem*);
 

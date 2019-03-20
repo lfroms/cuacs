@@ -33,8 +33,25 @@ void MainWindow::showEvent(QShowEvent *event) {
 void MainWindow::setGlobalElementsEnabled() {
     bool isAdmin = CurrentUser::user->getIsAdmin();
 
-    ui->actionAdd_Animal->setEnabled(isAdmin);
-    ui->actionAdd_Client->setEnabled(isAdmin);
+    ui->tabWidget->setCurrentIndex(0);
+    ui->tabWidget->setTabEnabled(1, isAdmin);
+    ui->menuTools->setEnabled(isAdmin);
+    ui->actionEdit_My_Profile->setEnabled(!isAdmin);
+}
+
+void MainWindow::handleEditMyProfile() {
+    QVector<Client*>* clients = Client::where("user_id", CurrentUser::user->getId());
+
+    if (clients->isEmpty()) {
+        return;
+    }
+
+    Client* c = clients->first();
+    bool canEdit = c->getId() == CurrentUser::user->getId();
+
+    ClientDetailsModal modal(c, !canEdit);
+    modal.setModal(true);
+    modal.exec();
 }
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
@@ -97,16 +114,6 @@ void MainWindow::renderClientList() {
     while (i.hasNext()) {
         Client* currentClient = i.next();
         User* currentUser = User::findBy(currentClient->userId);
-
-        bool hasReadWritePermission = CurrentUser::user->getIsAdmin();
-
-        if (currentClient->getId() == CurrentUser::user->getId()) {
-            hasReadWritePermission = true;
-        }
-
-        if (!hasReadWritePermission) {
-            continue;
-        }
 
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 

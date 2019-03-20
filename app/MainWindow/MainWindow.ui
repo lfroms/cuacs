@@ -144,7 +144,14 @@
     <addaction name="actionAdd_Animal"/>
     <addaction name="actionAdd_Client"/>
    </widget>
+   <widget class="QMenu" name="menuAccount">
+    <property name="title">
+     <string>Account</string>
+    </property>
+    <addaction name="actionEdit_My_Profile"/>
+   </widget>
    <addaction name="menuTools"/>
+   <addaction name="menuAccount"/>
   </widget>
   <action name="actionAdd_Animal">
    <property name="text">
@@ -154,6 +161,11 @@
   <action name="actionAdd_Client">
    <property name="text">
     <string>New Client Profile</string>
+   </property>
+  </action>
+  <action name="actionEdit_My_Profile">
+   <property name="text">
+    <string>Edit My Profile</string>
    </property>
   </action>
  </widget>
@@ -192,9 +204,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionEdit_My_Profile</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>handleEditMyProfile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handleAddAnimalAction()</slot>
   <slot>handleAddClientAction()</slot>
+  <slot>handleEditMyProfile()</slot>
  </slots>
 </ui>
