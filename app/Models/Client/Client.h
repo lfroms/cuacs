@@ -29,6 +29,7 @@ public:
     const QString toCommaSeparated();
     static const QString className();
 
+    int userId;
     int age;
     QString phoneNumber;
     QString email;
@@ -42,8 +43,6 @@ public:
     // Set to -1 so that we can insert NULL into the database.
     // See source file.
     int idealAnimalId = -1;
-
-    int userId = -1;
 };
 
 Q_DECLARE_METATYPE(Client*)

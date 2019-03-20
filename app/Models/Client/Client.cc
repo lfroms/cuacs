@@ -56,13 +56,8 @@ const QString Client::toCommaSeparated() {
                 "null" :
                 idealAsString;
 
-    QString userIdNullable =
-            userId == -1 ?
-                "null" :
-                QString::number(userId);
-
     QString formatted = QString("%1, %2, '%3', '%4', %5, %6, %7, %8, %9, %10, %11")
-            .arg(userIdNullable)
+            .arg(userId)
             .arg(age)
             .arg(phoneNumber)
             .arg(email)

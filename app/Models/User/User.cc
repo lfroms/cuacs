@@ -17,7 +17,9 @@ User::~User() {}
 User::User(QSqlRecord* record) :
     User(record->field("name").value().toString(),
          record->field("password").value().toString(),
-         record->field("type").value().toString()) {}
+         record->field("type").value().toString()) {
+    this->id = record->field("id").value().toInt();
+}
 
 const QString User::toCommaSeparated() {
     QString formatted = QString("'%1', '%2', '%3', '%4'")
@@ -35,4 +37,13 @@ const QString User::className() {
 
 const QString User::generateUsername(QString fullName) {
     return fullName.toLower().simplified().replace(" ", "");
+}
+
+void User::setName(QString newName) {
+    this->username = generateUsername(newName);
+    this->name = newName;
+}
+
+QString User::getName() {
+    return this->name;
 }

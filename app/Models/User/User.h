@@ -13,7 +13,8 @@ public:
     const QString toCommaSeparated();
     static const QString className();
 
-    QString name;
+    void setName(QString newName);
+    QString getName();
 
 protected:
     QString getUsername();
@@ -22,6 +23,7 @@ private:
     QString username;
     QString password;
     QString type;
+    QString name;
 
     const QString generateUsername(QString fullName);
 };

@@ -90,7 +90,7 @@ void MainWindow::renderClientList() {
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
         DetailListWidgetItem *clientWidget = new DetailListWidgetItem;
-        clientWidget->setTitle(currentUser->name);
+        clientWidget->setTitle(currentUser->getName());
         clientWidget->setSubtitle(currentClient->email);
 
         listWidgetItem->setSizeHint(clientWidget->sizeHint());

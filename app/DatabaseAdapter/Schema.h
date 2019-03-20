@@ -61,7 +61,6 @@ static const QString ATTRIBUTE_SCHEMA =
             "type TEXT"
             );
 
-
 static const QString USER_SCHEMA =
         QString(
             "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
