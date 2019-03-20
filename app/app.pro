@@ -35,7 +35,8 @@ SOURCES += \
     MainWindow/DetailListWidgetItem.cc \
     MainWindow/ClientDetailsModal.cc \
     Models/Attribute/Attribute.cc \
-    Models/User/User.cc
+    Models/User/User.cc \
+    Models/CurrentUser/CurrentUser.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -51,7 +52,8 @@ HEADERS += \
     ActiveObject/ActiveObject.h \
     Models/Attribute/Attribute.h \
     ActiveObject/AttributedObject.h \
-    Models/User/User.h
+    Models/User/User.h \
+    Models/CurrentUser/CurrentUser.h
 
 FORMS += \
         MainWindow/MainWindow.ui \
