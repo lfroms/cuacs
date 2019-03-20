@@ -9,37 +9,57 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             this, SLOT(onAnimalClicked(QListWidgetItem*)));
     connect(ui->clientsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onClientClicked(QListWidgetItem*)));
-
-    connect(ui->staffOrClientSelector, SIGNAL (currentIndexChanged(const QString&)), this, SLOT(onUserPermissionsChanged(const QString&)));
-
-    renderListItems();
 }
 
 MainWindow::~MainWindow() {
     delete ui;
 }
 
-void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {
-    readOnly = permissionLevel == "Client" ? true : false;
-    setReadOnlyEnabled();
+void MainWindow::showEvent(QShowEvent *event) {
+    (void)event;
+
+    LoginWindow l;
+    int result = l.exec();
+
+    if (result == 0 || Session::currentUser == nullptr) {
+        QTimer::singleShot(0, this, SLOT(close()));
+        return;
+    }
+
+    setGlobalElementsEnabled();
+    renderListItems();
 }
 
-void MainWindow::setReadOnlyEnabled() {
-    bool enabled = !readOnly;
+void MainWindow::setGlobalElementsEnabled() {
+    bool isAdmin = Session::currentUser->getIsAdmin();
 
-    ui->actionAdd_Animal->setEnabled(enabled);
-    ui->actionAdd_Client->setEnabled(enabled);
     ui->tabWidget->setCurrentIndex(0);
-    ui->tabWidget->setTabEnabled(3, enabled);
-    ui->tabWidget->setTabEnabled(2, enabled);
-    ui->tabWidget->setTabEnabled(1, enabled);
+    ui->tabWidget->setTabEnabled(1, isAdmin);
+    ui->menuTools->setEnabled(isAdmin);
+    ui->actionEdit_My_Profile->setEnabled(!isAdmin);
+}
+
+void MainWindow::handleEditMyProfile() {
+    QVector<Client*>* clients = Client::where("user_id", Session::currentUser->getId());
+
+    if (clients->isEmpty()) {
+        return;
+    }
+
+    Client* c = clients->first();
+
+    ClientDetailsModal modal(c, false);
+    modal.setModal(true);
+    modal.exec();
 }
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
     Animal* animal = var.value<Animal*>();
 
-    AnimalDetailsModal modal(animal, readOnly);
+    bool canEdit = Session::currentUser->getIsAdmin();
+
+    AnimalDetailsModal modal(animal, !canEdit);
     modal.setModal(true);
     modal.exec();
     renderAnimalList();
@@ -49,7 +69,7 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
     Client* client = var.value<Client*>();
 
-    ClientDetailsModal modal(client, readOnly);
+    ClientDetailsModal modal(client, true);
     modal.setModal(true);
     modal.exec();
     renderClientList();
@@ -87,6 +107,7 @@ void MainWindow::renderClientList() {
     while (i.hasNext()) {
         Client* currentClient = i.next();
         User* currentUser = User::findBy(currentClient->userId);
+
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
         DetailListWidgetItem *clientWidget = new DetailListWidgetItem;

@@ -5,6 +5,10 @@
 #include <QDebug>
 #include <QListWidgetItem>
 #include <QVectorIterator>
+#include <QShowEvent>
+#include <QTimer>
+#include <Models/CurrentUser/Session.h>
+#include <LoginWindow/LoginWindow.h>
 #include <MainWindow/DetailListWidgetItem.h>
 #include <MainWindow/AnimalDetailsModal.h>
 #include <MainWindow/ClientDetailsModal.h>
@@ -23,8 +27,8 @@ public:
 private slots:
     void handleAddAnimalAction();
     void handleAddClientAction();
+    void handleEditMyProfile();
     void onAnimalClicked(QListWidgetItem*);
-    void onUserPermissionsChanged(const QString&);
     void onClientClicked(QListWidgetItem*);
 
 private:
@@ -33,8 +37,9 @@ private:
     void renderAnimalList();
     void renderClientList();
 
-    void setReadOnlyEnabled();
-    bool readOnly = false;
+    void setGlobalElementsEnabled();
+
+    void showEvent(QShowEvent *event);
 };
 
 #endif // MAINWINDOW_H
