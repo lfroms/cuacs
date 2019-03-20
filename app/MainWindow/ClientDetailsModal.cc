@@ -86,6 +86,8 @@ void ClientDetailsModal::setFieldsEnabled() {
     ui->ownedAnimal->setEnabled(enabled);
     ui->ownsAnimal->setEnabled(enabled);
     ui->hasChildren->setEnabled(enabled);
+
+    ui->saveButton->setEnabled(enabled);
 }
 
 void ClientDetailsModal::handleSave() {

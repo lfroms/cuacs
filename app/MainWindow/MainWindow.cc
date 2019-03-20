@@ -69,10 +69,7 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
     Client* client = var.value<Client*>();
 
-    int currentId = Session::currentUser->getId();
-    bool canEdit = client->getId() == currentId;
-
-    ClientDetailsModal modal(client, !canEdit);
+    ClientDetailsModal modal(client, true);
     modal.setModal(true);
     modal.exec();
     renderClientList();
