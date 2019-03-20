@@ -36,7 +36,8 @@ SOURCES += \
     MainWindow/ClientDetailsModal.cc \
     Models/Attribute/Attribute.cc \
     Models/User/User.cc \
-    Models/CurrentUser/CurrentUser.cc
+    Models/CurrentUser/CurrentUser.cc \
+    LoginWindow/LoginWindow.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -53,13 +54,15 @@ HEADERS += \
     Models/Attribute/Attribute.h \
     ActiveObject/AttributedObject.h \
     Models/User/User.h \
-    Models/CurrentUser/CurrentUser.h
+    Models/CurrentUser/CurrentUser.h \
+    LoginWindow/LoginWindow.h
 
 FORMS += \
         MainWindow/MainWindow.ui \
     MainWindow/AnimalDetailsModal.ui \
     MainWindow/DetailListWidgetItem.ui \
-    MainWindow/ClientDetailsModal.ui
+    MainWindow/ClientDetailsModal.ui \
+    LoginWindow/LoginWindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
