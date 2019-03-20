@@ -14,10 +14,11 @@ public:
     static const QString className();
 
     void setName(QString newName);
-    QString getName();
+    const QString getName();
 
-protected:
-    QString getUsername();
+    const QString getPassword();
+    bool getIsAdmin();
+    const QString getUsername();
 
 private:
     QString username;

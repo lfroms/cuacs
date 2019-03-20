@@ -48,6 +48,18 @@ void User::setName(QString newName) {
     this->name = newName;
 }
 
-QString User::getName() {
+const QString User::getName() {
     return this->name;
+}
+
+const QString User::getPassword() {
+    return password;
+}
+
+bool User::getIsAdmin()  {
+    return isAdmin;
+}
+
+const QString User::getUsername() {
+    return username;
 }
