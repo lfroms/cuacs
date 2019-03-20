@@ -21,7 +21,7 @@ void MainWindow::showEvent(QShowEvent *event) {
     LoginWindow l;
     int result = l.exec();
 
-    if (result == 0 || CurrentUser::user == nullptr) {
+    if (result == 0 || Session::currentUser == nullptr) {
         QTimer::singleShot(0, this, SLOT(close()));
         return;
     }
@@ -31,7 +31,7 @@ void MainWindow::showEvent(QShowEvent *event) {
 }
 
 void MainWindow::setGlobalElementsEnabled() {
-    bool isAdmin = CurrentUser::user->getIsAdmin();
+    bool isAdmin = Session::currentUser->getIsAdmin();
 
     ui->tabWidget->setCurrentIndex(0);
     ui->tabWidget->setTabEnabled(1, isAdmin);
@@ -40,14 +40,14 @@ void MainWindow::setGlobalElementsEnabled() {
 }
 
 void MainWindow::handleEditMyProfile() {
-    QVector<Client*>* clients = Client::where("user_id", CurrentUser::user->getId());
+    QVector<Client*>* clients = Client::where("user_id", Session::currentUser->getId());
 
     if (clients->isEmpty()) {
         return;
     }
 
     Client* c = clients->first();
-    bool canEdit = c->getId() == CurrentUser::user->getId();
+    bool canEdit = c->getId() == Session::currentUser->getId();
 
     ClientDetailsModal modal(c, !canEdit);
     modal.setModal(true);
@@ -58,7 +58,7 @@ void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
     Animal* animal = var.value<Animal*>();
 
-    bool canEdit = CurrentUser::user->getIsAdmin();
+    bool canEdit = Session::currentUser->getIsAdmin();
 
     AnimalDetailsModal modal(animal, !canEdit);
     modal.setModal(true);
@@ -70,9 +70,9 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     QVariant var = clientWidgetItem->data(Qt::UserRole);
     Client* client = var.value<Client*>();
 
-    bool canEdit = CurrentUser::user->getIsAdmin();
+    bool canEdit = Session::currentUser->getIsAdmin();
 
-    if (client->getId() == CurrentUser::user->getId()) {
+    if (client->getId() == Session::currentUser->getId()) {
         canEdit = true;
     }
 

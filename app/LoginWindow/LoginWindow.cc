@@ -33,6 +33,6 @@ void LoginWindow::handleLogInAction() {
         return;
     }
 
-    CurrentUser::user = usernameMatches->first();
+    Session::currentUser = usernameMatches->first();
     this->accept();
 }

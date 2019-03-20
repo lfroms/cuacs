@@ -3,13 +3,13 @@
 
 #include <Models/User/User.h>
 
-class CurrentUser {
+class Session {
 public:
-    static User* user;
+    static User* currentUser;
 
 private:
-    CurrentUser();
-    ~CurrentUser();
+    Session();
+    ~Session();
 };
 
 #endif // CURRENTUSER_H

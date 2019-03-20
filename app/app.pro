@@ -36,8 +36,8 @@ SOURCES += \
     MainWindow/ClientDetailsModal.cc \
     Models/Attribute/Attribute.cc \
     Models/User/User.cc \
-    Models/CurrentUser/CurrentUser.cc \
-    LoginWindow/LoginWindow.cc
+    LoginWindow/LoginWindow.cc \
+    Models/CurrentUser/Session.cc
 
 HEADERS += \
         MainWindow/MainWindow.h \
@@ -54,8 +54,8 @@ HEADERS += \
     Models/Attribute/Attribute.h \
     ActiveObject/AttributedObject.h \
     Models/User/User.h \
-    Models/CurrentUser/CurrentUser.h \
-    LoginWindow/LoginWindow.h
+    LoginWindow/LoginWindow.h \
+    Models/CurrentUser/Session.h
 
 FORMS += \
         MainWindow/MainWindow.ui \
