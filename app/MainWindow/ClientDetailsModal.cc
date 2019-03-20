@@ -99,9 +99,9 @@ void ClientDetailsModal::handleSave() {
         user = new User(ui->name->text(), "", Client::className());
     } else {
         user = User::findBy(client->userId);
+        user->setName(ui->name->text());
     }
 
-    user->setName(ui->name->text());
     bool userSaved = user->save();
 
     if (!userSaved) {
