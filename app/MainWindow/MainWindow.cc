@@ -23,7 +23,7 @@ void MainWindow::showEvent(QShowEvent *event) {
     LoginWindow l;
     int result = l.exec();
 
-    if (result == 0) {
+    if (result == 0 || CurrentUser::user == nullptr) {
         QTimer::singleShot(0, this, SLOT(close()));
         return;
     }
