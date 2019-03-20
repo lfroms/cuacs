@@ -92,13 +92,25 @@ void ClientDetailsModal::handleSave() {
     QMessageBox messageBox;
     messageBox.setWindowTitle("cuACS");
 
-    User* user = User::findBy(client->userId);
+    User* user = nullptr;
 
     if (client == nullptr) {
         client = new Client();
         user = new User(ui->name->text(), "", Client::className());
+    } else {
+        user = User::findBy(client->userId);
     }
 
+    user->setName(ui->name->text());
+    bool userSaved = user->save();
+
+    if (!userSaved) {
+        messageBox.setText("Failed to save user.");
+        messageBox.exec();
+        return;
+    }
+
+    client->userId = user->getId();
     client->age = ui->age->value();
     client->phoneNumber = ui->phoneNumber->text();
     client->email = ui->email->text();
@@ -114,18 +126,6 @@ void ClientDetailsModal::handleSave() {
 
     if (!clientSaved) {
         messageBox.setText("Failed to save client.");
-        messageBox.exec();
-        return;
-    }
-
-    qDebug() << user->getName();
-
-
-    user->setName(ui->name->text());
-    bool userSaved = user->save();
-
-    if (!userSaved) {
-        messageBox.setText("Failed to save user.");
         messageBox.exec();
         return;
     }
