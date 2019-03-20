@@ -74,6 +74,10 @@ void Seeds::runAll() {
     User("John Smith", randPass(), Client::className()).create();
 
 
+    qDebug() << "Seeding staff...";
+    User("Christine Laurendeau", "1234", "staff", true).create();
+
+
     qDebug() << "Seeding clients...";
     Client(1, 24, "613-928-5235", "johnny@cuacs.ca", 400, true, false, 80000, 4, true).create();
     Client(2, 19, "613-413-5276", "niko.kouloufakos@shopify.com", 80, true, true, 60000, 4, false).create();
