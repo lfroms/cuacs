@@ -3,12 +3,14 @@
 User::User(
         QString name,
         QString password,
-        QString type
+        QString type,
+        bool isAdmin
         ) {
     this->name = name;
     this->username = generateUsername(name);
     this->password = password;
     this->type = type;
+    this->isAdmin = isAdmin;
 }
 
 User::~User() {}
@@ -17,16 +19,18 @@ User::~User() {}
 User::User(QSqlRecord* record) :
     User(record->field("name").value().toString(),
          record->field("password").value().toString(),
-         record->field("type").value().toString()) {
+         record->field("type").value().toString(),
+         record->field("admin").value().toBool()) {
     this->id = record->field("id").value().toInt();
 }
 
 const QString User::toCommaSeparated() {
-    QString formatted = QString("'%1', '%2', '%3', '%4'")
+    QString formatted = QString("'%1', '%2', '%3', '%4', %5")
             .arg(name)
             .arg(username)
             .arg(password)
-            .arg(type);
+            .arg(type)
+            .arg(isAdmin);
 
     return formatted;
 }

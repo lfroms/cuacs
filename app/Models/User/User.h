@@ -6,7 +6,7 @@
 
 class User : public ActiveObject<User> {
 public:
-    User(QString name, QString password, QString type);
+    User(QString name, QString password, QString type, bool isAdmin = false);
     User(QSqlRecord* record);
     ~User();
 
@@ -24,6 +24,7 @@ private:
     QString password;
     QString type;
     QString name;
+    bool isAdmin;
 
     const QString generateUsername(QString fullName);
 };

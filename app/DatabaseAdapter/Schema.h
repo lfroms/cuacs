@@ -67,7 +67,8 @@ static const QString USER_SCHEMA =
             "name TEXT NOT NULL,"
             "username TEXT NOT NULL UNIQUE,"
             "password TEXT NOT NULL,"
-            "type TEXT NOT NULL"
+            "type TEXT NOT NULL,"
+            "admin INTEGER NOT NULL DEFAULT 0"
             );
 
 static const QString ANIMAL_ATTRIBUTE_SCHEMA =
