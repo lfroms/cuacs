@@ -50,8 +50,13 @@
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
+         <property name="font">
+          <font>
+           <italic>true</italic>
+          </font>
+         </property>
          <property name="text">
-          <string>Log In To</string>
+          <string>Log in to:</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignCenter</set>
@@ -69,6 +74,8 @@
          <property name="font">
           <font>
            <pointsize>30</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
           </font>
          </property>
          <property name="text">
@@ -198,6 +205,9 @@
              <width>220</width>
              <height>0</height>
             </size>
+           </property>
+           <property name="echoMode">
+            <enum>QLineEdit::Password</enum>
            </property>
           </widget>
          </item>
