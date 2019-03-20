@@ -1,28 +1,38 @@
 #include "User.h"
 
 User::User(
-        QString username,
-        QString password
+        QString name,
+        QString password,
+        QString type
         ) {
-    this->username = username;
+    this->name = name;
+    this->username = generateUsername(name);
     this->password = password;
+    this->type = type;
 }
 
 User::~User() {}
 
 // Define how the SQL record should be decomposed into this object.
 User::User(QSqlRecord* record) :
-    User(record->field("username").value().toString(),
-         record->field("password").value().toString()) {}
+    User(record->field("name").value().toString(),
+         record->field("password").value().toString(),
+         record->field("type").value().toString()) {}
 
 const QString User::toCommaSeparated() {
-    QString formatted = QString("'%1', '%2'")
+    QString formatted = QString("'%1', '%2', '%3', '%4'")
+            .arg(name)
             .arg(username)
-            .arg(password);
+            .arg(password)
+            .arg(type);
 
     return formatted;
 }
 
 const QString User::className() {
     return "user";
+}
+
+const QString User::generateUsername(QString fullName) {
+    return fullName.toLower().simplified().replace(" ", "");
 }

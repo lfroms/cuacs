@@ -36,8 +36,7 @@ static const QString ANIMAL_SCHEMA =
 static const QString CLIENT_SCHEMA =
         QString(
             "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
-            "user_id INTEGER,"
-            "name TEXT NOT NULL,"
+            "user_id INTEGER NOT NULL,"
             "age INTEGER NOT NULL,"
             "phone_number TEXT NOT NULL,"
             "email TEXT NOT NULL,"
@@ -66,8 +65,10 @@ static const QString ATTRIBUTE_SCHEMA =
 static const QString USER_SCHEMA =
         QString(
             "id INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,"
+            "name TEXT NOT NULL,"
             "username TEXT NOT NULL UNIQUE,"
-            "password TEXT NOT NULL"
+            "password TEXT NOT NULL,"
+            "type TEXT NOT NULL"
             );
 
 static const QString ANIMAL_ATTRIBUTE_SCHEMA =

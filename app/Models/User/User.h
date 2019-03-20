@@ -6,12 +6,14 @@
 
 class User : public ActiveObject<User> {
 public:
-    User(QString username, QString password);
+    User(QString name, QString password, QString type);
     User(QSqlRecord* record);
     ~User();
 
     const QString toCommaSeparated();
     static const QString className();
+
+    QString name;
 
 protected:
     QString getUsername();
@@ -19,6 +21,9 @@ protected:
 private:
     QString username;
     QString password;
+    QString type;
+
+    const QString generateUsername(QString fullName);
 };
 
 #endif // USER_H

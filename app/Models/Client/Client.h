@@ -9,7 +9,7 @@ using namespace std;
 class Client : public AttributedObject<Client> {
 public:
     Client(
-            QString name,
+            int userId,
             int age,
             QString phoneNumber,
             QString email,
@@ -29,7 +29,6 @@ public:
     const QString toCommaSeparated();
     static const QString className();
 
-    QString name;
     int age;
     QString phoneNumber;
     QString email;

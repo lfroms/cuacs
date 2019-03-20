@@ -86,10 +86,11 @@ void MainWindow::renderClientList() {
 
     while (i.hasNext()) {
         Client* currentClient = i.next();
+        User* currentUser = User::findBy(currentClient->userId);
         QListWidgetItem *listWidgetItem = new QListWidgetItem(ui->clientsListWidget);
 
         DetailListWidgetItem *clientWidget = new DetailListWidgetItem;
-        clientWidget->setTitle(currentClient->name);
+        clientWidget->setTitle(currentUser->name);
         clientWidget->setSubtitle(currentClient->email);
 
         listWidgetItem->setSizeHint(clientWidget->sizeHint());

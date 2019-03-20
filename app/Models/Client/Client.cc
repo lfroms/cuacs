@@ -1,7 +1,7 @@
 #include "Client.h"
 
 Client::Client(
-        QString name,
+        int userId,
         int age,
         QString phoneNumber,
         QString email,
@@ -13,7 +13,7 @@ Client::Client(
         bool hasChildren,
         int idealAnimalId
         ) {
-    this->name = name;
+    this->userId = userId;
     this->age = age;
     this->phoneNumber = phoneNumber;
     this->email = email;
@@ -28,7 +28,7 @@ Client::Client(
 
 // Define how the SQL record should be decomposed into this object.
 Client::Client(QSqlRecord* record) :
-    Client(record->field("name").value().toString(),
+    Client(record->field("user_id").value().toInt(),
            record->field("age").value().toInt(),
            record->field("phone_number").value().toString(),
            record->field("email").value().toString(),
@@ -43,9 +43,6 @@ Client::Client(QSqlRecord* record) :
 
     bool dbIdealAnimalIdNull = record->field("ideal_animal_id").isNull();
     this->idealAnimalId = dbIdealAnimalIdNull ? -1 : record->field("ideal_animal_id").value().toInt();
-
-    bool dbUserIdNull = record->field("user_id").isNull();
-    this->idealAnimalId = dbUserIdNull ? -1 : record->field("user_id").value().toInt();
 }
 
 Client::Client() {}
@@ -64,9 +61,8 @@ const QString Client::toCommaSeparated() {
                 "null" :
                 QString::number(userId);
 
-    QString formatted = QString("%1, '%2', %3, '%4', '%5', %6, %7, %8, %9, %10, %11, %12")
+    QString formatted = QString("%1, %2, '%3', '%4', %5, %6, %7, %8, %9, %10, %11")
             .arg(userIdNullable)
-            .arg(name)
             .arg(age)
             .arg(phoneNumber)
             .arg(email)
