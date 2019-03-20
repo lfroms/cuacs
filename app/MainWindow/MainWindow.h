@@ -5,6 +5,10 @@
 #include <QDebug>
 #include <QListWidgetItem>
 #include <QVectorIterator>
+#include <QShowEvent>
+#include <QTimer>
+#include <Models/CurrentUser/CurrentUser.h>
+#include <LoginWindow/LoginWindow.h>
 #include <MainWindow/DetailListWidgetItem.h>
 #include <MainWindow/AnimalDetailsModal.h>
 #include <MainWindow/ClientDetailsModal.h>
@@ -35,6 +39,8 @@ private:
 
     void setReadOnlyEnabled();
     bool readOnly = false;
+
+    void showEvent(QShowEvent *event);
 };
 
 #endif // MAINWINDOW_H

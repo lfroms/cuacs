@@ -4,7 +4,6 @@
 LoginWindow::LoginWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginWindow) {
-
     ui->setupUi(this);
 }
 
@@ -17,7 +16,6 @@ void LoginWindow::handleLogInAction() {
     messageBox.setWindowTitle("Login Error");
     messageBox.setText("Incorrect username or password.");
 
-
     QString enteredUsername = ui->username->text();
     QString enteredPassword = ui->password->text();
 
@@ -28,7 +26,7 @@ void LoginWindow::handleLogInAction() {
         return;
     }
 
-    QVector<User*>* passwordMatches = User::where("password", enteredUsername);
+    QVector<User*>* passwordMatches = User::where("password", enteredPassword);
 
     if (passwordMatches->isEmpty()) {
         messageBox.exec();
@@ -36,5 +34,5 @@ void LoginWindow::handleLogInAction() {
     }
 
     CurrentUser::user = usernameMatches->first();
-    this->close();
+    this->accept();
 }

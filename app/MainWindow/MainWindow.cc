@@ -11,12 +11,24 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             this, SLOT(onClientClicked(QListWidgetItem*)));
 
     connect(ui->staffOrClientSelector, SIGNAL (currentIndexChanged(const QString&)), this, SLOT(onUserPermissionsChanged(const QString&)));
-
-    renderListItems();
 }
 
 MainWindow::~MainWindow() {
     delete ui;
+}
+
+void MainWindow::showEvent(QShowEvent *event) {
+    (void)event;
+
+    LoginWindow l;
+    int result = l.exec();
+
+    if (result == 0) {
+        QTimer::singleShot(0, this, SLOT(close()));
+        return;
+    }
+
+    renderListItems();
 }
 
 void MainWindow::onUserPermissionsChanged(const QString& permissionLevel) {

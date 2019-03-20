@@ -81,12 +81,12 @@
         <number>15</number>
        </property>
        <item>
-        <layout class="QHBoxLayout" name="UsernameContainer">
+        <layout class="QHBoxLayout" name="UsernameContainer" stretch="0,0,0,0">
          <property name="spacing">
           <number>12</number>
          </property>
          <item>
-          <spacer name="horizontalSpacer">
+          <spacer name="horizontalSpacer_3">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -101,13 +101,16 @@
          <item>
           <widget class="QLabel" name="usernameLabel">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="text">
             <string>Username:</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -128,7 +131,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_2">
+          <spacer name="horizontalSpacer">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -143,12 +146,12 @@
         </layout>
        </item>
        <item>
-        <layout class="QHBoxLayout" name="PasswordContainer">
+        <layout class="QHBoxLayout" name="PasswordContainer" stretch="0,0,0,0">
          <property name="spacing">
           <number>12</number>
          </property>
          <item>
-          <spacer name="horizontalSpacer_3">
+          <spacer name="horizontalSpacer_4">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
@@ -163,13 +166,16 @@
          <item>
           <widget class="QLabel" name="passwordLabel">
            <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+            <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
              <horstretch>0</horstretch>
              <verstretch>0</verstretch>
             </sizepolicy>
            </property>
            <property name="text">
             <string>Password</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
            </property>
           </widget>
          </item>
@@ -190,7 +196,7 @@
           </widget>
          </item>
          <item>
-          <spacer name="horizontalSpacer_4">
+          <spacer name="horizontalSpacer_2">
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
