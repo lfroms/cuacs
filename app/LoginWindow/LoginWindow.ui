@@ -10,8 +10,17 @@
     <height>327</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>510</width>
+    <height>327</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Dialog</string>
+  </property>
+  <property name="modal">
+   <bool>true</bool>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout_2">
    <item>
