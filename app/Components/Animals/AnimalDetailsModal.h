@@ -3,7 +3,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include <Models/Animal/Animal.h>
+#include <Repository/Animal/Animal.h>
 
 namespace Ui {
 class AnimalDetailsModal;

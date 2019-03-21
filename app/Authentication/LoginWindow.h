@@ -5,8 +5,8 @@
 #include <QString>
 #include <QVector>
 #include <QMessageBox>
-#include <Models/User/User.h>
-#include <Models/CurrentUser/Session.h>
+#include <Repository/User/User.h>
+#include <Repository/Session/Session.h>
 
 namespace Ui {
 class LoginWindow;

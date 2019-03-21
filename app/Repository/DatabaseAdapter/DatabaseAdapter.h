@@ -6,10 +6,10 @@
 #include <QSqlQuery>
 #include <QDebug>
 
-#include <Models/Animal/Animal.h>
-#include <Models/Client/Client.h>
+#include <Repository/Animal/Animal.h>
+#include <Repository/Client/Client.h>
 
-#include <DatabaseAdapter/Seeds.h>
+#include <Repository/DatabaseAdapter/Seeds.h>
 
 #include <vector>
 

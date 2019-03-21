@@ -7,7 +7,7 @@
 #include <QSqlField>
 #include <QDebug>
 #include <QVector>
-#include <Models/Attribute/Attribute.h>
+#include <Repository/Attribute/Attribute.h>
 
 template <class T>
 class AttributedObject : public ActiveObject<T> {

@@ -2,7 +2,7 @@
 #define CLIENT_H
 
 #include <QString>
-#include <ActiveObject/AttributedObject.h>
+#include <Repository/ActiveObject/AttributedObject.h>
 
 using namespace std;
 

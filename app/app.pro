@@ -25,44 +25,44 @@ DEFINES += QT_DEPRECATED_WARNINGS
 CONFIG += c++11
 
 SOURCES += \
-        MainWindow/MainWindow.cc \
-    DatabaseAdapter/DatabaseAdapter.cc \
+        Components/MainWindow.cc \
+    Repository/DatabaseAdapter/DatabaseAdapter.cc \
     main.cc \
-    Models/Client/Client.cc \
-    DatabaseAdapter/Seeds.cc \
-    MainWindow/AnimalDetailsModal.cc \
-    Models/Animal/Animal.cc \
-    MainWindow/DetailListWidgetItem.cc \
-    MainWindow/ClientDetailsModal.cc \
-    Models/Attribute/Attribute.cc \
-    Models/User/User.cc \
-    LoginWindow/LoginWindow.cc \
-    Models/CurrentUser/Session.cc
+    Repository/Client/Client.cc \
+    Repository/DatabaseAdapter/Seeds.cc \
+    Components/Animals/AnimalDetailsModal.cc \
+    Repository/Animal/Animal.cc \
+    Components/DetailListWidgetItem.cc \
+    Components/Clients/ClientDetailsModal.cc \
+    Repository/Attribute/Attribute.cc \
+    Repository/User/User.cc \
+    Authentication/LoginWindow.cc \
+    Repository/Session/Session.cc
 
 HEADERS += \
-        MainWindow/MainWindow.h \
-    DatabaseAdapter/DatabaseAdapter.h \
-    Models/Client/Client.h \
-    DatabaseAdapter/Seeds.h \
-    MainWindow/AnimalDetailsModal.h \
-    Models/Animal/Animal.h \
-    MainWindow/DetailListWidgetItem.h \
-    MainWindow/ClientDetailsModal.h \
-    DatabaseAdapter/Schema.h \
-    DatabaseAdapter/Config.h \
-    ActiveObject/ActiveObject.h \
-    Models/Attribute/Attribute.h \
-    ActiveObject/AttributedObject.h \
-    Models/User/User.h \
-    LoginWindow/LoginWindow.h \
-    Models/CurrentUser/Session.h
+        Components/MainWindow.h \
+    Repository/DatabaseAdapter/DatabaseAdapter.h \
+    Repository/Client/Client.h \
+    Repository/DatabaseAdapter/Seeds.h \
+    Components/Animals/AnimalDetailsModal.h \
+    Repository/Animal/Animal.h \
+    Components/DetailListWidgetItem.h \
+    Components/Clients/ClientDetailsModal.h \
+    Repository/DatabaseAdapter/Schema.h \
+    Repository/DatabaseAdapter/Config.h \
+    Repository/ActiveObject/ActiveObject.h \
+    Repository/Attribute/Attribute.h \
+    Repository/ActiveObject/AttributedObject.h \
+    Repository/User/User.h \
+    Authentication/LoginWindow.h \
+    Repository/Session/Session.h
 
 FORMS += \
-        MainWindow/MainWindow.ui \
-    MainWindow/AnimalDetailsModal.ui \
-    MainWindow/DetailListWidgetItem.ui \
-    MainWindow/ClientDetailsModal.ui \
-    LoginWindow/LoginWindow.ui
+        Components/MainWindow.ui \
+    Components/Animals/AnimalDetailsModal.ui \
+    Components/DetailListWidgetItem.ui \
+    Components/Clients/ClientDetailsModal.ui \
+    Authentication/LoginWindow.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
