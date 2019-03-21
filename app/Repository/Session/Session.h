@@ -1,5 +1,5 @@
-#ifndef CURRENTUSER_H
-#define CURRENTUSER_H
+#ifndef SESSION_H
+#define SESSION_H
 
 #include <Repository/User/User.h>
 
@@ -12,4 +12,4 @@ private:
     ~Session();
 };
 
-#endif // CURRENTUSER_H
+#endif // SESSION_H

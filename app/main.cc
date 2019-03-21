@@ -1,5 +1,5 @@
-#include "MainWindow/MainWindow.h"
-#include <DatabaseAdapter/DatabaseAdapter.h>
+#include "Components/MainWindow.h"
+#include <Repository/DatabaseAdapter/DatabaseAdapter.h>
 
 #include <QApplication>
 

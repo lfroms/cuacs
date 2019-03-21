@@ -7,7 +7,7 @@
 #include <QVectorIterator>
 #include <QShowEvent>
 #include <QTimer>
-#include <Repository/CurrentUser/Session.h>
+#include <Repository/Session/Session.h>
 #include <Authentication/LoginWindow.h>
 #include <Components/DetailListWidgetItem.h>
 #include <Components/Animals/AnimalDetailsModal.h>

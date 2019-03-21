@@ -37,7 +37,7 @@ SOURCES += \
     Repository/Attribute/Attribute.cc \
     Repository/User/User.cc \
     Authentication/LoginWindow.cc \
-    Repository/CurrentUser/Session.cc
+    Repository/Session/Session.cc
 
 HEADERS += \
         Components/MainWindow.h \
@@ -55,7 +55,7 @@ HEADERS += \
     Repository/ActiveObject/AttributedObject.h \
     Repository/User/User.h \
     Authentication/LoginWindow.h \
-    Repository/CurrentUser/Session.h
+    Repository/Session/Session.h
 
 FORMS += \
         Components/MainWindow.ui \
