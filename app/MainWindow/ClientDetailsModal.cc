@@ -159,7 +159,7 @@ void ClientDetailsModal::handleEditIdealAnimal() {
 
     int beforeCount = Animal::count();
 
-    AnimalDetailsModal modal(a, false, true);
+    AnimalDetailsModal modal(a, readOnly, true);
     modal.exec();
 
     int afterCount = Animal::count();
