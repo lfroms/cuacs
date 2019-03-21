@@ -5,6 +5,8 @@ LoginWindow::LoginWindow(QWidget *parent) :
     QDialog(parent),
     ui(new Ui::LoginWindow) {
     ui->setupUi(this);
+
+    this->setWindowTitle("cuACS Login");
 }
 
 LoginWindow::~LoginWindow() {
