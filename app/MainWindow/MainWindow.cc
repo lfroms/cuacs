@@ -53,6 +53,13 @@ void MainWindow::handleEditMyProfile() {
     modal.exec();
 }
 
+void MainWindow::handleLogOut() {
+   Session::currentUser = nullptr;
+
+   hide();
+   show();
+}
+
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
     QVariant var = animalWidgetItem->data(Qt::UserRole);
     Animal* animal = var.value<Animal*>();
