@@ -13,7 +13,12 @@ class AnimalDetailsModal : public QDialog {
     Q_OBJECT
 
 public:
-    explicit AnimalDetailsModal(Animal* a, bool readOnly, QWidget *parent = nullptr);
+    explicit AnimalDetailsModal(
+            Animal* a,
+            bool readOnly,
+            bool idealAnimalMode = false,
+            QWidget *parent = nullptr
+            );
     ~AnimalDetailsModal();
 
 private slots:
@@ -24,6 +29,7 @@ private:
     Ui::AnimalDetailsModal *ui;
     Animal* animal;
     bool readOnly;
+    bool idealAnimalMode;
 
     void loadProfileData();
     void setFieldsEnabled();

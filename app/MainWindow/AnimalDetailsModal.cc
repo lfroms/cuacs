@@ -1,14 +1,15 @@
 ﻿#include "AnimalDetailsModal.h"
 #include "ui_AnimalDetailsModal.h"
 
-AnimalDetailsModal::AnimalDetailsModal(Animal* a, bool readOnly, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::AnimalDetailsModal) {
+AnimalDetailsModal::AnimalDetailsModal(
+        Animal* a, bool readOnly, bool idealAnimalMode, QWidget *parent
+        ) :QDialog(parent), ui(new Ui::AnimalDetailsModal) {
 
     ui->setupUi(this);
 
     animal = a;
     this->readOnly = readOnly;
+    this->idealAnimalMode = idealAnimalMode;
 
     if (a != nullptr) {
         loadProfileData();
@@ -27,8 +28,11 @@ void AnimalDetailsModal::configureWindow() {
 
     if (animal != nullptr) {
         windowTitle = QString("%1's Details").arg(animal->name);
-    } else {
-        windowTitle = QString("New Animal");
+    } else if (idealAnimalMode) {
+        windowTitle = "Edit Ideal Animal";
+    }
+    else {
+        windowTitle = "New Animal";
     }
 
     this->setWindowTitle(windowTitle);
