@@ -25,13 +25,27 @@ Note that the first launch command will remove all data then load new seed data 
 * `./app` will launch the application.
 
 ## Running Instructions
-You can switch between Staff and Client mode by selecting the mode in the top right corner.
+As a user of the program you can authenticate yourself and log into the app by providing your credentials. Test the application experience in the perspective of a shelter staff member by providing the following credentials:
+```
+username: christinelaurendeau
+password: 1234
+```
+As a shelter staff you can perform the following actions:
+* View the list animals at a glance, and double click on the animal profiles to view a detailed version of the profile as well as the ability to edit the currently viewed animal.
+* View the list of clients at a glance, and double click on the client profiles to view a detailed version of the profile. Staff are not able to edit any of the client profiles.
+* Click on the `Add Profiles` dropdown menu to add either an animal or client profile.
+* Click on the `Account` dropdown menu to Log Out, which redirects you to the log in screen.
 
-The Client mode offers just View Animals and View Animal Details.
+Otherwise, test the application experience in the perspective of a client by providing the following credentials:
+```
+username: rockywilliams
+password: 267
+```
+As a client you can perform the following actions:
+* View the list animals at a glance, and double click on the animal profiles to view a detailed version of the profile.
+* Click on the `Account` dropdown menu to Log Out or edit their own profiles.
 
-The Staff mode offers the same features as Client, as well as Add Animal, Add Client, View Client, and View Client Details.
-
-You can view details of an Animal or Client by double clicking on them.  This will open another window in which you will be able to view the details.
+> Note: double clicking on profiles will open another window in which you will be able to view the details.
 
 ## Development
 * Ubuntu (64-bit)
