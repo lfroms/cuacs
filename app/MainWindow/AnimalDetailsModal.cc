@@ -72,7 +72,7 @@ void AnimalDetailsModal::setFieldsEnabled() {
     bool enabled = !readOnly;
 
     ui->animalType->setEnabled(enabled);
-    ui->nameEdit->setEnabled(enabled);
+    ui->nameEdit->setEnabled(enabled && !idealAnimalMode);
     ui->breedEdit->setEnabled(enabled);
     ui->gender->setEnabled(enabled);
     ui->colorEdit->setEnabled(enabled);
@@ -111,6 +111,7 @@ void AnimalDetailsModal::handleSave() {
     animal->neuteredOrSpayed = ui->neuteredCheckBox->isChecked();
     animal->requiresMedicalAttn =  ui->medicalCheckbox->isChecked();
     animal->color = ui->colorEdit->text();
+    animal->isHypothetical = idealAnimalMode;
 
     bool animalSaved = animal->save();
 
