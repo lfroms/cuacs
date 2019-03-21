@@ -71,7 +71,7 @@ void Seeds::runAll() {
     User("Timothy Jersey", randPass(), Client::className()).create();
     User("Rocky Williams", randPass(), Client::className()).create();
     User("Grace Smith", randPass(), Client::className()).create();
-    User("John Smith", randPass(), Client::className()).create();
+    User("John Smith", "4321", Client::className()).create();
 
 
     qDebug() << "Seeding staff...";
