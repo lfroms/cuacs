@@ -3,6 +3,7 @@
 
 #include <QDialog>
 #include <QMessageBox>
+#include "AnimalDetailsModal.h"
 #include <Models/Client/Client.h>
 #include <Models/User/User.h>
 
@@ -20,6 +21,7 @@ public:
 private slots:
     void handleCancel();
     void handleSave();
+    void handleEditIdealAnimal();
 
 private:
     Ui::ClientDetailsModal *ui;

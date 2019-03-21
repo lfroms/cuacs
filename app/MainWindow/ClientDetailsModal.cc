@@ -88,6 +88,14 @@ void ClientDetailsModal::setFieldsEnabled() {
     ui->hasChildren->setEnabled(enabled);
 
     ui->saveButton->setEnabled(enabled);
+
+    // Edit Ideal Animal Button
+    if (client != nullptr) {
+        bool shouldEnableButton = client->idealAnimalId != -1 || !readOnly;
+        ui->editIdealAnimal->setEnabled(shouldEnableButton);
+    } else {
+        ui->editIdealAnimal->setEnabled(false);
+    }
 }
 
 void ClientDetailsModal::handleSave() {
@@ -144,6 +152,28 @@ void ClientDetailsModal::handleSave() {
 
     messageBox.setText("Client profile saved.");
     messageBox.exec();
+}
+
+void ClientDetailsModal::handleEditIdealAnimal() {
+    Animal* a = Animal::findBy(client->idealAnimalId);
+
+    int beforeCount = Animal::count();
+
+    AnimalDetailsModal modal(a, readOnly, true);
+    modal.exec();
+
+    int afterCount = Animal::count();
+
+    if (beforeCount == afterCount && a == nullptr) {
+        return;
+    }
+
+    if (beforeCount != afterCount && a == nullptr) {
+        a = Animal::last();
+    }
+
+    client->idealAnimalId = a->getId();
+    client->save();
 }
 
 void ClientDetailsModal::handleCancel() {

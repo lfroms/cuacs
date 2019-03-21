@@ -1,14 +1,15 @@
 ﻿#include "AnimalDetailsModal.h"
 #include "ui_AnimalDetailsModal.h"
 
-AnimalDetailsModal::AnimalDetailsModal(Animal* a, bool readOnly, QWidget *parent) :
-    QDialog(parent),
-    ui(new Ui::AnimalDetailsModal) {
+AnimalDetailsModal::AnimalDetailsModal(
+        Animal* a, bool readOnly, bool idealAnimalMode, QWidget *parent
+        ) :QDialog(parent), ui(new Ui::AnimalDetailsModal) {
 
     ui->setupUi(this);
 
     animal = a;
     this->readOnly = readOnly;
+    this->idealAnimalMode = idealAnimalMode;
 
     if (a != nullptr) {
         loadProfileData();
@@ -26,9 +27,17 @@ void AnimalDetailsModal::configureWindow() {
     QString windowTitle;
 
     if (animal != nullptr) {
-        windowTitle = QString("%1's Details").arg(animal->name);
+        if (animal->name == "" && idealAnimalMode) {
+            windowTitle = "Edit Matching Preferences";
+        } else if (animal->name == "") {
+            windowTitle = "Edit Animal";
+        } else {
+            windowTitle = QString("%1's Details").arg(animal->name);
+        }
+    } else if (idealAnimalMode) {
+        windowTitle = "New Matching Preferences";
     } else {
-        windowTitle = QString("New Animal");
+        windowTitle = "New Animal";
     }
 
     this->setWindowTitle(windowTitle);
@@ -68,7 +77,7 @@ void AnimalDetailsModal::setFieldsEnabled() {
     bool enabled = !readOnly;
 
     ui->animalType->setEnabled(enabled);
-    ui->nameEdit->setEnabled(enabled);
+    ui->nameEdit->setEnabled(enabled && !idealAnimalMode);
     ui->breedEdit->setEnabled(enabled);
     ui->gender->setEnabled(enabled);
     ui->colorEdit->setEnabled(enabled);
@@ -107,6 +116,7 @@ void AnimalDetailsModal::handleSave() {
     animal->neuteredOrSpayed = ui->neuteredCheckBox->isChecked();
     animal->requiresMedicalAttn =  ui->medicalCheckbox->isChecked();
     animal->color = ui->colorEdit->text();
+    animal->isHypothetical = idealAnimalMode;
 
     bool animalSaved = animal->save();
 

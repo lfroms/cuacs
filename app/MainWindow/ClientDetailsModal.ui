@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>673</width>
-    <height>505</height>
+    <height>527</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -119,6 +119,13 @@
         <widget class="QLineEdit" name="email">
          <property name="enabled">
           <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="editIdealAnimal">
+         <property name="text">
+          <string>Matching Preferences</string>
          </property>
         </widget>
        </item>
@@ -612,9 +619,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>editIdealAnimal</sender>
+   <signal>clicked()</signal>
+   <receiver>ClientDetailsModal</receiver>
+   <slot>handleEditIdealAnimal()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>88</x>
+     <y>311</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>336</x>
+     <y>263</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handleCancel()</slot>
   <slot>handleSave()</slot>
+  <slot>handleEditIdealAnimal()</slot>
  </slots>
 </ui>
