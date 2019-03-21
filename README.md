@@ -35,6 +35,7 @@ As a shelter staff you can perform the following actions:
 * View the list of clients at a glance, and double click on the client profiles to view a detailed version of the profile. Click on the `Matching Preferences` button to see the matching preferences of the client if the client has set their preferences. Staff are not able to edit any of the client profiles.
 * Click on the `Add Profiles` dropdown menu to add either an animal or client profile.
   * When you add a new client profile, the client themselves can log in with the credentials `username: <name all lowercase no spaces>` and an empty password text field.
+  * If you change the client's name, the username used to log in will be automatically updated to reflect the change.
   * You can only specify the personal information of the client profile. It is the client's job to add and edit their own matching preferences.
 * Click on the `Account` dropdown menu to Log Out, which redirects you to the log in screen.
 
