@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <Models/Animal/Animal.h>
+#include <Models/CurrentUser/Session.h>
 
 namespace Ui {
 class AnimalDetailsModal;

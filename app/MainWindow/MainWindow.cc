@@ -54,10 +54,10 @@ void MainWindow::handleEditMyProfile() {
 }
 
 void MainWindow::handleLogOut() {
-   Session::currentUser = nullptr;
+    Session::currentUser = nullptr;
 
-   hide();
-   show();
+    hide();
+    show();
 }
 
 void MainWindow::onAnimalClicked(QListWidgetItem* animalWidgetItem) {
@@ -85,7 +85,7 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
 void MainWindow::renderAnimalList() {
     ui->animalsListWidget->clear();
 
-    QVector<Animal*>* animalVector = Animal::all();
+    QVector<Animal*>* animalVector = Animal::where("hypothetical", false);
     QVectorIterator<Animal*> i(*animalVector);
 
     while (i.hasNext()) {

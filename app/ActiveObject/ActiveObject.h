@@ -19,7 +19,7 @@ public:
     static T* first();
     static T* last();
     static int count();
-    static T* findBy(int id);
+    static T* findBy(int recordId);
 
     template <typename U>
     static QVector<T*>* where(QString colName, U value, bool includeNull = false);
@@ -101,12 +101,12 @@ T* ActiveObject<T>::last() {
 }
 
 template <class T>
-T* ActiveObject<T>::findBy(int id) {
+T* ActiveObject<T>::findBy(int recordId) {
     QSqlQuery query;
     QString getWhereQuery =
             QString("SELECT * FROM %1 WHERE id = %2 LIMIT 1;")
             .arg(getTableName())
-            .arg(id);
+            .arg(recordId);
 
     if (query.exec(getWhereQuery) && query.first()) {
         QSqlRecord record = query.record();

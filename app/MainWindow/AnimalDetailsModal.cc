@@ -27,11 +27,14 @@ void AnimalDetailsModal::configureWindow() {
     QString windowTitle;
 
     if (animal != nullptr) {
-        windowTitle = QString("%1's Details").arg(animal->name);
+        if (animal->name == "") {
+            windowTitle = "Animal Profile";
+        } else {
+            windowTitle = QString("%1's Details").arg(animal->name);
+        }
     } else if (idealAnimalMode) {
         windowTitle = "Edit Ideal Animal";
-    }
-    else {
+    } else {
         windowTitle = "New Animal";
     }
 
