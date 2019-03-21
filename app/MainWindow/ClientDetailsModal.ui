@@ -125,7 +125,7 @@
        <item>
         <widget class="QPushButton" name="editIdealAnimal">
          <property name="text">
-          <string>Edit Ideal Animal</string>
+          <string>Matching Preferences</string>
          </property>
         </widget>
        </item>

@@ -90,8 +90,12 @@ void ClientDetailsModal::setFieldsEnabled() {
     ui->saveButton->setEnabled(enabled);
 
     // Edit Ideal Animal Button
-    bool shouldEnableButton = client->idealAnimalId != -1 || !readOnly;
-    ui->editIdealAnimal->setEnabled(shouldEnableButton);
+    if (client != nullptr) {
+        bool shouldEnableButton = client->idealAnimalId != -1 || !readOnly;
+        ui->editIdealAnimal->setEnabled(shouldEnableButton);
+    } else {
+        ui->editIdealAnimal->setEnabled(false);
+    }
 }
 
 void ClientDetailsModal::handleSave() {
