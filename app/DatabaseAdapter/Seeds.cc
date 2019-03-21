@@ -4,7 +4,7 @@ using namespace std;
 Seeds::Seeds() {}
 
 void Seeds::runAll() {
-    qDebug() << "Seeding animals...";
+    qDebug() << "Seeding shelter animals...";
     Animal("Timothy", "Dog", "male", "Yorkshire Terrier", 1, false, false, "brown", false).create();
     Animal("Holly", "Dog", "female", "Labrador Retriever", 10, false, false, "yellow", false).create();
     Animal("Whiskers", "Cat", "male", "Tabby", 6, false, false, "orange", false).create();
@@ -109,6 +109,29 @@ void Seeds::runAll() {
     Client(24, 22, "613-067-9583", "grace.smith@cmail.carleton.ca", 2100, true, true, 120000, 2, true).create();
     Client(25, 22, "613-341-2332", "boringJohnSmith@gmail.com", 1450, true, false, 80000, 1, false).create();
 
+
+    qDebug() << "Seeding ideal animals..";
+
+    QVector<Client*>* clientsVector = Client::all();
+    QVectorIterator<Client*> clients(*clientsVector);
+
+    while (clients.hasNext()) {
+        Client* currentClient = clients.next();
+        QString breeds[8] = {"German Shepherd", "Chihuahua", "Poodle", "Golden Retriever",
+                            "Labrador", "Pug", "Boxer", "Greyhound"};
+        QString genders[2] = {"female", "male"};
+        int ages[5] = {1,3,5,10,15};
+        QString colors[5] = {"black", "white", "yellow", "brown", "grey"};
+
+        Animal("", "Dog", genders[rand() % 2],
+                breeds[rand() % 8],
+                ages[rand() % 5], false, false,
+                colors[rand() % 5], true).create();
+
+        currentClient->idealAnimalId = Animal::last()->getId();
+        currentClient->save();
+    }
+
     qDebug() << "Seeding attributes...";
 
     QString animalType = Animal::className();
@@ -163,8 +186,7 @@ void Seeds::runAll() {
     // SEED CLIENT ATTRIBUTES
     qDebug() << "Seeding client attributes...";
 
-    QVector<Client*>* clientsVector = Client::all();
-    QVectorIterator<Client*> clients(*clientsVector);
+    clients.toFront();
 
     QVector<Attribute*>* clientAttributesVector = Attribute::where("type", clientType, true);
     QVectorIterator<Attribute*> clientAttributes(*clientAttributesVector);
