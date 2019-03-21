@@ -34,6 +34,7 @@ As a shelter staff you can perform the following actions:
 * View the list animals at a glance, and double click on the animal profiles to view a detailed version of the profile as well as the ability to edit the currently viewed animal.
 * View the list of clients at a glance, and double click on the client profiles to view a detailed version of the profile. Staff are not able to edit any of the client profiles.
 * Click on the `Add Profiles` dropdown menu to add either an animal or client profile.
+  * When you add a new client profile, the client themselves can log in with the credentials `username: <name all lowercase no spaces>` and an empty password text field.
 * Click on the `Account` dropdown menu to Log Out, which redirects you to the log in screen.
 
 Otherwise, test the application experience in the perspective of a client by providing the following credentials:
