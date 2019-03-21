@@ -1,7 +1,7 @@
 #ifndef CURRENTUSER_H
 #define CURRENTUSER_H
 
-#include <Models/User/User.h>
+#include <Repository/User/User.h>
 
 class Session {
 public:

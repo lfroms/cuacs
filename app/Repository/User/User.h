@@ -2,7 +2,7 @@
 #define USER_H
 
 #include <QString>
-#include <ActiveObject/ActiveObject.h>
+#include <Repository/ActiveObject/ActiveObject.h>
 
 class User : public ActiveObject<User> {
 public:

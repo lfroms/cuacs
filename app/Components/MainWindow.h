@@ -7,11 +7,11 @@
 #include <QVectorIterator>
 #include <QShowEvent>
 #include <QTimer>
-#include <Models/CurrentUser/Session.h>
-#include <LoginWindow/LoginWindow.h>
-#include <MainWindow/DetailListWidgetItem.h>
-#include <MainWindow/AnimalDetailsModal.h>
-#include <MainWindow/ClientDetailsModal.h>
+#include <Repository/CurrentUser/Session.h>
+#include <Authentication/LoginWindow.h>
+#include <Components/DetailListWidgetItem.h>
+#include <Components/Animals/AnimalDetailsModal.h>
+#include <Components/Clients/ClientDetailsModal.h>
 
 namespace Ui {
 class MainWindow;

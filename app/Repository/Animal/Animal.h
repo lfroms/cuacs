@@ -2,8 +2,8 @@
 #define ANIMAL_H
 
 #include <QString>
-#include <ActiveObject/ActiveObject.h>
-#include <ActiveObject/AttributedObject.h>
+#include <Repository/ActiveObject/ActiveObject.h>
+#include <Repository/ActiveObject/AttributedObject.h>
 
 using namespace std;
 

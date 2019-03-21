@@ -3,10 +3,10 @@
 
 #include <QString>
 
-#include <Models/Animal/Animal.h>
-#include <Models/Client/Client.h>
-#include <Models/Attribute/Attribute.h>
-#include <Models/User/User.h>
+#include <Repository/Animal/Animal.h>
+#include <Repository/Client/Client.h>
+#include <Repository/Attribute/Attribute.h>
+#include <Repository/User/User.h>
 
 static const QString ANIMAL_TABLE = Animal::getTableName();
 static const QString CLIENT_TABLE = Client::getTableName();

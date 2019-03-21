@@ -3,9 +3,9 @@
 
 #include <QDialog>
 #include <QMessageBox>
-#include "AnimalDetailsModal.h"
-#include <Models/Client/Client.h>
-#include <Models/User/User.h>
+#include <Components/Animals/AnimalDetailsModal.h>
+#include <Repository/Client/Client.h>
+#include <Repository/User/User.h>
 
 namespace Ui {
 class ClientDetailsModal;
