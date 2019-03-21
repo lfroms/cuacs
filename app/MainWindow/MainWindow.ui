@@ -149,6 +149,7 @@
      <string>Account</string>
     </property>
     <addaction name="actionEdit_My_Profile"/>
+    <addaction name="actionLog_Out"/>
    </widget>
    <addaction name="menuTools"/>
    <addaction name="menuAccount"/>
@@ -166,6 +167,11 @@
   <action name="actionEdit_My_Profile">
    <property name="text">
     <string>Edit My Profile</string>
+   </property>
+  </action>
+  <action name="actionLog_Out">
+   <property name="text">
+    <string>Log Out</string>
    </property>
   </action>
  </widget>
@@ -220,10 +226,27 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>actionLog_Out</sender>
+   <signal>triggered()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>handleLogOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>-1</x>
+     <y>-1</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handleAddAnimalAction()</slot>
   <slot>handleAddClientAction()</slot>
   <slot>handleEditMyProfile()</slot>
+  <slot>handleLogOut()</slot>
  </slots>
 </ui>
