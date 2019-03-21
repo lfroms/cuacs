@@ -118,7 +118,7 @@ void Seeds::runAll() {
     while (clients.hasNext()) {
         Client* currentClient = clients.next();
         QString breeds[8] = {"German Shepherd", "Chihuahua", "Poodle", "Golden Retriever",
-                            "Labrador", "Pug", "Boxer", "Greyhound"};
+                             "Labrador", "Pug", "Boxer", "Greyhound"};
         QString genders[2] = {"female", "male"};
         int ages[5] = {1,3,5,10,15};
         QString colors[5] = {"black", "white", "yellow", "brown", "grey"};
