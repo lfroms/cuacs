@@ -38,8 +38,8 @@ As a shelter staff you can perform the following actions:
 
 Otherwise, test the application experience in the perspective of a client by providing the following credentials:
 ```
-username: rockywilliams
-password: 267
+username: johnsmith
+password: 4321
 ```
 As a client you can perform the following actions:
 * View the list animals at a glance, and double click on the animal profiles to view a detailed version of the profile.
