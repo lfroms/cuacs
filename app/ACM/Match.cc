@@ -6,10 +6,26 @@ Match::Match(Animal* _animal, Client* _client, int _score, QVector<QString> _rul
 
 }
 
-void Match::setScore(int score) {
+void Match::setScore(float score) {
     this->score = score;
 }
 
 void Match::addRule(QString rule) {
     this->rules.append(rule);
+}
+
+Animal* Match::getAnimal() {
+    return animal;
+}
+
+Client* Match::getClient() {
+    return client;
+}
+
+int Match::getScore() {
+    return score;
+}
+
+QVector<QString> Match::getRules() {
+    return rules;
 }

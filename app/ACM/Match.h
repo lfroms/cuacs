@@ -12,6 +12,11 @@ public:
     Match(Animal*, Client*, int = 0, QVector<QString> = QVector<QString>());
     void setScore(int);
     void addRule(QString);
+    Animal* getAnimal();
+    Client* getClient();
+    int getScore();
+    QVector<QString> getRules();
+
 private:
     Animal* animal;
     Client* client;
