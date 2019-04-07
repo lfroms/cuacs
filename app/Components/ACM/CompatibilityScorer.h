@@ -16,8 +16,10 @@ class CompatibilityScorer {
 		static const QHash calculate_scores();
 	private:
 		const float calculate_client_want_score(Animal*, Client*);
+		const float calculate_physical_compatibility(Animal*, Animal*);
+		const float calculate_non_physical_compatibility(Animal*, Animal*);
+
 		const float calculate_client_personality_score(Animal*, Client*);
-		// Match() might not return a pointer...
 		const float calculate_client_situation_score(Animal*, Client*, Match*);
 };
 
