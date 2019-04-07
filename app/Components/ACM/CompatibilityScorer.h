@@ -15,8 +15,8 @@ class CompatibilityScorer {
 	public:
         static QHash<Animal*, QVector<Match*>> calculate_scores();
     private:
-        static float calculate_client_want_score(Animal*, Client*);
-        static float calculate_physical_compatibility(Animal*, Animal*);
+        static float calculate_client_want_score(Animal*, Client*, Match*);
+        static float calculate_physical_compatibility(Animal*, Animal*, Match*);
         static float calculate_non_physical_compatibility(Animal*, Animal*);
 
         static float calculate_client_personality_score(Animal*, Client*);
