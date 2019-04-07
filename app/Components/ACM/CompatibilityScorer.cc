@@ -62,9 +62,12 @@ float CompatibilityScorer::calculate_physical_compatibility(Animal* animal, Anim
 		difference += 1;
 	}
 
+    if (animal->color != idealAnimal->color) {
+        difference += 1;
+    }
+
 	if (animal->requiresMedicalAttn != idealAnimal->requiresMedicalAttn) {
 		difference += 10;
-		// add the rule here?
 	}
 
 	difference += qFabs(animal->age - idealAnimal->age);
@@ -143,7 +146,7 @@ void CompatibilityScorer::apply_client_situation_heuristics(Animal* animal, Clie
         match->setScore(match->getScore() + (float)5);
 	}
 	// heuristic no5
-	if (client->hrsDedication < 1 && animal->species != "Dog") {
+    if (client->hrsDedication <= 1 && animal->species != "Dog") {
 		match->addRule("Since the client’s estimated number of hours per day "
 				"dedicated to the animal is lower than 1 hour and the "
 				"animal is not of species dog, the compatibility score "
@@ -151,7 +154,8 @@ void CompatibilityScorer::apply_client_situation_heuristics(Animal* animal, Clie
         match->setScore(match->getScore() + (float)5);
 	}
 	// heuristic no6
-    if (client->hasChildren && animalAttributes["friendliness_children"] > (float)7 && animalAttributes["affection"] > (float)6
+    if (client->hasChildren && animalAttributes["friendliness_children"] > (float)7
+            && animalAttributes["affection"] > (float)6
             && animalAttributes["energy"] > (float)6
             && (animalAttributes["scratch_tendency"] > 8 || animalAttributes["bite_tendency"] > 8)) {
 		match->addRule("Since the client has children, the animal has a friendliness with children "
