@@ -9,7 +9,7 @@
 class Match
 {
 public:
-    Match(Animal*, Client*, int = 0, QVector<QString> = QVector<QString>());
+    Match(Animal*, Client*, float = 0, QVector<QString> = QVector<QString>());
     void setScore(int);
     void addRule(QString);
     Animal* getAnimal();
