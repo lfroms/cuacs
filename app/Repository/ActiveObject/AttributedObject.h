@@ -16,7 +16,7 @@ public:
     AttributedObject<T>* setAttr(QString attrName, int value);
     int attr(QString attrName);
     bool clearAttr(QString attrName);
-    QHash<QString, int> attributes();
+    QHash<QString, float> attributes();
 
     static const QString getAttributeTableName() {
         return T::className() + "s_attributes";
@@ -113,7 +113,7 @@ int AttributedObject<T>::attr(QString attrName) {
 }
 
 template <class T>
-QHash<QString, int> AttributedObject<T>::attributes() {
+QHash<QString, float> AttributedObject<T>::attributes() {
     int objectId = this->getId();
 
     QSqlQuery query;
@@ -126,19 +126,17 @@ QHash<QString, int> AttributedObject<T>::attributes() {
             .arg(objectId);
 
     bool queryDidSucceed = query.exec(getAttributesQuery) && query.first();
-    QHash<QString, int> attributeHash;
+    QHash<QString, float> attributeHash;
 
     if (!queryDidSucceed) {
         qDebug() << QString("Failed to get attribute. It may not exist.");
         return attributeHash;
     }
-    int nameCol = query.record().indexOf("name");
-    int valueCol = query.record().indexOf("value");
 
     query.previous();
 
     while(query.next()) {
-        attributeHash[query.value(nameCol).toString()] = query.value(valueCol).toInt();
+        attributeHash[query.value("name").toString()] = query.value("value").toFloat();
     }
 
     return attributeHash;
