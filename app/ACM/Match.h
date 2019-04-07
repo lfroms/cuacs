@@ -9,12 +9,12 @@
 class Match
 {
 public:
-    Match(Animal*, Client*, int = 0, QVector<QString> = QVector<QString>());
-    void setScore(int);
+    Match(Animal*, Client*, float = 0, QVector<QString> = QVector<QString>());
+    void setScore(float);
     void addRule(QString);
     Animal* getAnimal();
     Client* getClient();
-    int getScore();
+    float getScore();
     QVector<QString> getRules();
 
 private:
