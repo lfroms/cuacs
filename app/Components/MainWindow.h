@@ -13,6 +13,9 @@
 #include <Components/Animals/AnimalDetailsModal.h>
 #include <Components/Clients/ClientDetailsModal.h>
 
+#include <Components/ACM/CompatibilityScorer.h>
+#include <ACM/Match.h>
+
 namespace Ui {
 class MainWindow;
 }

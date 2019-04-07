@@ -13,14 +13,14 @@ using namespace std;
 
 class CompatibilityScorer {
 	public:
-		static const QHash calculate_scores();
-	private:
-		const float calculate_client_want_score(Animal*, Client*);
-		const float calculate_physical_compatibility(Animal*, Animal*);
-		const float calculate_non_physical_compatibility(Animal*, Animal*);
+        static QHash<Animal*, QVector<Match*>> calculate_scores();
+    private:
+        static float calculate_client_want_score(Animal*, Client*);
+        static float calculate_physical_compatibility(Animal*, Animal*);
+        static float calculate_non_physical_compatibility(Animal*, Animal*);
 
-		const float calculate_client_personality_score(Animal*, Client*);
-		const float calculate_client_situation_score(Animal*, Client*, Match*);
+        static float calculate_client_personality_score(Animal*, Client*);
+        static void apply_client_situation_heuristics(Animal*, Client*, Match*);
 };
 
 #endif // COMPATIBILITYSCORER_H

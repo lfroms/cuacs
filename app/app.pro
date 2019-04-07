@@ -38,7 +38,8 @@ SOURCES += \
     Repository/User/User.cc \
     Authentication/LoginWindow.cc \
     Repository/Session/Session.cc \
-    ACM/Match.cc
+    ACM/Match.cc \
+    Components/ACM/CompatibilityScorer.cc
 
 HEADERS += \
         Components/MainWindow.h \
@@ -57,7 +58,8 @@ HEADERS += \
     Repository/User/User.h \
     Authentication/LoginWindow.h \
     Repository/Session/Session.h \
-    ACM/Match.h
+    ACM/Match.h \
+    Components/ACM/CompatibilityScorer.h
 
 FORMS += \
         Components/MainWindow.ui \

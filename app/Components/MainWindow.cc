@@ -133,6 +133,19 @@ void MainWindow::renderClientList() {
 void MainWindow::renderListItems() {
     renderAnimalList();
     renderClientList();
+    QHash<Animal*, QVector<Match*>> hash = CompatibilityScorer::calculate_scores();
+    QHashIterator<Animal*, QVector<Match*>> i(hash);
+
+    while (i.hasNext()) {
+        i.next();
+        QVector<Match*> matches = i.value();
+        QVectorIterator<Match*> vi(matches);
+
+        while (vi.hasNext()) {
+            Match * match = vi.next();
+            qDebug() << match->getAnimal() << match->getClient() << match->getScore() << match->getRules();
+        }
+    }
 }
 
 void MainWindow::handleAddAnimalAction() {
