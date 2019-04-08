@@ -1,20 +1,9 @@
 ﻿#include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include <QFile>
-#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    QFile file;
-    file.setFileName("../app/Resources/styles.txt");
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        //return;
-    }
-    QTextStream in(&file);
-    QString stylesheet = in.readAll();
-    stylesheet = stylesheet.trimmed();
-    this->setStyleSheet(stylesheet);
+    StyleUtil().updateStyle(this);
 
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onAnimalClicked(QListWidgetItem*)));

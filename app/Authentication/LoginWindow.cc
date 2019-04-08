@@ -1,7 +1,5 @@
 #include "LoginWindow.h"
 #include "ui_LoginWindow.h"
-#include <QFile>
-#include <QDir>
 
 LoginWindow::LoginWindow(QWidget *parent) :
     QDialog(parent),
@@ -9,16 +7,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowTitle("cuACS Login");
-    QFile file;
-    file.setFileName("../app/Resources/styles.txt");
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        //return;
-    }
-    QTextStream in(&file);
-    QString stylesheet = in.readAll();
-    stylesheet = stylesheet.trimmed();
-    this->setStyleSheet(stylesheet);
+    StyleUtil().updateStyle(this);
 }
 
 LoginWindow::~LoginWindow() {

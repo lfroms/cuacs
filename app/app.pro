@@ -41,7 +41,8 @@ SOURCES += \
     ACM/Match.cc \
     ACM/MatchCreator.cc \
     Components/ACM/CompatibilityScorer.cc \
-    Components/ACMResultListWidgetItem.cc
+    Components/ACMResultListWidgetItem.cc \
+    Components/StyleUtil.cc
 
 HEADERS += \
         Components/MainWindow.h \
@@ -63,7 +64,8 @@ HEADERS += \
     ACM/Match.h \
     ACM/MatchCreator.h \
     Components/ACM/CompatibilityScorer.h \
-    Components/ACMResultListWidgetItem.h
+    Components/ACMResultListWidgetItem.h \
+    Components/StyleUtil.h
 
 FORMS += \
         Components/MainWindow.ui \

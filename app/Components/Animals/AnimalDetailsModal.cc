@@ -1,23 +1,12 @@
 ﻿#include "AnimalDetailsModal.h"
 #include "ui_AnimalDetailsModal.h"
-#include <QFile>
-#include <QDir>
 
 AnimalDetailsModal::AnimalDetailsModal(
         Animal* a, bool readOnly, bool idealAnimalMode, QWidget *parent
         ) :QDialog(parent), ui(new Ui::AnimalDetailsModal) {
 
     ui->setupUi(this);
-    QFile file;
-    file.setFileName("../app/Resources/styles.txt");
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        //return;
-    }
-    QTextStream in(&file);
-    QString stylesheet = in.readAll();
-    stylesheet = stylesheet.trimmed();
-    this->setStyleSheet(stylesheet);
+    StyleUtil().updateStyle(this);
 
     animal = a;
     this->readOnly = readOnly;
@@ -112,9 +101,46 @@ void AnimalDetailsModal::setFieldsEnabled() {
     ui->saveButton->setEnabled(enabled);
 }
 
+bool AnimalDetailsModal::performAnimalValidation() {
+    bool isValid = true;
+
+    //Name must be present if not in idealAnimalMode
+    if (!idealAnimalMode) {
+        if (ui->nameEdit->text().isNull() || ui->nameEdit->text().isEmpty()) {
+            ui->nameEdit->setProperty("error", true);
+            isValid = false;
+        } else {
+            ui->nameEdit->setProperty("error", false);
+        }
+    }
+
+    //Breed must be present
+    if (ui->breedEdit->text().isNull() || ui->breedEdit->text().isEmpty()) {
+        ui->breedEdit->setProperty("error", true);
+        isValid = false;
+    } else {
+        ui->breedEdit->setProperty("error", false);
+    }
+
+    //Color must be present
+    if (ui->colorEdit->text().isNull() || ui->colorEdit->text().isEmpty()) {
+        ui->colorEdit->setProperty("error", true);
+        isValid = false;
+    } else {
+        ui->colorEdit->setProperty("error", false);
+    }
+
+    StyleUtil().updateStyle(this);
+    return isValid;
+}
+
 void AnimalDetailsModal::handleSave() {
     QMessageBox messageBox;
     messageBox.setWindowTitle("cuACS");
+
+    if (!performAnimalValidation()) {
+        return;
+    }
 
     if (animal == nullptr) {
         animal = new Animal();

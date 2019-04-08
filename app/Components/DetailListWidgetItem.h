@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QListWidgetItem>
+#include <Components/StyleUtil.h>
 
 namespace Ui {
 class DetailListWidgetItem;

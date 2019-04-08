@@ -1,7 +1,5 @@
 #include "ClientDetailsModal.h"
 #include "ui_ClientDetailsModal.h"
-#include <QFile>
-#include <QString>
 
 ClientDetailsModal::ClientDetailsModal(Client* c, bool readOnly, QWidget *parent) :
     QDialog(parent),
@@ -9,16 +7,7 @@ ClientDetailsModal::ClientDetailsModal(Client* c, bool readOnly, QWidget *parent
 
     ui->setupUi(this);
 
-    QFile file;
-    file.setFileName("../app/Resources/styles.txt");
-
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        //return;
-    }
-    QTextStream in(&file);
-    QString stylesheet = in.readAll();
-    stylesheet = stylesheet.trimmed();
-    this->setStyleSheet(stylesheet);
+    StyleUtil().updateStyle(this);
 
     client = c;
     this->readOnly = readOnly;
@@ -111,9 +100,49 @@ void ClientDetailsModal::setFieldsEnabled() {
     }
 }
 
+bool ClientDetailsModal::performClientValidation() {
+    bool isValid = true;
+    //Email Validation
+    QRegularExpression emailregex(EMAIL_REGEX, QRegularExpression::CaseInsensitiveOption);
+    QRegularExpressionMatch emailmatch = emailregex.match(ui->email->text());
+    if (!emailmatch.hasMatch()) {
+        ui->email->setProperty("error", true);
+        isValid = false;
+    } else {
+        //Set property to false in case the field was previously errored.
+        ui->email->setProperty("error", false);
+    }
+
+    //Phone Validation
+    QRegularExpression phoneregex(PHONE_REGEX, QRegularExpression::CaseInsensitiveOption);
+    QRegularExpressionMatch phonematch = phoneregex.match(ui->phoneNumber->text());
+    if (!phonematch.hasMatch()) {
+        ui->phoneNumber->setProperty("error", true);
+        isValid = false;
+    } else {
+        //Set property to false in case the field was previously errored.
+        ui->phoneNumber->setProperty("error", false);
+    }
+
+    if (ui->name->text().isNull() || ui->name->text().isEmpty()) {
+        ui->name->setProperty("error", true);
+        isValid = false;
+    } else {
+        ui->name->setProperty("error", false);
+    }
+
+    StyleUtil().updateStyle(this);
+    return isValid;
+}
+
 void ClientDetailsModal::handleSave() {
     QMessageBox messageBox;
     messageBox.setWindowTitle("cuACS");
+
+    //Validations
+    if (!performClientValidation()) {
+        return;
+    }
 
     User* user = nullptr;
 
