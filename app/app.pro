@@ -40,6 +40,7 @@ SOURCES += \
     Repository/Session/Session.cc \
     ACM/Match.cc \
     ACM/MatchCreator.cc
+    Components/ACM/CompatibilityScorer.cc
 
 HEADERS += \
         Components/MainWindow.h \
@@ -60,6 +61,7 @@ HEADERS += \
     Repository/Session/Session.h \
     ACM/Match.h \
     ACM/MatchCreator.h
+    Components/ACM/CompatibilityScorer.h
 
 FORMS += \
         Components/MainWindow.ui \
