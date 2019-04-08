@@ -60,7 +60,7 @@ HEADERS += \
     Authentication/LoginWindow.h \
     Repository/Session/Session.h \
     ACM/Match.h \
-    ACM/MatchCreator.h
+    ACM/MatchCreator.h \
     Components/ACM/CompatibilityScorer.h
 
 FORMS += \
