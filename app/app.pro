@@ -39,7 +39,7 @@ SOURCES += \
     Authentication/LoginWindow.cc \
     Repository/Session/Session.cc \
     ACM/Match.cc \
-    ACM/MatchCreator.cc
+    ACM/MatchCreator.cc \
     Components/ACM/CompatibilityScorer.cc
 
 HEADERS += \
