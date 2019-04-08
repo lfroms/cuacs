@@ -1,11 +1,23 @@
 ﻿#include "AnimalDetailsModal.h"
 #include "ui_AnimalDetailsModal.h"
+#include <QFile>
+#include <QDir>
 
 AnimalDetailsModal::AnimalDetailsModal(
         Animal* a, bool readOnly, bool idealAnimalMode, QWidget *parent
         ) :QDialog(parent), ui(new Ui::AnimalDetailsModal) {
 
     ui->setupUi(this);
+    QFile file;
+    file.setFileName("../app/Resources/styles.txt");
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        //return;
+    }
+    QTextStream in(&file);
+    QString stylesheet = in.readAll();
+    stylesheet = stylesheet.trimmed();
+    this->setStyleSheet(stylesheet);
 
     animal = a;
     this->readOnly = readOnly;

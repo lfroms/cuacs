@@ -1,9 +1,20 @@
 ﻿#include "MainWindow.h"
 #include "ui_MainWindow.h"
+#include <QFile>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    this->setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;}");
+    QFile file;
+    file.setFileName("../app/Resources/styles.txt");
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        //return;
+    }
+    QTextStream in(&file);
+    QString stylesheet = in.readAll();
+    stylesheet = stylesheet.trimmed();
+    this->setStyleSheet(stylesheet);
 
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onAnimalClicked(QListWidgetItem*)));

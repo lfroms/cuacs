@@ -1,11 +1,24 @@
 #include "ClientDetailsModal.h"
 #include "ui_ClientDetailsModal.h"
+#include <QFile>
+#include <QString>
 
 ClientDetailsModal::ClientDetailsModal(Client* c, bool readOnly, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::ClientDetailsModal) {
 
     ui->setupUi(this);
+
+    QFile file;
+    file.setFileName("../app/Resources/styles.txt");
+
+    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
+        //return;
+    }
+    QTextStream in(&file);
+    QString stylesheet = in.readAll();
+    stylesheet = stylesheet.trimmed();
+    this->setStyleSheet(stylesheet);
 
     client = c;
     this->readOnly = readOnly;
