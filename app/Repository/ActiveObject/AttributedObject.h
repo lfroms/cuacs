@@ -7,6 +7,7 @@
 #include <QSqlField>
 #include <QDebug>
 #include <QVector>
+#include <QHash>
 #include <Repository/Attribute/Attribute.h>
 
 template <class T>
@@ -15,6 +16,7 @@ public:
     AttributedObject<T>* setAttr(QString attrName, int value);
     int attr(QString attrName);
     bool clearAttr(QString attrName);
+    QHash<QString, float> attributes();
 
     static const QString getAttributeTableName() {
         return T::className() + "s_attributes";
@@ -108,6 +110,34 @@ int AttributedObject<T>::attr(QString attrName) {
 
     int attributeId = attributes->first()->getId();
     return this->attr(attributeId);
+}
+
+template <class T>
+QHash<QString, float> AttributedObject<T>::attributes() {
+    int objectId = this->getId();
+
+    QSqlQuery query;
+    QString getAttributesQuery =
+            QString("SELECT * FROM %1 JOIN attributes "
+                    "ON %1.attribute_id = attributes.id "
+                    "WHERE %1.%2 = %3;")
+            .arg(getAttributeTableName())
+            .arg(getAttributeIdColumnName())
+            .arg(objectId);
+
+    bool queryDidSucceed = query.exec(getAttributesQuery);
+    QHash<QString, float> attributeHash;
+
+    if (!queryDidSucceed) {
+        qDebug() << QString("Failed to get attribute. It may not exist.");
+        return attributeHash;
+    }
+
+    while(query.next()) {
+        attributeHash[query.value("name").toString()] = query.value("value").toFloat();
+    }
+
+    return attributeHash;
 }
 
 template <class T>
