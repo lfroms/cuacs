@@ -135,6 +135,23 @@ bool ClientDetailsModal::performClientValidation() {
     return isValid;
 }
 
+bool ClientDetailsModal::isUsernameAvailable() {
+    QVector<User*>* users = User::all();
+    QVectorIterator<User*> userIter(*users);
+
+    while (userIter.hasNext()) {
+        User* user = userIter.next();
+        if (user->getUsername() == ui->name->text()) {
+            ui->name->setProperty("error", true);
+            ui->name->setText("Username is already taken.");
+            StyleUtil().updateStyle(this);
+            return false;
+        }
+    }
+    StyleUtil().updateStyle(this);
+    return true;
+}
+
 void ClientDetailsModal::handleSave() {
     QMessageBox messageBox;
     messageBox.setWindowTitle("cuACS");
@@ -147,6 +164,10 @@ void ClientDetailsModal::handleSave() {
     User* user = nullptr;
 
     if (client == nullptr) {
+        //If adding a new client, we need to validate unique username.
+        if (!isUsernameAvailable()) {
+            return;
+        }
         client = new Client();
         user = new User(ui->name->text(), "", Client::className());
     } else {
