@@ -125,15 +125,13 @@ QHash<QString, float> AttributedObject<T>::attributes() {
             .arg(getAttributeIdColumnName())
             .arg(objectId);
 
-    bool queryDidSucceed = query.exec(getAttributesQuery) && query.first();
+    bool queryDidSucceed = query.exec(getAttributesQuery);
     QHash<QString, float> attributeHash;
 
     if (!queryDidSucceed) {
         qDebug() << QString("Failed to get attribute. It may not exist.");
         return attributeHash;
     }
-
-    query.previous();
 
     while(query.next()) {
         attributeHash[query.value("name").toString()] = query.value("value").toFloat();
