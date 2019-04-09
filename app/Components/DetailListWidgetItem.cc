@@ -6,6 +6,8 @@ DetailListWidgetItem::DetailListWidgetItem(QWidget *parent) :
     ui(new Ui::DetailListWidgetItem) {
 
     ui->setupUi(this);
+
+    StyleUtil().updateStyle(this);
 }
 
 DetailListWidgetItem::~DetailListWidgetItem() {

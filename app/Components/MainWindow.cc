@@ -3,7 +3,7 @@
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
     ui->setupUi(this);
-    this->setStyleSheet("QTabBar::tab::disabled {width: 0; height: 0; margin: 0; padding: 0; border: none;}");
+    StyleUtil().updateStyle(this);
 
     connect(ui->animalsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onAnimalClicked(QListWidgetItem*)));

@@ -7,6 +7,8 @@ ClientDetailsModal::ClientDetailsModal(Client* c, bool readOnly, QWidget *parent
 
     ui->setupUi(this);
 
+    StyleUtil().updateStyle(this);
+
     client = c;
     this->readOnly = readOnly;
 
@@ -98,13 +100,74 @@ void ClientDetailsModal::setFieldsEnabled() {
     }
 }
 
+bool ClientDetailsModal::performClientValidation() {
+    bool isValid = true;
+    //Email Validation
+    QRegularExpression emailregex(EMAIL_REGEX, QRegularExpression::CaseInsensitiveOption);
+    QRegularExpressionMatch emailmatch = emailregex.match(ui->email->text());
+    if (!emailmatch.hasMatch()) {
+        ui->email->setProperty("error", true);
+        isValid = false;
+    } else {
+        //Set property to false in case the field was previously errored.
+        ui->email->setProperty("error", false);
+    }
+
+    //Phone Validation
+    QRegularExpression phoneregex(PHONE_REGEX, QRegularExpression::CaseInsensitiveOption);
+    QRegularExpressionMatch phonematch = phoneregex.match(ui->phoneNumber->text());
+    if (!phonematch.hasMatch()) {
+        ui->phoneNumber->setProperty("error", true);
+        isValid = false;
+    } else {
+        //Set property to false in case the field was previously errored.
+        ui->phoneNumber->setProperty("error", false);
+    }
+
+    if (ui->name->text().isNull() || ui->name->text().isEmpty()) {
+        ui->name->setProperty("error", true);
+        isValid = false;
+    } else {
+        ui->name->setProperty("error", false);
+    }
+
+    StyleUtil().updateStyle(this);
+    return isValid;
+}
+
+bool ClientDetailsModal::isUsernameAvailable() {
+    QVector<User*>* users = User::all();
+    QVectorIterator<User*> userIter(*users);
+
+    while (userIter.hasNext()) {
+        User* user = userIter.next();
+        if (user->getUsername() == ui->name->text()) {
+            ui->name->setProperty("error", true);
+            ui->name->setText("Username is already taken.");
+            StyleUtil().updateStyle(this);
+            return false;
+        }
+    }
+    StyleUtil().updateStyle(this);
+    return true;
+}
+
 void ClientDetailsModal::handleSave() {
     QMessageBox messageBox;
     messageBox.setWindowTitle("cuACS");
 
+    //Validations
+    if (!performClientValidation()) {
+        return;
+    }
+
     User* user = nullptr;
 
     if (client == nullptr) {
+        //If adding a new client, we need to validate unique username.
+        if (!isUsernameAvailable()) {
+            return;
+        }
         client = new Client();
         user = new User(ui->name->text(), "", Client::className());
     } else {

@@ -7,6 +7,7 @@ LoginWindow::LoginWindow(QWidget *parent) :
     ui->setupUi(this);
 
     this->setWindowTitle("cuACS Login");
+    StyleUtil().updateStyle(this);
 }
 
 LoginWindow::~LoginWindow() {

@@ -7,6 +7,7 @@
 #include <QMessageBox>
 #include <Repository/User/User.h>
 #include <Repository/Session/Session.h>
+#include <Components/StyleUtil.h>
 
 namespace Ui {
 class LoginWindow;

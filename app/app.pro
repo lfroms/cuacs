@@ -41,7 +41,8 @@ SOURCES += \
     ACM/Match.cc \
     ACM/MatchCreator.cc \
     Components/ACM/CompatibilityScorer.cc \
-    Components/ACMResultListWidgetItem.cc
+    Components/ACMResultListWidgetItem.cc \
+    Components/StyleUtil.cc
 
 HEADERS += \
         Components/MainWindow.h \
@@ -63,7 +64,8 @@ HEADERS += \
     ACM/Match.h \
     ACM/MatchCreator.h \
     Components/ACM/CompatibilityScorer.h \
-    Components/ACMResultListWidgetItem.h
+    Components/ACMResultListWidgetItem.h \
+    Components/StyleUtil.h
 
 FORMS += \
         Components/MainWindow.ui \
@@ -77,3 +79,9 @@ FORMS += \
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+DISTFILES += \
+    Resources/styles.txt
+
+# Copy the stylesheet into the build folder
+QMAKE_POST_LINK += cp $$PWD/Resources/styles.txt $$OUT_PWD

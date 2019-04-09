@@ -4,6 +4,7 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <Repository/Animal/Animal.h>
+#include <Components/StyleUtil.h>
 
 namespace Ui {
 class AnimalDetailsModal;
@@ -31,6 +32,7 @@ private:
     bool readOnly;
     bool idealAnimalMode;
 
+    bool performAnimalValidation();
     void loadProfileData();
     void setFieldsEnabled();
     void configureWindow();
