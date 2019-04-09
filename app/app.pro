@@ -42,7 +42,8 @@ SOURCES += \
     ACM/MatchCreator.cc \
     Components/ACM/CompatibilityScorer.cc \
     Components/ACMResultListWidgetItem.cc \
-    Components/StyleUtil.cc
+    Components/StyleUtil.cc \
+    Components/ACM/MatchDetailsModal.cc
 
 HEADERS += \
         Components/MainWindow.h \
@@ -65,7 +66,8 @@ HEADERS += \
     ACM/MatchCreator.h \
     Components/ACM/CompatibilityScorer.h \
     Components/ACMResultListWidgetItem.h \
-    Components/StyleUtil.h
+    Components/StyleUtil.h \
+    Components/ACM/MatchDetailsModal.h
 
 FORMS += \
         Components/MainWindow.ui \
@@ -73,7 +75,8 @@ FORMS += \
     Components/DetailListWidgetItem.ui \
     Components/Clients/ClientDetailsModal.ui \
     Authentication/LoginWindow.ui \
-    Components/ACMResultListWidgetItem.ui
+    Components/ACMResultListWidgetItem.ui \
+    Components/ACM/MatchDetailsModal.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
