@@ -130,6 +130,44 @@ void MainWindow::renderClientList() {
     }
 }
 
+void MainWindow::handleLaunchACM() {
+    ui->acmResultsListWidget->clear();
+
+    QHash<Animal*, QVector<Match*>> hash = CompatibilityScorer::calculate_scores();
+    QHashIterator<Animal*, QVector<Match*>> hashIterator(hash);
+
+    while (hashIterator.hasNext()) {
+        hashIterator.next();
+        QVector<Match*> matches = hashIterator.value();
+
+        QVectorIterator<Match*> matchIterator(matches);
+
+        while (matchIterator.hasNext()) {
+            Match* match = matchIterator.next();
+
+            QListWidgetItem* listWidgetItem = new QListWidgetItem(ui->acmResultsListWidget);
+
+            ACMResultListWidgetItem* matchWidget = new ACMResultListWidgetItem;
+
+            Client* client = match->getClient();
+            User* userAssociatedWithClient = User::findBy(client->userId);
+            matchWidget->setClientName(userAssociatedWithClient->getName());
+            matchWidget->setClientDetail(client->email);
+
+            Animal* animal = match->getAnimal();
+            matchWidget->setAnimalName(animal->name);
+            matchWidget->setAnimalDetail(animal->species);
+
+            QVariant var = QVariant::fromValue(match);
+            listWidgetItem->setData(Qt::UserRole, var);
+
+            ui->acmResultsListWidget->setItemWidget(listWidgetItem, matchWidget);
+
+            qDebug() << match->getAnimal()->name << match->getClient()->email << match->getScore() << match->getRules();
+        }
+    }
+}
+
 void MainWindow::renderListItems() {
     renderAnimalList();
     renderClientList();

@@ -24,4 +24,5 @@ private:
     QVector<QString> rules;
 };
 
+Q_DECLARE_METATYPE(Match*)
 #endif // MATCH_H
