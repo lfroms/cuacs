@@ -38,8 +38,8 @@ SOURCES += \
     Repository/User/User.cc \
     Authentication/LoginWindow.cc \
     Repository/Session/Session.cc \
-    ACM/Match.cc \
-    ACM/MatchCreator.cc \
+    Components/ACM/Match.cc \
+    Components/ACM/MatchCreator.cc \
     Components/ACM/CompatibilityScorer.cc \
     Components/ACMResultListWidgetItem.cc \
     Components/StyleUtil.cc \
@@ -62,8 +62,8 @@ HEADERS += \
     Repository/User/User.h \
     Authentication/LoginWindow.h \
     Repository/Session/Session.h \
-    ACM/Match.h \
-    ACM/MatchCreator.h \
+    Components/ACM/Match.h \
+    Components/ACM/MatchCreator.h \
     Components/ACM/CompatibilityScorer.h \
     Components/ACMResultListWidgetItem.h \
     Components/StyleUtil.h \
