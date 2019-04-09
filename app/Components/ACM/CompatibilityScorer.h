@@ -16,12 +16,12 @@ public:
     static QHash<Animal*, QVector<Match*>> calculate_scores();
 
 private:
-    static float calculate_client_want_score(Animal*, Client*, Match*);
-    static float calculate_physical_compatibility(Animal*, Animal*, Match*);
-    static float calculate_non_physical_compatibility(Animal*, Animal*);
+    static float calculateClientWantScore(Animal*, Client*, Match*);
+    static float calculatePhysicalCompatibility(Animal*, Animal*, Match*);
+    static float calculateNonPhysicalCompatibility(Animal*, Animal*);
 
-    static float calculate_client_personality_score(Animal*, Client*);
-    static void apply_client_situation_heuristics(Animal*, Client*, Match*);
+    static float calculateClientPersonalityScore(Animal*, Client*);
+    static void applyClientSituationHeuristics(Animal*, Client*, Match*);
 };
 
 #endif // COMPATIBILITYSCORER_H

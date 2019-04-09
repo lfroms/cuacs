@@ -17,13 +17,13 @@ QHash<Animal*, QVector<Match*>> CompatibilityScorer::calculate_scores() {
             Client* currentClient = clientI.next();
             Match* match = new Match(currentAnimal, currentClient);
 
-            float wantScore = calculate_client_want_score(currentAnimal, currentClient, match);
+            float wantScore = calculateClientWantScore(currentAnimal, currentClient, match);
             match->addRule(
                         QString("The client's matching preferences is %1% similar to the animal.")
                         .arg(double(wantScore * 100))
                         );
 
-            float personalityScore = calculate_client_personality_score(currentAnimal, currentClient);
+            float personalityScore = calculateClientPersonalityScore(currentAnimal, currentClient);
             match->addRule(
                         QString("The client's personality is %1% similar to the animal's personality.")
                         .arg(double(personalityScore * 100))
@@ -39,7 +39,7 @@ QHash<Animal*, QVector<Match*>> CompatibilityScorer::calculate_scores() {
 
             match->setScore(total_score);
 
-            apply_client_situation_heuristics(currentAnimal, currentClient, match);
+            applyClientSituationHeuristics(currentAnimal, currentClient, match);
             match->addRule(
                         QString("After applying the modifications above, the final compatibility "
                                 "score is %1%.")
@@ -55,20 +55,20 @@ QHash<Animal*, QVector<Match*>> CompatibilityScorer::calculate_scores() {
     return result;
 }
 
-float CompatibilityScorer::calculate_client_want_score(Animal* animal, Client* client, Match* match) {
+float CompatibilityScorer::calculateClientWantScore(Animal* animal, Client* client, Match* match) {
     if (client->idealAnimalId == -1) {
         return 0;
     }
 
     Animal* idealAnimal = Animal::findBy(client->idealAnimalId);
 
-    float physicalScore = calculate_physical_compatibility(animal, idealAnimal, match);
-    float nonPhysicalScore = calculate_non_physical_compatibility(animal, idealAnimal);
+    float physicalScore = calculatePhysicalCompatibility(animal, idealAnimal, match);
+    float nonPhysicalScore = calculateNonPhysicalCompatibility(animal, idealAnimal);
 
     return physicalScore / 2 + nonPhysicalScore / 2;
 }
 
-float CompatibilityScorer::calculate_physical_compatibility(
+float CompatibilityScorer::calculatePhysicalCompatibility(
         Animal* animal,
         Animal* idealAnimal,
         Match* match) {
@@ -109,7 +109,7 @@ float CompatibilityScorer::calculate_physical_compatibility(
     return 1.f - difference / 33.f;
 }
 
-float CompatibilityScorer::calculate_non_physical_compatibility(Animal* animal, Animal* idealAnimal) {
+float CompatibilityScorer::calculateNonPhysicalCompatibility(Animal* animal, Animal* idealAnimal) {
     int difference = 0;
     QHash<QString, float> animalAttributes = animal->attributes();
     QHash<QString, float> idealAnimalAttributes = idealAnimal->attributes();
@@ -125,7 +125,7 @@ float CompatibilityScorer::calculate_non_physical_compatibility(Animal* animal, 
     return 1.f - difference/108.f;
 }
 
-float CompatibilityScorer::calculate_client_personality_score(Animal* animal, Client* client) {
+float CompatibilityScorer::calculateClientPersonalityScore(Animal* animal, Client* client) {
     int difference = 0;
     QHash<QString, float> animalAttributes = animal->attributes();
     QHash<QString, float> clientAttributes = client->attributes();
@@ -158,7 +158,7 @@ float CompatibilityScorer::calculate_client_personality_score(Animal* animal, Cl
     return 1.f - difference/108.f;
 }
 
-void CompatibilityScorer::apply_client_situation_heuristics(Animal* animal, Client* client, Match* match) {
+void CompatibilityScorer::applyClientSituationHeuristics(Animal* animal, Client* client, Match* match) {
     QHash<QString, float> animalAttributes = animal->attributes();
 
     // Heuristic 1
