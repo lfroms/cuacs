@@ -16,9 +16,9 @@ class MatchCreator
 {
 public:
     static QVector<Match*> computeOptimalMatches(QHash<Animal*, QVector<Match*>>);
-    static QVector<Match*> sortAndThresholdMatches(QVector<Match*>);
 
 private:
+    static QVector<Match*> sortAndThresholdMatches(QVector<Match*>);
     static QVector<Match*> computeMatches(QHash<Animal*, QVector<Match*>>);
 };
 
