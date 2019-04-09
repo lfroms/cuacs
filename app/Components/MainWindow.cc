@@ -35,6 +35,7 @@ void MainWindow::setGlobalElementsEnabled() {
 
     ui->tabWidget->setCurrentIndex(0);
     ui->tabWidget->setTabEnabled(1, isAdmin);
+    ui->tabWidget->setTabEnabled(2, isAdmin);
     ui->menuTools->setEnabled(isAdmin);
     ui->actionEdit_My_Profile->setEnabled(!isAdmin);
 }
