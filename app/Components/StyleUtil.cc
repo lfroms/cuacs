@@ -7,7 +7,7 @@ StyleUtil::StyleUtil()
 
 void StyleUtil::updateStyle(QWidget *widget) {
     QFile file;
-    file.setFileName("../app/Resources/styles.txt");
+    file.setFileName("styles.txt");
 
     if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
         //return;

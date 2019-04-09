@@ -82,3 +82,6 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 
 DISTFILES += \
     Resources/styles.txt
+
+# Copy the stylesheet into the build folder
+QMAKE_POST_LINK += cp $$PWD/Resources/styles.txt $$OUT_PWD
