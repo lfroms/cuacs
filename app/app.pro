@@ -40,7 +40,8 @@ SOURCES += \
     Repository/Session/Session.cc \
     ACM/Match.cc \
     ACM/MatchCreator.cc \
-    Components/ACM/CompatibilityScorer.cc
+    Components/ACM/CompatibilityScorer.cc \
+    Components/ACMResultListWidgetItem.cc
 
 HEADERS += \
         Components/MainWindow.h \
@@ -61,14 +62,16 @@ HEADERS += \
     Repository/Session/Session.h \
     ACM/Match.h \
     ACM/MatchCreator.h \
-    Components/ACM/CompatibilityScorer.h
+    Components/ACM/CompatibilityScorer.h \
+    Components/ACMResultListWidgetItem.h
 
 FORMS += \
         Components/MainWindow.ui \
     Components/Animals/AnimalDetailsModal.ui \
     Components/DetailListWidgetItem.ui \
     Components/Clients/ClientDetailsModal.ui \
-    Authentication/LoginWindow.ui
+    Authentication/LoginWindow.ui \
+    Components/ACMResultListWidgetItem.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin
