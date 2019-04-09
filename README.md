@@ -38,6 +38,8 @@ As a shelter staff you can perform the following actions:
   * If you change the client's name, the username used to log in will be automatically updated to reflect the change.
   * You can only specify the personal information of the client profile. It is the client's job to add and edit their own matching preferences.
 * Click on the `Account` dropdown menu to Log Out, which redirects you to the log in screen.
+* Click on the `Animal-Client Matching` tab and see a summary of the algorithm results by clicking on the `Run Animal-Client Matching Algorithm` button.
+  * Click on an individual match to view a detailed breakdown of how and why the match was computed and chosen.
 
 Otherwise, test the application experience in the perspective of a client by providing the following credentials:
 ```
