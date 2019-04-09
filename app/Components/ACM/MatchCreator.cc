@@ -5,7 +5,7 @@ QVector<Match*> MatchCreator::computeOptimalMatches(QHash<Animal*, QVector<Match
 
     QHash<Animal*, QVector<Match*>> sortedMatchesHash;
 
-    // Sorting every animal's matches in descending order
+    // Sort every animal's matches in descending order
     while(inputHashI.hasNext()) {
         inputHashI.next();
         sortedMatchesHash[inputHashI.key()] = sortAndThresholdMatches(inputHashI.value());
@@ -19,6 +19,7 @@ QVector<Match*> MatchCreator::sortAndThresholdMatches(QVector<Match*> inputMatch
 
     // Apply thresholding to reject matches
     QVector<Match*> thresholdedMatches;
+
     while(input_i.hasNext()) {
         Match* currentMatch = input_i.next();
 
@@ -39,7 +40,7 @@ QVector<Match*> MatchCreator::computeMatches(QHash<Animal*, QVector<Match*>> inp
     QHash<Client*, Match*> clientsTopPick;
     QHashIterator<Animal*, QVector<Match*>> inputHashI(inputHash);
 
-    // Getting all animals from inputHash
+    // Get all animals from inputHash
     QVector<Animal*> animalProposerQueue;
 
     while(inputHashI.hasNext()) {
@@ -47,25 +48,29 @@ QVector<Match*> MatchCreator::computeMatches(QHash<Animal*, QVector<Match*>> inp
         animalProposerQueue.append(inputHashI.key());
     }
 
-    // Gale-Shapely's stable marriage algorithm, with the animals as the proposers, and the clients as the proposed.
+    // Gale-Shapely's stable marriage algorithm, with the animals as the proposers,
+    // and the clients as the proposed.
     QVectorIterator<Animal*> animalProposerQueueI(animalProposerQueue);
+
     while(animalProposerQueueI.hasNext()) {
         Animal* currentAnimal = animalProposerQueueI.next();
 
         QVector<Match*> currentAnimalMatches = inputHash[currentAnimal];
         QVectorIterator<Match*> currentAnimalMatchesI(currentAnimalMatches);
 
-        Match* currentMatch;
-        while(currentAnimalMatchesI.hasNext()) {
+        Match* currentMatch = nullptr;
+        while (currentAnimalMatchesI.hasNext()) {
             currentMatch = currentAnimalMatchesI.next();
 
-            // If this animal hash a higher score with this client, then the client's current match, this animal will be assigned to that client, and the animal that was originally matched
-            // will be re-enqued to the animalProposerQueue
+            // If this animal hash a higher score with this client, then the client's
+            // current match, this animal will be assigned to that client, and the animal
+            // that was originally matched will be re-enqued to the animalProposerQueue
             Match* clientPreviousTopMatch = clientsTopPick[currentMatch->getClient()];
-            if (clientPreviousTopMatch == 0)
-            {
+
+            if (clientPreviousTopMatch == nullptr) {
                 clientsTopPick[currentMatch->getClient()] = currentMatch;
-            } else if(clientPreviousTopMatch->getScore() < currentMatch->getScore()){
+
+            } else if (clientPreviousTopMatch->getScore() < currentMatch->getScore()) {
                 clientsTopPick[currentMatch->getClient()] = currentMatch;
                 animalProposerQueue.append(clientPreviousTopMatch->getAnimal());
                 break;
@@ -73,8 +78,7 @@ QVector<Match*> MatchCreator::computeMatches(QHash<Animal*, QVector<Match*>> inp
         }
 
         // Delete all matches that the animal has already attempted
-        if(currentMatch)
-        {
+        if (currentMatch != nullptr) {
             inputHash[currentAnimal].remove(0, currentAnimalMatches.indexOf(currentMatch) + 1);
         }
     }
@@ -82,11 +86,11 @@ QVector<Match*> MatchCreator::computeMatches(QHash<Animal*, QVector<Match*>> inp
     QHashIterator<Client*, Match*> clientsTopPickI(clientsTopPick);
     QVector<Match*> optimalMatches;
 
-    while(clientsTopPickI.hasNext()){
+    while (clientsTopPickI.hasNext()){
         clientsTopPickI.next();
         Match* currentMatch = clientsTopPickI.value();
 
-        if(currentMatch->getScore() > 0) {
+        if (currentMatch->getScore() > 0) {
             optimalMatches.append(currentMatch);
         }
     }

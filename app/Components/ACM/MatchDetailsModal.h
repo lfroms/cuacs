@@ -9,12 +9,11 @@ namespace Ui {
 class MatchDetailsModal;
 }
 
-class MatchDetailsModal : public QDialog
-{
+class MatchDetailsModal : public QDialog {
     Q_OBJECT
 
 public:
-    explicit MatchDetailsModal(Match* match, QWidget *parent = 0);
+    explicit MatchDetailsModal(Match* match, QWidget *parent = nullptr);
     ~MatchDetailsModal();
 
 private:

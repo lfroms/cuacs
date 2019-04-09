@@ -6,21 +6,24 @@
 #include <QVector>
 #include <QString>
 
-class Match
-{
+class Match{
 public:
     Match(Animal*, Client*, float = 0, QVector<QString> = QVector<QString>());
+
     void setScore(float);
     void addRule(QString);
+    QVector<QString> getRules();
+
     Animal* getAnimal();
     Client* getClient();
+
     float getScore();
-    QVector<QString> getRules();
 
 private:
     Animal* animal;
     Client* client;
     float score;
+
     QVector<QString> rules;
 };
 
