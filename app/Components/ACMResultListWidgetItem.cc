@@ -27,3 +27,10 @@ void ACMResultListWidgetItem::setAnimalName(QString animalName) {
 void ACMResultListWidgetItem::setAnimalDetail(QString animalDetail) {
     ui->animalDetail->setText(animalDetail);
 }
+
+void ACMResultListWidgetItem::setScore(float score) {
+    const QString scoreString = QString::number(double(score));
+    const QString formatted = QString("%1%").arg(scoreString);
+
+    ui->score->setText(formatted);
+}

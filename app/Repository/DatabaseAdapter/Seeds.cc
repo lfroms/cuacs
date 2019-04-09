@@ -64,7 +64,7 @@ void Seeds::runAll() {
     User("Kate Middleton", randPass(), Client::className()).create();
     User("Tina Zhang", randPass(), Client::className()).create();
     User("Jaqueline Tan", randPass(), Client::className()).create();
-    User("Emily WOng", randPass(), Client::className()).create();
+    User("Emily Wong", randPass(), Client::className()).create();
     User("Helena Beat", randPass(), Client::className()).create();
 
     User("Nathan Witherspoon", randPass(), Client::className()).create();

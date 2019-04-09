@@ -21,7 +21,7 @@
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
-    <layout class="QHBoxLayout" name="matchLayout">
+    <layout class="QHBoxLayout" name="matchLayout" stretch="2,2,1">
      <item>
       <layout class="QVBoxLayout" name="clientLayout">
        <property name="spacing">
@@ -125,6 +125,57 @@ text-transform: uppercase;</string>
          </property>
          <property name="alignment">
           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+       <property name="spacing">
+        <number>2</number>
+       </property>
+       <property name="topMargin">
+        <number>6</number>
+       </property>
+       <item>
+        <widget class="QLabel" name="score">
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;</string>
+         </property>
+         <property name="text">
+          <string>75%</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignBottom|Qt::AlignRight|Qt::AlignTrailing</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="scoreDescription">
+         <property name="font">
+          <font>
+           <pointsize>7</pointsize>
+           <weight>75</weight>
+           <bold>true</bold>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: transparent;
+text-transform: uppercase;</string>
+         </property>
+         <property name="text">
+          <string>Score</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignRight|Qt::AlignTop|Qt::AlignTrailing</set>
          </property>
         </widget>
        </item>

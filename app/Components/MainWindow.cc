@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+﻿#include "MainWindow.h"
 #include "ui_MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -153,6 +153,9 @@ void MainWindow::handleLaunchACM() {
         Animal* animal = match->getAnimal();
         matchWidget->setAnimalName(animal->name);
         matchWidget->setAnimalDetail(animal->species);
+
+        float rounded = roundf(match->getScore() * 10) / 10;
+        matchWidget->setScore(rounded);
 
         listWidgetItem->setSizeHint(matchWidget->sizeHint());
 

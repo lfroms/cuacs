@@ -21,6 +21,8 @@ public:
     void setAnimalName(QString animalName);
     void setAnimalDetail(QString animalDetail);
 
+    void setScore(float score);
+
 private:
     Ui::ACMResultListWidgetItem *ui;
 };
