@@ -15,6 +15,15 @@ QPushButton {
     background-color: #e0e0e0;
 }
 
+QPushButton#launchAcmButton {
+    color: white;
+    background: #308FC9;
+}
+
+QPushButton#launchAcmButton:hover {
+    background-color: #106FA9;
+}
+
 QPushButton#saveButton {
     color: white;
     background: #308FC9;
