@@ -3,6 +3,7 @@
 
 #include <QWidget>
 #include <QListWidgetItem>
+#include <QString>
 
 namespace Ui {
 class ACMResultListWidgetItem;

@@ -1,7 +1,9 @@
 #ifndef ANIMALDETAILSMODAL_H
 #define ANIMALDETAILSMODAL_H
 
+#include <QWidget>
 #include <QDialog>
+#include <QString>
 #include <QMessageBox>
 #include <Repository/Animal/Animal.h>
 #include <Components/StyleUtil.h>

@@ -1,6 +1,7 @@
 #ifndef STYLEUTIL_H
 #define STYLEUTIL_H
 #include <QFile>
+#include <QIODevice>
 #include <QWidget>
 #include <QString>
 #include <QTextStream>

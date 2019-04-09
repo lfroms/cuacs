@@ -2,6 +2,7 @@
 #define DETAILLISTWIDGETITEM_H
 
 #include <QWidget>
+#include <QString>
 #include <QListWidgetItem>
 #include <Components/StyleUtil.h>
 

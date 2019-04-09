@@ -1,13 +1,13 @@
 #ifndef MATCHCREATOR_H
 #define MATCHCREATOR_H
 #include <Components/ACM/Match.h>
-#include "QHash"
-#include "QHashIterator"
-#include "QVector"
-#include "QVectorIterator"
-#include "Repository/Animal/Animal.h"
-#include "Repository/Client/Client.h"
-#include "algorithm"
+#include <QHash>
+#include <QHashIterator>
+#include <QVector>
+#include <QVectorIterator>
+#include <Repository/Animal/Animal.h>
+#include <Repository/Client/Client.h>
+#include <algorithm>
 using namespace std;
 
 #define MATCH_SCORE_THRESHOLD 70

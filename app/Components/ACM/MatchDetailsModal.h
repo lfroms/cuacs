@@ -2,6 +2,8 @@
 #define MATCHDETAILSMODAL_H
 
 #include <QDialog>
+#include <QString>
+#include <QVectorIterator>
 #include <Components/ACM/Match.h>
 #include <Repository/User/User.h>
 
