@@ -10,6 +10,8 @@
 #include <Repository/Client/Client.h>
 
 #include <Repository/DatabaseAdapter/Seeds.h>
+#include <Repository/DatabaseAdapter/Config.h>
+#include <Repository/DatabaseAdapter/Schema.h>
 
 #include <vector>
 

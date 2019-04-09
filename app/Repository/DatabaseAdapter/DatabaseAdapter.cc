@@ -1,8 +1,5 @@
 #include "DatabaseAdapter.h"
 
-#include "Config.h"
-#include "Schema.h"
-
 QSqlDatabase DatabaseAdapter::db;
 
 DatabaseAdapter::DatabaseAdapter() {}

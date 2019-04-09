@@ -1,4 +1,4 @@
-#include <Components/ACM/Match.h>
+#include "Match.h"
 
 Match::Match(Animal* _animal, Client* _client, float _score, QVector<QString> _rules) :
     animal(_animal), client(_client), score(_score), rules(_rules) {}
