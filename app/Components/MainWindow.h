@@ -10,8 +10,12 @@
 #include <Repository/Session/Session.h>
 #include <Authentication/LoginWindow.h>
 #include <Components/DetailListWidgetItem.h>
+#include <Components/ACMResultListWidgetItem.h>
 #include <Components/Animals/AnimalDetailsModal.h>
 #include <Components/Clients/ClientDetailsModal.h>
+#include <ACM/Match.h>
+#include <ACM/MatchCreator.h>
+#include <Components/ACM/CompatibilityScorer.h>
 
 namespace Ui {
 class MainWindow;
@@ -31,6 +35,8 @@ private slots:
     void handleLogOut();
     void onAnimalClicked(QListWidgetItem*);
     void onClientClicked(QListWidgetItem*);
+
+    void handleLaunchACM();
 
 private:
     Ui::MainWindow *ui;

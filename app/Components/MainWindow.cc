@@ -1,4 +1,4 @@
-#include "MainWindow.h"
+﻿#include "MainWindow.h"
 #include "ui_MainWindow.h"
 
 MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWindow) {
@@ -35,6 +35,7 @@ void MainWindow::setGlobalElementsEnabled() {
 
     ui->tabWidget->setCurrentIndex(0);
     ui->tabWidget->setTabEnabled(1, isAdmin);
+    ui->tabWidget->setTabEnabled(2, isAdmin);
     ui->menuTools->setEnabled(isAdmin);
     ui->actionEdit_My_Profile->setEnabled(!isAdmin);
 }
@@ -127,6 +128,49 @@ void MainWindow::renderClientList() {
         listWidgetItem->setData(Qt::UserRole, var);
 
         ui->clientsListWidget->setItemWidget(listWidgetItem, clientWidget);
+    }
+}
+
+void MainWindow::handleLaunchACM() {
+    ui->acmResultsListWidget->clear();
+
+    QHash<Animal*, QVector<Match*>> hash = CompatibilityScorer::calculate_scores();
+    QVector<Match*> matches = MatchCreator::computeOptimalMatches(hash);
+
+    QVectorIterator<Match*> i(matches);
+
+    while (i.hasNext()) {
+        Match* match = i.next();
+
+        QListWidgetItem* listWidgetItem = new QListWidgetItem(ui->acmResultsListWidget);
+
+        ACMResultListWidgetItem* matchWidget = new ACMResultListWidgetItem;
+
+        Client* client = match->getClient();
+        User* userAssociatedWithClient = User::findBy(client->userId);
+        matchWidget->setClientName(userAssociatedWithClient->getName());
+        matchWidget->setClientDetail(client->email);
+
+        Animal* animal = match->getAnimal();
+        matchWidget->setAnimalName(animal->name);
+
+        const QString animalDetail =
+                QString("A %1 %2 (%3)")
+                .arg(animal->color.toLower())
+                .arg(animal->species.toLower())
+                .arg(animal->breed);
+
+        matchWidget->setAnimalDetail(animalDetail);
+
+        float rounded = roundf(match->getScore() * 10) / 10;
+        matchWidget->setScore(rounded);
+
+        listWidgetItem->setSizeHint(matchWidget->sizeHint());
+
+        QVariant var = QVariant::fromValue(match);
+        listWidgetItem->setData(Qt::UserRole, var);
+
+        ui->acmResultsListWidget->setItemWidget(listWidgetItem, matchWidget);
     }
 }
 
