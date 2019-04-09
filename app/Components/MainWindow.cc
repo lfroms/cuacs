@@ -152,7 +152,14 @@ void MainWindow::handleLaunchACM() {
 
         Animal* animal = match->getAnimal();
         matchWidget->setAnimalName(animal->name);
-        matchWidget->setAnimalDetail(animal->species);
+
+        const QString animalDetail =
+                QString("A %1 %2 (%3)")
+                .arg(animal->color.toLower())
+                .arg(animal->species.toLower())
+                .arg(animal->breed);
+
+        matchWidget->setAnimalDetail(animalDetail);
 
         float rounded = roundf(match->getScore() * 10) / 10;
         matchWidget->setScore(rounded);
@@ -163,9 +170,6 @@ void MainWindow::handleLaunchACM() {
         listWidgetItem->setData(Qt::UserRole, var);
 
         ui->acmResultsListWidget->setItemWidget(listWidgetItem, matchWidget);
-
-        qDebug() << match->getAnimal()->name << match->getClient()->email << match->getScore() << match->getRules();
-
     }
 }
 
