@@ -9,6 +9,8 @@ MainWindow::MainWindow(QWidget *parent) : QMainWindow(parent), ui(new Ui::MainWi
             this, SLOT(onAnimalClicked(QListWidgetItem*)));
     connect(ui->clientsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
             this, SLOT(onClientClicked(QListWidgetItem*)));
+    connect(ui->acmResultsListWidget, SIGNAL(itemDoubleClicked(QListWidgetItem*)),
+            this, SLOT(onMatchClicked(QListWidgetItem*)));
 }
 
 MainWindow::~MainWindow() {
@@ -81,6 +83,15 @@ void MainWindow::onClientClicked(QListWidgetItem* clientWidgetItem) {
     modal.setModal(true);
     modal.exec();
     renderClientList();
+}
+
+void MainWindow::onMatchClicked(QListWidgetItem* matchWidgetItem) {
+    QVariant var = matchWidgetItem->data(Qt::UserRole);
+    Match* match = var.value<Match*>();
+
+    MatchDetailsModal modal(match);
+    modal.setModal(true);
+    modal.exec();
 }
 
 void MainWindow::renderAnimalList() {

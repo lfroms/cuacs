@@ -5,9 +5,9 @@ MatchDetailsModal::MatchDetailsModal(Match * match, QWidget *parent) :
     QDialog(parent),
     ui(new Ui::MatchDetailsModal)
 {
+    ui->setupUi(this);
     this->match = match;
     configureWindow();
-    ui->setupUi(this);
 }
 
 MatchDetailsModal::~MatchDetailsModal()
@@ -28,15 +28,9 @@ void MatchDetailsModal::configureWindow() {
         ui->rulesList->addItem(rule);
     }
 
-    QHash<Animal*, QVector<Match*>> scores = CompatibilityScorer().calculate_scores();
-    QVector<Match*> matchesForAnimal = scores[match->getAnimal()];
-    QVector<Match*> sortedMatches = MatchCreator().sortAndThresholdMatches(matchesForAnimal);
-
-    int ranking = sortedMatches.indexOf(match);
-
-    QString rationale = QString("This matching was the best match possible without creating another match whose animal"
+    QString rationale = QString("This matching was the best match possible without creating another match whose animal "
                         "or client would be better suited with this match's animal or client. "
-                        "In absolute terms, this was the %1 best match for the animal in our entire database.").arg(ranking);
+                                "The ideal animal is given");
 
     ui->rationaleLabel->setText(rationale);
 }

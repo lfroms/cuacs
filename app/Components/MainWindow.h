@@ -13,6 +13,7 @@
 #include <Components/ACMResultListWidgetItem.h>
 #include <Components/Animals/AnimalDetailsModal.h>
 #include <Components/Clients/ClientDetailsModal.h>
+#include <Components/ACM/MatchDetailsModal.h>
 #include <ACM/Match.h>
 #include <ACM/MatchCreator.h>
 #include <Components/ACM/CompatibilityScorer.h>
@@ -35,6 +36,7 @@ private slots:
     void handleLogOut();
     void onAnimalClicked(QListWidgetItem*);
     void onClientClicked(QListWidgetItem*);
+    void onMatchClicked(QListWidgetItem*);
 
     void handleLaunchACM();
 
