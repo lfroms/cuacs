@@ -2,9 +2,7 @@
 #define MATCHDETAILSMODAL_H
 
 #include <QDialog>
-#include <ACM/Match.h>
-#include <Components/ACM/CompatibilityScorer.h>
-#include <ACM/MatchCreator.h>
+#include <Components/ACM/Match.h>
 #include <Repository/User/User.h>
 
 namespace Ui {

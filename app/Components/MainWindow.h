@@ -14,8 +14,8 @@
 #include <Components/Animals/AnimalDetailsModal.h>
 #include <Components/Clients/ClientDetailsModal.h>
 #include <Components/ACM/MatchDetailsModal.h>
-#include <ACM/Match.h>
-#include <ACM/MatchCreator.h>
+#include <Components/ACM/Match.h>
+#include <Components/ACM/MatchCreator.h>
 #include <Components/ACM/CompatibilityScorer.h>
 
 namespace Ui {
