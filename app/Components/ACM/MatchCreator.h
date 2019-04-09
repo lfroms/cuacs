@@ -12,8 +12,7 @@ using namespace std;
 
 #define MATCH_SCORE_THRESHOLD 70
 
-class MatchCreator
-{
+class MatchCreator {
 public:
     static QVector<Match*> computeOptimalMatches(QHash<Animal*, QVector<Match*>>);
 

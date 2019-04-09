@@ -1,17 +1,13 @@
 #include "StyleUtil.h"
 
-StyleUtil::StyleUtil()
-{
-
-}
+StyleUtil::StyleUtil() {}
 
 void StyleUtil::updateStyle(QWidget *widget) {
     QFile file;
     file.setFileName("styles.txt");
 
-    if (!file.open(QIODevice::ReadOnly | QIODevice::Text)) {
-        //return;
-    }
+    file.open(QIODevice::ReadOnly | QIODevice::Text);
+
     QTextStream in(&file);
     QString stylesheet = in.readAll();
     stylesheet = stylesheet.trimmed();

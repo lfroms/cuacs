@@ -5,8 +5,7 @@
 #include <QString>
 #include <QTextStream>
 
-class StyleUtil
-{
+class StyleUtil {
 public:
     StyleUtil();
     void updateStyle(QWidget*);

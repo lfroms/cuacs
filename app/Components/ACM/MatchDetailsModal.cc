@@ -3,15 +3,14 @@
 
 MatchDetailsModal::MatchDetailsModal(Match * match, QWidget *parent) :
     QDialog(parent),
-    ui(new Ui::MatchDetailsModal)
-{
+    ui(new Ui::MatchDetailsModal) {
+
     ui->setupUi(this);
     this->match = match;
     configureWindow();
 }
 
-MatchDetailsModal::~MatchDetailsModal()
-{
+MatchDetailsModal::~MatchDetailsModal() {
     delete ui;
 }
 
@@ -28,7 +27,7 @@ void MatchDetailsModal::configureWindow() {
         ui->rulesList->addItem(rule);
     }
 
-    QString score = QString::number(match->getScore());
+    QString score = QString::number(double(match->getScore()));
     ui->scoreLabel->setText(score);
 }
 
