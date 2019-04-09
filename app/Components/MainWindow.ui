@@ -50,7 +50,7 @@
          <enum>QTabWidget::North</enum>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <widget class="QWidget" name="viewAnimalsTab">
          <attribute name="title">
@@ -197,7 +197,7 @@
                  <string>Generated Matches:</string>
                 </property>
                 <property name="indent">
-                 <number>16</number>
+                 <number>9</number>
                 </property>
                </widget>
               </item>
@@ -210,7 +210,10 @@
                  <enum>QFrame::Plain</enum>
                 </property>
                 <property name="lineWidth">
-                 <number>0</number>
+                 <number>1</number>
+                </property>
+                <property name="verticalScrollMode">
+                 <enum>QAbstractItemView::ScrollPerPixel</enum>
                 </property>
                </widget>
               </item>
@@ -340,11 +343,28 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>launchAcmButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>handleLaunchACM()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>399</x>
+     <y>97</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>399</x>
+     <y>249</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>handleAddAnimalAction()</slot>
   <slot>handleAddClientAction()</slot>
   <slot>handleEditMyProfile()</slot>
   <slot>handleLogOut()</slot>
+  <slot>handleLaunchACM()</slot>
  </slots>
 </ui>

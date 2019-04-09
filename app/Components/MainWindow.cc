@@ -134,37 +134,35 @@ void MainWindow::handleLaunchACM() {
     ui->acmResultsListWidget->clear();
 
     QHash<Animal*, QVector<Match*>> hash = CompatibilityScorer::calculate_scores();
-    QHashIterator<Animal*, QVector<Match*>> hashIterator(hash);
+    QVector<Match*> matches = MatchCreator::computeOptimalMatches(hash);
 
-    while (hashIterator.hasNext()) {
-        hashIterator.next();
-        QVector<Match*> matches = hashIterator.value();
+    QVectorIterator<Match*> i(matches);
 
-        QVectorIterator<Match*> matchIterator(matches);
+    while (i.hasNext()) {
+        Match* match = i.next();
 
-        while (matchIterator.hasNext()) {
-            Match* match = matchIterator.next();
+        QListWidgetItem* listWidgetItem = new QListWidgetItem(ui->acmResultsListWidget);
 
-            QListWidgetItem* listWidgetItem = new QListWidgetItem(ui->acmResultsListWidget);
+        ACMResultListWidgetItem* matchWidget = new ACMResultListWidgetItem;
 
-            ACMResultListWidgetItem* matchWidget = new ACMResultListWidgetItem;
+        Client* client = match->getClient();
+        User* userAssociatedWithClient = User::findBy(client->userId);
+        matchWidget->setClientName(userAssociatedWithClient->getName());
+        matchWidget->setClientDetail(client->email);
 
-            Client* client = match->getClient();
-            User* userAssociatedWithClient = User::findBy(client->userId);
-            matchWidget->setClientName(userAssociatedWithClient->getName());
-            matchWidget->setClientDetail(client->email);
+        Animal* animal = match->getAnimal();
+        matchWidget->setAnimalName(animal->name);
+        matchWidget->setAnimalDetail(animal->species);
 
-            Animal* animal = match->getAnimal();
-            matchWidget->setAnimalName(animal->name);
-            matchWidget->setAnimalDetail(animal->species);
+        listWidgetItem->setSizeHint(matchWidget->sizeHint());
 
-            QVariant var = QVariant::fromValue(match);
-            listWidgetItem->setData(Qt::UserRole, var);
+        QVariant var = QVariant::fromValue(match);
+        listWidgetItem->setData(Qt::UserRole, var);
 
-            ui->acmResultsListWidget->setItemWidget(listWidgetItem, matchWidget);
+        ui->acmResultsListWidget->setItemWidget(listWidgetItem, matchWidget);
 
-            qDebug() << match->getAnimal()->name << match->getClient()->email << match->getScore() << match->getRules();
-        }
+        qDebug() << match->getAnimal()->name << match->getClient()->email << match->getScore() << match->getRules();
+
     }
 }
 

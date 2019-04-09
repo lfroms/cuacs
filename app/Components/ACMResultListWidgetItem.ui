@@ -10,11 +10,17 @@
     <height>75</height>
    </rect>
   </property>
+  <property name="minimumSize">
+   <size>
+    <width>0</width>
+    <height>0</height>
+   </size>
+  </property>
   <property name="windowTitle">
    <string>Form</string>
   </property>
-  <layout class="QHBoxLayout" name="horizontalLayout">
-   <item>
+  <layout class="QGridLayout" name="gridLayout">
+   <item row="0" column="0">
     <layout class="QHBoxLayout" name="matchLayout">
      <item>
       <layout class="QVBoxLayout" name="clientLayout">
@@ -58,7 +64,9 @@
           </sizepolicy>
          </property>
          <property name="font">
-          <font/>
+          <font>
+           <pointsize>9</pointsize>
+          </font>
          </property>
          <property name="autoFillBackground">
           <bool>false</bool>
@@ -103,6 +111,11 @@ text-transform: uppercase;</string>
        </item>
        <item>
         <widget class="QLabel" name="animalDetail">
+         <property name="font">
+          <font>
+           <pointsize>9</pointsize>
+          </font>
+         </property>
          <property name="styleSheet">
           <string notr="true">background-color: transparent;
 text-transform: uppercase;</string>
