@@ -17,15 +17,22 @@ QHash<Animal*, QVector<Match*>> CompatibilityScorer::calculate_scores() {
             Match* match = new Match(currentAnimal, currentClient);
 
             float wantScore = calculate_client_want_score(currentAnimal, currentClient, match);
-            match->addRule(QString("The client's ideal animal is %1% compatible.")
+            match->addRule(QString("The client's matching preferences is %1% similar to the animal.")
                            .arg(wantScore * 100));
             float personalityScore = calculate_client_personality_score(currentAnimal, currentClient);
-            match->addRule(QString("The client's personality is %1% compatible.")
+            match->addRule(QString("The client's personality is %1% similar to the animal's personality.")
                            .arg(personalityScore * 100));
             float total_score = (40 * wantScore) + (50 * personalityScore);
+            match->addRule(QString("Since the ideal animal similarity is weighted to 40%"
+                                   " of the total score and the personality similarity is "
+                                   "weighted to 60% of the score, the resulting score is %1%")
+                           .arg(total_score));
             match->setScore(total_score);
 
             apply_client_situation_heuristics(currentAnimal, currentClient, match);
+            match->addRule(QString("After applying the modifications above, the final compatibility"
+                                   " score is %1%.")
+                           .arg(match->getScore()));
             matchVector.append(match);
         }
         result[currentAnimal] = matchVector;
