@@ -28,10 +28,7 @@ void MatchDetailsModal::configureWindow() {
         ui->rulesList->addItem(rule);
     }
 
-    QString rationale = QString("This matching was the best match possible without creating another match whose animal "
-                        "or client would be better suited with this match's animal or client. "
-                                "The ideal animal is given");
-
-    ui->rationaleLabel->setText(rationale);
+    QString score = QString::number(match->getScore());
+    ui->scoreLabel->setText(score);
 }
 
